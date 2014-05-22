@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_e_rsurser.features.menu_links.inc
+ * kkb_eresource.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function kkb_e_rsurser_menu_default_menu_links() {
+function kkb_eresource_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: main-menu:e-resurser

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_e_rsurser.features.menu_custom.inc
+ * kkb_eresource.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function kkb_e_rsurser_menu_default_menu_custom() {
+function kkb_eresource_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: main-menu.
