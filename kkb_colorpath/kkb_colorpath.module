@@ -50,6 +50,9 @@ function kkb_colorpath_form_path_admin_form_alter(&$form, &$form_state) {
  */
 function kkb_colorpath_form_node_form_alter(&$form, $form_state) {
 
+  if (!isset($form['#node']->nid)) {
+    return;
+  }
   $source = 'node/' . $form['#node']->nid;
   $color = _kkb_colorpath_get_color($source);
 
