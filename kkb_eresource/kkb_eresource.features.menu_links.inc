@@ -11,11 +11,11 @@ function kkb_eresource_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: main-menu:e-resurser
-  $menu_links['main-menu:e-resurser'] = array(
+  $menu_links['main-menu:e-materialer'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'e-resurser',
-    'router_path' => 'e-resurser',
-    'link_title' => 'E-resurser',
+    'link_path' => 'e-materialer',
+    'router_path' => 'e-materialer',
+    'link_title' => 'E-materialer',
     'options' => array(
       'attributes' => array(
         'title' => '',
