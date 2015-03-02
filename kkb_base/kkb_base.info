@@ -1,0 +1,4 @@
+name = KKB Base
+description = Base module for custom functionality on bibliotek.kk.dk
+core = 7.x
+package = KKB

@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Install scripts for kkb_base module.
+ *
+ * This will basically be a lot of update hooks - primarily for en/disabling
+ * modules.
+ */
+
+/**
+ * Remove obsolete library menu links from content migration.
+ */
+function kkb_base_update_7000() {
+  // Remove links containing an unfiltered token placeholder. It is uncertain
+  // why these exist in the database but it is probably due to a combination
+  // of the migration and missing slugs.
+  // The proper links will have to be recreated manually if necessary.
+  db_delete('menu_links')
+    ->condition('link_path', '%[node:field-ding-library-slug]%', 'LIKE')
+    ->execute();
+}
