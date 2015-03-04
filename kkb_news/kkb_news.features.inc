@@ -5,6 +5,16 @@
  */
 
 /**
+ * Implements hook_field_default_field_bases_alter().
+ */
+function kkb_news_field_default_field_bases_alter(&$data) {
+  if (isset($data['field_ding_news_files'])) {
+    $data['field_ding_news_files']['settings']['display_default'] = 1; /* WAS: 0 */
+    $data['field_ding_news_files']['settings']['display_field'] = 1; /* WAS: 0 */
+  }
+}
+
+/**
  * Implements hook_field_default_field_instances_alter().
  */
 function kkb_news_field_default_field_instances_alter(&$data) {
