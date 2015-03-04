@@ -1,4 +1,5 @@
-name = kkb_group
+name = KKB Groups
+description = Custom handling of groups for bibliotek.kk.dk
 core = 7.x
 package = KKB
 dependencies[] = ctools
@@ -10,4 +11,4 @@ features[features_api][] = api:2
 features[field_base][] = field_ding_group_files
 features[field_group][] = group_ding_group_attachments|node|ding_group|form
 features[field_instance][] = node-ding_group-field_ding_group_files
-mtime = 1425387796
+mtime = 1425460297

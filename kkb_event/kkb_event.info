@@ -1,4 +1,5 @@
-name = kkb_event
+name = KKB Event
+description = Custom handling of events for bibliotek.kk.dk
 core = 7.x
 package = KKB
 dependencies[] = ding_event
