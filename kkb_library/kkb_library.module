@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the kkb_library feature.
+ */
+
+include_once 'kkb_library.features.inc';

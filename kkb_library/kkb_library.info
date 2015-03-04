@@ -1,0 +1,13 @@
+name = kkb_library
+core = 7.x
+package = KKB
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = file
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[field_base][] = field_ding_library_files
+features[field_instance][] = node-ding_library-field_ding_library_files
+features[page_manager_handlers][] = node_view_panel_context_2
+mtime = 1425443154
