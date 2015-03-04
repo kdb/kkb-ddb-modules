@@ -19,3 +19,16 @@ function kkb_base_update_7000() {
     ->condition('link_path', '%[node:field-ding-library-slug]%', 'LIKE')
     ->execute();
 }
+
+/**
+ * Enable modules with local customizations.
+ */
+function kkb_base_update_7001() {
+  module_enable(array(
+    'kkb_event',
+    'kkb_group',
+    'kkb_library',
+    'kkb_news',
+    'kkb_page',
+  ));
+}
