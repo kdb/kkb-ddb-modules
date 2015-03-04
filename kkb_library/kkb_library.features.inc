@@ -12,3 +12,12 @@ function kkb_library_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_field_group_info_alter().
+ */
+function kkb_library_field_group_info_alter(&$data) {
+  if (isset($data['group_ding_library_attachments|node|ding_library|form'])) {
+    $data['group_ding_library_attachments|node|ding_library|form']->data['children'][2] = 'field_ding_library_files'; /* WAS: 'field_ding_library_opening_hours' */
+  }
+}
