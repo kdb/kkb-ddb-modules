@@ -1,0 +1,13 @@
+name = kkb_group
+core = 7.x
+package = KKB
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = file
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_base][] = field_ding_group_files
+features[field_group][] = group_ding_group_attachments|node|ding_group|form
+features[field_instance][] = node-ding_group-field_ding_group_files
+mtime = 1425387796
