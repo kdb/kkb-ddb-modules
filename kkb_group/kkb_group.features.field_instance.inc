@@ -54,7 +54,7 @@ function kkb_group_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 

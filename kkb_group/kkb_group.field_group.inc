@@ -19,7 +19,23 @@ function kkb_group_field_group_info() {
   $field_group->bundle = 'ding_group';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
-  $field_group->data = '';
+  $field_group->data = array(
+    'label' => 'Attachments',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_ding_group_files',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Attachments',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
   $export['group_ding_group_attachments|node|ding_group|form'] = $field_group;
 
   return $export;
