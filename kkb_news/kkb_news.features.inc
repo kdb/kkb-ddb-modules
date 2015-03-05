@@ -32,3 +32,12 @@ function kkb_news_field_default_field_instances_alter(&$data) {
     unset($data['node-ding_news-field_ding_news_list_image']['widget']['settings']['browser_plugins']['library']);
   }
 }
+
+/**
+ * Implements hook_strongarm_alter().
+ */
+function kkb_news_strongarm_alter(&$data) {
+  if (isset($data['comment_ding_news'])) {
+    $data['comment_ding_news']->value = 2; /* WAS: 1 */
+  }
+}

@@ -26,5 +26,8 @@ function kkb_news_features_override_default_overrides() {
   $overrides["field_instance.node-ding_news-field_ding_news_list_image.widget|settings|browser_plugins|media_internet"] = 0;
   $overrides["field_instance.node-ding_news-field_ding_news_list_image.widget|settings|browser_plugins|youtube"] = 0;
 
+  // Exported overrides for: variable
+  $overrides["variable.comment_ding_news.value"] = 2;
+
  return $overrides;
 }

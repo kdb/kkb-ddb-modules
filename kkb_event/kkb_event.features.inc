@@ -13,3 +13,12 @@ function kkb_event_field_default_field_bases_alter(&$data) {
     $data['field_ding_event_files']['settings']['display_field'] = 1; /* WAS: 0 */
   }
 }
+
+/**
+ * Implements hook_strongarm_alter().
+ */
+function kkb_event_strongarm_alter(&$data) {
+  if (isset($data['comment_ding_event'])) {
+    $data['comment_ding_event']->value = 2; /* WAS: 1 */
+  }
+}
