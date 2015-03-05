@@ -12,3 +12,15 @@ function kkb_group_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function kkb_group_field_default_field_instances_alter(&$data) {
+  if (isset($data['node-ding_group-field_ding_group_list_image'])) {
+    $data['node-ding_group-field_ding_group_list_image']['required'] = 1; /* WAS: 0 */
+  }
+  if (isset($data['node-ding_group-field_ding_group_title_image'])) {
+    $data['node-ding_group-field_ding_group_title_image']['required'] = 1; /* WAS: 0 */
+  }
+}
