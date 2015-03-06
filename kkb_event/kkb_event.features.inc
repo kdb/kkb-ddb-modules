@@ -15,6 +15,16 @@ function kkb_event_field_default_field_bases_alter(&$data) {
 }
 
 /**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function kkb_event_field_default_field_instances_alter(&$data) {
+  if (isset($data['node-ding_event-field_ding_event_date'])) {
+    $data['node-ding_event-field_ding_event_date']['required'] = 1; /* WAS: 0 */
+    $data['node-ding_event-field_ding_event_date']['settings']['default_value'] = 'blank'; /* WAS: 'now' */
+  }
+}
+
+/**
  * Implements hook_strongarm_alter().
  */
 function kkb_event_strongarm_alter(&$data) {
