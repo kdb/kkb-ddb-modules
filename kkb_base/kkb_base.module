@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * Code for the kkb_base feature.
+ */
+
+include_once 'kkb_base.features.inc';
 
 /**
  * Implements hook_form_FORM_ID_alter().
