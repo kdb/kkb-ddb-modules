@@ -15,5 +15,8 @@ function kkb_page_features_override_default_overrides() {
   $overrides["field_base.field_ding_page_files.settings|display_default"] = 1;
   $overrides["field_base.field_ding_page_files.settings|display_field"] = 1;
 
+  // Exported overrides for: field_instance
+  $overrides["field_instance.node-ding_page-field_ding_page_list_image.required"] = 1;
+
  return $overrides;
 }
