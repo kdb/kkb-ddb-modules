@@ -31,5 +31,6 @@ function kkb_base_update_7001() {
     'kkb_news',
     'kkb_page',
     'kkb_frontpage',
+    'kkb_permissions',
   ));
 }
