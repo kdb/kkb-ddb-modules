@@ -31,6 +31,9 @@ function kkb_event_field_default_field_instances_alter(&$data) {
     $data['node-ding_event-field_ding_event_date']['required'] = 1; /* WAS: 0 */
     $data['node-ding_event-field_ding_event_date']['settings']['default_value'] = 'blank'; /* WAS: 'now' */
   }
+  if (isset($data['node-ding_event-field_ding_event_list_image'])) {
+    $data['node-ding_event-field_ding_event_list_image']['required'] = 1; /* WAS: 0 */
+  }
 }
 
 /**

@@ -18,6 +18,7 @@ function kkb_event_features_override_default_overrides() {
   // Exported overrides for: field_instance
   $overrides["field_instance.node-ding_event-field_ding_event_date.required"] = 1;
   $overrides["field_instance.node-ding_event-field_ding_event_date.settings|default_value"] = 'blank';
+  $overrides["field_instance.node-ding_event-field_ding_event_list_image.required"] = 1;
 
   // Exported overrides for: variable
   $overrides["variable.comment_ding_event.value"] = 2;
