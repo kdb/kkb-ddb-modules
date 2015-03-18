@@ -18,5 +18,25 @@ function kkb_page_features_override_default_overrides() {
   // Exported overrides for: field_instance
   $overrides["field_instance.node-ding_page-field_ding_page_list_image.required"] = 1;
 
+  // Exported overrides for: variable
+  $overrides["variable.field_bundle_settings_node__ding_page.value|extra_fields|display|opening_hours_week"] = array(
+    'default' => array(
+      'weight' => 0,
+      'visible' => FALSE,
+    ),
+    'teaser_highlight' => array(
+      'weight' => 0,
+      'visible' => FALSE,
+    ),
+    'search_result' => array(
+      'weight' => 0,
+      'visible' => FALSE,
+    ),
+    'teaser' => array(
+      'weight' => 0,
+      'visible' => FALSE,
+    ),
+  );
+
  return $overrides;
 }
