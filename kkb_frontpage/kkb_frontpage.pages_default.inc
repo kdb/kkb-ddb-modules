@@ -501,7 +501,7 @@ function kkb_frontpage_default_page_manager_handlers() {
       'arguments' => array(
         'tid' => '75',
       ),
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
