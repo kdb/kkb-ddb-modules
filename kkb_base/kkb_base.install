@@ -35,3 +35,31 @@ function kkb_base_update_7001() {
     'webform',
   ));
 }
+
+/**
+ * Update DB-table "menu_links" to remove wrong slugs for Ørestad-library.
+ */
+function kkb_base_update_7002() {
+  // Delete the superfluous menu link.
+  $mlid_to_delete = 2361;
+
+  $menu_links = db_delete('menu_links')
+    ->condition('mlid', $mlid_to_delete)
+    ->execute();
+
+  // Fetch remaining.
+  $menu_links = db_select('menu_links')
+    ->fields('menu_links')
+    ->condition('menu_name', 'menu-og-17')
+    ->condition('link_path', '%' . db_like('oerestad') . '%', 'LIKE')
+    ->execute();
+
+
+  foreach ($menu_links as $menu_link) {
+    $menu_link->link_path = str_replace('oerestad', 'orestad', $menu_link->link_path);
+    db_update('menu_links')
+      ->fields(array('link_path' => $menu_link->link_path))
+      ->condition('mlid', $menu_link->mlid)
+      ->execute();
+  }
+}
