@@ -132,7 +132,7 @@ function kkb_related_links_field_default_field_instances() {
     'bundle' => 'ding_group',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Add images with titles and links to add them to an adaptive grid to be shown on the group page.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -162,7 +162,7 @@ function kkb_related_links_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_links',
-    'label' => 'Relaterede links',
+    'label' => 'Related links',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -181,7 +181,7 @@ function kkb_related_links_field_default_field_instances() {
     'bundle' => 'ding_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Add images with titles and links to add them to an adaptive grid to be shown on the page.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -217,7 +217,7 @@ function kkb_related_links_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_related_links',
-    'label' => 'Relaterede links',
+    'label' => 'Related links',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -233,9 +233,11 @@ function kkb_related_links_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add images with titles and links to add them to an adaptive grid to be shown on the group page.');
+  t('Add images with titles and links to add them to an adaptive grid to be shown on the page.');
   t('Image');
   t('Link');
-  t('Relaterede links');
+  t('Related links');
 
   return $field_instances;
 }

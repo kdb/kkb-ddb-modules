@@ -21,5 +21,5 @@ features[field_instance][] = field_collection_item-field_related_links-field_ima
 features[field_instance][] = field_collection_item-field_related_links-field_link
 features[field_instance][] = node-ding_group-field_related_links
 features[field_instance][] = node-ding_page-field_related_links
-mtime = 1436423688
+mtime = 1436454592
 project path = profiles/ding2/modules/kkb-ddb-modules
