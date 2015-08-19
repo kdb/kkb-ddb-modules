@@ -22,6 +22,10 @@ function kkb_library_lib_opening_hours_content_type_render($subtype, $conf, $pan
     'button' => l(t('Read more'), $conf['lib_opening_hours_link'])
   );
 
+  if (empty($conf['lib_opening_hours_text']['value'])) {
+    return;
+  }
+
   // Defined the return block.
   $block = new stdClass();
   $block->content = theme('kkb_library_general_opening_hours', $params);
@@ -35,10 +39,11 @@ function kkb_library_lib_opening_hours_content_type_render($subtype, $conf, $pan
 function kkb_library_lib_opening_hours_content_type_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
   $form['lib_opening_hours_text'] = array(
-    '#type' => 'textarea',
+    '#type'=> 'text_format',
     '#title' => t('Messsage'),
     '#description' => t('Just type what you want to appear as the openinghours message.'),
-    '#default_value' => !empty($conf['lib_opening_hours_text']) ? $conf['lib_opening_hours_text'] : '',
+    '#default_value' => !empty($conf['lib_opening_hours_text']['value']) ? $conf['lib_opening_hours_text']['value'] : '',
+    '#format' => 'full_html',
   );
 
   $form['lib_opening_hours_link'] = array(

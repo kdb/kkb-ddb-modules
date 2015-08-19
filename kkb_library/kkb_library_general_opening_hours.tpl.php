@@ -1,5 +1,5 @@
-<div class="library-opening-hours alert alert-info">
-<h1><?php print t('Library online'); ?></h1>
-<?php print $text; ?>
-<?php print $button; ?>
+<div class="library-opening-hours">
+<h1><?php print t('Biblioteket online'); ?></h1>
+<div class="text"><?php print $text['value']; ?></div>
+<div class="readmore-container"><?php print $button; ?></div>
 </div>
