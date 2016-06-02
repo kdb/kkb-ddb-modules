@@ -29,3 +29,14 @@ function kkb_library_theme() {
     ),
   );
 }
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Don't show opening hours in search result.
+ */
+function kkb_library_views_query_alter(&$view, &$query) {
+  if ($view->name == 'page_opening_hours') {
+    unset($view->field['opening_hours_week']);
+  }
+}
