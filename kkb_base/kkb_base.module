@@ -18,3 +18,16 @@ function kkb_base_form_node_form_alter(&$form, $form_state) {
     $form['additional_settings']['#default_tab'] = 'edit-scheduler-settings';
   }
 }
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * Add filter option "promotion" to ding_node_search view.
+ */
+function kkb_base_views_pre_view(&$view, &$display_id, &$args) {
+  if ($view->name == 'ding_node_search') {
+    $filters = $view->display_handler->get_option('filters');
+    $filters['type']['value']['promotion'] = 'promotion';
+    $view->display_handler->override_option('filters', $filters);
+  }
+}
