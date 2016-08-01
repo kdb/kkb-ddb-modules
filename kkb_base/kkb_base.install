@@ -70,3 +70,10 @@ function kkb_base_update_7002() {
 function kkb_base_update_7003() {
   module_enable(array('kkb_related_links'));
 }
+
+/**
+ * Enable webform_remote_post module.
+ */
+function kkb_base_update_7101() {
+  module_enable(array('webform_remote_post'));
+}
