@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Install scripts for kkb_base module.
@@ -53,7 +54,6 @@ function kkb_base_update_7002() {
     ->condition('menu_name', 'menu-og-17')
     ->condition('link_path', '%' . db_like('oerestad') . '%', 'LIKE')
     ->execute();
-
 
   foreach ($menu_links as $menu_link) {
     $menu_link->link_path = str_replace('oerestad', 'orestad', $menu_link->link_path);
