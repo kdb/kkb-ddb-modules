@@ -84,3 +84,10 @@ function kkb_base_update_7101() {
 function kkb_base_update_7102() {
   module_enable(array('ding_gatewayf'));
 }
+
+/**
+ * Enable ding_gatewayf_registration module.
+ */
+function kkb_base_update_7103() {
+  module_enable(array('ding_gatewayf_registration'));
+}
