@@ -1,7 +1,7 @@
 name = KKB Frontpage
 description = Custom handling of frontpage for bibliotek.kk.dk
 core = 7.x
-package = Features
+package = KKB
 dependencies[] = ctools
 dependencies[] = page_manager
 features[ctools][] = page_manager:pages_default:1
