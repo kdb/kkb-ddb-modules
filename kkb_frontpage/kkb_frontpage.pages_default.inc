@@ -17,7 +17,7 @@ function kkb_frontpage_default_page_manager_handlers() {
   $handler->task = 'site_template';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -30;
+  $handler->weight = -20;
   $handler->conf = array(
     'title' => 'KKB site template',
     'no_blocks' => 1,
