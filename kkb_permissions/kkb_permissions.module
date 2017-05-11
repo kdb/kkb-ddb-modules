@@ -43,6 +43,7 @@ function kkb_permissions_secure_permissions($role) {
       'delete own ding_faq_question content',
       'edit any ding_faq_question content',
       'edit own ding_faq_question content',
+      'administer personalisation',
     ),
     'editor' => array(
       'access all webform results',
