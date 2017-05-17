@@ -15,6 +15,11 @@
 function kkb_permissions_secure_permissions($role) {
   $permissions = array(
     'administrators' => array(
+      'eck add ding_type ding_interaction entities',
+      'eck edit ding_type ding_interaction entities',
+      'eck delete ding_type ding_interaction entities',
+      'eck list ding_type ding_interaction entities',
+      'eck view ding_type ding_interaction entities',
       'access all webform results',
       'access own webform results',
       'access own webform submissions',
@@ -46,6 +51,11 @@ function kkb_permissions_secure_permissions($role) {
       'administer personalisation',
     ),
     'editor' => array(
+      'eck add ding_type ding_interaction entities',
+      'eck edit ding_type ding_interaction entities',
+      'eck delete ding_type ding_interaction entities',
+      'eck list ding_type ding_interaction entities',
+      'eck view ding_type ding_interaction entities',
       'access all webform results',
       'access own webform results',
       'access own webform submissions',
@@ -73,6 +83,11 @@ function kkb_permissions_secure_permissions($role) {
     'guest blogger' => array(
     ),
     'local administrator' => array(
+      'eck add ding_type ding_interaction entities',
+      'eck edit ding_type ding_interaction entities',
+      'eck delete ding_type ding_interaction entities',
+      'eck list ding_type ding_interaction entities',
+      'eck view ding_type ding_interaction entities',
       'access all webform results',
       'access own webform results',
       'access own webform submissions',
