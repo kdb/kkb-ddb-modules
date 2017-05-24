@@ -31,3 +31,14 @@ function kkb_base_views_pre_view(&$view, &$display_id, &$args) {
     $view->display_handler->override_option('filters', $filters);
   }
 }
+
+/**
+ * Implements hook_field_group_pre_render().
+ *
+ * Alter the holdings field_group to not render collapsed.
+ */
+function kkb_base_field_group_pre_render(&$element, $group, &$form) {
+  if ($group->group_name == 'group_holdings_available') {
+    $group->format_settings['formatter'] = 'open';
+  }
+}
