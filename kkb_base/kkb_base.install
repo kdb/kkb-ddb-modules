@@ -91,3 +91,10 @@ function kkb_base_update_7102() {
 function kkb_base_update_7103() {
   module_enable(array('ding_gatewayf_registration'));
 }
+
+/**
+ * Revert ding_ting_frontend.
+ */
+function kkb_base_update_7104() {
+  features_revert('ding_ting_frontend');
+}
