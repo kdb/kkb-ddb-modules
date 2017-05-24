@@ -96,5 +96,5 @@ function kkb_base_update_7103() {
  * Revert ding_ting_frontend.
  */
 function kkb_base_update_7104() {
-  features_revert('ding_ting_frontend');
+  features_revert_module('ding_ting_frontend');
 }
