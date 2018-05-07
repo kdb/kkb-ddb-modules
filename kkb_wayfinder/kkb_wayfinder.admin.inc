@@ -9,6 +9,14 @@
  * Settings form.
  */
 function kkb_wayfinder_admin_form($form, &$form_state) {
+
+  $form['kkb_wayfinder_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL to Wayfinder script'),
+    '#default_value' => variable_get('kkb_wayfinder_url', ''),
+    '#description' => t('Url to the Wayfinder JavaScript, for instance <em>https://os2.wayfindingkkb.dk/embed/v1/wayfinding.js</em>'),
+  );
+
   $branches = variable_get('kkb_wayfinder_branches', array());
   $branches_value = array();
   foreach ($branches as $name => $id) {

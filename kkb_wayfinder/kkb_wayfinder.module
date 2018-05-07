@@ -43,7 +43,7 @@ function kkb_wayfinder_theme() {
  * Implements hook_ding_entity_buttons().
  */
 function kkb_wayfinder_ding_entity_buttons($type, $entity) {
-  if ($type == 'ding_entity') {
+  if ($type == 'ding_entity' && variable_get('kkb_wayfinder_url', '')) {
     $return = array();
 
     $branches = variable_get('kkb_wayfinder_branches', array());
@@ -99,7 +99,10 @@ function template_preprocess_kkb_wayfinder_button(&$variables) {
       'library' => array(array('system', 'drupal.ajax')),
       'js' => array(
         drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.js',
-        array('data' => 'https://os2.wayfindingkkb.dk/embed/v1/wayfinding.js', 'type' => 'external'),
+        array(
+          'data' => variable_get('kkb_wayfinder_url', ''),
+          'type' => 'external',
+        ),
       ),
     ),
   );
