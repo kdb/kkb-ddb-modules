@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the kkb_wayfinder module.
+ */
+
+/**
+ * Set Wayfinder URL variable.
+ */
+function kkb_wayfinder_update_7101() {
+  $url = variable_get('kkb_wayfinder_url', 'https://os2.wayfindingkkb.dk/embed/v1/wayfinding.js');
+  variable_set('kkb_wayfinder_url', $url);
+}
