@@ -34,9 +34,9 @@ function ding_faq_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_views_post_render().
+ * Implements hook_views_pre_render().
  */
-function ding_faq_views_pre_render(&$view, &$output, &$cache) {
+function ding_faq_views_pre_render(&$view) {
   if ($view->name == 'ding_faq') {
     drupal_add_css(drupal_get_path('module', 'ding_faq') . '/css/ding_faq.css');
   }
