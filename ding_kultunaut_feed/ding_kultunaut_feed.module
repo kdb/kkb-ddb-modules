@@ -5,7 +5,22 @@
  * Code for the Ding Kultunaut Feed feature.
  */
 
-include_once 'ding_kultunaut_feed.features.inc';
+define('DING_KULTUNAUT_DATE_FORMAT', 'Y/m/d H:i:\\0\\0 T');
+
+/**
+ * Implements hook_menu().
+ */
+function ding_kultunaut_feed_menu() {
+  $items = array();
+
+  $items['kultunaut_export'] = array(
+    'page callback' => 'ding_kultunaut_feed_deliver',
+    // Publicly accessible.
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
 
 /**
  * Implements hook_views_post_render().
@@ -54,6 +69,177 @@ function ding_kultunaut_feed_date_formats() {
  */
 function ding_kultunaut_feed_date_format_types() {
   return array(
+    // Format that zeroes seconds.
     'ding_kultunaut_feed_format' => t('Kultunaut feed format'),
   );
+}
+
+/**
+ * Generate Kultunaut feed.
+ */
+function ding_kultunaut_feed_deliver($library_slug = NULL) {
+  // Create date at midnight, local time.
+  $fromDate = new DateObject(date('Y-m-d 00:00:00'));
+  // Adjust it to UTC (which is what date.module uses for storage).
+  $fromDate->setTimezone(new DateTimeZone('UTC'));
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'ding_event')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    // Use the UTC DateObject to format time. If this should be really proper,
+    // we'd have to get the DB timezone from the field definition, but we happen
+    // to know it's UTC.
+    ->fieldCondition('field_ding_event_date', 'value2', $fromDate->format('Y-m-d H:i:s'), '>=')
+    ->fieldOrderBy('field_ding_event_date', 'value')
+    ->fieldOrderBy('field_ding_event_date', 'value2');
+
+  $res = $query->execute();
+  $xml = new DingKultunautFeedSimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><activities></activities>');
+  if (isset($res['node'])) {
+    foreach (array_keys($res['node']) as $nid) {
+      _ding_kultunaut_feed_add_activity($xml, $nid);
+    }
+  }
+
+  drupal_add_http_header('Content-Type', 'text/xml; charset=UTF-8');
+  print($xml->asXML());
+  drupal_exit();
+}
+
+/**
+ * Render an activity element.
+ */
+function _ding_kultunaut_feed_add_activity($activities, $nid) {
+  $node = node_load($nid);
+
+  // Filter out events on libraries that has no address.
+  $groups = og_get_entity_groups('node', $node, array(OG_STATE_ACTIVE), 'og_group_ref');
+  if (!isset($groups['node'])) {
+    // No library found, skip.
+    return;
+  }
+
+  $library_wrappers = array();
+  foreach ($groups['node'] as $nid) {
+    $library = node_load($nid);
+
+    $library_wrapper = entity_metadata_wrapper('node', $library);
+    if (!empty($library_wrapper->field_ding_library_addresse->locality->value())) {
+      $library_wrappers[] = $library_wrapper;
+    }
+  }
+
+  if (!$library_wrappers) {
+    // No library with an address found.
+    return;
+  }
+  // Use the first as main source for data.
+  $main_library_wrapper = $library_wrappers[0];
+
+  $wrapper = entity_metadata_wrapper('node', $node);
+
+  $activity = $activities->addChild('activity');
+  $activity->titel = $wrapper->title->value();
+  // This is the algorithm used in Ding 1.
+  $activity->uid = md5($wrapper->nid->value() . $wrapper->type->value() .
+                   $wrapper->language->value() . $wrapper->vid->value() .
+                   // Apparently not available in wrapper.
+                   $node->revision_uid);
+
+  $activity->beskrivelse = $wrapper->field_ding_event_lead->value();
+  $activity->startdato = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_ding_event_date->value->value(),
+                           'custom', DING_KULTUNAUT_DATE_FORMAT));
+
+  $activity->slutdato = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_ding_event_date->value2->value(),
+                          'custom', DING_KULTUNAUT_DATE_FORMAT));
+
+  // Set type attribute to '1-dags' or 'flerdages' depending on whether the
+  // event spans multiple days.
+  $start_date = date('Y-m-D', $wrapper->field_ding_event_date->value->value());
+  $end_date = date('Y-m-D', $wrapper->field_ding_event_date->value2->value());
+  $activity->addAttribute('type', $start_date == $end_date ? '1-dags' : 'flerdages');
+
+  // Collect names of all libraries.
+  $names = array_map(function ($wrapper) {
+    return $wrapper->title->value();
+  }, $library_wrappers);
+  $activity->bibname = implode(', ', $names);
+
+  $activity->bibstreet = $main_library_wrapper->field_ding_library_addresse->thoroughfare->value();
+  $activity->bibzip = $main_library_wrapper->field_ding_library_addresse->postal_code->value();
+  $activity->bibtown = $main_library_wrapper->field_ding_library_addresse->locality->value();
+  $activity->bibphone = $main_library_wrapper->field_ding_library_phone_number->value();
+
+  $street = $wrapper->field_ding_event_location->thoroughfare->value();
+  $zip = $wrapper->field_ding_event_location->postal_code->value();
+  $town = $wrapper->field_ding_event_location->locality->value();
+  // Use library address if none given on the event.
+  if (empty($street) && empty($zip) && empty($town)) {
+    $street = $main_library_wrapper->field_ding_library_addresse->thoroughfare->value();
+    $zip = $main_library_wrapper->field_ding_library_addresse->postal_code->value();
+    $town = $main_library_wrapper->field_ding_library_addresse->locality->value();
+  }
+  $activity->at_street = $street;
+  $activity->at_zip = $zip;
+  $activity->at_town = $town;
+  // Always use library phone number.
+  $activity->at_phone = $main_library_wrapper->field_ding_library_phone_number->value();
+
+  if (!empty($wrapper->field_ding_event_list_image->file->value()->uri)) {
+    $activity->list_image = file_create_url($wrapper->field_ding_event_list_image->file->value()->uri);
+  }
+
+  $activity->addChildWithCDATA('long_description', $wrapper->field_ding_event_body->value->value());
+
+  $activity->target = isset($wrapper->field_ding_event_target->value()->name) ?
+    $wrapper->field_ding_event_target->value()->name : NULL;;
+  $activity->category = $wrapper->field_ding_event_category->value()->name;
+
+  $uri = entity_uri('node', $node);
+  if ($uri) {
+    $uri['options']['absolute'] = TRUE;
+    $activity->url = url($uri['path'], $uri['options']);
+  }
+
+  $ticket_title = t('Participate in the event');
+  $price = floatval($wrapper->field_ding_event_price->value());
+  // Would make sense to only add price if it's non-zero, but the old feed
+  // adds it if it's set, even if 0, so we'll do the same to not break anything.
+  if (strlen($wrapper->field_ding_event_price->value())) {
+    $activity->price = $wrapper->field_ding_event_price->value() . ' Kr';
+  }
+  if ($price > 0) {
+    $ticket_title = t('Book a ticket');
+  }
+  if (!empty($wrapper->field_ding_event_ticket_link->value()['url'])) {
+    $activity->ticket_title = $ticket_title;
+    $activity->ticket_link = $wrapper->field_ding_event_ticket_link->value()['url'];
+  }
+}
+
+/**
+ * Replace midnight times with "(Hele dagen)".
+ */
+function _ding_kultunaut_feed_replace_all_day($string) {
+  return preg_replace('/\s+00:00:00( [-+A-Za-z0-9]+)?/', ' (Hele dagen)', $string);
+}
+
+/**
+ * Extend SimpleXMLElement with CDATA method.
+ */
+class DingKultunautFeedSimpleXMLElement extends SimpleXMLElement {
+
+  /**
+   * Adds a child with $value inside CDATA.
+   */
+  public function addChildWithCDATA($name, $value = NULL) {
+    $new_child = $this->addChild($name);
+    if ($new_child !== NULL) {
+      $node = dom_import_simplexml($new_child);
+      $no = $node->ownerDocument;
+      $node->appendChild($no->createCDATASection($value));
+    }
+    return $new_child;
+  }
+
 }
