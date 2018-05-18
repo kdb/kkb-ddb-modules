@@ -49,6 +49,22 @@ function ding_kultunaut_feed_date_format_types() {
  * Generate Kultunaut feed.
  */
 function ding_kultunaut_feed_deliver($library_slug = NULL) {
+  $library_nid = NULL;
+
+  if ($library_slug) {
+    $query = new EntityFieldQuery();
+    $res = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'ding_library')
+      ->fieldCondition('field_ding_library_slug', 'value', $library_slug)
+      ->execute();
+
+    if (empty($res['node'])) {
+      return;
+    }
+
+    $library_nid = reset(array_keys($res['node']));
+  }
+
   // Create date at midnight, local time.
   $fromDate = new DateObject(date('Y-m-d 00:00:00'));
   // Adjust it to UTC (which is what date.module uses for storage).
@@ -63,6 +79,10 @@ function ding_kultunaut_feed_deliver($library_slug = NULL) {
     ->fieldCondition('field_ding_event_date', 'value2', $fromDate->format('Y-m-d H:i:s'), '>=')
     ->fieldOrderBy('field_ding_event_date', 'value')
     ->fieldOrderBy('field_ding_event_date', 'value2');
+
+  if ($library_nid) {
+    $query->fieldCondition('og_group_ref', 'target_id', $library_nid);
+  }
 
   $res = $query->execute();
   $xml = new DingKultunautFeedSimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><activities></activities>');
