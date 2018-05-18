@@ -5,7 +5,7 @@
  * Code for the Ding Kultunaut Feed feature.
  */
 
-define('DING_KULTUNAUT_DATE_FORMAT', 'Y/m/d H:i:\\0\\0 T');
+define('DING_KULTUNAUT_FEED_DATE_FORMAT', 'Y/m/d H:i:\\0\\0 T');
 
 /**
  * Implements hook_menu().
@@ -139,10 +139,10 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
 
   $activity->beskrivelse = $wrapper->field_ding_event_lead->value();
   $activity->startdato = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_ding_event_date->value->value(),
-                           'custom', DING_KULTUNAUT_DATE_FORMAT));
+                           'custom', DING_KULTUNAUT_FEED_DATE_FORMAT));
 
   $activity->slutdato = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_ding_event_date->value2->value(),
-                          'custom', DING_KULTUNAUT_DATE_FORMAT));
+                          'custom', DING_KULTUNAUT_FEED_DATE_FORMAT));
 
   // Set type attribute to '1-dags' or 'flerdages' depending on whether the
   // event spans multiple days.
