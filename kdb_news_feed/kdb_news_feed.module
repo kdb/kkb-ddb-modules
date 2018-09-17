@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the KDB News feed feature.
+ */
+
+include_once 'kdb_news_feed.features.inc';
