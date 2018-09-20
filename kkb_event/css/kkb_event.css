@@ -189,7 +189,7 @@
   width: 100%;
   height: 100%;
 }
-.view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .event-list-image::after {
+.no-touch .view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .event-list-image::after {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -277,7 +277,7 @@
 }
 
 /* Animate padding on hover. */
-.view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .event-text {
+.no-touch .view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .event-text {
   padding-top: 25px;
 }
 
