@@ -213,7 +213,7 @@
   opacity: 0;
 }
 .no-touch .view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .field-name-field-ding-event-lead,
-.view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .info-bottom {
+.no-touch .view-kkb-event .views-row.first .node-ding-event.node-teaser:hover .info-bottom {
   opacity: 1;
 }
 
