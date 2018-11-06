@@ -123,7 +123,7 @@
 /* End of copy. Now try to hack the display of events a bit. */
 
 /* Hide the info-bottom per default. */
-.view-kkb-event .node-ding-event.node-teaser .info-bottom .library,
+.view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-og-group-ref,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .date-time,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .price {
   -webkit-transition: opacity 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -147,7 +147,7 @@
   }
 }
 
-.view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .library,
+.view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .field-name-og-group-ref,
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .date-time,
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .price {
   -webkit-transition: opacity 300ms 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
