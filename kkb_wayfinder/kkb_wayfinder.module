@@ -84,7 +84,7 @@ function kkb_wayfinder_ding_entity_buttons($type, $entity) {
  */
 function template_preprocess_kkb_wayfinder_button(&$variables) {
   // Steal theming from ding_list_add_button.
-  $variables['classes_array'] = array('ding-list-add-button');
+  $variables['classes_array'] = array('ding-list-add-button ding-list-add-button--multiple-actions');
   if (empty($variables['title'])) {
     $variables['title'] = t('See on map');
   }
