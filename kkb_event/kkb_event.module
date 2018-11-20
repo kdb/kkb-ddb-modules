@@ -23,3 +23,36 @@ function kkb_event_preprocess_views_view(&$vars) {
       break;
   }
 }
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function kkb_event_field_default_field_instances_alter(&$fields) {
+  // Add wide cropping to events.
+  if (isset($fields['node-ding_event-field_ding_event_list_image'])) {
+    $fields['node-ding_event-field_ding_event_list_image']['widget']['settings']['manualcrop_styles_list']['crop_22_9'] = 'crop_22_9';
+  }
+}
+
+/**
+ * Node process function.
+ */
+function kkb_event_process_node(&$vars) {
+  // Change the image style for the first node in our view. Duplicates the work
+  // the theme does for news.
+  if ($vars['node']->type == 'ding_event' && $vars['view_mode'] == 'teaser' && isset($vars['view'])) {
+    $uri = empty($vars['field_ding_event_list_image'][0]['uri']) ?
+      "" : $vars['field_ding_event_list_image'][0]['uri'];
+
+    if (!empty($uri)) {
+      $style = 'ding_panorama_list_large';
+      $current_display = $vars['view']->current_display;
+      $displays_with_large_first = array('ding_event_list_frontpage');
+      if (in_array($current_display, $displays_with_large_first) && $vars['view']->result[0]->nid == $vars['nid']) {
+        $style = 'ding_panorama_list_large_wide';
+      }
+
+      $vars['event_background_image'] = image_style_url($style, $uri);
+    }
+  }
+}

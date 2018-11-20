@@ -14,3 +14,10 @@ function kkb_event_enable() {
   $selected_panes['event-panes:kkb_event-ding_event_list_frontpage'] = 'event-panes:kkb_event-ding_event_list_frontpage';
   variable_set('ding_ipe_filter_panes_selected', $selected_panes);
 }
+
+/**
+ * Revert ding_event.
+ */
+function kkb_event_update_7101() {
+  features_revert_module('ding_event');
+}
