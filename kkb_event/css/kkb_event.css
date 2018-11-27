@@ -124,6 +124,7 @@
 
 /* Hide the info-bottom per default. */
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-field-ding-event-location,
+.view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-field-ding-event-place,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-og-group-ref,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .date-time,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .price {
@@ -153,6 +154,7 @@
 }
 
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .field-name-field-ding-event-location,
+.view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .field-name-field-ding-event-place,
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .field-name-og-group-ref,
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .date-time,
 .view-kkb-event .node-ding-event.node-teaser:hover .info-bottom .price {
