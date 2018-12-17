@@ -1,0 +1,165 @@
+/**
+ * Frontend styling of contact page.
+ */
+
+.kkb-contact-page h2 {
+  margin-top: 1.5em;
+}
+
+/* Layout the boxes in two columns.*/
+.kkb-contact-section {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 30px;
+}
+
+.kkb-contact-box {
+  padding: 16px;
+  border-radius: 4px;
+  background-color: #f7f7f1;
+  border: 1px solid #e8e8d7;
+  /* Fill out our spot in the parent grid. */
+  place-self: strech;
+}
+
+.kkb-contact-box .buttons {
+  /* Put button in lower right. */
+  place-self: end end;
+}
+
+/* Heavy selector to win over class-panel.css. */
+.kkb-contact-box .buttons .more-link {
+  float: none;
+}
+
+.kkb-contact-box .buttons .more-link a {
+  float: none;
+  display: inline-block;
+}
+
+.kkb-contact-teaser {
+  /* Display children in a grid. */
+  display: inline-grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.kkb-contact-teaser .image {
+  padding-right: 15px;
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+
+.kkb-contact-teaser h3,
+.kkb-contact-teaser .body,
+.kkb-contact-teaser .buttons {
+  grid-column: 2;
+}
+
+@media screen and (max-width: 600px) {
+  /* One column layout on mobile. */
+  .kkb-contact-section {
+    grid-template-columns: 100%;
+  }
+
+  /* Move button below and make it full width on mobile. */
+  .kkb-contact-teaser img {
+    grid-row: 1 / -2;
+  }
+
+  .kkb-contact-teaser .buttons {
+    grid-column: 1 / -1;
+    grid-row: -1;
+    place-self: end stretch;
+    margin-top: 15px;
+  }
+
+  .kkb-contact-teaser .buttons a {
+    width: 100%;
+  }
+}
+
+.kkb-contact-phone-first {
+  display: inline-grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 1fr;
+}
+
+.kkb-contact-phone-first h3 {
+  grid-column: 1 / -1;
+}
+
+.kkb-contact-phone-second {
+  display: inline-grid;
+  grid-template-rows: 50% 50%;
+}
+
+.kkb-contact-phone-second p,
+.kkb-contact-phone-second a {
+  margin: 0;
+  place-self: center center;
+  font-size: 300%;
+  color: #464646;
+}
+
+.kkb-contact-write {
+  display: inline-grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10 & IE11 CSS styles. IEs CSS Grid implementation is based on an
+   earlier draft and uses prefixes. */
+
+  /* As IE doesn't have auto-placement, so we'll use floats for the
+   outer grid.*/
+  .kkb-contact-section {
+    display: block;
+  }
+
+  .kkb-contact-section::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  .kkb-contact-teaser {
+    width: 48%;
+    display: -ms-grid;
+    -ms-grid-columns: 25% 1fr;
+    -ms-grid-rows: auto 1fr auto;
+    margin-bottom: 30px;
+  }
+
+  .kkb-contact-teaser.odd {
+    float: left;
+  }
+
+  .kkb-contact-teaser.even {
+    float: right;
+  }
+
+  .kkb-contact-teaser .image {
+    padding-right: 15px;
+    -ms-grid-column: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-row: 1;
+  }
+
+  .kkb-contact-teaser h3 {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+  }
+
+  .kkb-contact-teaser .body {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+  }
+
+  .kkb-contact-teaser .buttons {
+    -ms-grid-column: 2;
+    -ms-grid-row: 3;
+    -ms-grid-column-align: end;
+  }
+}

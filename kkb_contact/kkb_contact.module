@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Contact page module for KKB.
+ */
+
+define('KKB_CONTACT_PAGE_TITLE_DEFAULT', 'Find svar på dine spørgsmål');
+define('KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT', '<p>Du kan finde mere hjælp og information på <a href="/faq">FAQ siderne</a>.</p>');
+define('KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT', 'ding_wysiwyg');
+define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT', 'Ring til Biblioteket Online');
+define('KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT', 'Kan du ikke finde svar sidder vi klar til at hjælpe med at svare på dine spørgsmål');
+define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_DEFAULT', 'Telefontid i Bibliotek Online:');
+define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
+define('KKB_CONTACT_PAGE_PHONE_SECOND_TOP_DEFAULT', 'Ring og spørg');
+define('KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT', '3366 3000');
+define('KKB_CONTACT_PAGE_WRITE_SECTION_TITLE_DEFAULT', 'Skriv til Biblioteket Online');
+define('KKB_CONTACT_PAGE_WRITE_FIRST_TITLE_DEFAULT', 'Personfølsomme oplysninger');
+define('KKB_CONTACT_PAGE_WRITE_FIRST_BODY_VALUE_DEFAULT', '<p>Hvis din henvendelse indeholder personfølsomme oplysninger bør du kontakte os via <strong>sikker mail</strong>. Det er nemt. Når du klikker på nedenstående link genereres en sikker mail via Digital Post på borger.dk.</p><p>Personfølsomme oplysninger er information som f.eks. dit cpr. nr.</p>');
+define('KKB_CONTACT_PAGE_WRITE_FIRST_BODY_FORMAT_DEFAULT', 'ding_wysiwyg');
+define('KKB_CONTACT_PAGE_WRITE_FIRST_LINK_DEFAULT', 'http://google.dk/');
+define('KKB_CONTACT_PAGE_WRITE_FIRST_LINK_TEXT_DEFAULT', 'Send os en sikker mail');
+define('KKB_CONTACT_PAGE_WRITE_SECOND_TITLE_DEFAULT', 'Udenfor Biblioteket Onlines telefontid kan du skrive til os');
+define('KKB_CONTACT_PAGE_WRITE_SECOND_BODY_VALUE_DEFAULT', '<p>Hvis ikke du har behov for at inkludere personfølsomme oplysninger kan du benytte dig af vores kontaktformular, som sender en mail til en medarbejder i Bibliotek Online. Vi vender tilbage til dig snarest muligt og senest i løbet af 5 hverdage.</p>');
+define('KKB_CONTACT_PAGE_WRITE_SECOND_BODY_FORMAT_DEFAULT', 'ding_wysiwyg');
+define('KKB_CONTACT_PAGE_WRITE_SECOND_LINK_DEFAULT', '/kontakt');
+define('KKB_CONTACT_PAGE_WRITE_SECOND_LINK_TEXT_DEFAULT', 'Kontakt os');
+
+/**
+ * Implements hook_menu().
+ */
+function kkb_contact_menu() {
+  $items['kontakt'] = [
+    'title callback' => 'kkb_contact_page_title',
+    'page callback' => 'kkb_contact_page',
+    // Publicly accessible.
+    'access callback' => TRUE,
+    'file' => 'kkb_contact.pages.inc',
+  ];
+
+  $items['admin/content/kkb_contact'] = [
+    'title' => 'Contact page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['kkb_contact_settings'],
+    'file' => 'kkb_contact.admin.inc',
+    'access arguments' => 'administer contact page',
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  return $items;
+}
+
+/**
+ * Menu title callback.
+ */
+function kkb_contact_page_title() {
+  return variable_get('kkb_contact_page_title', '');
+}
+
+/**
+ * Implements hook_permission().
+ */
+function kkb_contact_permission() {
+  $permissions['administer contact page'] = array(
+    'title' => t('Configure the contact page.'),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function kkb_contact_theme() {
+  $theme['kkb_contact_settings_teasers'] = [
+    'render element' => 'form',
+    'file' => 'kkb_contact.theme.inc',
+  ];
+
+  $theme['kkb_contact_teaser'] = [
+    'template' => 'templates/kkb-contact-teaser',
+    'variables' => ['teaser' => NULL],
+    'file' => 'kkb_contact.theme.inc',
+  ];
+
+  return $theme;
+}
