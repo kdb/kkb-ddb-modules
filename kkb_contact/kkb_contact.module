@@ -43,7 +43,7 @@ function kkb_contact_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => ['kkb_contact_settings'],
     'file' => 'kkb_contact.admin.inc',
-    'access arguments' => 'administer contact page',
+    'access arguments' => ['administer contact page'],
     'type' => MENU_NORMAL_ITEM,
   ];
 
