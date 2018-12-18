@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Fixup DDB CMS half-hearted styling of webform.
+ */
+
+.node-webform .webform-component {
+  clear: both;
+}
+
+.node-webform .webform-component.webform-component-markup {
+  max-width: none;
+}
+
+.node-webform .webform-client-form .form-actions {
+  clear: both;
+  max-width: 400px;
+}
+
+.node-webform .webform-client-form .form-actions .webform-submit {
+  float: right;
+}
