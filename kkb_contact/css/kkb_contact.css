@@ -61,22 +61,6 @@
   .kkb-contact-section {
     grid-template-columns: 100%;
   }
-
-  /* Move button below and make it full width on mobile. */
-  .kkb-contact-teaser img {
-    grid-row: 1 / -2;
-  }
-
-  .kkb-contact-teaser .buttons {
-    grid-column: 1 / -1;
-    grid-row: -1;
-    place-self: end stretch;
-    margin-top: 15px;
-  }
-
-  .kkb-contact-teaser .buttons a {
-    width: 100%;
-  }
 }
 
 .kkb-contact-phone-first {
