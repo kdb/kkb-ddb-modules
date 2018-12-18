@@ -32,7 +32,7 @@ function kkb_contact_page() {
   $content .= check_markup($footer['value'], $footer['format']);
 
   // Phone section.
-  $content .= '<h2>' . variable_get('kkb_contact_page_phone_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT) . '</h2>';
+  $content .= '<h2 id="ring">' . variable_get('kkb_contact_page_phone_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT) . '</h2>';
   $content .= '<div class="kkb-contact-section"><div class="kkb-contact-phone-first kkb-contact-box">';
 
   $content .= '<h3>' . variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT) . '</h3>';
@@ -48,7 +48,7 @@ function kkb_contact_page() {
   $content .= '</div></div>';
 
   // Write section.
-  $content .= '<h2>' . variable_get('kkb_contact_page_write_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT) . '</h2>';
+  $content .= '<h2 id="skriv">' . variable_get('kkb_contact_page_write_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT) . '</h2>';
   $content .= '<div class="kkb-contact-section">';
 
   foreach (['first', 'second'] as $box) {
