@@ -6,6 +6,13 @@
   margin-top: 1.5em;
 }
 
+.kkb-contact-page .anchor {
+  display: block;
+  position: relative;
+  top: -160px;
+  visibility: hidden;
+}
+
 /* Layout the boxes in two columns.*/
 .kkb-contact-section {
   display: grid;
