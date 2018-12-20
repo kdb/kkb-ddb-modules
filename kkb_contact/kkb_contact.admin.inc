@@ -258,6 +258,7 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     '#title' => t('Title'),
     '#default_value' => $teaser['title'],
     '#size' => 50,
+    '#required' => TRUE,
   ];
 
   $form['body'] = [
@@ -283,6 +284,7 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     '#title' => t('Link'),
     '#default_value' => $teaser['link'],
     '#size' => 50,
+    '#required' => TRUE,
   ];
 
   $form['link_text'] = [
