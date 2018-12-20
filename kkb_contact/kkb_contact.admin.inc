@@ -310,17 +310,17 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     ],
   ];
 
-  $form['remove'] = [
+  $form['delete'] = [
     '#type' => 'submit',
-    '#value' => t('Remove'),
-    '#remove_key' => $key,
-    '#name' => 'remove_' . $key,
+    '#value' => t('Delete'),
+    '#delete_key' => $key,
+    '#name' => 'delete_' . $key,
     '#attributes' => [
       'class' => [
-        'remove',
+        'delete',
       ],
     ],
-    '#submit' => ['kkb_contact_settings_remove'],
+    '#submit' => ['kkb_contact_settings_delete'],
     '#ajax' => [
       'callback' => 'kkb_contact_settings_callback',
       'wrapper' => 'kkb-contact-teasers',
@@ -353,11 +353,11 @@ function kkb_contact_settings_add_one($form, &$form_state) {
 }
 
 /**
- * AJAX callback for "remove" button.
+ * AJAX callback for "delete" button.
  */
-function kkb_contact_settings_remove($form, &$form_state) {
-  if (isset($form_state['triggering_element']['#remove_key'])) {
-    $key = $form_state['triggering_element']['#remove_key'];
+function kkb_contact_settings_delete($form, &$form_state) {
+  if (isset($form_state['triggering_element']['#delete_key'])) {
+    $key = $form_state['triggering_element']['#delete_key'];
     // Mark as deleted.
     $form_state['teasers'][$key]['deleted'] = TRUE;
   }

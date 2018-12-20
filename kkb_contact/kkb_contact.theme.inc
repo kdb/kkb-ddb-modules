@@ -65,7 +65,7 @@ function theme_kkb_contact_settings_teasers(&$variables) {
     // Pre-render elements we want to remove from the main part.
     $weight = drupal_render($form[$key]['weight']);
     $region_widget = drupal_render($form[$key]['region']);
-    $actions = drupal_render($form[$key]['remove']);
+    $actions = drupal_render($form[$key]['delete']);
     $body = drupal_render($form[$key]['body']);
     $region_rows[$region][] = [
       'data' => [
