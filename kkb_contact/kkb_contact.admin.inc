@@ -269,9 +269,12 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
 
   $form['image'] = array(
     '#title' => t('Image'),
-    '#type' => 'managed_file',
-    '#upload_validators' => array('file_validate_extensions' => array('jpg jpeg png gif')),
-    '#upload_location' => 'public://contact/',
+    '#type' => 'media',
+    '#media_options' => [
+      'global' => [
+        'types' => array('image'),
+      ],
+    ],
     '#default_value' => $teaser['image'],
   );
 
