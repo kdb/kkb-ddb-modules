@@ -37,7 +37,7 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
     $variables['title'] = $teaser['title'];
     $variables['link'] = '';
   }
-  $variables['body'] = check_markup($teaser['body']['value'], $teaser['body']['format']);
+  $variables['body'] = check_plain($teaser['body']);
 }
 
 /**

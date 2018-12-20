@@ -188,9 +188,21 @@ function kkb_contact_settings($form, &$form_state) {
 
   $form_state['images'] = $images;
 
+  $form['#validate'][] = 'kkb_contact_settings_validate';
   $form['#submit'][] = 'kkb_contact_settings_submit';
 
   return system_settings_form($form);
+}
+
+/**
+ * Validation handler for settings from.
+ */
+function kkb_contact_settings_validate($form, &$form_state) {
+  foreach ($form_state['values']['kkb_contact_teasers'] as $key => $teaser) {
+    if (drupal_strlen($teaser['body']) > 160) {
+      form_error($form['teasers_wrapper']['kkb_contact_teasers'][$key]['body'], t('max 160 characters'));
+    }
+  }
 }
 
 /**
@@ -262,10 +274,9 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
   ];
 
   $form['body'] = [
-    '#type' => 'text_format',
+    '#type' => 'textarea',
     '#title' => t('Body'),
-    '#default_value' => $teaser['body']['value'],
-    '#format' => $teaser['body']['format'],
+    '#default_value' => $teaser['body'],
   ];
 
   $form['image'] = array(
@@ -339,10 +350,7 @@ function kkb_contact_settings_add_one($form, &$form_state) {
   $key = max(array_keys($form_state['teasers'])) + 1;
   $form_state['teasers'][$key] = [
     'title' => '',
-    'body' => [
-      'value' => '',
-      'format' => NULL,
-    ],
+    'body' => '',
     'image' => 0,
     'link' => '',
     'link_text' => '',
