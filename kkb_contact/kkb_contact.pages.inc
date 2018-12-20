@@ -19,7 +19,9 @@ function kkb_contact_page() {
   $content .= '<div class="kkb-contact-section">';
 
   foreach ($teasers as $teaser) {
-    $content .= theme('kkb_contact_teaser', ['teaser' => $teaser]);
+    if ($teaser['region'] == 'enabled') {
+      $content .= theme('kkb_contact_teaser', ['teaser' => $teaser]);
+    }
   }
   $content .= '</div>';
 

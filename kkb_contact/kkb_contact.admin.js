@@ -24,7 +24,7 @@
         };
 
         tableDrag.rowStatusChange = function (rowObject) {
-          var statusRow = $(rowObject.element).prevAll('tr').get(0);
+          var statusRow = $(rowObject.element).prevAll('tr.js-kkb-contact-settings-status').get(0);
           console.dir(statusRow);
           var statusName = statusRow.className.replace(/([^ ]+[ ]+)*js-kkb-contact-settings-status-([^ ]+)([ ]+[^ ]+)*/, '$2');
           var statusField = $('select.kkb-contact-settings-element-status', rowObject.element);

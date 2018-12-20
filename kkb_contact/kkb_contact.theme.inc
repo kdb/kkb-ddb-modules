@@ -91,7 +91,7 @@ function theme_kkb_contact_settings_teasers(&$variables) {
     ];
     $row = [
       'data' => [$cell],
-      'class' => ['js-kkb-contact-settings-status-' . $key],
+      'class' => ['js-kkb-contact-settings-status', 'js-kkb-contact-settings-status-' . $key],
     ];
     $section_rows[$key] = [$row];
   }
