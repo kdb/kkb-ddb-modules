@@ -14,7 +14,6 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
   $variables['classes_array'][] = 'kkb-contact-teaser';
   $variables['classes_array'][] = 'kkb-contact-box';
   $variables['classes_array'][] = $variables['zebra'];
-  $variables['title'] = $teaser['title'];
 
   $variables['image'] = '';
   if ($teaser['image'] && ($file = file_load($teaser['image']))) {
@@ -29,13 +28,16 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
     $variables['image'] = theme('image_style', $params);
   }
 
-  $variables['link'] = '';
   if ($teaser['link']) {
+    $variables['title'] = l($teaser['title'], $teaser['link']);
     $variables['link'] = l($teaser['link_text'] ? $teaser['link_text'] : t('Read more'), $teaser['link']);
+    $variables['image'] = l($variables['image'], $teaser['link'], ['html' => TRUE]);
   }
-
+  else {
+    $variables['title'] = $teaser['title'];
+    $variables['link'] = '';
+  }
   $variables['body'] = check_markup($teaser['body']['value'], $teaser['body']['format']);
-
 }
 
 /**
