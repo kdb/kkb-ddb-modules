@@ -63,7 +63,7 @@ function kkb_contact_settings($form, &$form_state) {
 
   $footer = variable_get('kkb_contact_teasers_footer',
             [
-              'body' => KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT,
+              'value' => KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT,
               'format' => KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT,
             ]);
 
