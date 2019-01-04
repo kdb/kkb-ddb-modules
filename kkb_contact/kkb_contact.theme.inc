@@ -41,6 +41,13 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
 }
 
 /**
+ * Preprocess function for kkb_contact_page.
+ */
+function template_preprocess_kkb_contact_page(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'kkb_contact') . '/css/kkb_contact.css');
+}
+
+/**
  * Theme function for the settings form teasers.
  */
 function theme_kkb_contact_settings_teasers(&$variables) {

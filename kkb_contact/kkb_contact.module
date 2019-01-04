@@ -80,6 +80,30 @@ function kkb_contact_theme() {
     'file' => 'kkb_contact.theme.inc',
   ];
 
+  $theme['kkb_contact_page'] = [
+    'template' => 'templates/kkb-contact-page',
+    'variables' => [
+      'page_title' => NULL,
+      'teasers_header' => NULL,
+      'teasers_footer' => NULL,
+      'teasers' => [],
+      'phone_section_title' => NULL,
+      'phone_first_box_title' => NULL,
+      'phone_first_left' => NULL,
+      'phone_first_right' => NULL,
+      'phone_second_top' => NULL,
+      'phone_second_bottom' => NULL,
+      'write_section_title' => NULL,
+      'write_first_title' => NULL,
+      'write_first_body' => NULL,
+      'write_first_link' => NULL,
+      'write_second_title' => NULL,
+      'write_second_body' => NULL,
+      'write_second_link' => NULL,
+    ],
+    'file' => 'kkb_contact.theme.inc',
+  ];
+
   $theme['kkb_contact_teaser'] = [
     'template' => 'templates/kkb-contact-teaser',
     'variables' => ['teaser' => NULL],
