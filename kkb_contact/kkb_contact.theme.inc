@@ -30,8 +30,11 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
 
   if ($teaser['link']) {
     $variables['title'] = l($teaser['title'], $teaser['link']);
-    $variables['link'] = l($teaser['link_text'] ? $teaser['link_text'] : t('Read more'), $teaser['link']);
-    $variables['image'] = l($variables['image'], $teaser['link'], ['html' => TRUE]);
+    // Hide the read more link and the image from screen readers. The title link
+    // is better for them.
+    $attributes = ['aria-hidden' => 'true'];
+    $variables['link'] = l($teaser['link_text'] ? $teaser['link_text'] : t('Read more'), $teaser['link'], ['attributes' => $attributes]);
+    $variables['image'] = l($variables['image'], $teaser['link'], ['html' => TRUE, 'attributes' => $attributes]);
   }
   else {
     $variables['title'] = $teaser['title'];
