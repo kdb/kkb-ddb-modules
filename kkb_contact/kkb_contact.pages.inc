@@ -51,7 +51,17 @@ function kkb_contact_page() {
   $content .= '<div class="kkb-contact-section"><div class="kkb-contact-phone-first kkb-contact-box">';
 
   $content .= '<h3>' . variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT) . '</h3>';
-  $content .= '<p>' . nl2br(variable_get('kkb_contact_page_phone_first_left_side', KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_DEFAULT)) . '</p>';
+
+  $left_box = variable_get('kkb_contact_page_phone_first_left_side',
+              [
+                'value' => KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT,
+                'format' => KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT,
+              ]);
+
+  $content .= '<div>';
+  $content .= check_markup($left_box['value'], $left_box['format']);
+  $content .= '</div>';
+
   $content .= '<p>' . nl2br(variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT)) . '</p>';
 
   $content .= '</div><div class="kkb-contact-phone-second kkb-contact-box">';

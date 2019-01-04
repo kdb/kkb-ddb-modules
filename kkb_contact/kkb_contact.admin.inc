@@ -109,12 +109,17 @@ function kkb_contact_settings($form, &$form_state) {
     '#default_value' => variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT),
   ];
 
+  $left_box = variable_get('kkb_contact_page_phone_first_left_side',
+              [
+                'value' => KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_VALUE_DEFAULT,
+                'format' => KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_FORMAT_DEFAULT,
+              ]);
+
   $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_left_side'] = [
-    '#type' => 'textarea',
+    '#type' => 'text_format',
     '#title' => t('Left'),
-    '#default_value' => variable_get('kkb_contact_page_phone_first_left_side', KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_DEFAULT),
-    '#cols' => 40,
-    '#rows' => 4,
+    '#default_value' => $left_box['value'],
+    '#format' => $left_box['format'],
   ];
 
   $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_right_side'] = [
