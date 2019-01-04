@@ -31,7 +31,9 @@ function kkb_contact_page() {
               'format' => KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT,
             ]);
 
+  $content .= '<div class="kkb-contact-section-footer">';
   $content .= check_markup($footer['value'], $footer['format']);
+  $content .= '</div>';
 
   // Phone section.
   $content .= '<a class="anchor" name="ring"></a>';
