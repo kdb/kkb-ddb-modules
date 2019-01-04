@@ -37,7 +37,8 @@
 
 .kkb-contact-box .buttons {
   /* Put button in lower right. */
-  place-self: end end;
+  align-self: end;
+  justify-self: end;
 }
 
 /* Heavy selector to win over class-panel.css. */
@@ -48,6 +49,7 @@
 .kkb-contact-box .buttons .more-link a {
   float: none;
   display: inline-block;
+  width: auto;
 }
 
 .kkb-contact-teaser {
