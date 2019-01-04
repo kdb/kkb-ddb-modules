@@ -112,3 +112,27 @@ function kkb_contact_theme() {
 
   return $theme;
 }
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function kkb_contact_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: kkb_contact_teaser.
+  $styles['kkb_contact_teaser'] = array(
+    'label' => 'KKB contact teaser',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 141,
+          'height' => 141,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}

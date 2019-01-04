@@ -18,7 +18,7 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
   $variables['image'] = '';
   if ($teaser['image'] && ($file = file_load($teaser['image']))) {
     $params = [
-      'style_name' => 'medium',
+      'style_name' => 'kkb_contact_teaser',
       'path' => $file->uri,
       'alt' => '',
       'attributes' => [
