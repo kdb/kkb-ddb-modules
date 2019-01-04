@@ -31,6 +31,19 @@ function kkb_contact_settings($form, &$form_state) {
     '#suffix' => '</div>',
   ];
 
+  $header = variable_get('kkb_contact_teasers_header',
+            [
+              'value' => KKB_CONTACT_TEASERS_HEADER_VALUE_DEFAULT,
+              'format' => KKB_CONTACT_TEASERS_HEADER_FORMAT_DEFAULT,
+            ]);
+
+  $form['teasers_wrapper']['kkb_contact_teasers_header'] = [
+    '#type' => 'text_format',
+    '#title' => t('Header'),
+    '#default_value' => $header['value'],
+    '#format' => $header['format'],
+  ];
+
   $form['teasers_wrapper']['kkb_contact_teasers'] = [
     '#tree' => TRUE,
     '#theme' => ['kkb_contact_settings_teasers'],

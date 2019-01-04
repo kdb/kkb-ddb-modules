@@ -14,6 +14,16 @@ function kkb_contact_page() {
 
   drupal_add_css(drupal_get_path('module', 'kkb_contact') . '/css/kkb_contact.css');
 
+  $header = variable_get('kkb_contact_teasers_header',
+            [
+              'value' => KKB_CONTACT_TEASERS_HEADER_VALUE_DEFAULT,
+              'format' => KKB_CONTACT_TEASERS_HEADER_FORMAT_DEFAULT,
+            ]);
+
+  $content .= '<div class="kkb-contact-section-header">';
+  $content .= check_markup($header['value'], $header['format']);
+  $content .= '</div>';
+
   // Teaser section.
   $teasers = variable_get('kkb_contact_teasers', []);
   $content .= '<div class="kkb-contact-section">';
@@ -27,7 +37,7 @@ function kkb_contact_page() {
 
   $footer = variable_get('kkb_contact_teasers_footer',
             [
-              'body' => KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT,
+              'value' => KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT,
               'format' => KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT,
             ]);
 

@@ -6,6 +6,8 @@
  */
 
 define('KKB_CONTACT_PAGE_TITLE_DEFAULT', 'Find svar på dine spørgsmål');
+define('KKB_CONTACT_TEASERS_HEADER_VALUE_DEFAULT', '<p>Her kan du finde det, du skal bruge, når du har spørgsmål om lån, gebyrer og generelt brug af bibliotekets tjenester.</p>');
+define('KKB_CONTACT_TEASERS_HEADER_FORMAT_DEFAULT', 'ding_wysiwyg');
 define('KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT', '<p>Du kan finde mere hjælp og information på <a href="/faq">FAQ siderne</a>.</p>');
 define('KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT', 'ding_wysiwyg');
 define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT', 'Ring til Biblioteket Online');
