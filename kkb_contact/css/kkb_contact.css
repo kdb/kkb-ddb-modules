@@ -76,6 +76,21 @@
   .kkb-contact-section {
     grid-template-columns: 100%;
   }
+
+  /* Hide teaser images. */
+  .kkb-contact-teaser {
+    grid-template-columns: 100%;
+  }
+
+  .kkb-contact-teaser .image {
+    display: none;
+  }
+
+  .kkb-contact-teaser h3,
+  .kkb-contact-teaser .body,
+  .kkb-contact-teaser .buttons {
+    grid-column: 1;
+  }
 }
 
 .kkb-contact-phone-first {
