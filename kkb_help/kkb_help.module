@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the KKB Help feature.
+ */
+
+include_once 'kkb_help.features.inc';
