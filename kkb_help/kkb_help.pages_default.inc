@@ -46,7 +46,7 @@ function kkb_help_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'threecol_25_50_25';
+  $display->layout = '25_50_25';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -76,7 +76,7 @@ function kkb_help_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
-    $pane->panel = 'middle';
+    $pane->panel = 'attachment_1_1';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
     $pane->shown = TRUE;
@@ -103,7 +103,7 @@ function kkb_help_default_page_manager_handlers() {
     $pane->locks = array();
     $pane->uuid = '1c71c411-1441-4575-ad0e-d1cf1c034288';
     $display->content['new-1c71c411-1441-4575-ad0e-d1cf1c034288'] = $pane;
-    $display->panels['middle'][0] = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
+    $display->panels['attachment_1_1'][0] = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
   $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
   $handler->conf['display'] = $display;

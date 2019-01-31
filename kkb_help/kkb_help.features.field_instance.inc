@@ -234,7 +234,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ding_help_page_related',
-    'label' => 'Relaterede hjælpe artilker',
+    'label' => 'Relaterede hjælpe artikler',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -319,7 +319,7 @@ function kkb_help_field_default_field_instances() {
   t('Indhold');
   t('Kategori');
   t('Lead');
-  t('Relaterede hjælpe artilker');
+  t('Relaterede hjælpe artikler');
   t('Vægt');
 
   return $field_instances;

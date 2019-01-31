@@ -5,3 +5,23 @@
  */
 
 include_once 'kkb_help.features.inc';
+
+/**
+ * Implements hook_theme().
+ */
+function kkb_help_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['node__ding_help_page'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--ding-help-page',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+  return $theme;
+}
+
+function kkb_help_preprocess_node(&$variables) {
+  if ($variables['type'] == 'ding_help_page') {
+    drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
+  }
+}
