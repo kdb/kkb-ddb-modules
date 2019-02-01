@@ -53,7 +53,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ding_help_page_body',
-    'label' => 'Indhold',
+    'label' => 'Content',
     'required' => 0,
     'settings' => array(
       'add_mode' => 'button',
@@ -118,7 +118,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ding_help_page_category',
-    'label' => 'Kategori',
+    'label' => 'Help category',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -234,7 +234,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ding_help_page_related',
-    'label' => 'Relaterede hjælpe artikler',
+    'label' => 'Related help pages',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -296,7 +296,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_fing_help_page_weight',
-    'label' => 'Vægt',
+    'label' => 'Weight',
     'required' => 1,
     'settings' => array(
       'max' => '',
@@ -316,11 +316,11 @@ function kkb_help_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Indhold');
-  t('Kategori');
+  t('Content');
+  t('Help category');
   t('Lead');
-  t('Relaterede hjælpe artikler');
-  t('Vægt');
+  t('Related help pages');
+  t('Weight');
 
   return $field_instances;
 }
