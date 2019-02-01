@@ -123,22 +123,22 @@ function kkb_help_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
       ),
       'display' => array(
         'ding_serendipity_info' => array(
           'default' => array(
-            'weight' => '3',
+            'weight' => '8',
             'visible' => FALSE,
           ),
         ),

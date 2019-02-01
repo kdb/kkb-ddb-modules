@@ -20,8 +20,26 @@ function kkb_help_theme($existing, $type, $theme, $path) {
   return $theme;
 }
 
+/**
+ * Node preprocess function.
+ */
 function kkb_help_preprocess_node(&$variables) {
   if ($variables['type'] == 'ding_help_page') {
     drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
+  }
+}
+
+/**
+ * Field preprocess function.
+ */
+function kkb_help_preprocess_field(&$variables) {
+  // Replace field label with value from field_ding_help_page_files_title if it
+  // is set.
+  if ($variables['element']['#field_name'] == 'field_ding_help_page_files') {
+    $wrapper = entity_metadata_wrapper('node', $variables['element']['#object']);
+    $title = $wrapper->field_ding_help_page_files_title->value();
+    if (!empty($title)) {
+      $variables['label'] = check_plain($title);
+    }
   }
 }

@@ -16,6 +16,7 @@
     hide($content['links']);
     hide($content['field_ding_help_page_related']);
     hide($content['field_ding_help_page_external']);
+    hide($content['field_ding_help_page_files']);
     ?>
   <section class="ding-help-page-main">
     <?php print render($content); ?>
@@ -24,5 +25,6 @@
   <aside class="ding-help-page-sidebar">
     <?php print render($content['field_ding_help_page_related']); ?>
     <?php print render($content['field_ding_help_page_external']); ?>
+    <?php print render($content['field_ding_help_page_files']); ?>
   </aside>
 </article>
