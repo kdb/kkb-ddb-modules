@@ -58,10 +58,12 @@ function kkb_help_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
+        'ding_help_page_accordion' => 'ding_help_page_accordion',
         'ding_help_page_body' => 'ding_help_page_body',
       ),
       'bundle_weights' => array(
-        'ding_help_page_body' => 2,
+        'ding_help_page_accordion' => -4,
+        'ding_help_page_body' => -3,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -539,8 +541,132 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_body'.
+  $field_instances['paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_body'] = array(
+    'bundle' => 'ding_help_page_accordion',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_a_body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_title'.
+  $field_instances['paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_title'] = array(
+    'bundle' => 'ding_help_page_accordion',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_a_title',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_body-field_help_page_p_body'.
+  $field_instances['paragraphs_item-ding_help_page_body-field_help_page_p_body'] = array(
+    'bundle' => 'ding_help_page_body',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_help_page_p_body',
+    'label' => 'Text',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 10,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Body');
   t('Content');
   t('Custom header for the files section. Leave empty for the default header.');
   t('External links');
@@ -549,6 +675,8 @@ function kkb_help_field_default_field_instances() {
   t('Help category');
   t('Lead');
   t('Related help pages');
+  t('Text');
+  t('Title');
   t('Weight');
 
   return $field_instances;

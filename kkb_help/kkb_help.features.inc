@@ -40,3 +40,22 @@ function kkb_help_node_info() {
   drupal_alter('node_info', $items);
   return $items;
 }
+
+/**
+ * Implements hook_paragraphs_info().
+ */
+function kkb_help_paragraphs_info() {
+  $items = array(
+    'ding_help_page_accordion' => array(
+      'name' => 'Accordion',
+      'bundle' => 'ding_help_page_accordion',
+      'locked' => '1',
+    ),
+    'ding_help_page_body' => array(
+      'name' => 'Brødtext',
+      'bundle' => 'ding_help_page_body',
+      'locked' => '1',
+    ),
+  );
+  return $items;
+}
