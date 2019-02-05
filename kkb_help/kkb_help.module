@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the KKB Help feature.
@@ -24,7 +25,7 @@ function kkb_help_theme($existing, $type, $theme, $path) {
  * Node preprocess function.
  */
 function kkb_help_preprocess_node(&$variables) {
-  if ($variables['type'] == 'ding_help_page') {
+  if (in_array($variables['type'], array('ding_help_page', 'ding_help_front'))) {
     drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
   }
 }
@@ -48,23 +49,48 @@ function kkb_help_preprocess_field(&$variables) {
  * Entity preprocess function.
  */
 function kkb_help_preprocess_entity(&$variables) {
-  if ($variables['entity_type'] == 'paragraphs_item' && $variables['paragraphs_item']->bundle == 'ding_help_page_accordion') {
+  if ($variables['entity_type'] == 'paragraphs_item') {
     $wrapper = entity_metadata_wrapper('paragraphs_item', $variables['paragraphs_item']);
 
-    $body = $wrapper->field_ding_help_p_a_body->value();
-    // Overwrite content with collapsible.
-    $variables['content'] = array(
-      '#type' => 'fieldset',
-      '#title' => $wrapper->field_ding_help_p_a_title->value(),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-      // The above is not enough to get collapsibles working (core bug), so add
-      // attributes and JS.
-      '#attributes' => array('class' => array('collapsible', 'collapsed')),
-      '#attached' => array('js' => array('misc/collapse.js', 'misc/form.js')),
-      'body' => array(
-        '#markup' => check_markup($body['value'], $body['format']),
-      ),
-    );
+    switch ($wrapper->getBundle()) {
+      case 'ding_help_page_accordion':
+        $body = $wrapper->field_ding_help_p_a_body->value();
+        // Overwrite content with collapsible.
+        $variables['content'] = array(
+          '#type' => 'fieldset',
+          '#title' => $wrapper->field_ding_help_p_a_title->value(),
+          '#collapsible' => TRUE,
+          '#collapsed' => TRUE,
+          // The above is not enough to get collapsibles working (core bug), so
+          // add attributes and JS.
+          '#attributes' => array('class' => array('collapsible', 'collapsed')),
+          '#attached' => array('js' => array('misc/collapse.js', 'misc/form.js')),
+          'body' => array(
+            '#markup' => check_markup($body['value'], $body['format']),
+          ),
+        );
+        break;
+
+      case 'ding_help_front_box':
+        // Make term name a headline.
+        $variables['content']['field_ding_help_p_b_category'][0]['#prefix'] = '<h3>';
+        $variables['content']['field_ding_help_p_b_category'][0]['#suffix'] = '</h3>';
+        // Add show more link.
+        if ($wrapper->field_ding_help_p_b_show_more->value()) {
+          $uri = entity_uri('taxonomy_term', $wrapper->field_ding_help_p_b_category->value());
+          $uri['options']['attributes']['class'][] = 'help-more-link';
+          $variables['content']['link'] = array(
+            '#theme' => 'link',
+            // Should be last in list.
+            '#weight' => 100,
+            '#text' => t('More help pages'),
+            '#path' => $uri['path'],
+            // DDBasic fails if attributes is not set.
+            '#options' => $uri['options'],
+          );
+        }
+
+        break;
+    }
   }
 }

@@ -28,20 +28,20 @@ function kkb_help_views_api($module = NULL, $api = NULL) {
  */
 function kkb_help_node_info() {
   $items = array(
-    'ding_help_page' => array(
-      'name' => t('Hjælpeside'),
-      'base' => 'node_content',
-      'description' => t('Indholdstype for hjælpesider.'),
-      'has_title' => '1',
-      'title_label' => t('Titel'),
-      'help' => '',
-    ),
     'ding_help_front' => array(
       'name' => t('Hjælpe-forside'),
       'base' => 'node_content',
       'description' => t('Forside til hjælpesider.'),
       'has_title' => '1',
       'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'ding_help_page' => array(
+      'name' => t('Hjælpeside'),
+      'base' => 'node_content',
+      'description' => t('Indholdstype for hjælpesider.'),
+      'has_title' => '1',
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );

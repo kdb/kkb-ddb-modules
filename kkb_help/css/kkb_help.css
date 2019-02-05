@@ -1,3 +1,6 @@
+/*
+ * Help page.
+ */
 
 /* Overall layout using flexbox. */
 .node-ding-help-page {
@@ -23,4 +26,40 @@
   line-height: 24px;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+/*
+ * Help front page.
+ */
+/* Boxes layout using grid. */
+.field-name-field-ding-help-front-boxes > .field-items {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 30px;
+  margin-bottom: 30px;
+}
+
+.field-name-field-ding-help-front-boxes  > .field-items > .field-item {
+  border: 2px solid grey;
+  padding: 10px;
+}
+
+/* Layout individual boxes using flexbox. */
+.paragraphs-item-ding-help-front-box {
+  height: 100%;
+}
+
+.paragraphs-item-ding-help-front-box .content {
+  display: flex;
+  height: 100%;
+  flex-flow: column nowrap;
+  align-content: space-between;
+}
+
+.field-name-field-ding-help-p-b-references {
+  flex-grow: 1;
+}
+
+.paragraphs-item-ding-help-front-box .help-more-link {
+  padding-top: 20px;
 }

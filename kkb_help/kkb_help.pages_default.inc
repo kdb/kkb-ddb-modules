@@ -35,6 +35,7 @@ function kkb_help_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
+              'ding_help_front' => 'ding_help_front',
               'ding_help_page' => 'ding_help_page',
             ),
           ),
