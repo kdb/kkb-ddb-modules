@@ -25,9 +25,65 @@ function kkb_help_theme($existing, $type, $theme, $path) {
  * Node preprocess function.
  */
 function kkb_help_preprocess_node(&$variables) {
-  if (in_array($variables['type'], array('ding_help_page', 'ding_help_front'))) {
+  if ($variables['view_mode'] == 'full' &&
+    in_array($variables['type'], array('ding_help_page', 'ding_help_front'))) {
     drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
+
+    if ($variables['type'] == 'ding_help_page') {
+
+      $wrapper = entity_metadata_wrapper('node', $variables['node']);
+
+      $breadcrumb = array();
+
+      $breadcrumb[] = _kkb_help_top_breadcrumb($wrapper->language->value());
+
+      $term = $wrapper->field_ding_help_page_category->value();
+      $uri = entity_uri('taxonomy_term', $term);
+      $breadcrumb[] = l($term->name, $uri['path'], $uri['options']);
+
+      $breadcrumb[] = drupal_get_title();
+
+      // Set Breadcrumbs.
+      drupal_set_breadcrumb($breadcrumb);
+    }
   }
+}
+
+/**
+ * Term preprocess function.
+ */
+function kkb_help_preprocess_taxonomy_term(&$variables) {
+  if ($variables['view_mode'] == 'full' &&
+    $variables['vocabulary_machine_name'] == 'help_category') {
+    $term = $variables['term'];
+    $breadcrumb = array();
+    $breadcrumb[] = _kkb_help_top_breadcrumb($term->language);
+    $breadcrumb[] = $term->name;
+
+    drupal_set_breadcrumb($breadcrumb);
+  }
+}
+
+/**
+ * Get the breadcrumb item for the help front page.
+ */
+function _kkb_help_top_breadcrumb($language) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'ding_help_front')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyCondition('language', $language);
+
+  $res = $query->execute();
+  if (!empty($res['node'])) {
+    $nids = array_keys($res['node']);
+    $front_node = node_load(reset($nids));
+    $uri = entity_uri('node', $front_node);
+    return l($front_node->title, $uri['path'], $uri['options']);
+  }
+  // Fallback in case we can't find a help front page in the current
+  // language.
+  return t('Help');
 }
 
 /**
