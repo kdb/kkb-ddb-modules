@@ -616,6 +616,202 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-help_front-field_ding_help_front_boxes'.
+  $field_instances['node-help_front-field_ding_help_front_boxes'] = array(
+    'bundle' => 'help_front',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'alternative_layout_full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_highlight' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_no_overlay' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ding_help_front_boxes',
+    'label' => 'Boxes',
+    'required' => 0,
+    'settings' => array(
+      'add_mode' => 'button',
+      'allowed_bundles' => array(
+        'ding_help_front_box' => 'ding_help_front_box',
+        'ding_help_page_accordion' => -1,
+        'ding_help_page_body' => -1,
+      ),
+      'bundle_weights' => array(
+        'ding_help_front_box' => 2,
+        'ding_help_page_accordion' => 3,
+        'ding_help_page_body' => 4,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'Paragraph',
+      'title_multiple' => 'Paragraphs',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_front_box-field_ding_help_p_b_category'.
+  $field_instances['paragraphs_item-ding_help_front_box-field_ding_help_p_b_category'] = array(
+    'bundle' => 'ding_help_front_box',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_b_category',
+    'label' => 'Category',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_front_box-field_ding_help_p_b_references'.
+  $field_instances['paragraphs_item-ding_help_front_box-field_ding_help_p_b_references'] = array(
+    'bundle' => 'ding_help_front_box',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_b_references',
+    'label' => 'Help pages',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_front_box-field_ding_help_p_b_show_more'.
+  $field_instances['paragraphs_item-ding_help_front_box-field_ding_help_p_b_show_more'] = array(
+    'bundle' => 'ding_help_front_box',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_b_show_more',
+    'label' => 'Show more link?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance:
   // 'paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_body'.
   $field_instances['paragraphs_item-ding_help_page_accordion-field_ding_help_p_a_body'] = array(
@@ -743,14 +939,18 @@ function kkb_help_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Alternative link');
   t('Body');
+  t('Boxes');
+  t('Category');
   t('Content');
   t('Custom header for the files section. Leave empty for the default header.');
   t('External links');
   t('Files');
   t('Files header');
   t('Help category');
+  t('Help pages');
   t('Lead');
   t('Related help pages');
+  t('Show more link?');
   t('Text');
   t('Title');
   t('Weight');

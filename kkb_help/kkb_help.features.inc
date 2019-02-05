@@ -54,6 +54,11 @@ function kkb_help_node_info() {
  */
 function kkb_help_paragraphs_info() {
   $items = array(
+    'ding_help_front_box' => array(
+      'name' => 'Boks',
+      'bundle' => 'ding_help_front_box',
+      'locked' => '1',
+    ),
     'ding_help_page_accordion' => array(
       'name' => 'Accordion',
       'bundle' => 'ding_help_page_accordion',
