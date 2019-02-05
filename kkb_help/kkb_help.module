@@ -89,7 +89,11 @@ function kkb_help_preprocess_entity(&$variables) {
             '#options' => $uri['options'],
           );
         }
+        break;
 
+      case 'ding_help_page_cta':
+        $variables['content']['#prefix'] = '<div class="more-link">';
+        $variables['content']['#suffix'] = '</div>';
         break;
     }
   }

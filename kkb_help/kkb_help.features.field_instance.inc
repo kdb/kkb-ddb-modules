@@ -206,12 +206,16 @@ function kkb_help_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
+        'ding_help_front_box' => -1,
         'ding_help_page_accordion' => 'ding_help_page_accordion',
         'ding_help_page_body' => 'ding_help_page_body',
+        'ding_help_page_cta' => 'ding_help_page_cta',
       ),
       'bundle_weights' => array(
-        'ding_help_page_accordion' => -4,
-        'ding_help_page_body' => -3,
+        'ding_help_front_box' => -5,
+        'ding_help_page_accordion' => -8,
+        'ding_help_page_body' => -7,
+        'ding_help_page_cta' => -6,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -937,6 +941,64 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_cta-field_ding_help_p_c_link'.
+  $field_instances['paragraphs_item-ding_help_page_cta-field_ding_help_p_c_link'] = array(
+    'bundle' => 'ding_help_page_cta',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_c_link',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 0,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Alternative link');
@@ -951,6 +1013,7 @@ function kkb_help_field_default_field_instances() {
   t('Help category');
   t('Help pages');
   t('Lead');
+  t('Link');
   t('Related help pages');
   t('Show more link?');
   t('Text');

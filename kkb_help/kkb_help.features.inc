@@ -69,6 +69,11 @@ function kkb_help_paragraphs_info() {
       'bundle' => 'ding_help_page_body',
       'locked' => '1',
     ),
+    'ding_help_page_cta' => array(
+      'name' => 'CTA',
+      'bundle' => 'ding_help_page_cta',
+      'locked' => '1',
+    ),
   );
   return $items;
 }
