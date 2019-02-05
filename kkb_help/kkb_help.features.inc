@@ -36,7 +36,7 @@ function kkb_help_node_info() {
       'title_label' => t('Titel'),
       'help' => '',
     ),
-    'help_front' => array(
+    'ding_help_front' => array(
       'name' => t('Hjælpe-forside'),
       'base' => 'node_content',
       'description' => t('Forside til hjælpesider.'),

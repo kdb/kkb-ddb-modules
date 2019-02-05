@@ -541,9 +541,9 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-help_front-field_ding_help_front_alt_link'.
-  $field_instances['node-help_front-field_ding_help_front_alt_link'] = array(
-    'bundle' => 'help_front',
+  // Exported field_instance: 'node-ding_help_front-field_ding_help_front_alt_link'.
+  $field_instances['node-ding_help_front-field_ding_help_front_alt_link'] = array(
+    'bundle' => 'ding_help_front',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -616,9 +616,9 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-help_front-field_ding_help_front_boxes'.
-  $field_instances['node-help_front-field_ding_help_front_boxes'] = array(
-    'bundle' => 'help_front',
+  // Exported field_instance: 'node-ding_help_front-field_ding_help_front_boxes'.
+  $field_instances['node-ding_help_front-field_ding_help_front_boxes'] = array(
+    'bundle' => 'ding_help_front',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

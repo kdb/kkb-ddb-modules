@@ -20,9 +20,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_help_front';
+  $strongarm->name = 'comment_anonymous_ding_help_front';
   $strongarm->value = 0;
-  $export['comment_anonymous_help_front'] = $strongarm;
+  $export['comment_anonymous_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -34,9 +34,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_help_front';
+  $strongarm->name = 'comment_default_mode_ding_help_front';
   $strongarm->value = 0;
-  $export['comment_default_mode_help_front'] = $strongarm;
+  $export['comment_default_mode_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -48,9 +48,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_help_front';
+  $strongarm->name = 'comment_default_per_page_ding_help_front';
   $strongarm->value = '50';
-  $export['comment_default_per_page_help_front'] = $strongarm;
+  $export['comment_default_per_page_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -69,16 +69,16 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_help_front';
+  $strongarm->name = 'comment_form_location_ding_help_front';
   $strongarm->value = 1;
-  $export['comment_form_location_help_front'] = $strongarm;
+  $export['comment_form_location_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_help_front';
+  $strongarm->name = 'comment_ding_help_front';
   $strongarm->value = '1';
-  $export['comment_help_front'] = $strongarm;
+  $export['comment_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -90,9 +90,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_help_front';
+  $strongarm->name = 'comment_preview_ding_help_front';
   $strongarm->value = '0';
-  $export['comment_preview_help_front'] = $strongarm;
+  $export['comment_preview_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -104,9 +104,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_help_front';
+  $strongarm->name = 'comment_subject_field_ding_help_front';
   $strongarm->value = 0;
-  $export['comment_subject_field_help_front'] = $strongarm;
+  $export['comment_subject_field_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -118,9 +118,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_enable_revisions_page_node_help_front';
+  $strongarm->name = 'diff_enable_revisions_page_node_ding_help_front';
   $strongarm->value = 1;
-  $export['diff_enable_revisions_page_node_help_front'] = $strongarm;
+  $export['diff_enable_revisions_page_node_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -132,9 +132,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_show_preview_changes_node_help_front';
+  $strongarm->name = 'diff_show_preview_changes_node_ding_help_front';
   $strongarm->value = 1;
-  $export['diff_show_preview_changes_node_help_front'] = $strongarm;
+  $export['diff_show_preview_changes_node_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -146,9 +146,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'diff_view_mode_preview_node_help_front';
+  $strongarm->name = 'diff_view_mode_preview_node_ding_help_front';
   $strongarm->value = 'full';
-  $export['diff_view_mode_preview_node_help_front'] = $strongarm;
+  $export['diff_view_mode_preview_node_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -220,7 +220,7 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__help_front';
+  $strongarm->name = 'field_bundle_settings_node__ding_help_front';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -282,7 +282,7 @@ function kkb_help_strongarm() {
       ),
     ),
   );
-  $export['field_bundle_settings_node__help_front'] = $strongarm;
+  $export['field_bundle_settings_node__ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -294,9 +294,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_help_front';
+  $strongarm->name = 'language_content_type_ding_help_front';
   $strongarm->value = '2';
-  $export['language_content_type_help_front'] = $strongarm;
+  $export['language_content_type_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -308,12 +308,12 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_help_front';
+  $strongarm->name = 'menu_options_ding_help_front';
   $strongarm->value = array(
     0 => 'main-menu',
     1 => 'menu-secondary-menu',
   );
-  $export['menu_options_help_front'] = $strongarm;
+  $export['menu_options_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -325,9 +325,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_help_front';
+  $strongarm->name = 'menu_parent_ding_help_front';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_help_front'] = $strongarm;
+  $export['menu_parent_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -341,11 +341,11 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_help_front';
+  $strongarm->name = 'node_options_ding_help_front';
   $strongarm->value = array(
     0 => 'status',
   );
-  $export['node_options_help_front'] = $strongarm;
+  $export['node_options_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -357,9 +357,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_help_front';
+  $strongarm->name = 'node_preview_ding_help_front';
   $strongarm->value = '1';
-  $export['node_preview_help_front'] = $strongarm;
+  $export['node_preview_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -371,9 +371,9 @@ function kkb_help_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_help_front';
+  $strongarm->name = 'node_submitted_ding_help_front';
   $strongarm->value = 0;
-  $export['node_submitted_help_front'] = $strongarm;
+  $export['node_submitted_ding_help_front'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
