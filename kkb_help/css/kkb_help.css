@@ -3,12 +3,20 @@
  */
 
 /* Overall layout using flexbox. */
-.node-ding-help-page {
-  display: flex;
+@media screen and (min-width: 600px) {
+  .node-ding-help-page {
+    display: flex;
+  }
+  .ding-help-page-main {
+    margin-right: 30px;
+  }
 }
+
 .ding-help-page-main {
   flex-basis: 66%;
+  margin-bottom: 30px;
 }
+
 .ding-help-page-sidebar {
   flex-basis: 33%;
 }
@@ -38,18 +46,32 @@
 /*
  * Help front page.
  */
-/* Boxes layout using grid. */
-.field-name-field-ding-help-front-boxes > .field-items {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap: 30px;
-  margin-bottom: 30px;
-}
 
 .field-name-field-ding-help-front-boxes  > .field-items > .field-item {
   border: 2px solid grey;
   padding: 10px;
+  margin-bottom: 30px;
 }
+
+@media screen and (min-width: 600px) {
+  /* Boxes layout using grid. */
+  .field-name-field-ding-help-front-boxes > .field-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .field-name-field-ding-help-front-boxes  > .field-items > .field-item {
+    margin-bottom: 0;
+  }
+}
+
+/* @media screen and (max-width: 600px) { */
+/*   .field-name-field-ding-help-front-boxes > .field-items { */
+/*     grid-template-columns: 100%; */
+/*   } */
+/* } */
 
 /* Layout individual boxes using flexbox. */
 .paragraphs-item-ding-help-front-box {
