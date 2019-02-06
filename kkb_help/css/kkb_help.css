@@ -48,8 +48,10 @@
  */
 
 .field-name-field-ding-help-front-boxes  > .field-items > .field-item {
-  border: 2px solid grey;
-  padding: 10px;
+  border-radius: 4px;
+  background-color: #f7f7f1;
+  border: 1px solid #e8e8d7;
+  padding: 16px;
   margin-bottom: 30px;
 }
 
