@@ -1,10 +1,24 @@
 /*
+ * Shared between pages.
+ */
+
+.node-ding-help-page h1.page-title,
+.node-ding-help-front h1.page-title,
+.taxonomy-term.vocabulary-help-category h1.page-title {
+  font-family: FaktPro-SemiBold,sans-serif;
+  font-size: 30px;
+  line-height: 34px;
+  margin-bottom: 30px;
+  color: #252525;
+}
+
+/*
  * Help page.
  */
 
 /* Overall layout using flexbox. */
 @media screen and (min-width: 600px) {
-  .node-ding-help-page {
+  .node-ding-help-content {
     display: flex;
   }
   .ding-help-page-main {

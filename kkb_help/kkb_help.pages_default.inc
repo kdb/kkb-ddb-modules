@@ -126,14 +126,14 @@ function kkb_help_default_page_manager_handlers() {
     $pane->configuration = array(
       'links' => 1,
       'no_extras' => 0,
-      'override_title' => 0,
-      'override_title_text' => 'lala',
+      'override_title' => 1,
+      'override_title_text' => '',
       'identifier' => '',
       'link' => 0,
-      'leave_node_title' => 0,
+      'leave_node_title' => 1,
       'build_mode' => 'full',
       'context' => 'argument_entity_id:node_1',
-      'override_title_heading' => 'h2',
+      'override_title_heading' => 'h1',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -251,8 +251,8 @@ function kkb_help_default_page_manager_handlers() {
       'view_mode' => 'full',
       'context' => 'argument_term_1',
       'override_title' => 1,
-      'override_title_text' => '%term:name',
-      'override_title_heading' => 'h2',
+      'override_title_text' => '',
+      'override_title_heading' => 'h1',
     );
     $pane->cache = array();
     $pane->style = array(

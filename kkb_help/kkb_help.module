@@ -18,6 +18,20 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'template' => 'node--ding-help-page',
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
+
+  $theme['node__ding_help_front'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--ding-help-front',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['taxonomy_term__help_category'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'taxonomy-term--help-category',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
   return $theme;
 }
 
@@ -55,6 +69,7 @@ function kkb_help_preprocess_node(&$variables) {
 function kkb_help_preprocess_taxonomy_term(&$variables) {
   if ($variables['view_mode'] == 'full' &&
     $variables['vocabulary_machine_name'] == 'help_category') {
+    drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
     $term = $variables['term'];
     $breadcrumb = array();
     $breadcrumb[] = _kkb_help_top_breadcrumb($term->language);
