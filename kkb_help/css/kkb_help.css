@@ -12,6 +12,20 @@
   color: #252525;
 }
 
+/* Icons on links in boxes on help frontpage and in sidebar on help
+ * poge.
+ */
+.field-name-field-ding-help-p-b-references a,
+.ding-help-page-sidebar a {
+  background-image: url(../images/internal-link.png);
+  background-repeat: no-repeat;
+  /* Font is 14px with a baseline at 11px from the top. */
+  background-size: auto 11px;
+  background-position: left top;
+  padding-left: 18px;
+  line-height: 25px;
+}
+
 /*
  * Help page.
  */
@@ -56,11 +70,28 @@
   margin-bottom: 60px;
 }
 
+/* Other icons for external links and files. */
+.ding-help-page-sidebar .field-name-field-ding-help-page-external a {
+  background-image: url(../images/external-link.png);
+}
+
+.ding-help-page-sidebar .field-name-field-ding-help-page-files a {
+  background-image: url(../images/file.png);
+}
+
 /* Clearfix the CTA button. */
 .paragraphs-item-ding-help-page-cta::after {
   content: "";
   display: table;
   clear: both;
+}
+
+.paragraphs-item-ding-help-page-accordion fieldset {
+  background-color: #fff;
+}
+
+.paragraphs-item-ding-help-page-accordion fieldset.collapsed {
+  background-color: inherit;
 }
 
 /*
@@ -102,16 +133,6 @@
 
 .field-name-field-ding-help-p-b-references {
   flex-grow: 1;
-}
-
-.field-name-field-ding-help-p-b-references a {
-  background-image: url(../images/internal-link.png);
-  background-repeat: no-repeat;
-  /* Font is 14px with a baseline at 11px from the top. */
-  background-size: auto 11px;
-  background-position: left top;
-  padding-left: 10px;
-  line-height: 25px;
 }
 
 /* Add some padding above link. */
