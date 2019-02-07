@@ -26,6 +26,17 @@
   line-height: 25px;
 }
 
+/* Help page titles on help front page and category listing. */
+.paragraphs-item-ding-help-front-box h3,
+.view-kkb-help h3 {
+  border-bottom: 1px solid rgba(38,38,38,.2);
+}
+
+/* Font for lead text. */
+.field-name-field-ding-help-page-lead {
+  font-family: FaktPro-SemiBold,sans-serif;
+}
+
 /*
  * Help page.
  */
@@ -50,8 +61,8 @@
 }
 
 /* Lead. */
-.field-name-field-ding-help-page-lead {
-  font-family: FaktPro-SemiBold,sans-serif;
+.node-type-ding-help-page .field-name-field-ding-help-page-lead {
+  width: 66%;
   margin: 20px 0;
 }
 
@@ -120,10 +131,6 @@
   height: 100%;
 }
 
-.paragraphs-item-ding-help-front-box h3 {
-  border-bottom: 1px solid rgba(38,38,38,.2);
-}
-
 .paragraphs-item-ding-help-front-box .content {
   display: flex;
   height: 100%;
@@ -139,3 +146,15 @@
 .paragraphs-item-ding-help-front-box .help-more-link {
   padding-top: 20px;
 }
+
+/*
+ * Category listing page.
+ */
+
+.view-kkb-help .view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+}
+
+.views-row {}

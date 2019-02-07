@@ -278,6 +278,10 @@ function kkb_help_strongarm() {
             'weight' => '8',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '1',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),

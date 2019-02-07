@@ -7,7 +7,13 @@
 ?>
 <article class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
-  <h1 class="page-title"><?php print $title; ?></h1>
+  <?php if ($page): ?>
+    <h1 class="page-title"><?php print $title; ?></h1>
+  <?php else: ?>
+    <h3><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+  <?php endif; ?>
+
+  <?php print render($content['field_ding_help_page_lead']); ?>
 
   <div class="ding-help-page-content">
     <?php
