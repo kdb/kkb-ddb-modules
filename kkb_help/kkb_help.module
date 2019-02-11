@@ -8,6 +8,47 @@
 include_once 'kkb_help.features.inc';
 
 /**
+ * Implements hook_init().
+ *
+ * Sets language for help pages. Normally this should be done by Drupals
+ * language negotiation, but that's configured by by DDB CMS, and we don't want
+ * to have an overridden feature. So we set it explicitly here.
+ */
+function kkb_help_init() {
+  global $language;
+
+  $node = NULL;
+  $term = NULL;
+  switch (count(arg())) {
+    case 2:
+      $node = menu_get_object('node');
+      break;
+
+    case 3:
+      $term = menu_get_object('taxonomy_term', 2);
+      break;
+
+    default:
+      return;
+  }
+
+  // Get languages grouped by status and select only the enabled ones.
+  $languages = language_list('enabled');
+  $languages = $languages[1];
+
+  if ($node && ($node->language != $language->language) && in_array($node->type, ['ding_help_page', 'ding_help_front'])) {
+    if (isset($languages[$node->language])) {
+      $language = $languages[$node->language];
+    }
+  }
+  elseif ($term && ($term->language != $language->language) && $term->vocabulary_machine_name == 'help_category') {
+    if (isset($languages[$term->language])) {
+      $language = $languages[$term->language];
+    }
+  }
+}
+
+/**
  * Implements hook_theme().
  */
 function kkb_help_theme($existing, $type, $theme, $path) {
