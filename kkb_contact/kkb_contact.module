@@ -64,9 +64,9 @@ function kkb_contact_page_title() {
  * Implements hook_permission().
  */
 function kkb_contact_permission() {
-  $permissions['administer contact page'] = array(
+  $permissions['administer contact page'] = [
     'title' => t('Configure the contact page.'),
-  );
+  ];
 
   return $permissions;
 }
@@ -117,22 +117,22 @@ function kkb_contact_theme() {
  * Implements hook_image_default_styles().
  */
 function kkb_contact_image_default_styles() {
-  $styles = array();
+  $styles = [];
 
   // Exported image style: kkb_contact_teaser.
-  $styles['kkb_contact_teaser'] = array(
+  $styles['kkb_contact_teaser'] = [
     'label' => 'KKB contact teaser',
-    'effects' => array(
-      1 => array(
+    'effects' => [
+      1 => [
         'name' => 'image_scale_and_crop',
-        'data' => array(
+        'data' => [
           'width' => 141,
           'height' => 141,
-        ),
+        ],
         'weight' => 1,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 
   return $styles;
 }

@@ -297,16 +297,16 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     '#default_value' => $teaser['body'],
   ];
 
-  $form['image'] = array(
+  $form['image'] = [
     '#title' => t('Image'),
     '#type' => 'media',
     '#media_options' => [
       'global' => [
-        'types' => array('image'),
+        'types' => ['image'],
       ],
     ],
     '#default_value' => $teaser['image'],
-  );
+  ];
 
   $form['link'] = [
     '#type' => 'textfield',
