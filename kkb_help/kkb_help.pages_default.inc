@@ -146,6 +146,38 @@ function kkb_help_default_page_manager_handlers() {
     $pane->uuid = '1c71c411-1441-4575-ad0e-d1cf1c034288';
     $display->content['new-1c71c411-1441-4575-ad0e-d1cf1c034288'] = $pane;
     $display->panels['attachment_1_1'][1] = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
+    $pane = new stdClass();
+    $pane->pid = 'new-9ebe74ca-d430-488b-9f3b-0a05e8f5086b';
+    $pane->panel = 'attachment_1_1';
+    $pane->type = 'kkb_contact_footer';
+    $pane->subtype = 'kkb_contact_footer';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'ding_help_page' => 'ding_help_page',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = '9ebe74ca-d430-488b-9f3b-0a05e8f5086b';
+    $display->content['new-9ebe74ca-d430-488b-9f3b-0a05e8f5086b'] = $pane;
+    $display->panels['attachment_1_1'][2] = 'new-9ebe74ca-d430-488b-9f3b-0a05e8f5086b';
   $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
   $handler->conf['display'] = $display;

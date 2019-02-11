@@ -110,6 +110,12 @@ function kkb_contact_theme() {
     'file' => 'kkb_contact.theme.inc',
   ];
 
+  $theme['kkb_contact_block'] = [
+    'template' => 'templates/kkb-contact-block',
+    'variables' => [],
+    'file' => 'kkb_contact.theme.inc',
+  ];
+
   return $theme;
 }
 
@@ -135,4 +141,11 @@ function kkb_contact_image_default_styles() {
   ];
 
   return $styles;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function kkb_contact_ctools_plugin_directory($owner, $plugin_type) {
+  return 'plugins/' . $plugin_type;
 }

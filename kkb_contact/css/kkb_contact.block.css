@@ -1,0 +1,38 @@
+/**
+ * Styling of contact block.
+ */
+.pane-kkb-contact-footer {
+  background-color: #e5e5e5;
+}
+
+.pane-kkb-contact-footer .pane-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+}
+
+.pane-kkb-contact-footer h2 {
+  border-bottom: 1px solid rgba(38,38,38,.2);
+}
+
+.pane-kkb-contact-footer h3 a {
+  background-image: url(../images/internal-link.png);
+  background-repeat: no-repeat;
+  /* Font is 14px with a baseline at 11px from the top. */
+  background-size: auto 16px;
+  background-position: left top;
+  padding-left: 14px;
+  line-height: 25px;
+}
+
+.pane-kkb-contact-footer .phone-section a {
+  font-size: 30px;
+  background-image: url(../images/phone.png);
+  background-repeat: no-repeat;
+  /* Font is 14px with a baseline at 11px from the top. */
+  background-size: auto 40px;
+  background-position: left center;
+  padding: 10px 0;
+  padding-left: 40px;
+  margin-left: .5em;
+}
