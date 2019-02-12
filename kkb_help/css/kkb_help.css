@@ -130,14 +130,6 @@
   padding-right: 60px;
 }
 
-.paragraphs-item-ding-help-page-accordion fieldset {
-  background-color: #fff;
-}
-
-.paragraphs-item-ding-help-page-accordion fieldset.collapsed {
-  background-color: inherit;
-}
-
 /* Style ol on help page as step directions. */
 .node-type-ding-help-page ol {
   /* Reset counter. */
