@@ -170,6 +170,19 @@
  * Help front page.
  */
 
+.field-name-field-ding-help-front-alt-link {
+  background-image: url(../images/union-jack.png);
+  background-repeat: no-repeat;
+  /* Font is 14px with a baseline at 11px from the top. */
+  background-size: auto 23px;
+  background-position: left top;
+  padding-left: 45px;
+  line-height: 25px;
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+
 .field-name-field-ding-help-front-boxes  > .field-items > .field-item {
   margin-bottom: 40px;
 }
