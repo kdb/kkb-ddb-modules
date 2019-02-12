@@ -126,6 +126,11 @@
   margin-top: 30px;
 }
 
+/* Add padding to label so the text will wrap before going under the foldout button. */
+.paragraphs-item-ding-help-page-accordion .fieldset-legend {
+  padding-right: 60px;
+}
+
 .paragraphs-item-ding-help-page-accordion fieldset {
   background-color: #fff;
 }
