@@ -69,10 +69,18 @@ function kkb_help_theme($existing, $type, $theme, $path) {
 
   $theme['taxonomy_term__help_category'] = array(
     'render element' => 'content',
-    'base hook' => 'node',
+    'base hook' => 'taxonomy_term',
     'template' => 'taxonomy-term--help-category',
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
+
+  $theme['field__field_ding_help_page_body'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-page-body',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
   return $theme;
 }
 

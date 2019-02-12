@@ -104,6 +104,10 @@
   clear: both;
 }
 
+.paragraphs-item-ding-help-page-accordion + *:not(.paragraphs-item-ding-help-page-accordion) {
+  margin-top: 30px;
+}
+
 .paragraphs-item-ding-help-page-accordion fieldset {
   background-color: #fff;
 }
