@@ -114,6 +114,13 @@
   margin-bottom: 30px;
 }
 
+/* Override DDBasic setting a (small) fixed width on mobile. */
+@media screen and (max-width: 600px) {
+  .paragraphs-item-ding-help-page-cta .more-link a {
+    width: auto;
+  }
+}
+
 /* Add space after last accordion. */
 .paragraphs-item-ding-help-page-accordion + *:not(.paragraphs-item-ding-help-page-accordion) {
   margin-top: 30px;
