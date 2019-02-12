@@ -99,6 +99,10 @@
 
 .ding-help-page-sidebar .field-name-field-ding-help-page-files a {
   background-image: url(../images/file.png);
+  /* Break long filenames. This seems to make both Chrome and Firefox happy. */
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 /* Clearfix the CTA button. */
