@@ -50,6 +50,10 @@
     width: 63%;
   }
 }
+.page-taxonomy .breadcrumb a,
+.node-type-ding-help-page .breadcrumb a {
+  text-decoration: underline;
+}
 
 /*
  * Help page.
