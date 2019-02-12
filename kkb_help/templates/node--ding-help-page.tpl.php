@@ -13,8 +13,6 @@
     <h3><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
   <?php endif; ?>
 
-  <?php print render($content['field_ding_help_page_lead']); ?>
-
   <div class="ding-help-page-content">
     <?php
       // Hide fields.

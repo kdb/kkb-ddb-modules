@@ -43,8 +43,7 @@
 @media screen and (min-width: 768px) {
   /* Limit lead width on desktop. */
   .field-name-field-ding-help-front-lead,
-  .vocabulary-help-category .taxonomy-term-description,
-  .node-type-ding-help-page .field-name-field-ding-help-page-lead {
+  .vocabulary-help-category .taxonomy-term-description {
     /* The missing %3 is to account for the gap between columns in main
    page content. */
     width: 63%;
