@@ -60,19 +60,19 @@
 
 /* Overall layout using flexbox. */
 @media screen and (min-width: 768px) {
-  .ding-help-page-content {
+  .node-type-ding-help-page .ding-help-page-content {
     display: flex;
   }
-  .ding-help-page-main {
+  .node-type-ding-help-page .ding-help-page-main {
     margin-right: 60px;
   }
 }
 
-.ding-help-page-main {
+.node-type-ding-help-page .ding-help-page-main {
   flex-basis: 66%;
 }
 
-.ding-help-page-sidebar {
+.node-type-ding-help-page .ding-help-page-sidebar {
   flex-basis: 33%;
 }
 
