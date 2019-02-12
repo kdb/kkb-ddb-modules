@@ -110,8 +110,11 @@
   content: "";
   display: table;
   clear: both;
+  /* Add spacing after. */
+  margin-bottom: 30px;
 }
 
+/* Add space after last accordion. */
 .paragraphs-item-ding-help-page-accordion + *:not(.paragraphs-item-ding-help-page-accordion) {
   margin-top: 30px;
 }
