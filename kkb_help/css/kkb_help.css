@@ -33,8 +33,22 @@
 }
 
 /* Font for lead text. */
-.field-name-field-ding-help-page-lead {
+.field-name-field-ding-help-front-lead,
+.vocabulary-help-category .taxonomy-term-description,
+.node-type-ding-help-page .field-name-field-ding-help-page-lead {
   font-family: FaktPro-SemiBold,sans-serif;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* Limit lead width on desktop. */
+  .field-name-field-ding-help-front-lead,
+  .vocabulary-help-category .taxonomy-term-description,
+  .node-type-ding-help-page .field-name-field-ding-help-page-lead {
+    /* The missing %3 is to account for the gap between columns in main
+   page content. */
+    width: 63%;
+  }
 }
 
 /*
@@ -42,7 +56,7 @@
  */
 
 /* Overall layout using flexbox. */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .ding-help-page-content {
     display: flex;
   }
@@ -57,12 +71,6 @@
 
 .ding-help-page-sidebar {
   flex-basis: 33%;
-}
-
-/* Lead. */
-.node-type-ding-help-page .field-name-field-ding-help-page-lead {
-  width: 66%;
-  margin: 20px 0;
 }
 
 /* Header on sidebar fields. */
@@ -146,17 +154,23 @@
   text-align: center;
 }
 .node-type-ding-help-page li ol,
-.node-type-ding-help-page li ul {margin-top: 6px;}
-.node-type-ding-help-page ol ol li:last-child {margin-bottom: 0;}
+.node-type-ding-help-page li ul {
+  margin-top: 6px;
+}
+
+.node-type-ding-help-page ol ol li:last-child {
+  margin-bottom: 0;
+}
 
 /*
  * Help front page.
  */
 
 .field-name-field-ding-help-front-boxes  > .field-items > .field-item {
+  margin-bottom: 40px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   /* Boxes layout using grid. */
   .field-name-field-ding-help-front-boxes > .field-items {
     display: grid;
@@ -200,7 +214,7 @@
   margin-bottom: 60px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .view-kkb-help .view-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

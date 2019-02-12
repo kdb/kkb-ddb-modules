@@ -57,6 +57,27 @@ function kkb_help_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
+  // Exported field_base: 'field_ding_help_front_lead'.
+  $field_bases['field_ding_help_front_lead'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ding_help_front_lead',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_ding_help_p_a_body'.
   $field_bases['field_ding_help_p_a_body'] = array(
     'active' => 1,
