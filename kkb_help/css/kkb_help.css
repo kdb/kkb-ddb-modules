@@ -188,6 +188,11 @@
  * Help front page.
  */
 
+.field-name-field-ding-help-front-lead {
+  /* Ensure the same spacing between lead and the headlines as on the taxonomy page. */
+  margin-bottom: 100px;
+}
+
 .field-name-field-ding-help-front-alt-link {
   background-image: url(../images/union-jack.png);
   background-repeat: no-repeat;
