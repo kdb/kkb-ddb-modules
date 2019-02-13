@@ -593,7 +593,7 @@ function kkb_help_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'ding_base',
         'settings' => array(
-          'body_snippet_length' => 100,
+          'body_snippet_length' => 168,
         ),
         'type' => 'body_snippet',
         'weight' => 0,
