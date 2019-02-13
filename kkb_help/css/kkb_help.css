@@ -192,10 +192,10 @@
   background-image: url(../images/union-jack.png);
   background-repeat: no-repeat;
   /* Font is 14px with a baseline at 11px from the top. */
-  background-size: auto 23px;
+  background-size: auto 16px;
   background-position: left top;
-  padding-left: 45px;
-  line-height: 25px;
+  padding-left: 32px;
+  line-height: 18px;
   position: absolute;
   right: 0;
   top: 40px;
