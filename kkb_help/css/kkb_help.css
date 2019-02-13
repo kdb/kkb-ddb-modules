@@ -58,22 +58,21 @@
  * Help page.
  */
 
-/* Overall layout using flexbox. */
+/* Overall layout with grid. */
 @media screen and (min-width: 768px) {
   .node-type-ding-help-page .ding-help-page-content {
-    display: flex;
-  }
-  .node-type-ding-help-page .ding-help-page-main {
-    margin-right: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 60px;
   }
 }
 
 .node-type-ding-help-page .ding-help-page-main {
-  flex-basis: 66%;
+  grid-column: 1 / 3;
 }
 
 .node-type-ding-help-page .ding-help-page-sidebar {
-  flex-basis: 33%;
+  grid-column: 3;
 }
 
 /* Header on sidebar fields. */
@@ -248,7 +247,6 @@
 /*
  * Category listing page.
  */
-
 
 .view-kkb-help .view-content .views-row {
   margin-bottom: 60px;
