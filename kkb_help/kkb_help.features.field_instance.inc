@@ -460,7 +460,7 @@ function kkb_help_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ding_help_page_files',
-    'label' => 'Files',
+    'label' => 'Documents',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
@@ -1068,8 +1068,8 @@ function kkb_help_field_default_field_instances() {
   t('Category');
   t('Content');
   t('Custom header for the files section. Leave empty for the default header.');
+  t('Documents');
   t('External links');
-  t('Files');
   t('Files header');
   t('Help category');
   t('Help pages');
