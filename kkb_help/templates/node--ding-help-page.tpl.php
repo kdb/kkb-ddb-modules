@@ -26,9 +26,9 @@
     </section>
 
     <aside class="ding-help-page-sidebar">
+      <?php print render($content['field_ding_help_page_files']); ?>
       <?php print render($content['field_ding_help_page_related']); ?>
       <?php print render($content['field_ding_help_page_external']); ?>
-      <?php print render($content['field_ding_help_page_files']); ?>
     </aside>
   </div>
 </article>
