@@ -13,6 +13,178 @@ function kkb_help_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'node_view__kkb-help-front';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -12;
+  $handler->conf = array(
+    'title' => 'KKB Help front',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'kkb-help-front',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'ding_help_front' => 'ding_help_front',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = '25_50_25';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left_sidebar' => NULL,
+      'main_content' => NULL,
+      'right_sidebar' => NULL,
+      'attachment_4_1' => NULL,
+      'attachment_4_2' => NULL,
+      'attachment_4_3' => NULL,
+      'attachment_4_4' => NULL,
+      'attachment_3_1' => NULL,
+      'attachment_3_2' => NULL,
+      'attachment_3_3' => NULL,
+      'attachment_2_1' => NULL,
+      'attachment_2_2' => NULL,
+      'attachment_1_1' => NULL,
+      'left' => NULL,
+      'middle' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = 'b0fc21d5-1fdf-41e0-95f1-27757f5a1afa';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-e4886fe8-d474-4391-a41f-08cd86f1bf3d';
+    $pane->panel = 'attachment_1_1';
+    $pane->type = 'page_breadcrumb';
+    $pane->subtype = 'page_breadcrumb';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'ding_help_page' => 'ding_help_page',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'panels_breadcrumbs_admin_title' => '',
+      'panels_breadcrumbs_state' => 0,
+      'panels_breadcrumbs_titles' => '',
+      'panels_breadcrumbs_paths' => '',
+      'panels_breadcrumbs_home' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'e4886fe8-d474-4391-a41f-08cd86f1bf3d';
+    $display->content['new-e4886fe8-d474-4391-a41f-08cd86f1bf3d'] = $pane;
+    $display->panels['attachment_1_1'][0] = 'new-e4886fe8-d474-4391-a41f-08cd86f1bf3d';
+    $pane = new stdClass();
+    $pane->pid = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
+    $pane->panel = 'attachment_1_1';
+    $pane->type = 'node_content';
+    $pane->subtype = 'node_content';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'links' => 1,
+      'no_extras' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+      'identifier' => '',
+      'link' => 0,
+      'leave_node_title' => 1,
+      'build_mode' => 'full',
+      'context' => 'argument_entity_id:node_1',
+      'override_title_heading' => 'h1',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '1c71c411-1441-4575-ad0e-d1cf1c034288';
+    $display->content['new-1c71c411-1441-4575-ad0e-d1cf1c034288'] = $pane;
+    $display->panels['attachment_1_1'][1] = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
+    $pane = new stdClass();
+    $pane->pid = 'new-21ee3384-3b13-4daf-90d9-d0c828cd1b03';
+    $pane->panel = 'attachment_1_1';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_ding_help_front_boxes';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'title',
+      'formatter' => 'paragraphs_view',
+      'delta_limit' => '0',
+      'delta_offset' => '0',
+      'delta_reversed' => 0,
+      'formatter_settings' => array(
+        'view_mode' => 'full',
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = '21ee3384-3b13-4daf-90d9-d0c828cd1b03';
+    $display->content['new-21ee3384-3b13-4daf-90d9-d0c828cd1b03'] = $pane;
+    $display->panels['attachment_1_1'][2] = 'new-21ee3384-3b13-4daf-90d9-d0c828cd1b03';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1c71c411-1441-4575-ad0e-d1cf1c034288';
+  $handler->conf['display'] = $display;
+  $export['node_view__kkb-help-front'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'node_view__panel_context_1cb6f884-5c0f-4327-887c-49fd064c26cf';
   $handler->task = 'node_view';
   $handler->subtask = '';
@@ -35,7 +207,6 @@ function kkb_help_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
-              'ding_help_front' => 'ding_help_front',
               'ding_help_page' => 'ding_help_page',
             ),
           ),

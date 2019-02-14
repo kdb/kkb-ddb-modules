@@ -65,6 +65,7 @@ features[field_instance][] = paragraphs_item-ding_help_page_body-field_help_page
 features[field_instance][] = paragraphs_item-ding_help_page_cta-field_ding_help_p_c_link
 features[node][] = ding_help_front
 features[node][] = ding_help_page
+features[page_manager_handlers][] = node_view__kkb-help-front
 features[page_manager_handlers][] = node_view__panel_context_1cb6f884-5c0f-4327-887c-49fd064c26cf
 features[page_manager_handlers][] = term_view__panel_context_286e0e62-2843-4901-9bf4-9cdf168c40a8
 features[paragraphs][] = ding_help_front_box
