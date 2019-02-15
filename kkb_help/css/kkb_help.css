@@ -133,6 +133,11 @@
   padding-right: 60px;
 }
 
+/* Add a bit of spacing between the collapsible button and the content.  */
+.paragraphs-item-ding-help-page-accordion .fieldset-wrapper > *:first-child {
+  margin-top: 26px;
+}
+
 /*
  * Help front page.
  */
