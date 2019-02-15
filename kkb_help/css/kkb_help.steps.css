@@ -25,6 +25,10 @@
   display: none;
 }
 
+.step-content {
+  margin-top: 1em;
+}
+
 .step-shown .step-content {
   display: block;
 }
