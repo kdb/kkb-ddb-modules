@@ -133,56 +133,6 @@
   padding-right: 60px;
 }
 
-/* Style ol on help page as step directions. */
-.node-type-ding-help-page ol {
-  /* Reset counter. */
-  counter-reset: li;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.node-type-ding-help-page ol > li {
-  /* Create a positioning context to ease positioning of the :before
-   element. */
-  position: relative;
-  /* Left margin to allow for the :before.*/
-  margin: 0 0 2em 3em;
-  padding: 4px 8px;
-  /* We'll do our own numbers. */
-  list-style: none; /* Disable the normal item numbering */
-}
-.node-type-ding-help-page ol > li:before {
-  /* Use a counter to create the numbering. */
-  content: counter(li);
-  counter-increment: li;
-  position: absolute;
-  left: -3em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border-radius: 50%;
-  width: 2em;
-  /* Some space between the number and the content in browsers that
-     support generated content but not positioning it (Camino 2 is one
-     example) */
-  margin-right: 8px;
-  padding: 4px;
-  color: #fff;
-  background: #313233;
-  font-weight: bold;
-  /* Looks better than FaktPro. */
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  text-align: center;
-}
-.node-type-ding-help-page li ol,
-.node-type-ding-help-page li ul {
-  margin-top: 6px;
-}
-
-.node-type-ding-help-page ol ol li:last-child {
-  margin-bottom: 0;
-}
-
 /*
  * Help front page.
  */
