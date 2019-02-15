@@ -1,0 +1,62 @@
+/* Make pointer signal that our behavior attached elements can be clicked. */
+.js .step-header,
+.show-hide-all .show-all,
+.show-hide-all .hide-all {
+  cursor: pointer;
+}
+
+/* And make them link color. */
+.step-item .show,
+.step-item .hide,
+.show-hide-all .show-all,
+.show-hide-all .hide-all {
+  color: #3a6f55;
+}
+
+.show-hide-all {
+  text-align: right;
+}
+
+/* Hide step content if JS is enabled. */
+.js .step-content {
+  display: none;
+}
+
+.step-shown .step-content {
+  display: block;
+}
+
+/* Show the relevant show/hide button. */
+.step-item.step-shown .show,
+.step-item .hide {
+  display: none;
+}
+
+.step-item .show,
+.step-item.step-shown .hide {
+  display: inline;
+}
+
+.step-title {
+  font-family: FaktPro-SemiBold,sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/* Override help page styling. */
+.node-type-ding-help-page ol li.step-item {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2em 0;
+}
+
+/* Line between steps. */
+li.step-item + li.step-item {
+  border-top: 1px solid rgba(38,38,38,.2);
+}
+
+/* Remove padding from last paragraph in content. We set the wanted
+   bottom spacing on the item. */
+li.step-item p:last-child {
+  margin-bottom: 0;
+}

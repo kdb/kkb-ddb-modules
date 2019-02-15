@@ -74,6 +74,16 @@ function kkb_help_paragraphs_info() {
       'bundle' => 'ding_help_page_cta',
       'locked' => '1',
     ),
+    'ding_help_page_step' => array(
+      'name' => 'Step',
+      'bundle' => 'ding_help_page_step',
+      'locked' => '1',
+    ),
+    'ding_help_page_step_by_step' => array(
+      'name' => 'Step by step',
+      'bundle' => 'ding_help_page_step_by_step',
+      'locked' => '1',
+    ),
   );
   return $items;
 }

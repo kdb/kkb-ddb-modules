@@ -265,12 +265,16 @@ function kkb_help_field_default_field_instances() {
         'ding_help_page_accordion' => 'ding_help_page_accordion',
         'ding_help_page_body' => 'ding_help_page_body',
         'ding_help_page_cta' => 'ding_help_page_cta',
+        'ding_help_page_step' => -1,
+        'ding_help_page_step_by_step' => 'ding_help_page_step_by_step',
       ),
       'bundle_weights' => array(
         'ding_help_front_box' => -5,
         'ding_help_page_accordion' => -8,
         'ding_help_page_body' => -7,
         'ding_help_page_cta' => -6,
+        'ding_help_page_step' => 6,
+        'ding_help_page_step_by_step' => 7,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -1057,6 +1061,148 @@ function kkb_help_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_step-field_ding_help_p_s_title'.
+  $field_instances['paragraphs_item-ding_help_page_step-field_ding_help_p_s_title'] = array(
+    'bundle' => 'ding_help_page_step',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_s_title',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_step-field_ding_help_p_ss_description'.
+  $field_instances['paragraphs_item-ding_help_page_step-field_ding_help_p_ss_description'] = array(
+    'bundle' => 'ding_help_page_step',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_ss_description',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-ding_help_page_step_by_step-field_ding_help_p_ss_steps'.
+  $field_instances['paragraphs_item-ding_help_page_step_by_step-field_ding_help_p_ss_steps'] = array(
+    'bundle' => 'ding_help_page_step_by_step',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_ding_help_p_ss_steps',
+    'label' => 'Steps',
+    'required' => 0,
+    'settings' => array(
+      'add_mode' => 'select',
+      'allowed_bundles' => array(
+        'ding_help_front_box' => -1,
+        'ding_help_page_accordion' => -1,
+        'ding_help_page_body' => -1,
+        'ding_help_page_cta' => -1,
+        'ding_help_page_step' => 'ding_help_page_step',
+        'ding_help_page_step_by_step' => -1,
+      ),
+      'bundle_weights' => array(
+        'ding_help_front_box' => 2,
+        'ding_help_page_accordion' => 3,
+        'ding_help_page_body' => 4,
+        'ding_help_page_cta' => 5,
+        'ding_help_page_step' => 6,
+        'ding_help_page_step_by_step' => 7,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'Step',
+      'title_multiple' => 'Steps',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Alternative link');
@@ -1065,6 +1211,7 @@ function kkb_help_field_default_field_instances() {
   t('Category');
   t('Content');
   t('Custom header for the files section. Leave empty for the default header.');
+  t('Description');
   t('Documents');
   t('External links');
   t('Files header');
@@ -1074,6 +1221,7 @@ function kkb_help_field_default_field_instances() {
   t('Link');
   t('Related help pages');
   t('Show more link?');
+  t('Steps');
   t('Text');
   t('Title');
   t('Weight');
