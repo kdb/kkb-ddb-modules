@@ -122,6 +122,11 @@
 
 /* End of copy. Now try to hack the display of events a bit. */
 
+.view-kkb-event .node-ding-event.node-teaser {
+  /*  Ensure that image doesn't overflow container. */
+  overflow: hidden;
+}
+
 /* Hide the info-bottom per default. */
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-field-ding-event-location,
 .view-kkb-event .node-ding-event.node-teaser .info-bottom .field-name-field-ding-event-place,
