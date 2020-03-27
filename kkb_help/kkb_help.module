@@ -102,6 +102,44 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
+  // Ding 5.0.0 added the paragraphs module and removed all the default classes.
+  // So explicitly theme our paragraphs using a copy of the original paragraphs
+  // template.
+  $theme['paragraphs_item__ding_help_front_box'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['paragraphs_item__ding_help_page_accordion'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['paragraphs_item__ding_help_page_body'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['paragraphs_item__ding_help_page_cta'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['paragraphs_item__ding_help_page_step_by_step'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
   return $theme;
 }
 
