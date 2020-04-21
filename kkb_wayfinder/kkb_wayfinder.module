@@ -83,8 +83,15 @@ function kkb_wayfinder_ding_entity_buttons($type, $entity) {
  * Preprocess kkb_wayfinder_button.
  */
 function template_preprocess_kkb_wayfinder_button(&$variables) {
-  // Steal theming from ding_list_add_button.
-  $variables['classes_array'] = array('ding-list-add-button ding-list-add-button--multiple-actions');
+  $variables['classes_array'] = array(
+    'kkb-wayfinder--button',
+    // Legacy: Use classes from now obsolete ding_list module.
+    // Buttons with multiple actions are no longer supported but we still need
+    // the functionality here to display multiple libraries in an intelligent
+    // manner. Consequently we reuse the classes and the JS and CSS from Ding 5.
+    'ding-list-add-button',
+    'ding-list-add-button--multiple-actions'
+  );
   if (empty($variables['title'])) {
     $variables['title'] = t('See on map');
   }
@@ -97,7 +104,12 @@ function template_preprocess_kkb_wayfinder_button(&$variables) {
     ),
     '#attached' => array(
       'library' => array(array('system', 'drupal.ajax')),
+      'css' => array(
+        drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.buttons.min.css',
+        drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.css',
+      ),
       'js' => array(
+        drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.buttons.js',
         drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.js',
         array(
           'data' => variable_get('kkb_wayfinder_url', ''),

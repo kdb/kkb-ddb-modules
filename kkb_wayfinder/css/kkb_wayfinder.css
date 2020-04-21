@@ -1,0 +1,14 @@
+/**
+ * Use two column layout for wayfinder button on mobile.
+ *
+ * For some reason this does not seem to be contained within the transferred
+ * legacy code. We have to use hard-coded values here as module CSS cannot use
+ * the preprocessing pipeline or mixins from the theme.
+ */
+@media only screen and (max-width: 600px) {
+  .kkb-wayfinder--button {
+    display: block;
+    float: left;
+    width: 48.7%;
+  }
+}
