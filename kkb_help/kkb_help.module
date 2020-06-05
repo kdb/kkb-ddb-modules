@@ -140,6 +140,27 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
+  $theme['field__field_ding_help_page_external'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-page-aside',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['field__field_ding_help_page_related'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-page-aside',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['field__field_ding_help_page_files'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-page-aside',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
   return $theme;
 }
 
