@@ -252,8 +252,8 @@ function kkb_help_preprocess_entity(&$variables) {
 
       case 'ding_help_front_box':
         // Make term name a headline.
-        $variables['content']['field_ding_help_p_b_category'][0]['#prefix'] = '<h3>';
-        $variables['content']['field_ding_help_p_b_category'][0]['#suffix'] = '</h3>';
+        $variables['content']['field_ding_help_p_b_category'][0]['#prefix'] = '<h2>';
+        $variables['content']['field_ding_help_p_b_category'][0]['#suffix'] = '</h2>';
         // Add show more link.
         if ($wrapper->field_ding_help_p_b_show_more->value()) {
           $uri = entity_uri('taxonomy_term', $wrapper->field_ding_help_p_b_category->value());
