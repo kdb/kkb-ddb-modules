@@ -258,7 +258,7 @@ function kkb_help_preprocess_entity(&$variables) {
         // Overwrite content with collapsible.
         $variables['content'] = array(
           '#type' => 'fieldset',
-          '#title' => $wrapper->field_ding_help_p_a_title->value(),
+          '#title' => '<h2 class="ding-help-page-accordion__title">' . $wrapper->field_ding_help_p_a_title->value() . '</h2>',
           '#collapsible' => TRUE,
           '#collapsed' => TRUE,
           // The above is not enough to get collapsibles working (core bug), so
