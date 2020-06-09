@@ -15,19 +15,6 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
   $variables['classes_array'][] = 'kkb-contact-box';
   $variables['classes_array'][] = $variables['zebra'];
 
-  $variables['image'] = '';
-  if ($teaser['image'] && ($file = file_load($teaser['image']))) {
-    $params = [
-      'style_name' => 'kkb_contact_teaser',
-      'path' => $file->uri,
-      'alt' => '',
-      'attributes' => [
-        'role' => 'presentation',
-      ],
-    ];
-    $variables['image'] = theme('image_style', $params);
-  }
-
   if ($teaser['link']) {
     $variables['title'] = l($teaser['title'], $teaser['link']);
     // Hide the read more link and the image from screen readers. The title link

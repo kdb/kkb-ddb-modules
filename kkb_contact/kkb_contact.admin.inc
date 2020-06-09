@@ -13,8 +13,6 @@ function kkb_contact_settings($form, &$form_state) {
   if (!isset($form_state['teasers'])) {
     $form_state['teasers'] = variable_get('kkb_contact_teasers', []);
   }
-  // Keep track of existing images.
-  $images = [];
 
   uasort($form_state['teasers'], 'drupal_sort_weight');
 
@@ -50,9 +48,6 @@ function kkb_contact_settings($form, &$form_state) {
   ];
 
   foreach ($form_state['teasers'] as $key => $teaser) {
-    if ($teaser['image']) {
-      $images[] = $teaser['image'];
-    }
     if (isset($teaser['deleted'])) {
       // We're keeping deleted items around to retain indexing (else form_error
       // gets into trouble), and because we might need to delete the image.
@@ -204,8 +199,6 @@ function kkb_contact_settings($form, &$form_state) {
     'js' => [drupal_get_path('module', 'kkb_contact') . '/kkb_contact.admin.js'],
   ];
 
-  $form_state['images'] = $images;
-
   $form['#validate'][] = 'kkb_contact_settings_validate';
   $form['#submit'][] = 'kkb_contact_settings_submit';
 
@@ -229,47 +222,6 @@ function kkb_contact_settings_validate($form, &$form_state) {
 function kkb_contact_settings_submit($form, &$form_state) {
   $teasers = [];
   $submitted_teasers = $form_state['values']['kkb_contact_teasers'];
-  $images = array_flip($form_state['images']);
-
-  // Delete images of deleted teasers.
-  foreach ($form_state['teasers'] as $key => $teaser) {
-    if (isset($teaser['deleted'])) {
-      if ($teaser['image']) {
-        $file = file_load($teaser['image']);
-        if ($file) {
-          file_usage_delete($file, 'kkb_contact', 'kkb_contact_teasers', $key, 0);
-          file_delete($file);
-        }
-        unset($images[$teaser['image']]);
-      }
-    }
-  }
-
-  foreach ($submitted_teasers as $key => $teaser) {
-    // If the image is new, make it permanent.
-    if ($teaser['image'] && !isset($images[$teaser['image']])) {
-      $file = file_load($teaser['image']);
-      $file->status = FILE_STATUS_PERMANENT;
-      file_save($file);
-      file_usage_add($file, 'kkb_contact', 'kkb_contact_teasers', $key);
-    }
-    else {
-      unset($images[$teaser['image']]);
-    }
-    $teasers[] = $teaser;
-  }
-
-  if (!empty($images)) {
-    // Delete dangling images. Replacing the image of a teaser before hitting
-    // save will replace the fid, but not delete the file.
-    foreach ($images as $image) {
-      $file = file_load($image);
-      if ($file) {
-        file_usage_delete($file, 'kkb_contact');
-        file_delete($file);
-      }
-    }
-  }
 
   uasort($teasers, 'drupal_sort_weight');
 
@@ -295,17 +247,6 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     '#type' => 'textarea',
     '#title' => t('Body'),
     '#default_value' => $teaser['body'],
-  ];
-
-  $form['image'] = [
-    '#title' => t('Image'),
-    '#type' => 'media',
-    '#media_options' => [
-      'global' => [
-        'types' => ['image'],
-      ],
-    ],
-    '#default_value' => $teaser['image'],
   ];
 
   $form['link'] = [
@@ -369,7 +310,6 @@ function kkb_contact_settings_add_one($form, &$form_state) {
   $form_state['teasers'][$key] = [
     'title' => '',
     'body' => '',
-    'image' => 0,
     'link' => '',
     'link_text' => '',
     'weight' => 0,
