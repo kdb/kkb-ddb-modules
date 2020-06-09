@@ -3,7 +3,7 @@
 /**
  * Delete images on contact teasers and remove the image if it no longer referenced.
  */
-function kkb_help_update_7100() {
+function kkb_help_update_7101() {
   // Delete images of deleted teasers.
   $teasers = variable_get('kkb_contact_teasers', []);
   foreach ($teasers as $key => $teaser) {
@@ -14,5 +14,7 @@ function kkb_help_update_7100() {
         file_delete($file);
       }
     }
+    unset($teaser['image']);
   }
+  variable_set('kkb_contact_teasers', $teasers);
 }
