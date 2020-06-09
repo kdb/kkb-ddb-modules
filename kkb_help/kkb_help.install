@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Delete images on contact teasers and remove the image if it no longer referenced.
+ */
+function kkb_help_update_7100() {
+  // Delete images of deleted teasers.
+  $teasers = variable_get('kkb_contact_teasers', []);
+  foreach ($teasers as $key => $teaser) {
+    if ($teaser['image']) {
+      $file = file_load($teaser['image']);
+      if ($file) {
+        file_usage_delete($file, 'kkb_contact', 'kkb_contact_teasers', $key, 0);
+        file_delete($file);
+      }
+    }
+  }
+}
