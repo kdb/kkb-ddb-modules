@@ -2,10 +2,6 @@
  * Frontend styling of contact page.
  */
 
-.kkb-contact-page h2 {
-  margin-top: 1.5em;
-}
-
 .kkb-contact-page .anchor {
   display: block;
   position: relative;
@@ -16,18 +12,43 @@
 /* Layout the boxes in two columns.*/
 .kkb-contact-section {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   grid-gap: 30px;
   margin-bottom: 30px;
 }
 
-.kkb-contact-box {
-  padding: 16px;
-  border-radius: 4px;
-  background-color: #f7f7f1;
-  border: 1px solid #e8e8d7;
-  /* Fill out our spot in the parent grid. */
-  place-self: strech;
+.kkb-contact-teaser {
+  display: flex;
+}
+
+.kkb-contact-teaser:before {
+  content: ">";
+  font-size: 1.8em;
+  font-family: sans-serif;
+  font-weight: 100;
+  color: #347056;
+  top: 0.2em;
+  position: relative;
+}
+
+.kkb-contact-teaser-content {
+  padding: 0.5em;
+  transition: all 0.05s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kkb-contact-teaser-content:hover {
+  background-color: #ececeb;
+  transform: scale(1.025);
+}
+
+.kkb-contact-teaser-header {
+  font-family: FaktPro-SemiBold,sans-serif;
+  font-size: 1.3em;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .kkb-contact-section-header,
@@ -36,67 +57,16 @@
   line-height: 1.5em;
 }
 
-.kkb-contact-box .buttons {
-  /* Put button in lower right. */
-  align-self: end;
-  justify-self: end;
-}
-
-/* Heavy selector to win over class-panel.css. */
-.kkb-contact-box .buttons .more-link {
-  float: none;
-}
-
-.kkb-contact-box .buttons .more-link a {
-  float: none;
-  display: inline-block;
-  width: auto;
-}
-
-.kkb-contact-teaser {
-  /* Display children in a grid. */
-  display: inline-grid;
-  grid-template-columns: 25% 1fr;
-  grid-template-rows: auto 1fr auto;
-}
-
-.kkb-contact-teaser .image {
-  padding-right: 15px;
-  grid-column: 1;
-  grid-row: 1 / -1;
-}
-
-.kkb-contact-teaser h3,
-.kkb-contact-teaser .body,
-.kkb-contact-teaser .buttons {
-  grid-column: 2;
-}
-
 @media screen and (max-width: 600px) {
   /* One column layout on mobile. */
   .kkb-contact-section {
     grid-template-columns: 100%;
   }
-
-  /* Hide teaser images. */
-  .kkb-contact-teaser {
-    grid-template-columns: 100%;
-  }
-
-  .kkb-contact-teaser .image {
-    display: none;
-  }
-
-  .kkb-contact-teaser h3,
-  .kkb-contact-teaser .body,
-  .kkb-contact-teaser .buttons {
-    grid-column: 1;
-  }
 }
 
 .kkb-contact-phone-first {
   display: inline-grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: auto 1fr;
 }
 
@@ -168,11 +138,6 @@
   .kkb-contact-teaser h3 {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
-  }
-
-  .kkb-contact-teaser .body {
-    -ms-grid-column: 2;
-    -ms-grid-row: 2;
   }
 
   .kkb-contact-teaser .buttons {

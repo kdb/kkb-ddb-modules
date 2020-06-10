@@ -6,8 +6,10 @@
  */
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <h2><?php print $title; ?></h2>
-  <div class="body">
-    <?php print $body; ?>
+  <div class="kkb-contact-teaser-content">
+      <h2 class="kkb-contact-teaser-header"><?php print $title; ?></h2>
+      <div class="body">
+        <?php print $body; ?>
+      </div>
   </div>
 </div>
