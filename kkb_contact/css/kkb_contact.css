@@ -9,6 +9,12 @@
   visibility: hidden;
 }
 
+.kkb-contact-page h1 {
+  font-family: FaktPro-Bold,sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
 /* Layout the boxes in two columns.*/
 .kkb-contact-section {
   display: grid;
@@ -19,6 +25,15 @@
 
 .kkb-contact-teaser {
   display: flex;
+  transition:
+          transform 300ms 400ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          background-color 300ms cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.kkb-contact-teaser:hover {
+  z-index: 10;
+  transform: scale(1.15,1.15) translate(1.4em,0.5em);
 }
 
 .kkb-contact-teaser:before {
@@ -33,15 +48,11 @@
 
 .kkb-contact-teaser-content {
   padding: 0.5em;
-  transition: all 0.05s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .kkb-contact-teaser-content:hover {
   background-color: #ececeb;
-  transform: scale(1.025);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
 }
 
 .kkb-contact-teaser-header {
@@ -51,10 +62,30 @@
   margin-bottom: 0.5em;
 }
 
-.kkb-contact-section-header,
-.kkb-contact-section-footer {
-  font-size: 1.5em;
+.kkb-contact-section-header a:hover {
+  color: #3a6f55 !important;
+}
+
+.kkb-contact-section-header {
+  font-size: 1.2em;
   line-height: 1.5em;
+  font-weight: 100;
+  color: #347056;
+}
+
+.kkb-contact-section-footer {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  font-weight: 700;
+}
+
+.kkb-contact-section-footer a:before {
+  content: ">";
+  font-size: 1.5em;
+  font-family: sans-serif;
+  font-weight: 100;
+  color: #347056;
+  position: relative;
 }
 
 @media screen and (max-width: 600px) {
