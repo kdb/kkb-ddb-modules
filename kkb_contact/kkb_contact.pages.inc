@@ -47,7 +47,6 @@ function kkb_contact_page() {
   $vars['phone_first_left'] .= '<div>' . check_markup($left_box['value'], $left_box['format']) . '</div>';
   $vars['phone_first_right'] = '<p>' . nl2br(variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT)) . '</p>';
 
-  $vars['phone_second_top'] = '<h2>' . check_plain(variable_get('kkb_contact_page_phone_second_top', KKB_CONTACT_PAGE_PHONE_SECOND_TOP_DEFAULT)) . '</h2>';
   $number = variable_get('kkb_contact_page_phone_second_phone', KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT);
   $vars['phone_second_bottom'] .= l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
 

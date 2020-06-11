@@ -130,12 +130,6 @@ function kkb_contact_settings($form, &$form_state) {
     '#title' => t('Second box'),
   ];
 
-  $form['phone_wrapper']['second_box']['kkb_contact_page_phone_second_top'] = [
-    '#type' => 'textfield',
-    '#title' => t('Top'),
-    '#default_value' => variable_get('kkb_contact_page_phone_second_top', KKB_CONTACT_PAGE_PHONE_SECOND_TOP_DEFAULT),
-  ];
-
   $form['phone_wrapper']['second_box']['kkb_contact_page_phone_second_phone'] = [
     '#type' => 'textfield',
     '#title' => t('Phone number'),

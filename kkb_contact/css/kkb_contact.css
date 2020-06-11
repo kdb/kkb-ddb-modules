@@ -15,12 +15,27 @@
   font-weight: 700;
 }
 
-/* Layout the boxes in two columns.*/
+/* Layout the boxes in three columns.*/
 .kkb-contact-section {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-gap: 30px;
   margin-bottom: 30px;
+}
+
+/* Layout contact in two columns.*/
+.kkb-contact-section-contact {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 30px;
+  background-color: #c2e0dd;
+  padding: 1em;
+}
+
+.kkb-contact-section-contact h2 {
+  font-family: "FaktPro-SemiBold", sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
 }
 
 .kkb-contact-teaser {
@@ -96,8 +111,8 @@
 }
 
 .kkb-contact-phone-first {
-  display: inline-grid;
-  grid-template-columns: 33% 33% 33%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   grid-template-rows: auto 1fr;
 }
 
@@ -107,9 +122,28 @@
 
 .kkb-contact-phone-second {
   display: flex;
-  flex-direction: column;
   white-space: nowrap;
+  align-items: center;
   justify-content: space-evenly;
+}
+
+.kkb-contact-phone-second-number {
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  .kkb-contact-section-contact {
+    display: block;
+  }
+}
+
+.kkb-contact-phone-second-number:before {
+  content: "";
+  background-image: url(../images/phone.png);
+  height: 5em;
+  background-size: cover;
+  width: 5em;
+  transform: scaleY(-1);
 }
 
 .kkb-contact-phone-second p,
@@ -119,6 +153,12 @@
   line-height: 1.5em;
   color: #464646;
   text-align: center;
+}
+
+.kkb-contact-phone-second a {
+  margin-top: 0.4em;
+  font-family: FaktPro-SemiBold,sans-serif;
+  font-weight: 700;
 }
 
 .kkb-contact-write {
