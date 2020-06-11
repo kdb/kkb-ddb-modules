@@ -15,7 +15,6 @@ define('KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT', 'Kan du ikke finde svar sid
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_VALUE_DEFAULT', '<p>Telefontid i Bibliotek Online:</p>');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_FORMAT_DEFAULT', 'ding_wysiwyg');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
-define('KKB_CONTACT_PAGE_PHONE_SECOND_TOP_DEFAULT', 'Ring og spørg');
 define('KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT', '3366 3000');
 define('KKB_CONTACT_PAGE_WRITE_SECTION_TITLE_DEFAULT', 'Skriv til Biblioteket Online');
 define('KKB_CONTACT_PAGE_WRITE_FIRST_TITLE_DEFAULT', 'Personfølsomme oplysninger');
@@ -91,7 +90,6 @@ function kkb_contact_theme() {
       'phone_first_box_title' => NULL,
       'phone_first_left' => NULL,
       'phone_first_right' => NULL,
-      'phone_second_top' => NULL,
       'phone_second_bottom' => NULL,
       'write_section_title' => NULL,
       'write_first_title' => NULL,

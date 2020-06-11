@@ -20,16 +20,18 @@
   </div>
   
   <a class="anchor" name="ring"></a>
-  <h2><?php print $phone_section_title ?></h2>
-  <div class="kkb-contact-section">
-    <div class="kkb-contact-phone-first kkb-contact-box">
-      <h3><?php print $phone_first_box_title ?></h3>
-      <?php print $phone_first_left; ?>
-      <?php print $phone_first_right; ?>
+  <div class="kkb-contact-section-contact">
+    <div class="kkb-contact-box">
+      <h2><?php print $phone_section_title ?></h2>
+      <div class="kkb-contact-phone-first kkb-contact-box">
+        <?php print $phone_first_left; ?>
+        <?php print $phone_first_right; ?>
+      </div>
     </div>
     <div class="kkb-contact-phone-second kkb-contact-box">
-      <?php print $phone_second_top; ?>
-      <?php print $phone_second_bottom; ?>
+        <div class="kkb-contact-phone-second-number">
+            <?php print $phone_second_bottom; ?>
+        </div>
     </div>
   </div>
   
