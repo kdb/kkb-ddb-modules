@@ -9,16 +9,18 @@
   visibility: hidden;
 }
 
-.kkb-contact-page h1 {
+.kkb-contact-page h1 ,
+.kkb-contact-page h2 {
   font-family: FaktPro-Bold,sans-serif;
   font-size: 1.5em;
   font-weight: 700;
+  color: #3a6f55;
 }
 
 /* Layout the boxes in three columns.*/
 .kkb-contact-section {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 50% 50%;
   grid-gap: 30px;
   margin-bottom: 30px;
 }
@@ -46,12 +48,27 @@
           box-shadow 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.kkb-contact-teaser-content .body {
+  color: #464646;
+}
+
+/** Force children to have these styles,
+ *  because the variable we inject has its own style.
+ *  Probably because it was pasted from Word.
+ */
+.kkb-contact-teaser-content .body * {
+  font-family: "FaktPro-Normal", sans-serif !important;
+  font-weight: 400;
+}
+
 .kkb-contact-teaser:hover {
   z-index: 10;
   transform: scale(1.15,1.15) translate(1.4em,0.5em);
 }
 
-.kkb-contact-teaser:before {
+.kkb-contact-teaser:before,
+.kkb-contact-write-first:before,
+.kkb-contact-write-second:before{
   content: ">";
   font-size: 1.8em;
   font-family: sans-serif;
@@ -70,7 +87,7 @@
   box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
 }
 
-.kkb-contact-teaser-header {
+h2.kkb-contact-teaser-header {
   font-family: FaktPro-SemiBold,sans-serif;
   font-size: 1.3em;
   line-height: 1.2em;

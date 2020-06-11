@@ -54,23 +54,16 @@ function kkb_contact_page() {
   $vars['write_section_title'] = variable_get('kkb_contact_page_write_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT);
 
   foreach (['first', 'second'] as $box) {
-    $vars['write_' . $box . '_title'] = variable_get('kkb_contact_page_write_' . $box . '_title', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_TITLE_DEFAULT'));
-
-    $body = variable_get('kkb_contact_page_write_' . $box . '_body',
+    $box_content['title'] = variable_get('kkb_contact_page_write_' . $box . '_title', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_TITLE_DEFAULT'));
+    $box_content['body'] = variable_get('kkb_contact_page_write_' . $box . '_body',
             [
               'value' => constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_BODY_VALUE_DEFAULT'),
               'format' => constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_BODY_FORMAT_DEFAULT'),
             ]);
 
-    $vars['write_' . $box . '_body'] = check_markup($body['value'], $body['format']);
+    $box_content['link'] = variable_get('kkb_contact_page_write_' . $box . '_link', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_LINK_DEFAULT'));
 
-    $link = variable_get('kkb_contact_page_write_' . $box . '_link', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_LINK_DEFAULT'));
-
-    $vars['write_' . $box . '_link'] = '';
-    if ($link) {
-      $link_text = variable_get('kkb_contact_page_write_' . $box . '_link_text', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_LINK_TEXT_DEFAULT'));
-      $vars['write_' . $box . '_link'] = '<div class="buttons"><div class="more-link">' . l($link_text, $link) . '</div></div>';
-    }
+    $vars['contact_teasers'][] = theme('kkb_contact_teaser', ['teaser' => $box_content]);
   }
 
   return theme('kkb_contact_page', $vars);
