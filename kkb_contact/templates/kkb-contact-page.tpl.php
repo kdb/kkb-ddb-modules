@@ -38,8 +38,8 @@
   <a class="anchor" name="skriv"></a>
   <h2><?php print $write_section_title ?></h2>
   <div class="kkb-contact-section">
-    <?php foreach ($contact_teasers as $teaser) : ?>
-      <?php print $teaser; ?>
+    <?php foreach ($boxes as $box) : ?>
+      <?php print $box; ?>
     <?php endforeach; ?>
   </div>
 </div>

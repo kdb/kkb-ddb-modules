@@ -63,7 +63,7 @@ function kkb_contact_page() {
 
     $box_content['link'] = variable_get('kkb_contact_page_write_' . $box . '_link', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_LINK_DEFAULT'));
 
-    $vars['contact_teasers'][] = theme('kkb_contact_teaser', ['teaser' => $box_content]);
+    $vars['boxes'][] = theme('kkb_contact_box', ['box' => $box_content]);
   }
 
   return theme('kkb_contact_page', $vars);

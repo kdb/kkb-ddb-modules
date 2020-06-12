@@ -52,23 +52,12 @@
   color: #464646;
 }
 
-/** Force children to have these styles,
- *  because the variable we inject has its own style.
- *  Probably because it was pasted from Word.
- */
-.kkb-contact-teaser-content .body * {
-  font-family: "FaktPro-Normal", sans-serif !important;
-  font-weight: 400;
-}
-
 .kkb-contact-teaser:hover {
   z-index: 10;
   transform: scale(1.15,1.15) translate(1.4em,0.5em);
 }
 
-.kkb-contact-teaser:before,
-.kkb-contact-write-first:before,
-.kkb-contact-write-second:before{
+.kkb-contact-teaser:before {
   content: ">";
   font-size: 1.8em;
   font-family: sans-serif;
@@ -177,12 +166,6 @@ h2.kkb-contact-teaser-header {
   font-family: FaktPro-SemiBold,sans-serif;
   font-weight: 700;
 }
-
-.kkb-contact-write {
-  display: inline-grid;
-  grid-template-rows: auto 1fr auto;
-}
-
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   /* IE10 & IE11 CSS styles. IEs CSS Grid implementation is based on an
