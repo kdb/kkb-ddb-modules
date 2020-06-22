@@ -108,9 +108,16 @@ function kkb_contact_theme() {
     'variables' => ['teaser' => NULL],
     'file' => 'kkb_contact.theme.inc',
   ];
+
   $theme['kkb_contact_box'] = [
     'template' => 'templates/kkb-contact-box',
     'variables' => ['box' => NULL],
+    'file' => 'kkb_contact.theme.inc',
+  ];
+
+  $theme['kkb_contact_news'] = [
+    'template' => 'templates/kkb-contact-news',
+    'variables' => ['news' => NULL],
     'file' => 'kkb_contact.theme.inc',
   ];
 

@@ -6,6 +6,11 @@
  */
 ?>
 <div class="kkb-contact-page">
+  <?php if (!empty($news)) : ?>
+    <div class="kkb-contact-news">
+      <?php print $news; ?>
+    </div>
+  <?php endif; ?>
   <h1><?php print $page_title; ?></h1>
   <div class="kkb-contact-section-header">
     <?php print $teasers_header; ?>

@@ -45,6 +45,21 @@ function template_preprocess_kkb_contact_box(&$variables) {
 }
 
 /**
+ * Preprocess function for kkb_contact_news.
+ */
+function template_preprocess_kkb_contact_news(&$variables) {
+  $news = $variables['news'];
+
+  $variables['title'] = $news['title'];
+
+  if ($news['link']) {
+    $variables['link'] = $news['link'];
+  }
+
+  $variables['summary'] = $news['summary'];
+}
+
+/**
  * Preprocess function for kkb_contact_page.
  */
 function template_preprocess_kkb_contact_page(&$variables) {
@@ -63,7 +78,6 @@ function template_preprocess_kkb_contact_block(&$variables) {
   $variables['phone'] = l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
   $variables['opening_hours'] = nl2br(variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT));
 }
-
 /**
  * Theme function for the settings form teasers.
  */
@@ -156,3 +170,4 @@ function theme_kkb_contact_settings_teasers(&$variables) {
   return $output;
 
 }
+
