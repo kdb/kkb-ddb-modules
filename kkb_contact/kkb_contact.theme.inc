@@ -52,9 +52,7 @@ function template_preprocess_kkb_contact_news(&$variables) {
 
   $variables['title'] = $news['title'];
 
-  if ($news['link']) {
-    $variables['link'] = $news['link'];
-  }
+  $variables['link'] = $news['link'];
 
   $variables['summary'] = $news['summary'];
 }
