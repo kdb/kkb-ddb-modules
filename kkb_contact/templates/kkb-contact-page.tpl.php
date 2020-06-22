@@ -38,19 +38,8 @@
   <a class="anchor" name="skriv"></a>
   <h2><?php print $write_section_title ?></h2>
   <div class="kkb-contact-section">
-    <div class="kkb-contact-write kkb-contact-write-first kkb-contact-box">
-      <h3><?php print $write_first_title ?></h3>
-      <div class="body">
-        <?php print $write_first_body ?>
-      </div>
-      <?php print $write_first_link ?>
-    </div>
-    <div class="kkb-contact-write kkb-contact-write-second kkb-contact-box">
-      <h3><?php print $write_second_title ?></h3>
-      <div class="body">
-        <?php print $write_second_body ?>
-      </div>
-      <?php print $write_second_link ?>
-    </div>
+    <?php foreach ($boxes as $box) : ?>
+      <?php print $box; ?>
+    <?php endforeach; ?>
   </div>
 </div>

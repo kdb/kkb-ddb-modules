@@ -15,19 +15,33 @@ function template_preprocess_kkb_contact_teaser(&$variables) {
   $variables['classes_array'][] = 'kkb-contact-box';
   $variables['classes_array'][] = $variables['zebra'];
 
+  $variables['title'] = $teaser['title'];
+
   if ($teaser['link']) {
-    $variables['title'] = l($teaser['title'], $teaser['link']);
-    // Hide the read more link and the image from screen readers. The title link
-    // is better for them.
-    $attributes = ['aria-hidden' => 'true'];
-    $variables['link'] = l($teaser['link_text'] ? $teaser['link_text'] : t('Read more'), $teaser['link'], ['attributes' => $attributes]);
-    $variables['image'] = l($variables['image'], $teaser['link'], ['html' => TRUE, 'attributes' => $attributes]);
-  }
-  else {
-    $variables['title'] = $teaser['title'];
-    $variables['link'] = '';
+    $variables['link'] = $teaser['link'];
   }
   $variables['body'] = check_plain($teaser['body']);
+}
+
+/**
+ * Preprocess function for kkb_contact_box.
+ */
+function template_preprocess_kkb_contact_box(&$variables) {
+  $box = $variables['box'];
+
+  $variables['classes_array'][] = 'kkb-contact-teaser';
+  $variables['classes_array'][] = 'kkb-contact-box';
+  $variables['classes_array'][] = $variables['zebra'];
+
+  $variables['title'] = $box['title'];
+
+  if ($box['link']) {
+    $variables['link'] = $box['link'];
+  }
+
+  if (array_key_exists('value', $box['body'])) {
+    $variables['body'] = check_markup($box['body']['value'], $box['body']['format']);
+  }
 }
 
 /**
