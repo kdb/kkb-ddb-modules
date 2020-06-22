@@ -12,6 +12,21 @@ function kkb_contact_page() {
   $vars = [];
 
   $vars['page_title'] = variable_get('kkb_contact_page_title', KKB_CONTACT_PAGE_TITLE_DEFAULT);
+
+  if ($news_article_data = variable_get('kkb_contact_page_news', KKB_CONTACT_PAGE_NEWS_DEFAULT)) {
+    if ($news_node = node_load($news_article_data['entity_id'])) {
+      $news_wrapper = entity_metadata_wrapper('node', $news_node);
+
+      $news = [
+        'title' => $news_wrapper->label(),
+        'summary' => $news_wrapper->field_ding_news_lead->value(),
+        'link' => url("node/" . $news_wrapper->getIdentifier())
+      ];
+
+      $vars['news'] = theme('kkb_contact_news', ['news' => $news]);
+    }
+  }
+
   $header = variable_get('kkb_contact_teasers_header',
             [
               'value' => KKB_CONTACT_TEASERS_HEADER_VALUE_DEFAULT,

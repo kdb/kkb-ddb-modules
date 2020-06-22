@@ -1,0 +1,10 @@
+<?php
+
+/**
+* Enable entityreference_autocomplete.
+*/
+function kkb_contact_update_7101() {
+  $modules = ['entityreference_autocomplete'];
+  $enable_dependencies = TRUE;
+  module_enable($modules, $enable_dependencies);
+}

@@ -22,6 +22,17 @@ function kkb_contact_settings($form, &$form_state) {
     '#default_value' => variable_get('kkb_contact_page_title', KKB_CONTACT_PAGE_TITLE_DEFAULT),
   ];
 
+  $form['kkb_contact_page_news'] = [
+    '#type' => 'entityreference',
+    '#era_entity_type' => 'node',
+    '#era_bundles' => ['ding_news'],
+    '#era_cardinality' => 1,
+    '#title' => t('News message'),
+    '#default_value' => variable_get('kkb_contact_page_news', KKB_CONTACT_PAGE_NEWS_DEFAULT),
+    '#size' => 50,
+    '#required' => FALSE,
+  ];
+
   $form['teasers_wrapper'] = [
     '#type' => 'fieldset',
     '#title' => t('Teasers'),

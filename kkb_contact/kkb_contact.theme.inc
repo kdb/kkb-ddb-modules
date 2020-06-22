@@ -45,6 +45,19 @@ function template_preprocess_kkb_contact_box(&$variables) {
 }
 
 /**
+ * Preprocess function for kkb_contact_news.
+ */
+function template_preprocess_kkb_contact_news(&$variables) {
+  $news = $variables['news'];
+
+  $variables['title'] = $news['title'];
+
+  $variables['link'] = $news['link'];
+
+  $variables['summary'] = $news['summary'];
+}
+
+/**
  * Preprocess function for kkb_contact_page.
  */
 function template_preprocess_kkb_contact_page(&$variables) {
@@ -156,3 +169,4 @@ function theme_kkb_contact_settings_teasers(&$variables) {
   return $output;
 
 }
+

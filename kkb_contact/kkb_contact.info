@@ -2,4 +2,5 @@ name = KKB Contact
 description = Contact page for KKB.
 core = 7.x
 package = KKB
+dependencies[] = entityreference_autocomplete
 stylesheets[all][] = css/kkb_contact.webform.css

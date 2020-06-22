@@ -217,3 +217,55 @@ h2.kkb-contact-teaser-header {
     -ms-grid-column-align: end;
   }
 }
+
+/**
+ * kkb-contact-news
+ */
+.kkb-contact-news-container {
+  background-color: #c2e0dd;
+  display: flex;
+  align-items: center;
+  padding: 4em 2em;
+  position: relative;
+  top: -3em;
+}
+
+.kkb-contact-news-container:before {
+  content: 'i';
+  font-size: 6em;
+  font-family: serif;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  align-items: center;
+  margin: 0 9%;
+}
+
+.kkb-contact-news-header {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.kbb-contact-news-article {
+  max-width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+  .kkb-contact-news-container {
+    display: block;
+  }
+
+  .kbb-contact-news-article {
+    max-width: 100%;
+    padding-top: 1.5em;
+  }
+
+  .kkb-contact-news-container:before {
+    margin: 0 auto;
+  }
+}
