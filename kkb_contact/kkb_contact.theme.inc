@@ -76,6 +76,7 @@ function template_preprocess_kkb_contact_block(&$variables) {
   $variables['phone'] = l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
   $variables['opening_hours'] = nl2br(variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT));
 }
+
 /**
  * Theme function for the settings form teasers.
  */
