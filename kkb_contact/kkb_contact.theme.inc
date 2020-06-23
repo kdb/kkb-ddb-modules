@@ -68,13 +68,19 @@ function template_preprocess_kkb_contact_page(&$variables) {
  * Preprocess function for kkb_contact_block.
  */
 function template_preprocess_kkb_contact_block(&$variables) {
+  $node = menu_get_object();
+  $language = !empty($node) ? $node->language : 'da';
+
   drupal_add_css(drupal_get_path('module', 'kkb_contact') . '/css/kkb_contact.block.css');
   $number = variable_get(
     'kkb_contact_page_phone_second_phone',
     KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT
   );
+  $variables['phone_header'] = variable_get('kkb_contact_page_phone_section_title_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN);
   $variables['phone'] = l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
-  $variables['opening_hours'] = nl2br(variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT));
+  $variables['opening_hours_header'] = variable_get('kkb_contact_page_phone_opening_hours_header_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_DA : KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_EN);
+  $variables['opening_hours'] = nl2br(variable_get('kkb_contact_page_phone_first_right_side_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN));
+  $variables['write'] = variable_get('kkb_contact_page_phone_write_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_EN);
 }
 
 /**

@@ -11,11 +11,26 @@ define('KKB_CONTACT_TEASERS_HEADER_VALUE_DEFAULT', '<p>Her kan du finde det, du 
 define('KKB_CONTACT_TEASERS_HEADER_FORMAT_DEFAULT', 'ding_wysiwyg');
 define('KKB_CONTACT_TEASERS_FOOTER_VALUE_DEFAULT', '<p>Du kan finde mere hjælp og information på <a href="/faq">FAQ siderne</a>.</p>');
 define('KKB_CONTACT_TEASERS_FOOTER_FORMAT_DEFAULT', 'ding_wysiwyg');
-define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT', 'Ring til Biblioteket Online');
+
+define('KKB_CONTACT_PAGE_PHONE_SECTION_BLOCK_TITLE_DEFAULT_DA', 'Har du stadigvæk brug for hjælp?');
+define('KKB_CONTACT_PAGE_PHONE_SECTION_BLOCK_TITLE_DEFAULT_EN', 'What do you need help with?');
+
+define('KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_DA', 'Telefontid');
+define('KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_EN', 'Opening hours');
+
+define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_DA', 'Ring til Biblioteket Online');
+define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN', 'Call the Library Online');
+
 define('KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT', 'Kan du ikke finde svar sidder vi klar til at hjælpe med at svare på dine spørgsmål');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_VALUE_DEFAULT', '<p>Telefontid i Bibliotek Online:</p>');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_FORMAT_DEFAULT', 'ding_wysiwyg');
-define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
+
+define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
+define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN', "Monday to tuesday from 8:00 to 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
+
+define('KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_DA', 'Skriv');
+define('KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_EN', 'Write');
+
 define('KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT', '3366 3000');
 define('KKB_CONTACT_PAGE_WRITE_SECTION_TITLE_DEFAULT', 'Skriv til Biblioteket Online');
 define('KKB_CONTACT_PAGE_WRITE_FIRST_TITLE_DEFAULT', 'Personfølsomme oplysninger');

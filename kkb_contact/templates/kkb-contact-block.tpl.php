@@ -6,13 +6,13 @@
  */
 ?>
 <section class="phone-section">
-  <h3>Ring til biblioteket online:</h3>
+  <h3><?php print $phone_header; ?>:</h3>
   <?php print $phone ?>
 </section>
 <section>
-  <h3>Telefontid:</h3>
+  <h3><?php print $opening_hours_header; ?>:</h3>
   <?php print $opening_hours ?>
 </section>
 <section>
-  <h3><a href="/kontakt#skriv">Skriv</a></h3>
+  <h3><a href="/kontakt#skriv"><?php print $write; ?></a></h3>
 </section>

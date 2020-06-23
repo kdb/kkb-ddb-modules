@@ -9,6 +9,8 @@
  * Settings form builder.
  */
 function kkb_contact_settings($form, &$form_state) {
+  $node = menu_get_object();
+  $language = !empty($node) ? $node->language : 'da';
 
   if (!isset($form_state['teasers'])) {
     $form_state['teasers'] = variable_get('kkb_contact_teasers', []);
@@ -98,10 +100,16 @@ function kkb_contact_settings($form, &$form_state) {
     '#title' => t('Phone section'),
   ];
 
-  $form['phone_wrapper']['kkb_contact_page_phone_section_title'] = [
+  $form['phone_wrapper']['kkb_contact_page_phone_section_title_da'] = [
     '#type' => 'textfield',
-    '#title' => t('Section title'),
-    '#default_value' => variable_get('kkb_contact_page_phone_section_title', KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT),
+    '#title' => t('DA: Section title'),
+    '#default_value' => variable_get('kkb_contact_page_phone_section_title_' . $language, KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_DA),
+  ];
+
+  $form['phone_wrapper']['kkb_contact_page_phone_section_title_en'] = [
+    '#type' => 'textfield',
+    '#title' => t('EN: Section title'),
+    '#default_value' => variable_get('kkb_contact_page_phone_section_title_' . $language, KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN),
   ];
 
   $form['phone_wrapper']['first_box'] = [
@@ -128,10 +136,18 @@ function kkb_contact_settings($form, &$form_state) {
     '#format' => $left_box['format'],
   ];
 
-  $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_right_side'] = [
+  $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_right_side_da'] = [
     '#type' => 'textarea',
-    '#title' => t('Right'),
-    '#default_value' => variable_get('kkb_contact_page_phone_first_right_side', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT),
+    '#title' => t('DA: Right'),
+    '#default_value' => variable_get('kkb_contact_page_phone_first_right_side_da', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA),
+    '#cols' => 40,
+    '#rows' => 4,
+  ];
+
+  $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_right_side_en'] = [
+    '#type' => 'textarea',
+    '#title' => t('EN: Right'),
+    '#default_value' => variable_get('kkb_contact_page_phone_first_right_side_en', KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN),
     '#cols' => 40,
     '#rows' => 4,
   ];
@@ -156,6 +172,18 @@ function kkb_contact_settings($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Section title'),
     '#default_value' => variable_get('kkb_contact_page_write_section_title', KKB_CONTACT_PAGE_WRITE_SECTION_TITLE_DEFAULT),
+  ];
+
+  $form['write_wrapper']['kkb_contact_page_write_da'] = [
+    '#type' => 'textfield',
+    '#title' => t('DA: Write'),
+    '#default_value' => variable_get('kkb_contact_page_write_da', KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_DA),
+  ];
+
+  $form['write_wrapper']['kkb_contact_page_write_en'] = [
+    '#type' => 'textfield',
+    '#title' => t('EN: Write'),
+    '#default_value' => variable_get('kkb_contact_page_write_en', KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_EN),
   ];
 
   foreach (['first' => t('First box'), 'second' => t('Second box')] as $box => $title) {
@@ -346,4 +374,8 @@ function kkb_contact_settings_delete($form, &$form_state) {
  */
 function kkb_contact_settings_callback(array $form, array &$form_state) {
   return $form['teasers_wrapper'];
+}
+
+function kkb_contact_variables_form() {
+  return drupal_get_form('variable_module_form', 'kkb_contact');
 }

@@ -17,13 +17,13 @@
   </div>
   <div class="kkb-contact-section">
     <?php foreach ($teasers as $teaser) : ?>
-    <?php print $teaser; ?>
+      <?php print $teaser; ?>
     <?php endforeach; ?>
   </div>
   <div class="kkb-contact-section-footer">
     <?php print $teasers_footer; ?>
   </div>
-  
+
   <a class="anchor" name="ring"></a>
   <div class="kkb-contact-section-contact">
     <div class="kkb-contact-box">
@@ -34,12 +34,12 @@
       </div>
     </div>
     <div class="kkb-contact-phone-second kkb-contact-box">
-        <div class="kkb-contact-phone-second-number">
-            <?php print $phone_second_bottom; ?>
-        </div>
+      <div class="kkb-contact-phone-second-number">
+        <?php print $phone_second_bottom; ?>
+      </div>
     </div>
   </div>
-  
+
   <a class="anchor" name="skriv"></a>
   <h2><?php print $write_section_title ?></h2>
   <div class="kkb-contact-section">
