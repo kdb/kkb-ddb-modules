@@ -225,13 +225,12 @@ function kkb_contact_settings_validate($form, &$form_state) {
  * Submit handler for settings form.
  */
 function kkb_contact_settings_submit($form, &$form_state) {
-  $teasers = [];
   $submitted_teasers = $form_state['values']['kkb_contact_teasers'];
 
-  uasort($teasers, 'drupal_sort_weight');
+  uasort($submitted_teasers, 'drupal_sort_weight');
 
   // Set value for system_settings_form to save.
-  form_set_value($form['teasers_wrapper']['kkb_contact_teasers'], $teasers, $form_state);
+  form_set_value($form['teasers_wrapper']['kkb_contact_teasers'], $submitted_teasers, $form_state);
 }
 
 /**
