@@ -38,6 +38,7 @@
   font-family: "FaktPro-SemiBold", sans-serif;
   font-weight: 700;
   font-size: 1.5em;
+  color: #2b2e34;
 }
 
 .kkb-contact-teaser {
@@ -120,6 +121,11 @@ h2.kkb-contact-teaser-header {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto 1fr;
+}
+
+.kkb-contact-phone-first a {
+  color: #2b2e34;
+  text-decoration: underline;
 }
 
 .kkb-contact-phone-first h3 {
