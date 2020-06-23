@@ -42,7 +42,7 @@
 
   <a class="anchor" name="skriv"></a>
   <h2><?php print $write_section_title ?></h2>
-  <div class="kkb-contact-section">
+  <div class="kkb-contact-section kkb-contact-section-boxes">
     <?php foreach ($boxes as $box) : ?>
       <?php print $box; ?>
     <?php endforeach; ?>
