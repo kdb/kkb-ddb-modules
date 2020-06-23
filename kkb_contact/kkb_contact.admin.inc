@@ -61,7 +61,7 @@ function kkb_contact_settings($form, &$form_state) {
   foreach ($form_state['teasers'] as $key => $teaser) {
     if (isset($teaser['deleted'])) {
       // We're keeping deleted items around to retain indexing (else form_error
-      // gets into trouble), and because we might need to delete the image.
+      // gets into trouble).
       continue;
     }
 
