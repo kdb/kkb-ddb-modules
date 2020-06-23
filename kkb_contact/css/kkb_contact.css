@@ -20,9 +20,13 @@
 /* Layout the boxes in three columns.*/
 .kkb-contact-section {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   grid-gap: 30px;
   margin-bottom: 30px;
+}
+
+.kkb-contact-section-boxes {
+  grid-template-columns: 50% 50%;
 }
 
 /* Layout contact in two columns.*/
