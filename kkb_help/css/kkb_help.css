@@ -145,6 +145,10 @@
   margin-top: 26px;
 }
 
+.ding-help-page-accordion__title {
+  font-size: 18px;
+}
+
 /* Style ol on help page as step directions. */
 .node-type-ding-help-page ol {
   /* Reset counter. */
