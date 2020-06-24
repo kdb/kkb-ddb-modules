@@ -47,6 +47,8 @@
 
 .kkb-contact-teaser {
   display: flex;
+  padding: 1em;
+  margin: -1em;
   transition:
           transform 300ms 400ms cubic-bezier(0.165, 0.84, 0.44, 1),
           background-color 300ms cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -59,7 +61,8 @@
 
 .kkb-contact-teaser:hover {
   z-index: 10;
-  transform: scale(1.15,1.15) translate(1.4em,0.5em);
+  background-color: #efefef;
+  box-shadow: 0 4px 9px 0 rgba(0,0,0,0.2);
 }
 
 .kkb-contact-teaser:before {
@@ -74,11 +77,6 @@
 
 .kkb-contact-teaser-content {
   padding: 0.5em;
-}
-
-.kkb-contact-teaser-content:hover {
-  background-color: #ececeb;
-  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
 }
 
 h2.kkb-contact-teaser-header {
