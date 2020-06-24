@@ -81,10 +81,10 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
-  $theme['field__ding_help_page_step_by_step'] = array(
+  $theme['field__field_ding_help_p_ss_steps'] = array(
     'render element' => 'element',
     'base hook' => 'field',
-    'template' => 'field--ding-help-page-step-by-step',
+    'template' => 'field--field-ding-help-p-ss-steps',
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
@@ -92,6 +92,13 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'render element' => 'element',
     'base hook' => 'field',
     'template' => 'field--field-ding-help-p-s-title',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
+  $theme['field__field_ding_help_p_ss_title'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-p-ss-title',
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
@@ -299,6 +306,23 @@ function kkb_help_preprocess_entity(&$variables) {
       case 'ding_help_page_step_by_step';
         drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.steps.css');
         drupal_add_js(drupal_get_path('module', 'kkb_help') . '/js/kkb_help.steps.js');
+
+        // When step-by-step has a title, add a property to the step paragraphs
+        // so we can adjust their title accordingly.
+        if ($wrapper->field_ding_help_p_ss_title->value()) {
+          foreach ($wrapper->field_ding_help_p_ss_steps as $step) {
+            $step->value()->has_parent_title = TRUE;
+          }
+        }
+        break;
+
+      case 'ding_help_page_step':
+        $paragraph = $variables['paragraphs_item'];
+        $variables['heading_type'] = 'h2';
+        // Use a h3 if our parent step-by-step has a title.
+        if (isset($paragraph->has_parent_title)) {
+          $variables['heading_type'] = 'h3';
+        }
         break;
     }
   }
