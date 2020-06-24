@@ -218,13 +218,6 @@ function kkb_contact_settings($form, &$form_state) {
       '#size' => 50,
     ];
 
-    $form['write_wrapper'][$box . '_box']['kkb_contact_page_write_' . $box . '_link_text'] = [
-      '#type' => 'textfield',
-      '#title' => t('Link text'),
-      '#default_value' => variable_get('kkb_contact_page_write_' . $box . '_link_text', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_LINK_TEXT_DEFAULT')),
-      '#size' => 50,
-    ];
-
   }
 
   $form['#attached'] = [
@@ -289,13 +282,6 @@ function kkb_contact_settings_teaser_form($teaser, $key) {
     '#required' => TRUE,
   ];
 
-  $form['link_text'] = [
-    '#type' => 'textfield',
-    '#title' => t('Link text'),
-    '#default_value' => $teaser['link_text'],
-    '#size' => 50,
-  ];
-
   $form['weight'] = [
     '#type' => 'weight',
     '#delta' => 10,
@@ -343,7 +329,6 @@ function kkb_contact_settings_add_one($form, &$form_state) {
     'title' => '',
     'body' => '',
     'link' => '',
-    'link_text' => '',
     'weight' => 0,
     'region' => 'enabled',
   ];
