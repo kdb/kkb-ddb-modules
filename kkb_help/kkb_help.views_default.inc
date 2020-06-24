@@ -69,7 +69,7 @@ function kkb_help_views_default_views() {
   $handler->display->display_options['arguments']['field_ding_help_page_category_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_ding_help_page_category_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_ding_help_page_category_tid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';

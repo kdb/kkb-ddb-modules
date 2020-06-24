@@ -28,7 +28,9 @@
 ?>
 <div class="step-item js-step-item <?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="step-header js-step-header">
-    <div class="step-title js-step-title"><?php print render($content['field_ding_help_p_s_title']); ?></div>
+    <<?php print $heading_type; ?> class="step-title js-step-title">
+      <?php print render($content['field_ding_help_p_s_title']); ?>
+    </<?php print $heading_type; ?>>
   </div>
   <div class="step-content js-step-content"<?php print $content_attributes; ?>>
     <?php print render($content); ?>
