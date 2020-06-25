@@ -39,7 +39,7 @@
 }
 
 .kkb-contact-section-contact h2 {
-  font-family: "FaktPro-SemiBold", sans-serif;
+  font-family: "FaktPro-Bold", sans-serif;
   font-weight: 700;
   font-size: 1.5em;
   color: #2b2e34;
@@ -66,13 +66,15 @@
 }
 
 .kkb-contact-teaser:before {
-  content: ">";
-  font-size: 1.8em;
-  font-family: sans-serif;
-  font-weight: 100;
-  color: #347056;
-  top: 0.2em;
+  content: "";
+  background-image: url('../images/internal-link.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   position: relative;
+  min-width: 12px;
+  max-width: 12px;
+  height: 22px;
+  top: 5px;
 }
 
 .kkb-contact-teaser-content {
@@ -104,12 +106,15 @@ h2.kkb-contact-teaser-header {
 }
 
 .kkb-contact-section-footer a:before {
-  content: ">";
-  font-size: 1.5em;
-  font-family: sans-serif;
-  font-weight: 100;
-  color: #347056;
+  content: "";
+  background-image: url('../images/internal-link.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 22px;
+  display: inline-block;
   position: relative;
+  top: 5px;
 }
 
 @media screen and (max-width: 600px) {
