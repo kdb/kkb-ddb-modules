@@ -12,7 +12,7 @@
 .kkb-contact-page h1 ,
 .kkb-contact-page h2 {
   font-family: FaktPro-Bold,sans-serif;
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-weight: 700;
   color: #3a6f55;
 }
@@ -20,13 +20,13 @@
 /* Layout the boxes in three columns.*/
 .kkb-contact-section {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 31.51% 31.51% 31.51%;
   grid-gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .kkb-contact-section-boxes {
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 48.7% 48.7%;
 }
 
 /* Layout contact in two columns.*/
@@ -36,10 +36,11 @@
   margin-bottom: 30px;
   background-color: #c2e0dd;
   padding: 1em;
+  min-height: 260px;
 }
 
 .kkb-contact-section-contact h2 {
-  font-family: "FaktPro-SemiBold", sans-serif;
+  font-family: "FaktPro-Bold", sans-serif;
   font-weight: 700;
   font-size: 1.5em;
   color: #2b2e34;
@@ -66,13 +67,15 @@
 }
 
 .kkb-contact-teaser:before {
-  content: ">";
-  font-size: 1.8em;
-  font-family: sans-serif;
-  font-weight: 100;
-  color: #347056;
-  top: 0.2em;
+  content: "";
+  background-image: url('../images/internal-link.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   position: relative;
+  min-width: 12px;
+  max-width: 12px;
+  height: 22px;
+  top: 5px;
 }
 
 .kkb-contact-teaser-content {
@@ -91,25 +94,33 @@ h2.kkb-contact-teaser-header {
 }
 
 .kkb-contact-section-header {
-  font-size: 1.2em;
+  font-size: 1.3em;
   line-height: 1.5em;
   font-weight: 100;
+  margin-bottom: 50px;
   color: #347056;
 }
 
 .kkb-contact-section-footer {
   font-size: 1.2em;
   line-height: 1.5em;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .kkb-contact-section-footer a:before {
-  content: ">";
-  font-size: 1.5em;
-  font-family: sans-serif;
-  font-weight: 100;
-  color: #347056;
+  content: "";
+  background-image: url('../images/internal-link.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 22px;
+  display: inline-block;
   position: relative;
+  top: 5px;
+}
+
+.kkb-contact-section-footer a:first-of-type {
+  margin-right: 50px;
 }
 
 @media screen and (max-width: 600px) {
@@ -157,7 +168,6 @@ h2.kkb-contact-teaser-header {
   height: 5em;
   background-size: cover;
   width: 5em;
-  transform: scaleY(-1);
 }
 
 .kkb-contact-phone-second p,
@@ -235,7 +245,7 @@ h2.kkb-contact-teaser-header {
   align-items: center;
   padding: 4em 2em;
   position: relative;
-  top: -3em;
+  margin-top: -3em;
 }
 
 .kkb-contact-news-container:before {
@@ -254,7 +264,7 @@ h2.kkb-contact-teaser-header {
   margin: 0 9%;
 }
 
-.kkb-contact-news-header {
+h2.kkb-contact-news-header {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
@@ -275,5 +285,9 @@ h2.kkb-contact-teaser-header {
 
   .kkb-contact-news-container:before {
     margin: 0 auto;
+  }
+
+  .kkb-contact-news-header {
+    line-height: 1.2em;
   }
 }

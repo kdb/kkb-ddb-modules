@@ -80,7 +80,7 @@ function template_preprocess_kkb_contact_block(&$variables) {
   $variables['phone'] = l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
   $variables['opening_hours_header'] = variable_get('kkb_contact_page_phone_opening_hours_header_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_DA : KKB_CONTACT_PAGE_PHONE_OPENING_HOURS_HEADER_EN);
   $variables['opening_hours'] = nl2br(variable_get('kkb_contact_page_phone_first_right_side_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN));
-  $variables['write'] = variable_get('kkb_contact_page_phone_write_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_EN);
+  $variables['write'] = variable_get('kkb_contact_page_write_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_WRITE_DEFAULT_DA : KKB_CONTACT_PAGE_WRITE_DEFAULT_EN);
 }
 
 /**

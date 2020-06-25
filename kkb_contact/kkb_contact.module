@@ -28,8 +28,8 @@ define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_FORMAT_DEFAULT', 'ding_wysiwyg');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
 define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN', "Monday to tuesday from 8:00 to 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
 
-define('KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_DA', 'Skriv');
-define('KKB_CONTACT_PAGE_PHONE_WRITE_DEFAULT_EN', 'Write');
+define('KKB_CONTACT_PAGE_WRITE_DEFAULT_DA', 'Skriv');
+define('KKB_CONTACT_PAGE_WRITE_DEFAULT_EN', 'Write');
 
 define('KKB_CONTACT_PAGE_PHONE_SECOND_PHONE_DEFAULT', '3366 3000');
 define('KKB_CONTACT_PAGE_WRITE_SECTION_TITLE_DEFAULT', 'Skriv til Biblioteket Online');
