@@ -168,7 +168,6 @@ h2.kkb-contact-teaser-header {
   height: 5em;
   background-size: cover;
   width: 5em;
-  transform: scaleY(-1);
 }
 
 .kkb-contact-phone-second p,
