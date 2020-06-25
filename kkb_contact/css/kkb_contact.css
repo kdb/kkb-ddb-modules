@@ -20,13 +20,13 @@
 /* Layout the boxes in three columns.*/
 .kkb-contact-section {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 31.51% 31.51% 31.51%;
   grid-gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .kkb-contact-section-boxes {
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 48.7% 48.7%;
 }
 
 /* Layout contact in two columns.*/
@@ -36,6 +36,7 @@
   margin-bottom: 30px;
   background-color: #c2e0dd;
   padding: 1em;
+  min-height: 260px;
 }
 
 .kkb-contact-section-contact h2 {
@@ -96,13 +97,14 @@ h2.kkb-contact-teaser-header {
   font-size: 1.2em;
   line-height: 1.5em;
   font-weight: 100;
+  margin-bottom: 50px;
   color: #347056;
 }
 
 .kkb-contact-section-footer {
   font-size: 1.2em;
   line-height: 1.5em;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .kkb-contact-section-footer a:before {
@@ -115,6 +117,10 @@ h2.kkb-contact-teaser-header {
   display: inline-block;
   position: relative;
   top: 5px;
+}
+
+.kkb-contact-section-footer a:first-of-type {
+  margin-right: 50px;
 }
 
 @media screen and (max-width: 600px) {
@@ -240,7 +246,7 @@ h2.kkb-contact-teaser-header {
   align-items: center;
   padding: 4em 2em;
   position: relative;
-  top: -3em;
+  margin-top: -3em;
 }
 
 .kkb-contact-news-container:before {
