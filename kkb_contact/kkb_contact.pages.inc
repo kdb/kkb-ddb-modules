@@ -69,7 +69,7 @@ function kkb_contact_page() {
   $vars['phone_second_bottom'] .= l($number, 'tel:+45' . strtr($number, [' ' => '']), ['external' => TRUE]);
 
   // Write section.
-  $vars['write_section_title'] = variable_get('kkb_contact_page_write_section_title_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN);
+  $vars['write_section_title'] = variable_get('kkb_contact_page_write_section_title');
 
   foreach (['first', 'second'] as $box) {
     $box_content['title'] = variable_get('kkb_contact_page_write_' . $box . '_title', constant('KKB_CONTACT_PAGE_WRITE_' . strtoupper($box) . '_TITLE_DEFAULT'));
