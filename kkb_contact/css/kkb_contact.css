@@ -269,6 +269,8 @@ h2.kkb-contact-news-header {
   font-size: 2em;
   margin-bottom: 0.5em;
   line-height: 1.2em;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .kbb-contact-news-article {
