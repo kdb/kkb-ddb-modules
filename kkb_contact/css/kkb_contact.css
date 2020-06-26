@@ -13,6 +13,7 @@
 .kkb-contact-page h2 {
   font-family: FaktPro-Bold,sans-serif;
   font-size: 1.8em;
+  line-height: 1.2em;
   font-weight: 700;
   color: #3a6f55;
 }
@@ -267,6 +268,7 @@ h2.kkb-contact-teaser-header {
 h2.kkb-contact-news-header {
   font-size: 2em;
   margin-bottom: 0.5em;
+  line-height: 1.2em;
 }
 
 .kbb-contact-news-article {
