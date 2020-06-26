@@ -54,7 +54,10 @@ function kkb_contact_page() {
 
   // Phone section.
   $vars['phone_section_title'] = variable_get('kkb_contact_page_phone_section_title_' . $language, $language === 'da' ? KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_DA : KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN);
-  $vars['phone_first_box_title'] = variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT);
+
+  $phone_first_title = variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT);
+
+  $vars['phone_first_box_title'] = check_markup($phone_first_title['value'], $phone_first_title['format']);
 
   $left_box = variable_get('kkb_contact_page_phone_first_left_side',
               [

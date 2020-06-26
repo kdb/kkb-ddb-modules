@@ -24,6 +24,7 @@ define('KKB_CONTACT_PAGE_PHONE_SECTION_TITLE_DEFAULT_EN', 'Call the Library Onli
 define('KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT', 'Kan du ikke finde svar sidder vi klar til at hjælpe med at svare på dine spørgsmål');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_VALUE_DEFAULT', '<p>Telefontid i Bibliotek Online:</p>');
 define('KKB_CONTACT_PAGE_PHONE_FIRST_LEFT_SIDE_FORMAT_DEFAULT', 'ding_wysiwyg');
+define('KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_FORMAT_DEFAULT', 'ding_wysiwyg');
 
 define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_DA', "Mandag til torsdag fra 8:00 til 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
 define('KKB_CONTACT_PAGE_PHONE_FIRST_RIGHT_SIDE_DEFAULT_EN', "Monday to tuesday from 8:00 to 20:00\nFredag fra 8:00 til 18:00\nLørdag fra 10:00 til 14:00\nVihar lukket på søn- og helligdage.");
