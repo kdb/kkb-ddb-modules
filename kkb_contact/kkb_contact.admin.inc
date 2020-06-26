@@ -115,10 +115,16 @@ function kkb_contact_settings($form, &$form_state) {
     '#title' => t('First box'),
   ];
 
+  $phone_first_title = variable_get('kkb_contact_page_phone_first_title', [
+    'value' => KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT,
+    'format' => KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_FORMAT_DEFAULT,
+  ]);
+
   $form['phone_wrapper']['first_box']['kkb_contact_page_phone_first_title'] = [
-    '#type' => 'textfield',
+    '#type' => 'text_format',
     '#title' => t('Title'),
-    '#default_value' => variable_get('kkb_contact_page_phone_first_title', KKB_CONTACT_PAGE_PHONE_FIRST_TITLE_DEFAULT),
+    '#default_value' => $phone_first_title['value'],
+    '#format' => $phone_first_title['format']
   ];
 
   $left_box = variable_get('kkb_contact_page_phone_first_left_side',

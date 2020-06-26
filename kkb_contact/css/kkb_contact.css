@@ -44,8 +44,12 @@
 }
 
 .kkb-contact-section-contact-title {
-  margin-bottom: 1em;
+  margin-bottom: 1.1em;
   font-weight: 700;
+}
+
+.kkb-contact-section-contact-title p {
+  margin-bottom: 0.1em;
 }
 
 .kkb-contact-section-contact h2 {
@@ -53,6 +57,7 @@
   font-weight: 700;
   font-size: 1.8em;
   line-height: 1.2em;
+  margin-bottom: 0.6em;
   color: #2b2e34;
 }
 
@@ -117,6 +122,11 @@ h2.kkb-contact-teaser-header {
   font-weight: 500;
 }
 
+.kkb-contact-section-footer p {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .kkb-contact-section-footer a:before {
   content: "";
   background-image: url('../images/internal-link.png');
@@ -168,6 +178,14 @@ h2.kkb-contact-teaser-header {
 @media screen and (max-width: 600px) {
   .kkb-contact-section-contact {
     display: block;
+  }
+
+  .kkb-contact-section-contact-content {
+    display: block;
+  }
+
+  .kkb-contact-phone-second {
+    justify-content: start;
   }
 }
 
