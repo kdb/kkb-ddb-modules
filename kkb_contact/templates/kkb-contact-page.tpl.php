@@ -26,16 +26,19 @@
 
   <a class="anchor" name="ring"></a>
   <div class="kkb-contact-section-contact">
-    <div class="kkb-contact-box">
-      <h2><?php print $phone_section_title ?></h2>
+    <h2><?php print $phone_section_title ?></h2>
+    <div class="kkb-contact-section-contact-title">
+      <?php print $phone_first_box_title; ?>
+    </div>
+    <div class="kkb-contact-section-contact-content">
       <div class="kkb-contact-phone-first kkb-contact-box">
         <?php print $phone_first_left; ?>
         <?php print $phone_first_right; ?>
       </div>
-    </div>
-    <div class="kkb-contact-phone-second kkb-contact-box">
-      <div class="kkb-contact-phone-second-number">
-        <?php print $phone_second_bottom; ?>
+      <div class="kkb-contact-phone-second kkb-contact-box">
+        <div class="kkb-contact-phone-second-number">
+          <?php print $phone_second_bottom; ?>
+        </div>
       </div>
     </div>
   </div>

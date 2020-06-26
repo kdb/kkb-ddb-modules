@@ -13,6 +13,7 @@
 .kkb-contact-page h2 {
   font-family: FaktPro-Bold,sans-serif;
   font-size: 1.8em;
+  line-height: 1.2em;
   font-weight: 700;
   color: #3a6f55;
 }
@@ -31,18 +32,27 @@
 
 /* Layout contact in two columns.*/
 .kkb-contact-section-contact {
-  display: grid;
-  grid-template-columns: 50% 50%;
   margin-bottom: 30px;
   background-color: #c2e0dd;
   padding: 1em;
   min-height: 260px;
 }
 
+.kkb-contact-section-contact-content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.kkb-contact-section-contact-title {
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+
 .kkb-contact-section-contact h2 {
   font-family: "FaktPro-Bold", sans-serif;
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  line-height: 1.2em;
   color: #2b2e34;
 }
 
@@ -148,7 +158,6 @@ h2.kkb-contact-teaser-header {
 .kkb-contact-phone-second {
   display: flex;
   white-space: nowrap;
-  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -180,7 +189,6 @@ h2.kkb-contact-teaser-header {
 }
 
 .kkb-contact-phone-second a {
-  margin-top: 0.4em;
   font-family: FaktPro-SemiBold,sans-serif;
   font-weight: 700;
 }
@@ -267,6 +275,9 @@ h2.kkb-contact-teaser-header {
 h2.kkb-contact-news-header {
   font-size: 2em;
   margin-bottom: 0.5em;
+  line-height: 1.2em;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .kbb-contact-news-article {
