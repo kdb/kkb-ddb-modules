@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the KKB Page feature.
- */
-
-include_once 'kkb_page.features.inc';
