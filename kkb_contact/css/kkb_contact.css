@@ -32,12 +32,20 @@
 
 /* Layout contact in two columns.*/
 .kkb-contact-section-contact {
-  display: grid;
-  grid-template-columns: 50% 50%;
   margin-bottom: 30px;
   background-color: #c2e0dd;
   padding: 1em;
   min-height: 260px;
+}
+
+.kkb-contact-section-contact-content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.kkb-contact-section-contact-title {
+  margin-bottom: 1em;
+  font-weight: 700;
 }
 
 .kkb-contact-section-contact h2 {
@@ -150,7 +158,6 @@ h2.kkb-contact-teaser-header {
 .kkb-contact-phone-second {
   display: flex;
   white-space: nowrap;
-  align-items: center;
   justify-content: space-evenly;
 }
 
