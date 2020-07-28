@@ -320,3 +320,15 @@ h2.kkb-contact-news-header {
     line-height: 1.2em;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .kkb-contact-phone-second-number:before {
+    height: 3em;
+    background-size: contain;
+    width: 3em;
+  }
+
+  .kkb-contact-phone-second a {
+    font-size: 200%;
+  }
+}
