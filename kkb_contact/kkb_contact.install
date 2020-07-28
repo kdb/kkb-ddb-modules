@@ -8,3 +8,12 @@ function kkb_contact_update_7101() {
   $enable_dependencies = TRUE;
   module_enable($modules, $enable_dependencies);
 }
+
+/**
+ * Enable entityreference_autocomplete.
+ */
+function kkb_contact_update_7102() {
+  $modules = ['paragraphs'];
+  $enable_dependencies = TRUE;
+  module_enable($modules, $enable_dependencies);
+}

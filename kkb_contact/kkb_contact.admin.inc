@@ -222,6 +222,23 @@ function kkb_contact_settings($form, &$form_state) {
       '#size' => 50,
     ];
 
+    $form['help_wrapper'] = [
+      '#type' => 'fieldset',
+      '#title' => t('Help'),
+    ];
+
+    $form['help_wrapper']['kkb_contact_page_phone_section_block_title_da'] = [
+      '#type' => 'textfield',
+      '#title' => t('DA: Section title'),
+      '#default_value' => variable_get('kkb_contact_page_phone_section_block_title_da', KKB_CONTACT_PAGE_PHONE_SECTION_BLOCK_TITLE_DEFAULT_DA),
+    ];
+
+    $form['help_wrapper']['kkb_contact_page_phone_section_block_title_en'] = [
+      '#type' => 'textfield',
+      '#title' => t('EN: Section title'),
+      '#default_value' => variable_get('kkb_contact_page_phone_section_block_title_en', KKB_CONTACT_PAGE_PHONE_SECTION_BLOCK_TITLE_DEFAULT_EN),
+    ];
+
   }
 
   $form['#attached'] = [
