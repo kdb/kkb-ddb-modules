@@ -22,10 +22,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Delete .git directory
+      - run: rm -rf .git
+
+      # Delete .github directory
+      - run: rm -rf .github
+
+
       # Zip our module file
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r ./kkb-ddb-modules.zip . -i $GITHUB_WORKSPACE
+      #- uses: montudor/action-zip@v0.1.0
+      #  with:
+      #    args: zip -qq -r ./kkb-ddb-modules.zip . -i $GITHUB_WORKSPACE
 
       - uses: actions/upload-artifact@v2
         with:
