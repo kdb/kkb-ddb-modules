@@ -206,6 +206,18 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
     $activity->ticket_title = $ticket_title;
     $activity->ticket_link = $wrapper->field_ding_event_ticket_link->value()['url'];
   }
+
+  $activity->field_theme = "Digitale oplevelser";
+
+  $activity->field_marketing_categories = new SimpleXMLElement('<field_marketing_categories></field_marketing_categories>');
+  $activity->field_marketing_categories->addAttribute('is_array', 'true');
+  foreach (['Historie'] as $item) {
+    $activity->field_marketing_categories->addChild('item', $item);
+  }
+
+  if (true) {
+    $activity->field_exposed_dates = '28.04.2020 - 19.30 til 28.07.2020 - 10.30';
+  }
 }
 
 /**
@@ -233,4 +245,24 @@ class DingKultunautFeedSimpleXMLElement extends SimpleXMLElement {
     return $new_child;
   }
 
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add content sharing to events.
+ */
+function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id !== 'ding_event_node_form') {
+    return;
+  }
+
+  $form['content_sharing'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Content sharing'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 0,
+    '#group' => 'additional_settings',
+  );
 }
