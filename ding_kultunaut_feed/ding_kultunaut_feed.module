@@ -234,3 +234,26 @@ class DingKultunautFeedSimpleXMLElement extends SimpleXMLElement {
   }
 
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Move content sharing fields to events the Drupal vertical tabs.
+ */
+function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id !== 'ding_event_node_form') {
+    return;
+  }
+
+  $form['content_sharing'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Content sharing'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 0,
+    '#group' => 'additional_settings',
+  );
+
+  $form['content_sharing']['field_theme_category'] = $form['field_theme_category'];
+  hide($form['field_theme_category']);
+}
