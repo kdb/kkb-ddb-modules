@@ -211,10 +211,12 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
     $activity->field_theme = $wrapper->field_theme_category->value()->name;
   }
 
-  $activity->field_marketing_categories = new SimpleXMLElement('<field_marketing_categories></field_marketing_categories>');
-  $activity->field_marketing_categories->addAttribute('is_array', 'true');
-  foreach (['Historie'] as $item) {
-    $activity->field_marketing_categories->addChild('item', $item);
+  if (!empty($wrapper->field_marketing_category->value())) {
+    $activity->field_marketing_categories = new SimpleXMLElement('<field_marketing_categories></field_marketing_categories>');
+    $activity->field_marketing_categories->addAttribute('is_array', 'true');
+    foreach ($wrapper->field_marketing_category->value() as $item) {
+      $activity->field_marketing_categories->addChild('item', $item->name);
+    }
   }
 
   // @TODO - Hardcoded values to be changed.
@@ -271,4 +273,7 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
 
   $form['content_sharing']['field_theme_category'] = $form['field_theme_category'];
   unset($form['field_theme_category']);
+
+  $form['content_sharing']['field_marketing_category'] = $form['field_marketing_category'];
+  unset($form['field_marketing_category']);
 }
