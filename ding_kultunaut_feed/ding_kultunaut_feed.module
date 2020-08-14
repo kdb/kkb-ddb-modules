@@ -219,8 +219,8 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
     }
   }
 
+  if ($wrapper->field_special_exposed_event->value()) {
   // @TODO - Hardcoded values to be changed.
-  if (true) {
     $activity->field_exposed_dates = '28.04.2020 - 19.30 til 28.07.2020 - 10.30';
   }
 }
@@ -276,4 +276,7 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
 
   $form['content_sharing']['field_marketing_category'] = $form['field_marketing_category'];
   unset($form['field_marketing_category']);
+
+  $form['content_sharing']['field_special_exposed_event'] = $form['field_special_exposed_event'];
+  unset($form['field_special_exposed_event']);
 }
