@@ -10,6 +10,84 @@
 function kdb_social_content_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-ding_event-field_exposed_dates'.
+  $field_instances['node-ding_event-field_exposed_dates'] = array(
+    'bundle' => 'ding_event',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'alternative_layout_full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 18,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_highlight' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_no_overlay' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_exposed_dates',
+    'label' => 'Exposed dates',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'd-m-Y H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 43,
+    ),
+  );
+
   // Exported field_instance: 'node-ding_event-field_marketing_category'.
   $field_instances['node-ding_event-field_marketing_category'] = array(
     'bundle' => 'ding_event',
@@ -205,6 +283,7 @@ function kdb_social_content_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Exposed dates');
   t('Marketing category');
   t('Show as a special exposed event at https://brugbyen.nu');
   t('Special exposed event');
