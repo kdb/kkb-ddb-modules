@@ -73,6 +73,73 @@ function kdb_social_content_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-ding_event-field_special_exposed_event'.
+  $field_instances['node-ding_event-field_special_exposed_event'] = array(
+    'bundle' => 'ding_event',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Show as a special exposed event at https://brugbyen.nu',
+    'display' => array(
+      'alternative_layout_full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_highlight' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_no_overlay' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_special_exposed_event',
+    'label' => 'Special exposed event',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-ding_event-field_theme_category'.
   $field_instances['node-ding_event-field_theme_category'] = array(
     'bundle' => 'ding_event',
@@ -139,6 +206,8 @@ function kdb_social_content_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Marketing category');
+  t('Show as a special exposed event at https://brugbyen.nu');
+  t('Special exposed event');
   t('Theme category');
   t('These tags makes it possible to expose the event on theme pages and filtered views on https://brugbyen.nu');
   t('Used for filtering events on https:://brugbyen.nu');
