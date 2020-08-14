@@ -279,4 +279,25 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
 
   $form['content_sharing']['field_special_exposed_event'] = $form['field_special_exposed_event'];
   unset($form['field_special_exposed_event']);
+
+  $form['content_sharing']['field_exposed_dates'] = $form['field_exposed_dates'];
+  unset($form['field_exposed_dates']);
+
+  drupal_add_js(drupal_get_path('module', 'ding_kultunaut_feed') .'/assets/ding_kultunaut_feed_form.js', 'file');
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function ding_kultunaut_feed_node_presave($node) {
+  if ($node-type !== 'ding_event') {
+    return;
+  }
+
+  // If the "Special exposed event" checkbox is unchecked
+  // we make sure the exposed dates are not saved to the database.
+  $wrapper = entity_metadata_wrapper('node', $node);
+  if(!$wrapper->field_special_exposed_event->value()) {
+    $wrapper->field_exposed_dates->set(NULL);
+  }
 }
