@@ -12,9 +12,9 @@
             // Because we move this in ding_kultunaut_feed_form_alter,
             // we need to set its state. But we do not need to monitor it,
             // like our custom handler above.
-            var showEndDateCheckbox = document.querySelector('#edit-field-exposed-dates-und-0-show-todate');
+            var showToDateCheckbox = document.querySelector('#edit-field-exposed-dates-und-0-show-todate');
             var endDates = document.querySelector('.form-item-field-exposed-dates-und-0-value2');
-            endDates.style.display = showEndDateCheckbox.checked ? 'inherit' : 'none';
+            endDates.style.display = showToDateCheckbox.checked ? 'inherit' : 'none';
 
             // If the "special exposed event" checkbox is not checked,
             // we need to reset the date group fields to avoid validation errors.
