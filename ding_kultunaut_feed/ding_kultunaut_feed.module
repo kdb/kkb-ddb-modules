@@ -293,28 +293,21 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
   $form['content_sharing']['field_exposed_dates'] = $form['field_exposed_dates'];
   unset($form['field_exposed_dates']);
 
+  $form['#validate'][] = '_ding_kultunaut_feed_ding_event_form_validate';
+
   drupal_add_js(drupal_get_path('module', 'ding_kultunaut_feed') .'/assets/ding_kultunaut_feed_form.js', 'file');
 }
 
-/**
- * Implements hook_node_presave().
- */
-function ding_kultunaut_feed_node_presave($node) {
-  if ($node->type !== 'ding_event') {
-    return;
+function _ding_kultunaut_feed_ding_event_form_validate($form, &$form_state) {
+  if ($form_state['values']['field_special_exposed_event'][LANGUAGE_NONE][0]['value'] &&
+    !$form_state['values']['field_exposed_dates'][LANGUAGE_NONE][0]['value']) {
+    form_set_error('ding_kultunaut_feed', 'Start date missing, when "special exposed event" is selected.');
   }
 
-  // If the "Special exposed event" checkbox is unchecked
-  // we make sure the exposed dates are not saved to the database.
-  $wrapper = entity_metadata_wrapper('node', $node);
-  if(!$wrapper->field_special_exposed_event->value()) {
-    $wrapper->field_exposed_dates->set(NULL);
+  if (!$form_state['values']['field_special_exposed_event'][LANGUAGE_NONE][0]['value']) {
+    unset($form_state['values'][LANGUAGE_NONE][0]);
   }
-  // Else if the show_todate checkbox is not checked,
-  // we unset the to date field.
-  elseif (!$wrapper->field_exposed_dates->value()['show_todate']){
-    $exposed_dates = $wrapper->field_exposed_dates->value();
-    unset($exposed_dates['value2']);
-    $wrapper->field_exposed_dates->set($exposed_dates);
+  elseif (!$form_state['values']['field_exposed_dates'][LANGUAGE_NONE][0]['show_todate'])  {
+    unset($form_state['values']['field_exposed_dates'][LANGUAGE_NONE][0]['value2']);
   }
 }
