@@ -304,7 +304,7 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
 function _ding_kultunaut_feed_ding_event_form_validate($form, &$form_state) {
   if ($form_state['values']['field_special_exposed_event'][LANGUAGE_NONE][0]['value'] &&
     !$form_state['values']['field_exposed_dates'][LANGUAGE_NONE][0]['value']) {
-    form_set_error('ding_kultunaut_feed', 'Special exposed events needs a start date.');
+    form_set_error('ding_kultunaut_feed', t('Special exposed events needs a start date.'));
   }
 
   if (!$form_state['values']['field_special_exposed_event'][LANGUAGE_NONE][0]['value']) {
