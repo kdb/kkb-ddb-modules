@@ -220,8 +220,18 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
   }
 
   if ($wrapper->field_special_exposed_event->value()) {
-  // @TODO - Hardcoded values to be changed.
-    $activity->field_exposed_dates = '28.04.2020 - 19.30 til 28.07.2020 - 10.30';
+    $activity->field_exposed_dates = new SimpleXMLElement('<field_exposed_dates></field_exposed_dates>');
+
+    $from_date = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_exposed_dates->value->value(),
+      'custom', DING_KULTUNAUT_FEED_DATE_FORMAT));
+    $activity->field_exposed_dates->addChild('from_date', $from_date);
+
+    if ($wrapper->field_exposed_dates->value2->value()) {
+      $to_date = _ding_kultunaut_feed_replace_all_day(format_date($wrapper->field_exposed_dates->value2->value(),
+        'custom', DING_KULTUNAUT_FEED_DATE_FORMAT));
+
+      $activity->field_exposed_dates->addChild('to_date', $to_date);
+    }
   }
 }
 
@@ -290,7 +300,7 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_node_presave().
  */
 function ding_kultunaut_feed_node_presave($node) {
-  if ($node-type !== 'ding_event') {
+  if ($node->type !== 'ding_event') {
     return;
   }
 
@@ -299,5 +309,12 @@ function ding_kultunaut_feed_node_presave($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if(!$wrapper->field_special_exposed_event->value()) {
     $wrapper->field_exposed_dates->set(NULL);
+  }
+  // Else if the show_todate checkbox is not checked,
+  // we unset the to date field.
+  elseif (!$wrapper->field_exposed_dates->value()['show_todate']){
+    $exposed_dates = $wrapper->field_exposed_dates->value();
+    unset($exposed_dates['value2']);
+    $wrapper->field_exposed_dates->set($exposed_dates);
   }
 }
