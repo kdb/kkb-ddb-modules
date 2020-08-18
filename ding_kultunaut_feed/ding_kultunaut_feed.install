@@ -8,3 +8,13 @@ function ding_kultunaut_feed_update_7101() {
   $enable_dependencies = TRUE;
   module_enable($modules, $enable_dependencies);
 }
+
+/**
+ * Disable and uninstall the comment_notify.
+ */
+function ding_kultunaut_feed_update_7102() {
+  if( module_exists('comment_notify')) {
+    module_disable(array('comment_notify'));
+    drupal_uninstall_modules(array('comment_notify'));
+  }
+}
