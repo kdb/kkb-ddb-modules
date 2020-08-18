@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Enable kkb_social_content.
+ * Enable kdb_social_content.
  */
 function ding_kultunaut_feed_update_7101() {
-  $modules = array('kkb_social_content');
+  $modules = array('kdb_social_content');
   $enable_dependencies = TRUE;
   module_enable($modules, $enable_dependencies);
 }
