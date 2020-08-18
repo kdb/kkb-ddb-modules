@@ -321,7 +321,7 @@ h2.kkb-contact-news-header {
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width:400px) {
   .kkb-contact-phone-second-number:before {
     height: 3em;
     background-size: contain;
