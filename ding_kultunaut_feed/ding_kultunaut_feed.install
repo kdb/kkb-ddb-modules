@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Enable kkb_brugbyen.
+ * Enable kkb_brugbyen and kkb_news_feed.
+ * Disable kdb_news_feed.
  */
 function ding_kultunaut_feed_update_7101() {
   $kdb_news_feed = 'kdb_news_feed';
@@ -9,7 +10,7 @@ function ding_kultunaut_feed_update_7101() {
     module_disable(array($kdb_news_feed));
     drupal_uninstall_modules(array($kdb_news_feed));
   }
-  
+
   $modules = array('kkb_brugbyen', 'kkb_news_feed');
   $enable_dependencies = TRUE;
   module_enable($modules, $enable_dependencies);
