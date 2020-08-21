@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kdb_social_content.features.taxonomy.inc
+ * kkb_brugbyen.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function kdb_social_content_taxonomy_default_vocabularies() {
+function kkb_brugbyen_taxonomy_default_vocabularies() {
   return array(
     'marketing_category' => array(
       'name' => 'Marketing Category',

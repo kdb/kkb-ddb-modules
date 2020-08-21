@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kdb_social_content.features.field_instance.inc
+ * kkb_brugbyen.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function kdb_social_content_field_default_field_instances() {
+function kkb_brugbyen_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-ding_event-field_exposed_dates'.

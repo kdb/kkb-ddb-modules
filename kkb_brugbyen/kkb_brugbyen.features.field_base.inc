@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kdb_social_content.features.field_base.inc
+ * kkb_brugbyen.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function kdb_social_content_field_default_field_bases() {
+function kkb_brugbyen_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_exposed_dates'.
