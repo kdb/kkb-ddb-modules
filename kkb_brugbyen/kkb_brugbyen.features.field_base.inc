@@ -33,7 +33,7 @@ function kkb_brugbyen_field_default_field_bases() {
       ),
       'profile2_private' => FALSE,
       'timezone_db' => 'UTC',
-      'todate' => 'optional',
+      'todate' => 'required',
       'tz_handling' => 'site',
     ),
     'translatable' => 0,

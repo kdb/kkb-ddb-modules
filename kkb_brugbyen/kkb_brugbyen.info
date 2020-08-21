@@ -1,4 +1,4 @@
-name = KDB Social Content
+name = KKB Brugbyen
 description = Special fields for the ding-event content type to expose in kultunaut_feed
 core = 7.x
 package = KKB
