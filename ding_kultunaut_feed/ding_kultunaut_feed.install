@@ -1,10 +1,19 @@
 <?php
 
 /**
- * Enable kdb_social_content.
+ * Enable kkb_brugbyen.
  */
 function ding_kultunaut_feed_update_7101() {
-  $modules = array('kdb_social_content');
+  $kdb_news_feed = 'kdb_news_feed';
+  if( module_exists($kdb_news_feed)) {
+    module_disable(array($kdb_news_feed));
+    drupal_uninstall_modules(array($kdb_news_feed));
+  }
+  
+  $modules = array('kkb_brugbyen', 'kkb_news_feed');
   $enable_dependencies = TRUE;
   module_enable($modules, $enable_dependencies);
+  foreach ($modules as $module) {
+    features_revert_module($module);
+  }
 }
