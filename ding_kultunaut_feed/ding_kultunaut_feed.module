@@ -299,6 +299,8 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
   unset($form['field_exposed_dates']);
 
   $form['#validate'][] = '_ding_kultunaut_feed_ding_event_form_validate';
+
+  drupal_add_js(drupal_get_path('module', 'ding_kultunaut_feed') .'/assets/ding_kultunaut_feed_form.js', 'file');
 }
 
 function _ding_kultunaut_feed_ding_event_form_validate($form, &$form_state) {
