@@ -43,7 +43,8 @@ function kkb_wayfinder_theme() {
  * Implements hook_ding_entity_buttons().
  */
 function kkb_wayfinder_ding_entity_buttons($type, $entity) {
-  if ($type == 'ding_entity' && variable_get('kkb_wayfinder_url', '')) {
+  if ($type == 'ding_entity' && variable_get('kkb_wayfinder_url', '') &&
+      $entity->is('library_material')) {
     $return = array();
 
     $branches = variable_get('kkb_wayfinder_branches', array());
