@@ -30,11 +30,15 @@ jobs:
 
 
       # Zip our module file
-      #- uses: montudor/action-zip@v0.1.0
-      #  with:
-      #    args: zip -qq -r ./kkb-ddb-modules.zip . -i $GITHUB_WORKSPACE
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -0 -qq -r ./kkb-ddb-modules.zip .
+
+      - run: ls -lah .
+
+      - run: file ./kkb-ddb-modules.zip
 
       - uses: actions/upload-artifact@v2
         with:
-          name: kkb-ddb-modules
-          path: .
+          name: kkb
+          path: ./kkb-ddb-modules.zip
