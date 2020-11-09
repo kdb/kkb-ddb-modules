@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the KDB AB tests module.
+ */
+
+drupal_add_css(drupal_get_path('module', 'kkb_ab_tests') . '/css/ab.css', array('every_page' => TRUE));
