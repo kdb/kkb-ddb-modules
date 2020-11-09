@@ -1,0 +1,19 @@
+/**
+ * START "ASK THE LIBRARY TRANSITION TEST".
+ */
+#feedback_simple a.feedback_simple-right {
+    visibility: hidden;
+}
+
+#feedback_simple a.feedback_simple-right.visible {
+    visibility: visible;
+    transition: right .5s ease-in;
+}
+
+#feedback_simple a.offscreen {
+    transition: none;
+    right: -53px;
+}
+/**
+ * END "ASK THE LIBRARY TRANSITION TEST".
+ */
