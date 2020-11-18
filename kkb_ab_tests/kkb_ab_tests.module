@@ -5,3 +5,25 @@
  */
 
 drupal_add_css(drupal_get_path('module', 'kkb_ab_tests') . '/css/ab.css', array('every_page' => TRUE));
+
+/**
+ * Define site permissions for the ABjs module.
+ *
+ * @param $role
+ *   The role for which the permissions are being requested.
+ *
+ * @return
+ *   An array defining all the permissions for the site.
+ */
+function kkb_ab_tests_secure_permissions($role) {
+  $permissions = array(
+    'administrators' => array(
+      'administer ab test scripts and settings',
+      'administer ab tests',
+    ),
+  );
+
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}
