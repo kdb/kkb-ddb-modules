@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Code for the KKB newsletter paragraphs feature.
+ */
+
+include_once 'kkb_newsletter_paragraphs_feature.features.inc';
+
+/**
+ * Define the newsletter paragraph roles.
+ */
+function kkb_newsletter_paragraphs_secure_permissions_roles() {
+  return array(
+    'newsletter paragraphs administrator'
+  );
+}
+
+/**
+ * Define site permissions for the newsletter paragraphs.
+ */
+function kkb_newsletter_paragraphs_secure_permissions($role) {
+  $permissions = array(
+    'administrators' => array(
+      'create newsletter_administration content',
+      'edit any newsletter_administration content',
+      'delete any newsletter_administration content',
+    ),
+    'newsletter paragraphs administrator' => array(
+      'create newsletter_administration content',
+      'edit any newsletter_administration content',
+      'delete any newsletter_administration content',
+    ),
+  );
+
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}
