@@ -37,7 +37,7 @@ function kkb_newsletter_paragraphs_feature_node_info() {
 function kkb_newsletter_paragraphs_feature_paragraphs_info() {
   $items = array(
     'kkb_newsletter' => array(
-      'name' => 'Newsletter',
+      'name' => 'Newsletter template',
       'bundle' => 'kkb_newsletter',
       'locked' => '1',
     ),

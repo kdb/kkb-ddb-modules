@@ -37,7 +37,6 @@ features[field_instance][] = paragraphs_item-kkb_newsletter-field_newsletter_tex
 features[field_instance][] = paragraphs_item-kkb_newsletter-field_newsletter_title
 features[node][] = newsletter_administration
 features[paragraphs][] = kkb_newsletter
-features[user_role][] = newsletter paragraphs administrator
 features[variable][] = comment_anonymous_newsletter_administration
 features[variable][] = comment_default_mode_newsletter_administration
 features[variable][] = comment_default_per_page_newsletter_administration
