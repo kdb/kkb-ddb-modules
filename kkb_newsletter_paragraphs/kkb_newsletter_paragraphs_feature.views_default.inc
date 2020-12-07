@@ -38,7 +38,7 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ Forrige ';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -94,6 +94,8 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
     t(','),
     t('Titel'),
     t('Entity Reference'),
+    t('more'),
+    t('‹ Forrige '),
   );
   $export['newsletter'] = $view;
 
