@@ -86,7 +86,7 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
     t('- Alle -'),
     t('Forskydning'),
     t('« første'),
-    t('‹ forrige'),
+    t('‹ Forrige '),
     t('næste ›'),
     t('sidste »'),
     t('Paragraphs item ID'),
@@ -95,7 +95,6 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
     t('Titel'),
     t('Entity Reference'),
     t('more'),
-    t('‹ Forrige '),
   );
   $export['newsletter'] = $view;
 
