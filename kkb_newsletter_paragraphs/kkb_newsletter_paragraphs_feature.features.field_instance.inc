@@ -10,6 +10,107 @@
 function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-ding_event-field_event_newsletter'.
+  $field_instances['node-ding_event-field_event_newsletter'] = array(
+    'bundle' => 'ding_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'alternative_layout_full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 19,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_highlight' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_no_overlay' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_newsletter',
+    'label' => 'Newsletter',
+    'required' => 0,
+    'settings' => array(
+      'add_mode' => 'select',
+      'allowed_bundles' => array(
+        'ding_help_front_box' => -1,
+        'ding_help_page_accordion' => -1,
+        'ding_help_page_body' => -1,
+        'ding_help_page_cta' => -1,
+        'ding_help_page_step' => -1,
+        'ding_help_page_step_by_step' => -1,
+        'ding_paragraphs_carousel' => -1,
+        'ding_paragraphs_image' => -1,
+        'ding_paragraphs_image_and_text' => -1,
+        'ding_paragraphs_material_list' => -1,
+        'ding_paragraphs_single_material' => -1,
+        'ding_paragraphs_text' => -1,
+        'ding_paragraphs_text_box' => -1,
+        'kkb_newsletter' => -1,
+        'kkb_newsletter_reference' => 'kkb_newsletter_reference',
+      ),
+      'bundle_weights' => array(
+        'ding_help_front_box' => 2,
+        'ding_help_page_accordion' => 3,
+        'ding_help_page_body' => 4,
+        'ding_help_page_cta' => 5,
+        'ding_help_page_step' => 6,
+        'ding_help_page_step_by_step' => 7,
+        'ding_paragraphs_carousel' => 8,
+        'ding_paragraphs_image' => 9,
+        'ding_paragraphs_image_and_text' => 10,
+        'ding_paragraphs_material_list' => 11,
+        'ding_paragraphs_single_material' => 12,
+        'ding_paragraphs_text' => 13,
+        'ding_paragraphs_text_box' => 14,
+        'kkb_newsletter' => 15,
+        'kkb_newsletter_reference' => 16,
+      ),
+      'default_edit_mode' => 'open',
+      'title' => 'Paragraph',
+      'title_multiple' => 'Paragraphs',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'paragraphs',
+      'settings' => array(),
+      'type' => 'paragraphs_embed',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-newsletter_administration-field_newsletters'.
   $field_instances['node-newsletter_administration-field_newsletters'] = array(
