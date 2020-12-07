@@ -11,11 +11,11 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'newsletter_templates';
+  $view->name = 'newsletter';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'paragraphs_item';
-  $view->human_name = 'Newsletter templates';
+  $view->human_name = 'Newsletter';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -43,20 +43,16 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: Paragraphs item: Paragraphs item ID */
+  /* Field: Paragraphs item: Paragraphs item ID */
   $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
   $handler->display->display_options['fields']['item_id']['table'] = 'paragraphs_item';
   $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
-  $handler->display->display_options['fields']['item_id']['label'] = '';
-  $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
-  /* Felt: Paragraphs item: Title */
+  /* Field: Paragraphs item: Title */
   $handler->display->display_options['fields']['field_newsletter_title']['id'] = 'field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['table'] = 'field_data_field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['field'] = 'field_newsletter_title';
-  $handler->display->display_options['fields']['field_newsletter_title']['label'] = '';
-  $handler->display->display_options['fields']['field_newsletter_title']['element_label_colon'] = FALSE;
-  /* Filterkriterie: Paragraphs item: Bundle */
+  $handler->display->display_options['fields']['field_newsletter_title']['label'] = 'Titel';
+  /* Filter criterion: Paragraphs item: Bundle */
   $handler->display->display_options['filters']['bundle']['id'] = 'bundle';
   $handler->display->display_options['filters']['bundle']['table'] = 'paragraphs_item';
   $handler->display->display_options['filters']['bundle']['field'] = 'bundle';
@@ -78,7 +74,7 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $translatables['newsletter_templates'] = array(
+  $translatables['newsletter'] = array(
     t('Master'),
     t('mere'),
     t('Udfør'),
@@ -93,11 +89,13 @@ function kkb_newsletter_paragraphs_feature_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
+    t('Paragraphs item ID'),
     t('.'),
     t(','),
+    t('Titel'),
     t('Entity Reference'),
   );
-  $export['newsletter_templates'] = $view;
+  $export['newsletter'] = $view;
 
   return $export;
 }
