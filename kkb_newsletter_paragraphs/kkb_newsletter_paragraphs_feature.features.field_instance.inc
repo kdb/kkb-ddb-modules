@@ -73,7 +73,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
         'ding_paragraphs_text' => -1,
         'ding_paragraphs_text_box' => -1,
         'kkb_newsletter' => 'kkb_newsletter',
-        'newsletter_reference' => -1,
+        'kkb_newsletter_reference' => -1,
       ),
       'bundle_weights' => array(
         'ding_help_front_box' => 2,
@@ -90,7 +90,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
         'ding_paragraphs_text' => 13,
         'ding_paragraphs_text_box' => 14,
         'kkb_newsletter' => 15,
-        'newsletter_reference' => 16,
+        'kkb_newsletter_reference' => -30,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -526,7 +526,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
@@ -538,7 +538,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'field_name' => 'field_newsletter_title',
-    'label' => 'Title2',
+    'label' => 'Title',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -555,19 +555,61 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-kkb_newsletter_reference-field_newsletter'.
+  $field_instances['paragraphs_item-kkb_newsletter_reference-field_newsletter'] = array(
+    'bundle' => 'kkb_newsletter_reference',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_newsletter',
+    'label' => 'Newsletter',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Description');
   t('Image');
   t('Image background color');
   t('Image title');
+  t('Newsletter');
   t('Newsletters');
   t('Submit');
   t('Submit background color');
   t('Submit color');
   t('Text background color');
   t('Text color');
-  t('Title2');
+  t('Title');
 
   return $field_instances;
 }
