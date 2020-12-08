@@ -7,6 +7,15 @@
 include_once 'kkb_newsletter_paragraphs_feature.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function kkb_newsletter_paragraphs_ctools_plugin_directory($owner, $plugin_type) {
+  $i = 0;
+  die(var_dump('DEAD'));
+  return 'plugins/' . $plugin_type;
+}
+
+/**
  * Define the newsletter paragraph roles.
  */
 function kkb_newsletter_paragraphs_secure_permissions_roles() {

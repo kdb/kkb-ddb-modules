@@ -7,7 +7,7 @@
 /**
  * Implements hook_views_default_views().
  */
-function kkb_newsletter_paragraphs_feature_views_default_views() {
+function kkb_newsletter_paragraphs_views_default_views() {
   $export = array();
 
   $view = new view();

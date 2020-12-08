@@ -7,7 +7,7 @@
 /**
  * Implements hook_field_default_field_bases().
  */
-function kkb_newsletter_paragraphs_feature_field_default_field_bases() {
+function kkb_newsletter_paragraphs_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_event_newsletter'.

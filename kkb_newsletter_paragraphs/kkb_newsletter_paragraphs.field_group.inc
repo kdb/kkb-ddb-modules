@@ -7,7 +7,7 @@
 /**
  * Implements hook_field_group_info().
  */
-function kkb_newsletter_paragraphs_feature_field_group_info() {
+function kkb_newsletter_paragraphs_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
@@ -39,7 +39,7 @@ function kkb_newsletter_paragraphs_feature_field_group_info() {
   $field_groups['group_ding_event_other|node|ding_event|form'] = $field_group;
 
   ctools_export_crud_enable('field_group', $field_group->identifier);
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Other');
