@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.strongarm.inc
+ * kkb_newsletter_paragraphs.strongarm.inc
  */
 
 /**

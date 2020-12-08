@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.features.inc
+ * kkb_newsletter_paragraphs.features.inc
  */
 
 /**
