@@ -24,13 +24,13 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 19,
+        'weight' => 11,
       ),
       'search_result' => array(
         'label' => 'above',
