@@ -4,7 +4,14 @@
  * Code for the KKB newsletter paragraphs feature.
  */
 
-include_once 'kkb_newsletter_paragraphs_feature.features.inc';
+include_once 'kkb_newsletter_paragraphs.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function kkb_newsletter_paragraphs_ctools_plugin_directory($owner, $plugin_type) {
+  return 'plugins/' . $plugin_type;
+}
 
 /**
  * Define the newsletter paragraph roles.

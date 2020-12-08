@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.features.features_overrides.inc
+ * kkb_newsletter_paragraphs.features.features_overrides.inc
  */
 
 /**
  * Implements hook_features_override_default_overrides().
  */
-function kkb_newsletter_paragraphs_feature_features_override_default_overrides() {
+function kkb_newsletter_paragraphs_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 

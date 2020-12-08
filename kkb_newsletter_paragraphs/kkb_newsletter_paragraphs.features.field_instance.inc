@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.features.field_instance.inc
+ * kkb_newsletter_paragraphs.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function kkb_newsletter_paragraphs_feature_field_default_field_instances() {
+function kkb_newsletter_paragraphs_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-ding_event-field_event_newsletter'.

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.strongarm.inc
+ * kkb_newsletter_paragraphs.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function kkb_newsletter_paragraphs_feature_strongarm() {
+function kkb_newsletter_paragraphs_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

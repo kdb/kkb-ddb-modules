@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * kkb_newsletter_paragraphs_feature.features.inc
+ * kkb_newsletter_paragraphs.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function kkb_newsletter_paragraphs_feature_ctools_plugin_api($module = NULL, $api = NULL) {
+function kkb_newsletter_paragraphs_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -19,14 +19,14 @@ function kkb_newsletter_paragraphs_feature_ctools_plugin_api($module = NULL, $ap
 /**
  * Implements hook_views_api().
  */
-function kkb_newsletter_paragraphs_feature_views_api($module = NULL, $api = NULL) {
+function kkb_newsletter_paragraphs_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_field_default_field_bases_alter().
  */
-function kkb_newsletter_paragraphs_feature_field_default_field_bases_alter(&$data) {
+function kkb_newsletter_paragraphs_field_default_field_bases_alter(&$data) {
   if (isset($data['field_ding_page_paragraphs'])) {
     unset($data['field_ding_page_paragraphs']['foreign keys']);
   }
@@ -35,7 +35,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_bases_alter(&$dat
 /**
  * Implements hook_field_default_field_instances_alter().
  */
-function kkb_newsletter_paragraphs_feature_field_default_field_instances_alter(&$data) {
+function kkb_newsletter_paragraphs_field_default_field_instances_alter(&$data) {
   if (isset($data['node-ding_news-field_ding_news_paragraphs'])) {
     $data['node-ding_news-field_ding_news_paragraphs']['display']['teaser_no_overlay'] = array(
       'label' => 'above',
@@ -89,7 +89,7 @@ function kkb_newsletter_paragraphs_feature_field_default_field_instances_alter(&
 /**
  * Implements hook_node_info().
  */
-function kkb_newsletter_paragraphs_feature_node_info() {
+function kkb_newsletter_paragraphs_node_info() {
   $items = array(
     'newsletter_administration' => array(
       'name' => t('Newsletter administration'),
@@ -107,7 +107,7 @@ function kkb_newsletter_paragraphs_feature_node_info() {
 /**
  * Implements hook_paragraphs_info().
  */
-function kkb_newsletter_paragraphs_feature_paragraphs_info() {
+function kkb_newsletter_paragraphs_paragraphs_info() {
   $items = array(
     'kkb_newsletter' => array(
       'name' => 'Newsletter template',
