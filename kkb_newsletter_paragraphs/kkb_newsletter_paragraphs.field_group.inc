@@ -78,6 +78,7 @@ function kkb_newsletter_paragraphs_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Other');
+  t('Right');
 
   return $field_groups;
 }

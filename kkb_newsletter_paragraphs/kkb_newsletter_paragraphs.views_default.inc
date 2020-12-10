@@ -27,7 +27,19 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ Forrige ';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Paragraphs item: Paragraphs item ID */
@@ -38,6 +50,7 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $handler->display->display_options['fields']['field_newsletter_title']['id'] = 'field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['table'] = 'field_data_field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['field'] = 'field_newsletter_title';
+  $handler->display->display_options['fields']['field_newsletter_title']['label'] = 'Titel';
   /* Filter criterion: Paragraphs item: Bundle */
   $handler->display->display_options['filters']['bundle']['id'] = 'bundle';
   $handler->display->display_options['filters']['bundle']['table'] = 'paragraphs_item';
@@ -63,22 +76,22 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $translatables['newsletter'] = array(
     t('Master'),
     t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Antal elementer'),
+    t('- Alle -'),
+    t('Forskydning'),
+    t('« første'),
+    t('‹ Forrige '),
+    t('næste ›'),
+    t('sidste »'),
     t('Paragraphs item ID'),
     t('.'),
     t(','),
-    t('Title'),
+    t('Titel'),
     t('Entity Reference'),
   );
   $export['newsletter'] = $view;
