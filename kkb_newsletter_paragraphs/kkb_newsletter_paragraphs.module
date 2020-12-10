@@ -7,6 +7,20 @@
 include_once 'kkb_newsletter_paragraphs.features.inc';
 
 /**
+ * Implements hook_theme().
+ */
+function kkb_newsletter_paragraphs_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['paragraphs_item__kkb_newsletter_reference'] = array(
+    'render element' => 'elements',
+    'base hook' => 'paragraphs_item',
+    'template' => 'paragraphs-item--kkb-newsletter-reference',
+    'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
+  );
+  return $theme;
+}
+
+/**
  * Implements hook_ctools_plugin_directory().
  */
 function kkb_newsletter_paragraphs_ctools_plugin_directory($owner, $plugin_type) {
