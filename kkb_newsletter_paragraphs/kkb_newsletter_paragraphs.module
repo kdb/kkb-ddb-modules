@@ -57,3 +57,13 @@ function kkb_newsletter_paragraphs_secure_permissions($role) {
     return $permissions[$role];
   }
 }
+
+/**
+ * Revert features.
+ */
+function kkb_newsletter_paragraphs_update_7102() {
+  features_revert_module('kkb_newsletter_paragraphs');
+  features_revert_module('ding_news');
+  features_revert_module('ding_page');
+  features_revert_module('ding_event');
+}

@@ -23,6 +23,7 @@ function kkb_newsletter_paragraphs_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -46,11 +47,15 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
   $handler->display->display_options['fields']['item_id']['table'] = 'paragraphs_item';
   $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
+  $handler->display->display_options['fields']['item_id']['label'] = '';
+  $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
   /* Field: Paragraphs item: Title */
   $handler->display->display_options['fields']['field_newsletter_title']['id'] = 'field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['table'] = 'field_data_field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['field'] = 'field_newsletter_title';
-  $handler->display->display_options['fields']['field_newsletter_title']['label'] = 'Titel';
+  $handler->display->display_options['fields']['field_newsletter_title']['label'] = '';
+  $handler->display->display_options['fields']['field_newsletter_title']['element_label_colon'] = FALSE;
   /* Filter criterion: Paragraphs item: Bundle */
   $handler->display->display_options['filters']['bundle']['id'] = 'bundle';
   $handler->display->display_options['filters']['bundle']['table'] = 'paragraphs_item';
@@ -75,7 +80,7 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $translatables['newsletter'] = array(
     t('Master'),
-    t('more'),
+    t('mere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
@@ -88,11 +93,10 @@ function kkb_newsletter_paragraphs_views_default_views() {
     t('‹ Forrige '),
     t('næste ›'),
     t('sidste »'),
-    t('Paragraphs item ID'),
     t('.'),
     t(','),
-    t('Titel'),
     t('Entity Reference'),
+    t('more'),
   );
   $export['newsletter'] = $view;
 
