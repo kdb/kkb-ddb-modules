@@ -11,10 +11,10 @@ include_once 'kkb_newsletter_paragraphs.features.inc';
  */
 function kkb_newsletter_paragraphs_theme($existing, $type, $theme, $path) {
   $theme = array();
-  $theme['paragraphs_item__kkb_newsletter_reference'] = array(
+  $theme['paragraphs_item__kkb_newsletter'] = array(
     'render element' => 'elements',
     'base hook' => 'paragraphs_item',
-    'template' => 'paragraphs-item--kkb-newsletter-reference',
+    'template' => 'paragraphs-item--kkb-newsletter',
     'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
   );
   return $theme;
@@ -55,6 +55,111 @@ function kkb_newsletter_paragraphs_secure_permissions($role) {
 
   if (isset($permissions[$role])) {
     return $permissions[$role];
+  }
+}
+
+function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] === 'paragraphs_item' &&
+      $variables['paragraphs_item']->field_name === 'field_newsletters') {
+
+    $identifier = uniqid('kkb_newsletter--');
+    $variables['identifier'] = $identifier;
+
+    $left_background_color = $variables['field_left_background_color'][0]['value'];
+    $left_foreground_color = $variables['field_left_foreground_color'][0]['value'];
+    $right_foreground_color = $variables['field_right_foreground_color'][0]['value'];
+    $submit_text_color = $variables['field_submit_text_color'][0]['value'];
+
+    $variables['image_title'] = '<h3 class="kkb_newsletter_image_caption">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
+    $variables['image_title_small'] = '<h3 class="kkb_newsletter_image_caption_small">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
+    $variables['image_rect'] = '<img class="kkb_newsletter_image_rect" src="' . image_style_url('medium', $variables['field_newsletter_image'][0]['uri']) . '" />';
+    $variables['image_landscape'] = '<img class="kkb_newsletter_image_landscape" src="' . image_style_url('medium', $variables['field_landscape_image'][0]['uri']) . '" />';
+
+    $variables['title'] = '<h3 class="kkb_newsletter_header">' . $variables['field_newsletter_title'][0]['value'] . '</h3>';
+    $variables['description'] = '<p class="kbb_newsletter_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
+    $submit_url = $variables['field_newsletter_submit_url'][0]['value'];
+    $variables['submit'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</a>';
+
+    // Clamp brightness between 0 and 2
+    $brightness = max(0, min(2, $variables['field_hover_brightness'][0]['value']));
+    $css = <<<CSS
+        /* Switch between rect and landscape images - the paragraph has no knowledge of the its context, so we switch between images this way. */
+        body.page-node .kkb_newsletter_image_landscape {
+            display: none;
+        }
+        body.page-taxonomy-term .kkb_newsletter_image_rect {
+            display: none;
+        }
+        .kkb_newsletter {
+            display: flex;
+            padding: 20px 0;
+        }
+        .kkb_newsletter_submit_wrapper {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .kkb_newsletter_content_wrapper {
+            background-color: #cfd7d4;
+            flex-grow: 1;
+            flex-basis: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .kkb_newsletter_image_wrapper {
+            flex-grow: 1;
+            flex-basis: 0;
+            margin: 0;
+            padding: 30px;
+        }
+        .kkb_newsletter_submit {
+            padding: 12px 36px;
+            border-radius: 4px;
+        }
+        .kkb_newsletter_header, .kkb_newsletter_image_caption, .kkb_newsletter_image_caption_small {
+            font-size: 27px;
+            line-height: 30px;
+            font-weight: 700;
+        }
+        .kkb_newsletter_image_caption_small {
+            display: none;
+        }
+        .$identifier .kkb_newsletter_image_wrapper {
+            color: $left_foreground_color;
+            background-color: $left_background_color;
+        }
+        .$identifier .kkb_newsletter_header {
+            color: $right_foreground_color;
+        }
+        .$identifier .kkb_newsletter_submit {
+            color: $submit_text_color;
+            background-color: $right_foreground_color;
+        }
+        .$identifier .kkb_newsletter_submit:hover {
+            filter: brightness($brightness);
+        }
+        @media screen and (max-width: 768px) {
+            .kkb_newsletter {
+                position: relative;
+                width: 100%;
+            }
+            .$identifier .kkb_newsletter_image_caption_small {
+                display: block;
+                 color: $right_foreground_color;
+            }
+            .$identifier .kkb_newsletter_header {
+                color: #464646;
+                font-size: 17px;
+            }
+            .kkb_newsletter_image_wrapper {
+                display: none;
+            }
+        }
+CSS;
+
+    drupal_add_css($css, array('type' => 'inline'));
   }
 }
 
