@@ -79,6 +79,7 @@ features[field_instance][] = paragraphs_item-kkb_newsletter-field_right_foregrou
 features[field_instance][] = paragraphs_item-kkb_newsletter-field_submit_text_color
 features[field_instance][] = paragraphs_item-kkb_newsletter_reference-field_newsletter
 features[field_instance][] = taxonomy_term-section-field_term_page
+features[image][] = newsletter_landscape
 features[node][] = newsletter_administration
 features[paragraphs][] = kkb_newsletter
 features[paragraphs][] = kkb_newsletter_reference

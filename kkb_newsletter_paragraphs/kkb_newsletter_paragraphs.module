@@ -73,7 +73,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
     $variables['image_title'] = '<h3 class="kkb_newsletter_image_caption">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
     $variables['image_title_small'] = '<h3 class="kkb_newsletter_image_caption_small">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
     $variables['image_rect'] = '<img class="kkb_newsletter_image_rect" src="' . image_style_url('medium', $variables['field_newsletter_image'][0]['uri']) . '" />';
-    $variables['image_landscape'] = '<img class="kkb_newsletter_image_landscape" src="' . image_style_url('medium', $variables['field_landscape_image'][0]['uri']) . '" />';
+    $variables['image_landscape'] = '<img class="kkb_newsletter_image_landscape" src="' . image_style_url('newsletter_landscape', $variables['field_landscape_image'][0]['uri']) . '" />';
 
     $variables['title'] = '<h3 class="kkb_newsletter_header">' . $variables['field_newsletter_title'][0]['value'] . '</h3>';
     $variables['description'] = '<p class="kbb_newsletter_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
