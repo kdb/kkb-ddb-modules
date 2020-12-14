@@ -26,9 +26,18 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-    <div class="content"<?php print $content_attributes; ?>>
-        <div>HELLLOOOO</div>
-      <?php print render($content); ?>
+<div class="kkb_newsletter <?php print $variables['identifier'] ?>"<?php print $content_attributes; ?>>
+    <figure class="kkb_newsletter_image_wrapper">
+        <?php print $variables['image_title']; ?>
+        <?php print $variables['image_rect']; ?>
+        <?php print $variables['image_landscape']; ?>
+    </figure>
+    <div class="kkb_newsletter_content_wrapper">
+      <?php print $variables['image_title_small']; ?>
+        <?php print $variables['title']; ?>
+      <?php print $variables['description']; ?>
+        <div class="kkb_newsletter_submit_wrapper">
+            <?php print $variables['submit']; ?>
+        </div>
     </div>
 </div>
