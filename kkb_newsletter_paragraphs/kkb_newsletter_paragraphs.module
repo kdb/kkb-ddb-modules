@@ -162,13 +162,3 @@ CSS;
     drupal_add_css($css, array('type' => 'inline'));
   }
 }
-
-/**
- * Revert features.
- */
-function kkb_newsletter_paragraphs_update_7102() {
-  features_revert_module('kkb_newsletter_paragraphs');
-  features_revert_module('ding_news');
-  features_revert_module('ding_page');
-  features_revert_module('ding_event');
-}
