@@ -56,6 +56,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances_alter(&$data) {
   }
 }
 
+
 /**
  * Implements hook_image_default_styles().
  */
@@ -66,11 +67,26 @@ function kkb_newsletter_paragraphs_image_default_styles() {
   $styles['newsletter_landscape'] = array(
     'label' => 'Newsletter landscape',
     'effects' => array(
-      4 => array(
+      1 => array(
         'name' => 'image_resize',
         'data' => array(
-          'width' => 504,
-          'height' => 162,
+          'width' => 562,
+          'height' => 195,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: newsletter_small_landscape.
+  $styles['newsletter_small_landscape'] = array(
+    'label' => 'Newsletter small landscape',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_resize',
+        'data' => array(
+          'width' => 274,
+          'height' => 195,
         ),
         'weight' => 1,
       ),
