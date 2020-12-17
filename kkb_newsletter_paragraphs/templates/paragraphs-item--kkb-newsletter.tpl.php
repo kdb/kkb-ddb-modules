@@ -27,11 +27,9 @@
  */
 ?>
 <div class="kkb_newsletter <?php print $variables['identifier'] ?>"<?php print $content_attributes; ?>>
-    <figure class="kkb_newsletter_image_wrapper">
+    <div class="kkb_newsletter_image_wrapper">
         <?php print $variables['image_title']; ?>
-        <?php print $variables['image_rect']; ?>
-        <?php print $variables['image_landscape']; ?>
-    </figure>
+    </div>
     <div class="kkb_newsletter_content_wrapper">
       <?php print $variables['image_title_small']; ?>
         <?php print $variables['title']; ?>
