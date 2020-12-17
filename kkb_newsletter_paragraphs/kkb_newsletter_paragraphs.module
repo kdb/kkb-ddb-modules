@@ -17,6 +17,12 @@ function kkb_newsletter_paragraphs_theme($existing, $type, $theme, $path) {
     'template' => 'paragraphs-item--kkb-newsletter',
     'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
   );
+  $theme['node__newsletter_administration'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--newsletter-administration',
+    'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
+  );
   return $theme;
 }
 
@@ -72,27 +78,26 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
 
     $variables['image_title'] = '<h3 class="kkb_newsletter_image_caption">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
     $variables['image_title_small'] = '<h3 class="kkb_newsletter_image_caption_small">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
-    $variables['image_rect'] = '<img class="kkb_newsletter_image_rect" src="' . image_style_url('medium', $variables['field_newsletter_image'][0]['uri']) . '" />';
-    $variables['image_landscape'] = '<img class="kkb_newsletter_image_landscape" src="' . image_style_url('newsletter_landscape', $variables['field_landscape_image'][0]['uri']) . '" />';
 
     $variables['title'] = '<h3 class="kkb_newsletter_header">' . $variables['field_newsletter_title'][0]['value'] . '</h3>';
     $variables['description'] = '<p class="kbb_newsletter_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
     $submit_url = $variables['field_newsletter_submit_url'][0]['value'];
     $variables['submit'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</a>';
 
+    $image_rect_url = image_style_url('newsletter_small_landscape', $variables['field_newsletter_image'][0]['uri']);
+    $image_landscape_url = image_style_url('newsletter_landscape', $variables['field_landscape_image'][0]['uri']);
+
     // Clamp brightness between 0 and 2
     $brightness = max(0, min(2, $variables['field_hover_brightness'][0]['value']));
+
     $css = <<<CSS
         /* Switch between rect and landscape images - the paragraph has no knowledge of the its context, so we switch between images this way. */
-        body.page-node .kkb_newsletter_image_landscape {
-            display: none;
-        }
-        body.page-taxonomy-term .kkb_newsletter_image_rect {
-            display: none;
-        }
         .kkb_newsletter {
             display: flex;
             padding: 20px 0;
+        }
+        body.page-node .kkb_newsletter {
+            max-width: 548px;
         }
         .kkb_newsletter_submit_wrapper {
             width: 100%;
@@ -107,12 +112,23 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            width: 50%;
+        }
+        body.page-node .kkb_newsletter_image_wrapper {
+            background-image: url($image_rect_url);
+        }
+        body.page-taxonomy-term .kkb_newsletter_image_wrapper {
+            background-image: url($image_landscape_url);
         }
         .kkb_newsletter_image_wrapper {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: bottom;
             flex-grow: 1;
             flex-basis: 0;
             margin: 0;
             padding: 30px;
+            width: 50%;
         }
         .kkb_newsletter_submit {
             padding: 12px 36px;
@@ -139,6 +155,11 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         .$identifier .kkb_newsletter_submit:hover {
             filter: brightness($brightness);
+        }
+        @media screen and (max-width: 1000px) {
+            .kkb_newsletter_submit {
+                padding: 12px;
+            }
         }
         @media screen and (max-width: 768px) {
             .kkb_newsletter {
