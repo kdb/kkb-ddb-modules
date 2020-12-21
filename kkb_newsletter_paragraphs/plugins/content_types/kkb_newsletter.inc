@@ -40,8 +40,8 @@ function kkb_newsletter_content_type_edit_form($form, &$form_state) {
   $query = new EntityFieldQuery();
 
   $query
-    ->entityCondition('entity_type', 'paragraphs_item', '=')
-    ->propertyCondition('bundle', 'kkb_newsletter', '=');
+    ->entityCondition('entity_type', 'node', '=')
+    ->entityCondition('bundle', 'newsletter_administration', '=');
 
   $result = $query->execute();
 
@@ -50,19 +50,19 @@ function kkb_newsletter_content_type_edit_form($form, &$form_state) {
     $ids[] = array_keys($item)[0];
   }
 
-  $paragraphs = entity_load('paragraphs_item', $ids);
+  $entities = entity_load('node', $ids);
 
   $options = array();
-  foreach ($paragraphs as $paragraph) {
-    $paragraph_wrapper = entity_metadata_wrapper('paragraphs_item', $paragraph);
-    $id = $paragraph_wrapper->item_id->value();
-    $options[$id] = $paragraph_wrapper->field_newsletter_title->value() . ' [' . $id  . ']';
+  foreach ($entities as $entity) {
+    $node_wrapper = entity_metadata_wrapper('node', $entity);
+    $id = $node_wrapper->field_newsletters->value()->item_id;
+    $options[$id] = $node_wrapper->title->value();
   }
 
   $conf = $form_state['conf'];
 
   $form['kkb_newsletter_paragraph_item_id'] = array(
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t('Choose a newsletter'),
     '#options' => $options,
     '#required' => TRUE,
