@@ -46,8 +46,8 @@ function kkb_newsletter_content_type_edit_form($form, &$form_state) {
   $result = $query->execute();
 
   $ids = array();
-  foreach ($result as $item) {
-    $ids[] = array_keys($item)[0];
+  foreach ($result['node'] as $item) {
+    $ids[] =$item->nid;
   }
 
   $entities = entity_load('node', $ids);
