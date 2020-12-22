@@ -213,7 +213,8 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Control how the button behaves on hover. This should be a number between 0 and 2. 
+0 means black, and 2 means white, and evey number in between is some value that will brighten or darken the button.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -253,7 +254,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   $field_instances['paragraphs_item-kkb_newsletter-field_landscape_image'] = array(
     'bundle' => 'kkb_newsletter',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This image is used for panel panes - like Section pages.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -334,7 +335,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The background behind the title and image. The image can be smaller than the container, so this color should work with the image.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -375,7 +376,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The color of the title on the left.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -456,7 +457,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   $field_instances['paragraphs_item-kkb_newsletter-field_newsletter_image'] = array(
     'bundle' => 'kkb_newsletter',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This image is used for newsletter paragraphs at regular nodetypes like News, Page and Event.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -477,7 +478,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'field_name' => 'field_newsletter_image',
-    'label' => 'Image',
+    'label' => 'Square Image',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -537,7 +538,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is the newsletter paragraph title that is displayed on the left of a full size newsletter.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -555,7 +556,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'field_name' => 'field_newsletter_image_title',
-    'label' => 'Image title',
+    'label' => 'Primary title',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -619,7 +620,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The text of the submit button',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -660,7 +661,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The URL that the submit button redirects to. This should be a newsletter form.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -701,7 +702,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is the header on the right in a full size newsletter paragraph. It is usually the same for all newsletters.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -719,7 +720,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'field_name' => 'field_newsletter_title',
-    'label' => 'Title',
+    'label' => 'Secondary Title',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -742,7 +743,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The color of the secondary title (the title on the right) and the submit buttons background color.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -783,7 +784,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The color of the text in the submit button.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -900,23 +901,35 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Control how the button behaves on hover. This should be a number between 0 and 2. 
+0 means black, and 2 means white, and evey number in between is some value that will brighten or darken the button.');
   t('Create a term page');
   t('Description');
   t('Hover brightness');
-  t('Image');
-  t('Image title');
   t('Landscape image');
   t('Left background color');
   t('Left foreground color');
   t('Long Description');
   t('Newsletter');
   t('Newsletters');
+  t('Primary title');
   t('Right foreground color');
+  t('Secondary Title');
+  t('Square Image');
   t('Submit');
   t('Submit URL');
   t('Submit text color');
   t('Term page');
-  t('Title');
+  t('The URL that the submit button redirects to. This should be a newsletter form.');
+  t('The background behind the title and image. The image can be smaller than the container, so this color should work with the image.');
+  t('The color of the secondary title (the title on the right) and the submit buttons background color.');
+  t('The color of the text in the submit button.');
+  t('The color of the title on the left.');
+  t('The text of the submit button');
+  t('This image is used for newsletter paragraphs at regular nodetypes like News, Page and Event.');
+  t('This image is used for panel panes - like Section pages.');
+  t('This is the header on the right in a full size newsletter paragraph. It is usually the same for all newsletters.');
+  t('This is the newsletter paragraph title that is displayed on the left of a full size newsletter.');
 
   return $field_instances;
 }
