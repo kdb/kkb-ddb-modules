@@ -67,11 +67,11 @@ function kkb_newsletter_paragraphs_image_default_styles() {
   $styles['newsletter_landscape'] = array(
     'label' => 'Newsletter landscape',
     'effects' => array(
-      1 => array(
+      2 => array(
         'name' => 'image_resize',
         'data' => array(
           'width' => 562,
-          'height' => 195,
+          'height' => 300,
         ),
         'weight' => 1,
       ),
@@ -82,11 +82,11 @@ function kkb_newsletter_paragraphs_image_default_styles() {
   $styles['newsletter_small_landscape'] = array(
     'label' => 'Newsletter small landscape',
     'effects' => array(
-      2 => array(
+      3 => array(
         'name' => 'image_resize',
         'data' => array(
           'width' => 274,
-          'height' => 195,
+          'height' => 260,
         ),
         'weight' => 1,
       ),
