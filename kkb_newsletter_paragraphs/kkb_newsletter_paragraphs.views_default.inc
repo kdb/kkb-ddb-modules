@@ -50,7 +50,7 @@ function kkb_newsletter_paragraphs_views_default_views() {
   $handler->display->display_options['fields']['item_id']['label'] = '';
   $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
-  /* Field: Paragraphs item: Title */
+  /* Field: Paragraphs item: Secondary Title */
   $handler->display->display_options['fields']['field_newsletter_title']['id'] = 'field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['table'] = 'field_data_field_newsletter_title';
   $handler->display->display_options['fields']['field_newsletter_title']['field'] = 'field_newsletter_title';
