@@ -244,7 +244,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -365,7 +365,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -406,7 +406,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -573,6 +573,47 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-kkb_newsletter-field_newsletter_lng_description'.
+  $field_instances['paragraphs_item-kkb_newsletter-field_newsletter_lng_description'] = array(
+    'bundle' => 'kkb_newsletter',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_newsletter_lng_description',
+    'label' => 'Long Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-kkb_newsletter-field_newsletter_submit'.
   $field_instances['paragraphs_item-kkb_newsletter-field_newsletter_submit'] = array(
     'bundle' => 'kkb_newsletter',
@@ -609,7 +650,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -650,7 +691,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -732,7 +773,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -773,7 +814,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -867,6 +908,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   t('Landscape image');
   t('Left background color');
   t('Left foreground color');
+  t('Long Description');
   t('Newsletter');
   t('Newsletters');
   t('Right foreground color');

@@ -70,6 +70,34 @@ function kkb_newsletter_paragraphs_secure_permissions($role) {
   }
 }
 
+/**
+ * Adjust a hex color by amount between 0 and 2.
+ *
+ * @param $color - The color to adjust.
+ * @param $amount - A number between 0 and 2 (meaning; adjust color 0% or 200%).
+ *
+ * @return string - hex color.
+ */
+function _adjust_color_brightness($color, $amount) {
+  $amount = (float)$amount;
+  // Fail silently if user input is not a float between 0 and 2.
+  if ($amount < 0 || $amount > 2) {
+    return $color;
+  }
+  // Convert amount to a number between -255 and 255.
+  $amount = floor(($amount - 1) * 255);
+  if (substr( $color, 0, 1 ) === "#") {
+    $color = substr($color, 1);
+  }
+  // Get new color.
+  $color_values = str_split($color, 2);
+  $r = min(255, max(0, intval($color_values[0], 16) + $amount));
+  $g = min(255, max(0, intval($color_values[1], 16) + $amount));
+  $b = min(255, max(0, intval($color_values[2], 16) + $amount));
+  // Return hex string.
+  return '#'.substr('0'.dechex($r), -2).substr('0'.dechex($g), -2).substr('0'.dechex($b), -2);
+}
+
 function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
   if ($variables['entity_type'] === 'paragraphs_item' &&
       $variables['paragraphs_item']->field_name === 'field_newsletters') {
@@ -87,6 +115,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
 
     $variables['title'] = '<h3 class="kkb_newsletter_header">' . $variables['field_newsletter_title'][0]['value'] . '</h3>';
     $variables['description'] = '<p class="kbb_newsletter_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
+    $variables['long_description'] = '<p class="kbb_newsletter_long_description">' . $variables['field_newsletter_lng_description'][0]['value'] . '</p>';
     $submit_url = $variables['field_newsletter_submit_url'][0]['value'];
     $variables['submit'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</a>';
 
@@ -95,6 +124,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
 
     // Clamp brightness between 0 and 2
     $brightness = max(0, min(2, $variables['field_hover_brightness'][0]['value']));
+    $right_foreground_color_adjusted = _adjust_color_brightness($right_foreground_color, $brightness);
 
     $css = <<<CSS
         /* Switch between rect and landscape images - the paragraph has no knowledge of the its context, so we switch between images this way. */
@@ -126,6 +156,12 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         body.page-taxonomy-term .kkb_newsletter_image_wrapper {
             background-image: url($image_landscape_url);
+        }
+        body.page-node .kbb_newsletter_lng_description {
+            display: none;
+        }
+        body.page-taxonomy-term .kbb_newsletter_description {
+            display: none;
         }
         .kkb_newsletter_image_wrapper {
             background-repeat: no-repeat;
@@ -161,7 +197,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             background-color: $right_foreground_color;
         }
         .$identifier .kkb_newsletter_submit:hover {
-            filter: brightness($brightness);
+            background-color: $right_foreground_color_adjusted;
         }
         @media screen and (max-width: 1000px) {
             .kkb_newsletter_submit {
