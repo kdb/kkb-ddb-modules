@@ -114,8 +114,8 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
     $variables['image_title_small'] = '<h3 class="kkb_newsletter_image_caption_small">' . $variables['field_newsletter_image_title'][0]['value'] . '</h3>';
 
     $variables['title'] = '<h3 class="kkb_newsletter_header">' . $variables['field_newsletter_title'][0]['value'] . '</h3>';
-    $variables['description'] = '<p class="kbb_newsletter_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
-    $variables['long_description'] = '<p class="kbb_newsletter_long_description">' . $variables['field_newsletter_lng_description'][0]['value'] . '</p>';
+    $variables['short_description'] = '<p class="kbb_newsletter_description kbb_newsletter_short_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
+    $variables['long_description'] = '<p class="kbb_newsletter_description kbb_newsletter_long_description">' . $variables['field_newsletter_lng_description'][0]['value'] . '</p>';
     $submit_url = $variables['field_newsletter_submit_url'][0]['value'];
     $variables['submit'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</a>';
 
@@ -148,7 +148,6 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             width: 50%;
         }
         body.page-node .kkb_newsletter_image_wrapper {
@@ -157,11 +156,14 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         body.page-taxonomy-term .kkb_newsletter_image_wrapper {
             background-image: url($image_landscape_url);
         }
-        body.page-node .kbb_newsletter_lng_description {
+        body.page-node .kbb_newsletter_long_description {
             display: none;
         }
-        body.page-taxonomy-term .kbb_newsletter_description {
+        body.page-taxonomy-term .kbb_newsletter_short_description {
             display: none;
+        }
+        .kbb_newsletter_description {
+            margin-bottom: 50px;
         }
         .kkb_newsletter_image_wrapper {
             background-repeat: no-repeat;
@@ -181,6 +183,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             font-size: 27px;
             line-height: 30px;
             font-weight: 700;
+            margin-bottom: 10px;
         }
         .kkb_newsletter_image_caption_small {
             display: none;
@@ -198,11 +201,6 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         .$identifier .kkb_newsletter_submit:hover {
             background-color: $right_foreground_color_adjusted;
-        }
-        @media screen and (max-width: 1000px) {
-            .kkb_newsletter_submit {
-                padding: 12px;
-            }
         }
         @media screen and (max-width: 768px) {
             .kkb_newsletter {

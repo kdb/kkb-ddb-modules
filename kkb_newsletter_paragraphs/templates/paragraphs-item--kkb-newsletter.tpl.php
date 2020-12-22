@@ -31,9 +31,10 @@
         <?php print $variables['image_title']; ?>
     </div>
     <div class="kkb_newsletter_content_wrapper">
-      <?php print $variables['image_title_small']; ?>
+        <?php print $variables['image_title_small']; ?>
         <?php print $variables['title']; ?>
-      <?php print $variables['description']; ?>
+        <?php print $variables['short_description']; ?>
+        <?php print $variables['long_description']; ?>
         <div class="kkb_newsletter_submit_wrapper">
             <?php print $variables['submit']; ?>
         </div>
