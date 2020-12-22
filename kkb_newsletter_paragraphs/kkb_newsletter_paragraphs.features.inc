@@ -102,7 +102,7 @@ function kkb_newsletter_paragraphs_image_default_styles() {
 function kkb_newsletter_paragraphs_node_info() {
   $items = array(
     'newsletter_administration' => array(
-      'name' => t('Newsletter administration'),
+      'name' => t('Newsletter'),
       'base' => 'node_content',
       'description' => t('Used for managing newsletter paragraphs'),
       'has_title' => '1',
