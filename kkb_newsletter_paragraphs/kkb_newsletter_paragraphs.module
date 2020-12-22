@@ -23,6 +23,12 @@ function kkb_newsletter_paragraphs_theme($existing, $type, $theme, $path) {
     'template' => 'node--newsletter-administration',
     'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
   );
+  $theme['panels_pane__kkb_newsletter'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'panels-pane--kkb-newsletter',
+    'path' => drupal_get_path('module', 'kkb_newsletter_paragraphs') . '/templates',
+  );
   return $theme;
 }
 
@@ -95,6 +101,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         .kkb_newsletter {
             display: flex;
             padding: 20px 0;
+            min-height: 300px;
         }
         body.page-node .kkb_newsletter {
             max-width: 548px;
@@ -123,7 +130,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         .kkb_newsletter_image_wrapper {
             background-repeat: no-repeat;
             background-size: contain;
-            background-position: bottom;
+            background-position: center;
             flex-grow: 1;
             flex-basis: 0;
             margin: 0;
