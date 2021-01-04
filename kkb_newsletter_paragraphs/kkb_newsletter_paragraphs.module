@@ -194,6 +194,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         .$identifier .kkb_newsletter_header {
             color: $right_foreground_color;
+            margin-bottom: 20px;
         }
         .$identifier .kkb_newsletter_submit {
             color: $submit_text_color;
