@@ -86,7 +86,7 @@ function kkb_newsletter_paragraphs_image_default_styles() {
         'name' => 'image_resize',
         'data' => array(
           'width' => 274,
-          'height' => 260,
+          'height' => 305,
         ),
         'weight' => 1,
       ),
