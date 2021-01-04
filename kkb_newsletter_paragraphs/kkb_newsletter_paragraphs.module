@@ -168,7 +168,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         .kkb_newsletter_image_wrapper {
             background-repeat: no-repeat;
             background-size: contain;
-            background-position: center;
+            background-position: bottom;
             flex-grow: 1;
             flex-basis: 0;
             margin: 0;
@@ -194,6 +194,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         .$identifier .kkb_newsletter_header {
             color: $right_foreground_color;
+            margin-bottom: 20px;
         }
         .$identifier .kkb_newsletter_submit {
             color: $submit_text_color;
@@ -202,7 +203,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         .$identifier .kkb_newsletter_submit:hover {
             background-color: $right_foreground_color_adjusted;
         }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1112px) {
             .kkb_newsletter {
                 position: relative;
                 width: 100%;

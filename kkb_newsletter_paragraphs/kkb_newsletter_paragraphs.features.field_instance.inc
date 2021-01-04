@@ -417,7 +417,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short description is used for the content text for small newsletter paragraphs.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -579,7 +579,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
     'bundle' => 'kkb_newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short description is used for the content text for large newsletter paragraphs.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -925,6 +925,8 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   t('The color of the secondary title (the title on the right) and the submit buttons background color.');
   t('The color of the text in the submit button.');
   t('The color of the title on the left.');
+  t('The short description is used for the content text for large newsletter paragraphs.');
+  t('The short description is used for the content text for small newsletter paragraphs.');
   t('The text of the submit button');
   t('This image is used for newsletter paragraphs at regular nodetypes like News, Page and Event.');
   t('This image is used for panel panes - like Section pages.');
