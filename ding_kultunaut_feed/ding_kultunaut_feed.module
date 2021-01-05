@@ -184,7 +184,15 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
 
   $activity->target = isset($wrapper->field_ding_event_target->value()->name) ?
     $wrapper->field_ding_event_target->value()->name : NULL;;
-  $activity->category = $wrapper->field_ding_event_category->value()->name;
+  $activity->field_theme = $wrapper->field_ding_event_category->value()->name;
+
+  if (!empty($wrapper->field_ding_event_category->value())) {
+    $activity->field_theme = new SimpleXMLElement('<field_marketing_categories></field_marketing_categories>');
+    $activity->field_theme->addAttribute('is_array', 'true');
+    foreach ($wrapper->field_ding_event_category->value() as $item) {
+      $activity->field_theme->addChild('item', $item->name);
+    }
+  }
 
   $uri = entity_uri('node', $node);
   if ($uri) {
