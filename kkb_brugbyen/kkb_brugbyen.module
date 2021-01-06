@@ -5,3 +5,10 @@
  */
 
 include_once 'kkb_brugbyen.features.inc';
+
+/**
+ * Revert this feature, which is already enabled in production.
+ */
+function kkb_brugbyen_update_7001() {
+  features_revert_module('kkb_brugbyen');
+}
