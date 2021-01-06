@@ -135,6 +135,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         }
         body.page-node .kkb_newsletter {
             max-width: 548px;
+            min-height: 345px;
         }
         .kkb_newsletter_submit_wrapper {
             width: 100%;
