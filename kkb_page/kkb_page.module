@@ -5,3 +5,175 @@
  */
 
 include_once 'kkb_page.features.inc';
+
+function kkb_page_menu() {
+  $items['admin/config/ding/surveyxact'] = array(
+    'title' => 'Surveyxact',
+    'description' => 'Settings for Surveyxact forms.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['kkb_page_surveyxact_settings_form'],
+    'access arguments' => ['administer site configuration'],
+  );
+  return $items;
+}
+
+/**
+ * Add match url and survey keys in an admin form.
+ *
+ * @param $form
+ * @param $form_state
+ *
+ * @return mixed
+ */
+function kkb_page_surveyxact_settings_form($form, &$form_state) {
+  $values = isset($form_state['values']['kkb_page_surveyxact_dialog'])
+    ? $form_state['values']['kkb_page_surveyxact_dialog']
+    : variable_get('kkb_page_surveyxact_dialog');
+
+  $form['kkb_page_surveyxact_dialog'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Active forms'),
+    "#prefix" => '<div id="surveyxact-dialog">',
+    "#suffix" => '</div>',
+    '#collapsible' => FALSE,
+    '#tree' => TRUE
+  );
+
+  foreach($values as $key => $value) {
+    $form['kkb_page_surveyxact_dialog'][$key] = array(
+      '#type' => 'fieldset',
+      '#prefix' => '<div class="dialog-fieldset">',
+      '#suffix' => '</div>',
+    );
+
+    $form['kkb_page_surveyxact_dialog'][$key]['match'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Match',
+      '#default_value' => isset($value['match']) ? $value['match'] : '',
+      '#size' => 22,
+      '#description' => 'Match'
+    );
+
+    $form['kkb_page_surveyxact_dialog'][$key]['surveyKey'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Survey key',
+      '#default_value' => isset($value['surveyKey']) ? $value['surveyKey'] : '',
+      '#size' => 22,
+      '#description' => 'Survey Key'
+    );
+
+    $form['kkb_page_surveyxact_dialog'][$key]['remove'] = array(
+      '#type' => 'submit',
+      '#value' => t('Remove survey'),
+      '#submit' => array('kkb_page_surveys_remove_one'),
+      '#name' => 'remove_' . $key,
+      '#remove_index' => $key,
+      '#ajax' => array(
+        'callback' => 'kkb_page_surveys_callback',
+        'wrapper' => 'surveyxact-dialog',
+        'method' => 'replace',
+      ),
+    );
+  }
+
+  $form['kkb_page_surveyxact_dialog'][]['add_survey'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add survey'),
+    '#submit' => array('kkb_page_surveys_add_one'),
+    '#ajax' => array(
+      'callback' => 'kkb_page_surveys_callback',
+      'wrapper' => 'surveyxact-dialog',
+      'method' => 'replace',
+    ),
+  );
+
+  $form['#validate'][] = 'kkb_page_surveyxact_settings_form_validate';
+
+  return system_settings_form($form);
+}
+
+/**
+ * Form validate handler for the surveyxact settings form.
+ */
+function kkb_page_surveyxact_settings_form_validate($form, &$form_state) {
+  $form_state['values']['kkb_page_surveyxact_dialog'] = array_filter($form_state['values']['kkb_page_surveyxact_dialog'], function($value) {
+    return !empty($value['match']) && !empty($value['surveyKey']);
+  });
+}
+
+/**
+ * Submit handler for the "add_survey" button.
+ */
+function kkb_page_surveys_add_one($form, &$form_state) {
+  // Add an empty fieldset.
+  $form_state['values']['kkb_page_surveyxact_dialog'][] = [
+    'match' => '',
+    'surveyKey' => ''
+  ];
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Remove a fieldset.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function kkb_page_surveys_remove_one($form, &$form_state) {
+  if (isset($form_state['triggering_element']['#remove_index'])) {
+    $index = $form_state['triggering_element']['#remove_index'];
+    unset($form_state['values']['kkb_page_surveyxact_dialog'][$index]);
+  }
+  $form_state['rebuild'] = TRUE;
+}
+
+function kkb_page_surveys_callback($form, &$form_state) {
+  return $form['kkb_page_surveyxact_dialog'];
+}
+
+/**
+ * Node preprocess function.
+ */
+function kkb_page_preprocess_node(&$variables) {
+  _display_surveyxact_dialogs();
+}
+
+/**
+ * Display SurveyExact surveys.
+ *
+ * This is a very basic implementation, where we store survey information in Drupal variables.
+ * That is probably the simplest way to be able to update.
+ *
+ * Variables are saved through a system_settings_form.
+ *
+ * Example: [{ "match": "hjaelp/gebyr-og-erstatning", "surveyKey": "somekey-from-surveyxact" }]
+ */
+function _display_surveyxact_dialogs() {
+  $values =  variable_get('kkb_page_surveyxact_dialog');
+  $path_tokens = explode('/', drupal_lookup_path('alias', current_path()));
+  foreach ($values as $dialog) {
+    $matches = explode('/', $dialog['match']);
+    if ($matches === array_slice($path_tokens, 0, count($matches))) {
+      $surveyKey = $dialog['surveyKey'];
+
+      drupal_add_css('//popin.survey-xact.dk/popin/popin.css', 'external');
+      drupal_add_js('//popin.survey-xact.dk/popin/popin.js', 'external');
+      drupal_add_js('//popin.survey-xact.dk/dynjs/' . $surveyKey . '/popin.js', 'external');
+      drupal_add_js('//popin.survey-xact.dk/cookies.js', 'external');
+
+      $script = <<<EOD
+        window.xact_width=400;
+        window.xact_height=400;
+        window.xact_surveyURL='https://www.survey-xact.dk/LinkCollector?key=$surveyKey';
+        window.xact_surveyKey='$surveyKey';
+        window.xact_probability = 1;
+        window.xact_baseURL = 'https://www.survey-xact.dk';
+        window.xact_language = "da";
+        xact_startPopIn();
+EOD;
+
+      drupal_add_js($script, array('type' => 'inline', 'scope' => 'footer'));
+    }
+  }
+}
+
