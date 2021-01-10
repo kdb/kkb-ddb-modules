@@ -7,11 +7,11 @@
 include_once 'kkb_page.features.inc';
 
 function kkb_page_menu() {
-  $items['admin/config/ding/surveyxact'] = array(
-    'title' => 'Surveyxact',
-    'description' => 'Settings for Surveyxact forms.',
+  $items['admin/config/ding/popup'] = array(
+    'title' => 'Popup dialogs',
+    'description' => 'Settings for popup forms.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => ['kkb_page_surveyxact_settings_form'],
+    'page arguments' => ['kkb_page_popup_settings_form'],
     'access arguments' => ['administer site configuration'],
   );
   return $items;
@@ -25,90 +25,117 @@ function kkb_page_menu() {
  *
  * @return mixed
  */
-function kkb_page_surveyxact_settings_form($form, &$form_state) {
-  $values = isset($form_state['values']['kkb_page_surveyxact_dialog'])
-    ? $form_state['values']['kkb_page_surveyxact_dialog']
-    : variable_get('kkb_page_surveyxact_dialog');
+function kkb_page_popup_settings_form($form, &$form_state) {
+  $values = isset($form_state['values']['kkb_page_popup_dialog'])
+    ? $form_state['values']['kkb_page_popup_dialog']
+    : variable_get('kkb_page_popup_dialog');
 
-  $form['kkb_page_surveyxact_dialog'] = array(
+  $form['kkb_page_popup_dialog'] = array(
     '#type' => 'fieldset',
     '#title' => t('Active forms'),
-    "#prefix" => '<div id="surveyxact-dialog">',
+    "#prefix" => '<div id="popup-dialog">',
     "#suffix" => '</div>',
     '#collapsible' => FALSE,
     '#tree' => TRUE
   );
 
   foreach($values as $key => $value) {
-    $form['kkb_page_surveyxact_dialog'][$key] = array(
+    $form['kkb_page_popup_dialog'][$key] = array(
       '#type' => 'fieldset',
       '#prefix' => '<div class="dialog-fieldset">',
       '#suffix' => '</div>',
     );
 
-    $form['kkb_page_surveyxact_dialog'][$key]['match'] = array(
-      '#type' => 'textfield',
+    $form['kkb_page_popup_dialog'][$key]['match'] = array(
+      '#type' => 'textarea',
       '#title' => 'Match',
       '#default_value' => isset($value['match']) ? $value['match'] : '',
       '#size' => 22,
-      '#description' => 'Match'
+      '#description' => t('One match per line. Wildcards * apply.')
     );
 
-    $form['kkb_page_surveyxact_dialog'][$key]['surveyKey'] = array(
+    $form['kkb_page_popup_dialog'][$key]['header'] = array(
       '#type' => 'textfield',
-      '#title' => 'Survey key',
-      '#default_value' => isset($value['surveyKey']) ? $value['surveyKey'] : '',
+      '#title' => 'Header',
+      '#default_value' => isset($value['header']) ? $value['header'] : '',
       '#size' => 22,
-      '#description' => 'Survey Key'
+      '#description' => 'Header text'
     );
 
-    $form['kkb_page_surveyxact_dialog'][$key]['remove'] = array(
+    $form['kkb_page_popup_dialog'][$key]['text'] = array(
+      '#type' => 'textarea',
+      '#title' => 'Text',
+      '#default_value' => isset($value['text']) ? $value['text'] : '',
+      '#size' => 22,
+      '#description' => 'Dialog text'
+    );
+
+    $form['kkb_page_popup_dialog'][$key]['url'] = array(
+      '#type' => 'textfield',
+      '#title' => 'URL',
+      '#default_value' => isset($value['url']) ? $value['url'] : '',
+      '#size' => 22,
+      '#description' => 'Link URL'
+    );
+
+    $form['kkb_page_popup_dialog'][$key]['submit_text'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Submit',
+      '#default_value' => isset($value['submit_text']) ? $value['submit_text'] : '',
+      '#size' => 22,
+      '#description' => 'Submit Text'
+    );
+
+    $form['kkb_page_popup_dialog'][$key]['remove'] = array(
       '#type' => 'submit',
-      '#value' => t('Remove survey'),
-      '#submit' => array('kkb_page_surveys_remove_one'),
+      '#value' => t('Remove popup'),
+      '#submit' => array('kkb_page_popup_remove_one'),
       '#name' => 'remove_' . $key,
       '#remove_index' => $key,
       '#ajax' => array(
-        'callback' => 'kkb_page_surveys_callback',
-        'wrapper' => 'surveyxact-dialog',
+        'callback' => 'kkb_page_popup_callback',
+        'wrapper' => 'popup-dialog',
         'method' => 'replace',
       ),
     );
   }
 
-  $form['kkb_page_surveyxact_dialog'][]['add_survey'] = array(
+  $form['kkb_page_popup_dialog'][]['add_popup'] = array(
     '#type' => 'submit',
-    '#value' => t('Add survey'),
-    '#submit' => array('kkb_page_surveys_add_one'),
+    '#value' => t('Add popup'),
+    '#submit' => array('kkb_page_popup_add_one'),
     '#ajax' => array(
-      'callback' => 'kkb_page_surveys_callback',
-      'wrapper' => 'surveyxact-dialog',
+      'callback' => 'kkb_page_popup_callback',
+      'wrapper' => 'popup-dialog',
       'method' => 'replace',
     ),
   );
 
-  $form['#validate'][] = 'kkb_page_surveyxact_settings_form_validate';
+  $form['#validate'][] = 'kkb_page_popup_settings_form_validate';
 
   return system_settings_form($form);
 }
 
 /**
- * Form validate handler for the surveyxact settings form.
+ * Form validate handler for the popup settings form.
  */
-function kkb_page_surveyxact_settings_form_validate($form, &$form_state) {
-  $form_state['values']['kkb_page_surveyxact_dialog'] = array_filter($form_state['values']['kkb_page_surveyxact_dialog'], function($value) {
-    return !empty($value['match']) && !empty($value['surveyKey']);
+function kkb_page_popup_settings_form_validate($form, &$form_state) {
+  $form_state['values']['kkb_page_popup_dialog'] = array_filter($form_state['values']['kkb_page_popup_dialog'], function($value) {
+    return !empty($value['match']) && !empty($value['header']) && !empty($value['url']) && !empty($value['text']) && !empty($value['submit_text']);
   });
 }
 
 /**
- * Submit handler for the "add_survey" button.
+ * Submit handler for the "add_popup" button.
  */
-function kkb_page_surveys_add_one($form, &$form_state) {
+function kkb_page_popup_add_one($form, &$form_state) {
   // Add an empty fieldset.
-  $form_state['values']['kkb_page_surveyxact_dialog'][] = [
+  $form_state['values']['kkb_page_popup_dialog'][] = [
     'match' => '',
-    'surveyKey' => ''
+    'header' => '',
+    'text' => '',
+    'url' => '',
+    'submit_text' => '',
   ];
   $form_state['rebuild'] = TRUE;
 }
@@ -119,60 +146,66 @@ function kkb_page_surveys_add_one($form, &$form_state) {
  * @param $form
  * @param $form_state
  */
-function kkb_page_surveys_remove_one($form, &$form_state) {
+function kkb_page_popup_remove_one($form, &$form_state) {
   if (isset($form_state['triggering_element']['#remove_index'])) {
     $index = $form_state['triggering_element']['#remove_index'];
-    unset($form_state['values']['kkb_page_surveyxact_dialog'][$index]);
+    unset($form_state['values']['kkb_page_popup_dialog'][$index]);
   }
   $form_state['rebuild'] = TRUE;
 }
 
-function kkb_page_surveys_callback($form, &$form_state) {
-  return $form['kkb_page_surveyxact_dialog'];
+function kkb_page_popup_callback($form, &$form_state) {
+  return $form['kkb_page_popup_dialog'];
 }
 
 /**
  * Node preprocess function.
  */
 function kkb_page_preprocess_node(&$variables) {
-  _display_surveyxact_dialogs();
+  _display_popup_dialogs();
 }
 
 /**
- * Display SurveyExact surveys.
+ * Display popup dialogs.
  *
- * This is a very basic implementation, where we store survey information in Drupal variables.
+ * This is a very basic implementation, where we store popup information in Drupal variables.
  * That is probably the simplest way to be able to update.
  *
  * Variables are saved through a system_settings_form.
  *
- * Example: [{ "match": "hjaelp/gebyr-og-erstatning", "surveyKey": "somekey-from-surveyxact" }]
+ * Example: [{ "match": "hjaelp/gebyr-og-erstatning", "url": "//:somekey/url" }]
  */
-function _display_surveyxact_dialogs() {
-  $values =  variable_get('kkb_page_surveyxact_dialog');
-  $path_tokens = explode('/', drupal_lookup_path('alias', current_path()));
+function _display_popup_dialogs(&$variables) {
+  $values =  variable_get('kkb_page_popup_dialog');
   foreach ($values as $dialog) {
-    $matches = explode('/', $dialog['match']);
-    if ($matches === array_slice($path_tokens, 0, count($matches))) {
-      $surveyKey = $dialog['surveyKey'];
+    // Change / to <front>.
+    $matches = preg_replace('/(\\r\\n|^)\/\\r\\n/', "\r\n<front>\r\n", $dialog['match']);
+    // Remove starting slashes
+    $matches = preg_replace('/\s\//', ' ', $matches);
+    // Replace newlines with whitespace.
+    $matches = preg_replace('/\\r\\n/', ' ', $matches);
+    $matches = trim($matches);
 
-      drupal_add_css('//popin.survey-xact.dk/popin/popin.css', 'external');
-      drupal_add_js('//popin.survey-xact.dk/popin/popin.js', 'external');
-      drupal_add_js('//popin.survey-xact.dk/dynjs/' . $surveyKey . '/popin.js', 'external');
-      drupal_add_js('//popin.survey-xact.dk/cookies.js', 'external');
-
-      $script = <<<EOD
-        window.xact_width=400;
-        window.xact_height=400;
-        window.xact_surveyURL='https://www.survey-xact.dk/LinkCollector?key=$surveyKey';
-        window.xact_surveyKey='$surveyKey';
-        window.xact_probability = 1;
-        window.xact_baseURL = 'https://www.survey-xact.dk';
-        window.xact_language = "da";
-        xact_startPopIn();
-EOD;
-
-      drupal_add_js($script, array('type' => 'inline', 'scope' => 'footer'));
+    foreach (explode(' ', $matches) as $match) {
+      if (drupal_match_path(current_path(), $match)) {
+        $url = $dialog['url'];
+        drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', array('type' => 'external', 'weight' => -5, 'group' => JS_LIBRARY));
+        drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', array('type' => 'external', 'weight' => -4, 'group' => JS_LIBRARY));
+        drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', array('type' => 'external', 'weight' => -3, 'group' => JS_LIBRARY));
+        drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', array('type' => 'external', 'weight' => -2, 'group' => JS_LIBRARY));
+        drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', array('type' => 'external', 'weight' => -1, 'group' => JS_LIBRARY));
+        drupal_add_js(drupal_get_path('module', 'kkb_page') . '/js/dialog.js', array('type' => 'file', 'weight' => 0, 'group' => JS_LIBRARY));
+        drupal_add_js(array(
+          'kkb_page' => array(
+            'header' => $dialog['header'],
+            'text' => $dialog['text'],
+            'submitText' => $dialog['submit_text'],
+            'url' => $dialog['url'],
+          ),
+        ), 'setting');
+        drupal_add_css(drupal_get_path('module', 'kkb_page') . '/css/dialog.css');
+        break;
+      }
     }
   }
 }
