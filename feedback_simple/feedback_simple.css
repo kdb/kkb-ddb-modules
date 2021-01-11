@@ -4,7 +4,7 @@
   overflow: hidden;
   position: fixed;
   text-decoration: none !important;
-  z-index: 9998;
+  z-index: 9999;
 }
 #feedback_simple div {
   display: inline-block;

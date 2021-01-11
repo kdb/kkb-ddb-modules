@@ -65,3 +65,8 @@
     color: white;
     background-color: #244434;
 }
+
+/* Overwrite z-index with more specifity, rather than patching the feedback_simple module */
+#feedback_simple a.feedback_simple {
+    z-index: 9998;
+}
