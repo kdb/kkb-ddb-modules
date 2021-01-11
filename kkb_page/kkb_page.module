@@ -51,7 +51,7 @@ function kkb_page_popup_settings_form($form, &$form_state) {
       '#title' => 'Match',
       '#default_value' => isset($value['match']) ? $value['match'] : '',
       '#size' => 22,
-      '#description' => t('One match per line. Wildcards * apply.')
+      '#description' => t("One match per line. Wildcards * apply. Do not start with a slash. Use <front> to match the frontpage\nExamples:\n<front> - Matches the frontpage\nteamer/* -- matches all theme pages</front>")
     );
 
     $form['kkb_page_popup_dialog'][$key]['header'] = array(
@@ -178,34 +178,22 @@ function kkb_page_preprocess_node(&$variables) {
 function _display_popup_dialogs(&$variables) {
   $values =  variable_get('kkb_page_popup_dialog');
   foreach ($values as $dialog) {
-    // Change / to <front>.
-    $matches = preg_replace('/(\\r\\n|^)\/\\r\\n/', "\r\n<front>\r\n", $dialog['match']);
-    // Remove starting slashes
-    $matches = preg_replace('/\s\//', ' ', $matches);
-    // Replace newlines with whitespace.
-    $matches = preg_replace('/\\r\\n/', ' ', $matches);
-    $matches = trim($matches);
-
-    foreach (explode(' ', $matches) as $match) {
-      if (drupal_match_path(current_path(), $match)) {
-        $url = $dialog['url'];
-        drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', array('type' => 'external', 'weight' => -5, 'group' => JS_LIBRARY));
-        drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', array('type' => 'external', 'weight' => -4, 'group' => JS_LIBRARY));
-        drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', array('type' => 'external', 'weight' => -3, 'group' => JS_LIBRARY));
-        drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', array('type' => 'external', 'weight' => -2, 'group' => JS_LIBRARY));
-        drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', array('type' => 'external', 'weight' => -1, 'group' => JS_LIBRARY));
-        drupal_add_js(drupal_get_path('module', 'kkb_page') . '/js/dialog.js', array('type' => 'file', 'weight' => 0, 'group' => JS_LIBRARY));
-        drupal_add_js(array(
-          'kkb_page' => array(
-            'header' => $dialog['header'],
-            'text' => $dialog['text'],
-            'submitText' => $dialog['submit_text'],
-            'url' => $dialog['url'],
-          ),
-        ), 'setting');
-        drupal_add_css(drupal_get_path('module', 'kkb_page') . '/css/dialog.css');
-        break;
-      }
+    if (drupal_match_path(current_path(), $dialog['match'])) {
+      drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', array('type' => 'external', 'weight' => -5, 'group' => JS_LIBRARY));
+      drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', array('type' => 'external', 'weight' => -4, 'group' => JS_LIBRARY));
+      drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', array('type' => 'external', 'weight' => -3, 'group' => JS_LIBRARY));
+      drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', array('type' => 'external', 'weight' => -2, 'group' => JS_LIBRARY));
+      drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', array('type' => 'external', 'weight' => -1, 'group' => JS_LIBRARY));
+      drupal_add_js(drupal_get_path('module', 'kkb_page') . '/js/dialog.js', array('type' => 'file', 'weight' => 0, 'group' => JS_LIBRARY));
+      drupal_add_js(array(
+        'kkb_page' => array(
+          'header' => $dialog['header'],
+          'text' => $dialog['text'],
+          'submitText' => $dialog['submit_text'],
+          'url' => $dialog['url'],
+        ),
+      ), 'setting');
+      drupal_add_css(drupal_get_path('module', 'kkb_page') . '/css/dialog.css');
     }
   }
 }
