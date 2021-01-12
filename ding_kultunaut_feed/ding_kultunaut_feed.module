@@ -184,15 +184,7 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
 
   $activity->target = isset($wrapper->field_ding_event_target->value()->name) ?
     $wrapper->field_ding_event_target->value()->name : NULL;;
-  $activity->field_theme = $wrapper->field_ding_event_category->value()->name;
-
-  if (!empty($wrapper->field_ding_event_category->value())) {
-    $activity->field_theme = new SimpleXMLElement('<field_marketing_categories></field_marketing_categories>');
-    $activity->field_theme->addAttribute('is_array', 'true');
-    foreach ($wrapper->field_ding_event_category->value() as $item) {
-      $activity->field_theme->addChild('item', $item->name);
-    }
-  }
+  $activity->category = $wrapper->field_ding_event_category->value()->name;
 
   $uri = entity_uri('node', $node);
   if ($uri) {
@@ -215,8 +207,12 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
     $activity->ticket_link = $wrapper->field_ding_event_ticket_link->value()['url'];
   }
 
-  if (!empty($wrapper->field_theme_category->value()->name)) {
-    $activity->field_theme = $wrapper->field_theme_category->value()->name;
+  if (!empty($wrapper->field_theme_category->value())) {
+      $activity->field_theme_category = new SimpleXMLElement('<field_theme></field_theme>');
+      $activity->field_theme_category->addAttribute('is_array', 'true');
+      foreach ($wrapper->field_theme_category->value() as $item) {
+        $activity->field_theme_category->addChild('item', $item->name);
+      }
   }
 
   if (!empty($wrapper->field_marketing_category->value())) {
