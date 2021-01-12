@@ -29,12 +29,12 @@
     }
 
     return html`
-      <div className="kkb-page-dialog">
-        <div className='kkb-page-dialog--close' onClick=${handleClose} />
-        <div className="kkb-page-dialog--content">
-          <div className="kkb-page-dialog--header">${header}</div>
+      <div className="kkb-popup-dialog">
+        <div className='kkb-popup-dialog--close' onClick=${handleClose} />
+        <div className="kkb-popup-dialog--content">
+          <div className="kkb-popup-dialog--header">${header}</div>
           <p>${text}</p>
-          <a className="kkb-page-dialog--link" href=${url} target="popup" onClick=${handleClose}>${submitText}</a>
+          <a className="kkb-popup-dialog--link" href=${url} target="popup" onClick=${handleClose}>${submitText}</a>
         </div>
       </div>
     `;
@@ -59,7 +59,7 @@
     ReactDOM.render(html`<${Dialog} ...${wrapper.dataset} />`, wrapper);
   }
 
-  Drupal.behaviors.kkb_page = {
+  Drupal.behaviors.kkb_popup_dialog = {
     attach: function (context, settings) {
       init(settings.kkb_page);
     },

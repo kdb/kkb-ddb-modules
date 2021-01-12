@@ -13,7 +13,7 @@
     }
 }
 
-.kkb-page-dialog {
+.kkb-popup-dialog {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -22,7 +22,7 @@
     animation-fill-mode: both;
 }
 
-.kkb-page-dialog--content {
+.kkb-popup-dialog--content {
     background-color: white;
     filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, .5));
     padding: 15px;
@@ -31,12 +31,12 @@
     text-align: center;
 }
 
-.kkb-page-dialog--close {
+.kkb-popup-dialog--close {
     display: block;
     width: 20px;
     height: 20px;
     cursor: pointer;
-    background-image: url(/sites/all/modules/kkb-ddb-modules-master/kkb_page/images/dialog-close.svg);
+    background-image: url(/sites/all/modules/kkb-ddb-modules-master/kkb_popup_dialog/images/dialog-close.svg);
     background-size: contain;
     position: relative;
     top: 10px;
@@ -44,14 +44,14 @@
     z-index: 10000;
 }
 
-.kkb-page-dialog--header {
+.kkb-popup-dialog--header {
     font-size: x-large;
     font-weight: 700;
     margin: 10px 0 20px 0;
     width: 100%;
 }
 
-.kkb-page-dialog--link {
+.kkb-popup-dialog--link {
     border-radius: 2px;
     background-color: #3a6f55;
     padding: 5px;
@@ -61,7 +61,7 @@
     font-weight: 700;
 }
 
-.kkb-page-dialog--link:hover {
+.kkb-popup-dialog--link:hover {
     color: white;
     background-color: #244434;
 }

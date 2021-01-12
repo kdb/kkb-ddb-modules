@@ -1,0 +1,221 @@
+<?php
+/**
+ * @file kkb_popup_dialog.
+ */
+
+function kkb_popup_dialog_menu() {
+  $items['admin/config/ding/popup'] = [
+    'title' => 'Popup dialogs',
+    'description' => 'Settings for popup forms.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['kkb_popup_dialog_settings_form'],
+    'access arguments' => ['administer site configuration'],
+  ];
+  return $items;
+}
+
+/**
+ * Add match url and survey keys in an admin form.
+ *
+ * @param $form
+ * @param $form_state
+ *
+ * @return mixed
+ */
+function kkb_popup_dialog_settings_form($form, &$form_state) {
+  $values = isset($form_state['values']['kkb_popup_dialog'])
+    ? $form_state['values']['kkb_popup_dialog']
+    : variable_get('kkb_popup_dialog');
+
+  $form['kkb_popup_dialog'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Active forms'),
+    "#prefix" => '<div id="popup-dialog">',
+    "#suffix" => '</div>',
+    '#collapsible' => FALSE,
+    '#tree' => TRUE,
+  ];
+
+  foreach ($values as $key => $value) {
+    $form['kkb_popup_dialog'][$key] = [
+      '#type' => 'fieldset',
+      '#prefix' => '<div class="dialog-fieldset">',
+      '#suffix' => '</div>',
+    ];
+
+    $form['kkb_popup_dialog'][$key]['match'] = [
+      '#type' => 'textarea',
+      '#title' => 'Match',
+      '#default_value' => isset($value['match']) ? $value['match'] : '',
+      '#size' => 22,
+      '#description' => t("One match per line. Wildcards * apply. Do not start with a slash. Use <front> to match the frontpage\nExamples:\n<front> - Matches the frontpage\nteamer/* -- matches all theme pages</front>"),
+    ];
+
+    $form['kkb_popup_dialog'][$key]['header'] = [
+      '#type' => 'textfield',
+      '#title' => 'Header',
+      '#default_value' => isset($value['header']) ? $value['header'] : '',
+      '#size' => 22,
+      '#description' => 'Header text',
+    ];
+
+    $form['kkb_popup_dialog'][$key]['text'] = [
+      '#type' => 'textarea',
+      '#title' => 'Text',
+      '#default_value' => isset($value['text']) ? $value['text'] : '',
+      '#size' => 22,
+      '#description' => 'Dialog text',
+    ];
+
+    $form['kkb_popup_dialog'][$key]['url'] = [
+      '#type' => 'textfield',
+      '#title' => 'URL',
+      '#default_value' => isset($value['url']) ? $value['url'] : '',
+      '#size' => 22,
+      '#description' => 'Link URL',
+    ];
+
+    $form['kkb_popup_dialog'][$key]['submit_text'] = [
+      '#type' => 'textfield',
+      '#title' => 'Submit',
+      '#default_value' => isset($value['submit_text']) ? $value['submit_text'] : '',
+      '#size' => 22,
+      '#description' => 'Submit Text',
+    ];
+
+    $form['kkb_popup_dialog'][$key]['remove'] = [
+      '#type' => 'submit',
+      '#value' => t('Remove popup'),
+      '#submit' => ['kkb_popup_dialog_remove_one'],
+      '#name' => 'remove_' . $key,
+      '#remove_index' => $key,
+      '#ajax' => [
+        'callback' => 'kkb_popup_dialog_callback',
+        'wrapper' => 'popup-dialog',
+        'method' => 'replace',
+      ],
+    ];
+  }
+
+  $form['kkb_popup_dialog'][]['add_popup'] = [
+    '#type' => 'submit',
+    '#value' => t('Add popup'),
+    '#submit' => ['kkb_popup_dialog_add_one'],
+    '#ajax' => [
+      'callback' => 'kkb_popup_dialog_callback',
+      'wrapper' => 'popup-dialog',
+      'method' => 'replace',
+    ],
+  ];
+
+  $form['#validate'][] = 'kkb_popup_dialog_settings_form_validate';
+
+  return system_settings_form($form);
+}
+
+/**
+ * Form validate handler for the popup settings form.
+ */
+function kkb_popup_dialog_settings_form_validate($form, &$form_state) {
+  $form_state['values']['kkb_popup_dialog'] = array_filter($form_state['values']['kkb_popup_dialog'], function ($value) {
+    return !empty($value['match']) && !empty($value['header']) && !empty($value['url']) && !empty($value['text']) && !empty($value['submit_text']);
+  });
+}
+
+/**
+ * Submit handler for the "add_popup" button.
+ */
+function kkb_popup_dialog_add_one($form, &$form_state) {
+  // Add an empty fieldset.
+  $form_state['values']['kkb_popup_dialog'][] = array(
+    'match' => '',
+    'header' => '',
+    'text' => '',
+    'url' => '',
+    'submit_text' => '',
+  );
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Remove a fieldset.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function kkb_popup_dialog_remove_one($form, &$form_state) {
+  if (isset($form_state['triggering_element']['#remove_index'])) {
+    $index = $form_state['triggering_element']['#remove_index'];
+    unset($form_state['values']['kkb_popup_dialog'][$index]);
+  }
+  $form_state['rebuild'] = TRUE;
+}
+
+function kkb_popup_dialog_callback($form, &$form_state) {
+  return $form['kkb_popup_dialog'];
+}
+
+/**
+ * Node preprocess function.
+ */
+function kkb_popup_dialog_preprocess_node(&$variables) {
+  _display_popup_dialogs();
+}
+
+/**
+ * Display popup dialogs.
+ *
+ * This is a very basic implementation, where we store popup information in
+ * Drupal variables. That is probably the simplest way to be able to update.
+ *
+ * Variables are saved through a system_settings_form.
+ *
+ * Example: [{ "match": "hjaelp/gebyr-og-erstatning", "url": "//:somekey/url"
+ * }]
+ */
+function _display_popup_dialogs(&$variables) {
+  $values = variable_get('kkb_popup_dialog');
+  foreach ($values as $dialog) {
+    if (drupal_match_path(current_path(), $dialog['match'])) {
+      drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', [
+        'type' => 'external',
+        'weight' => -5,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', [
+        'type' => 'external',
+        'weight' => -4,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', [
+        'type' => 'external',
+        'weight' => -3,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', [
+        'type' => 'external',
+        'weight' => -2,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', [
+        'type' => 'external',
+        'weight' => -1,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/dialog.js', [
+        'type' => 'file',
+        'weight' => 0,
+        'group' => JS_LIBRARY,
+      ]);
+      drupal_add_js([
+        'kkb_page' => [
+          'header' => $dialog['header'],
+          'text' => $dialog['text'],
+          'submitText' => $dialog['submit_text'],
+          'url' => $dialog['url'],
+        ],
+      ], 'setting');
+      drupal_add_css(drupal_get_path('module', 'kkb_popup_dialog') . '/css/dialog.css');
+    }
+  }
+}
