@@ -1,0 +1,4 @@
+name = KKB Popup Dialog
+description = Make popup dialogs that can link to other pages.
+core = 7.x
+package = KKB
