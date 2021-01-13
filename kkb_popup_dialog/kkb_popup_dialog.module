@@ -163,6 +163,13 @@ function kkb_popup_dialog_preprocess_node(&$variables) {
 }
 
 /**
+ * Panels pane preprocess function.
+ */
+function kkb_popup_dialog_preprocess_panels_pane(&$variables) {
+  _display_popup_dialogs();
+}
+
+/**
  * Display popup dialogs.
  *
  * This is a very basic implementation, where we store popup information in
@@ -176,7 +183,8 @@ function kkb_popup_dialog_preprocess_node(&$variables) {
 function _display_popup_dialogs(&$variables) {
   $values = variable_get('kkb_popup_dialog');
   foreach ($values as $dialog) {
-    if (drupal_match_path(current_path(), $dialog['match'])) {
+    if (drupal_match_path(current_path(), $dialog['match']) ||
+        drupal_match_path(request_path(), $dialog['match'])) {
       drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', [
         'type' => 'external',
         'weight' => -5,
