@@ -5,7 +5,7 @@
       useState,
       useCookies;
 
-  function Dialog({ header, text, submitText, url }) {
+  function Dialog({ header, text, submitText, url, wait }) {
     // Create a unique cookie name.
     const cookieName = `kkb_page-popup--${url.replace(/\W|\s/g, '')}`;
 
@@ -28,8 +28,12 @@
       return null;
     }
 
+    const style = {
+      animation: `1s ease-out ${parseInt(wait, 10)}s 1 slideInFromBottom both`
+    }
+
     return html`
-      <div className="kkb-popup-dialog">
+      <div className="kkb-popup-dialog" style=${style}>
         <div className='kkb-popup-dialog--close' onClick=${handleClose} />
         <div className="kkb-popup-dialog--content">
           <div className="kkb-popup-dialog--header">${header}</div>
