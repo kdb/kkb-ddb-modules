@@ -81,6 +81,15 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
       '#default_value' => isset($value['submit_text']) ? $value['submit_text'] : '',
       '#size' => 22,
       '#description' => 'Submit Text',
+      '#description' => t('Submit Text'),
+    ];
+
+    $form['kkb_popup_dialog'][$key]['wait'] = [
+      '#type' => 'textfield',
+      '#title' => t('Wait'),
+      '#default_value' => isset($value['wait']) ? $value['wait'] : '2',
+      '#size' => 22,
+      '#description' => t('Number of seconds to delay the popup from showing up'),
     ];
 
     $form['kkb_popup_dialog'][$key]['remove'] = [
@@ -221,6 +230,7 @@ function _display_popup_dialogs(&$variables) {
           'text' => $dialog['text'],
           'submitText' => $dialog['submit_text'],
           'url' => $dialog['url'],
+          'wait' => $dialog['wait'],
         ],
       ], 'setting');
       drupal_add_css(drupal_get_path('module', 'kkb_popup_dialog') . '/css/dialog.css');
