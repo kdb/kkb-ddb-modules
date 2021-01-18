@@ -26,11 +26,6 @@
     padding: 15px;
     border-radius: 2px;
     max-width: 300px;
-    text-align: center;
-}
-
-.kkb-popup-dialog--content p {
-    text-align: left;
 }
 
 .kkb-popup-dialog--close {
@@ -62,6 +57,7 @@
     display: block;
     color: white;
     font-weight: 700;
+    text-align: center;
 }
 
 .kkb-popup-dialog--link:hover {
