@@ -29,7 +29,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
   $form['kkb_popup_dialog'] = [
     '#type' => 'fieldset',
-    '#title' => t('Active forms'),
+    '#title' => t('Popup Dialog Active Forms'),
     "#prefix" => '<div id="popup-dialog">',
     "#suffix" => '</div>',
     '#collapsible' => FALSE,
@@ -45,7 +45,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['match'] = [
       '#type' => 'textarea',
-      '#title' => t('Match'),
+      '#title' => t('Popup Dialog Match'),
       '#default_value' => isset($value['match']) ? $value['match'] : '',
       '#size' => 22,
       '#description' => t("One match per line. Wildcards * apply. Do not start with a slash. Use &lt;front&gt; to match the frontpage<br/>Examples:<br/>&lt;front&gt; - Matches the frontpage<br/>teamer/* -- matches all theme pages"),
@@ -53,7 +53,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['header'] = [
       '#type' => 'textfield',
-      '#title' => t('Header'),
+      '#title' => t('Popup Dialog Header'),
       '#default_value' => isset($value['header']) ? $value['header'] : '',
       '#size' => 64,
       '#description' => t('Header text'),
@@ -61,7 +61,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['text'] = [
       '#type' => 'textarea',
-      '#title' => t('Text'),
+      '#title' => t('Popup Dialog Text'),
       '#default_value' => isset($value['text']) ? $value['text'] : '',
       '#size' => 22,
       '#description' => t('Dialog text'),
@@ -69,7 +69,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['url'] = [
       '#type' => 'textfield',
-      '#title' => t('URL'),
+      '#title' => t('Popup Dialog URL'),
       '#default_value' => isset($value['url']) ? $value['url'] : '',
       '#size' => 22,
       '#description' => t('Link URL'),
@@ -77,7 +77,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['submit_text'] = [
       '#type' => 'textfield',
-      '#title' => t('Submit'),
+      '#title' => t('Popup Dialog Submit'),
       '#default_value' => isset($value['submit_text']) ? $value['submit_text'] : '',
       '#size' => 22,
       '#description' => t('Submit Text'),
@@ -85,7 +85,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['wait'] = [
       '#type' => 'textfield',
-      '#title' => t('Wait'),
+      '#title' => t('Popup Dialog Wait'),
       '#default_value' => isset($value['wait']) ? $value['wait'] : '2',
       '#size' => 22,
       '#description' => t('Number of seconds to delay the popup from showing up'),
@@ -93,7 +93,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
     $form['kkb_popup_dialog'][$key]['remove'] = [
       '#type' => 'submit',
-      '#value' => t('Remove popup'),
+      '#value' => t('Popup Dialog Remove popup'),
       '#submit' => ['kkb_popup_dialog_remove_one'],
       '#name' => 'remove_' . $key,
       '#remove_index' => $key,
@@ -107,7 +107,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
 
   $form['kkb_popup_dialog'][]['add_popup'] = [
     '#type' => 'submit',
-    '#value' => t('Add popup'),
+    '#value' => t('Popup Dialog Add popup'),
     '#submit' => ['kkb_popup_dialog_add_one'],
     '#ajax' => [
       'callback' => 'kkb_popup_dialog_callback',
