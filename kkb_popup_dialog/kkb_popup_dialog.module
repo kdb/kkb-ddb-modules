@@ -52,10 +52,10 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
     ];
 
     $form['kkb_popup_dialog'][$key]['header'] = [
-      '#type' => 'textarea',
+      '#type' => 'textfield',
       '#title' => t('Header'),
       '#default_value' => isset($value['header']) ? $value['header'] : '',
-      '#size' => 22,
+      '#size' => 64,
       '#description' => t('Header text'),
     ];
 
