@@ -3,29 +3,48 @@
   let initialized,
       html,
       useState,
+      useEffect,
       useCookies;
 
-  function Dialog({ header, text, submitText, url, wait }) {
-    // Create a unique cookie name.
-    const cookieName = `kkb_page-popup--${url.replace(/\W|\s/g, '')}`;
-
-    const [cookies, setCookie] = useCookies([cookieName]);
-    const [visible, setVisible] = useState(typeof cookies[cookieName] === 'undefined');
+  function Dialog() {
+    const [settings, setSettings] = useState(null);
+    const [cookies, setCookie] = useCookies(null);
 
     /**
-     * Set a "dismissed" cookie and toggle the dialog visibility.
+     * Get dialog content.
+     */
+    useEffect(() => {
+      const endpoint = `${window.location.origin}/kkb_popup_dialog/ajax/display?pathname=${encodeURIComponent(window.location.pathname)}`;
+      fetch(endpoint , {
+        cache: "no-store"
+      })
+      .then(response => response.json())
+      .then((data )=> data.url && setSettings(data));
+    }, []);
+
+    if (!settings) {
+      return null;
+    }
+
+    const { wait, header, url, text, submitText } = settings;
+    const cookieName = `kkb_popup_dialog--${url.replace(/\W|\s/g, '')}`;
+
+    /**
+     * Do not display if the user has already used or dismissed the dialog.
+     */
+    if (cookies[cookieName]) {
+      return null;
+    }
+
+    /**
+     * Set a "dismissed" cookie.
      */
     function handleClose() {
-      setVisible(!visible);
       const date = new Date();
       setCookie(cookieName, true, {
         path: '/',
         expires: new Date(date.setFullYear(date.getFullYear() + 1))
       });
-    }
-
-    if (!visible) {
-      return null;
     }
 
     const style = {
@@ -44,7 +63,7 @@
     `;
   }
 
-  function init(settings) {
+  function init() {
     if (initialized) {
       return;
     }
@@ -52,20 +71,19 @@
 
     html = htm.bind(React.createElement);
     useState = React.useState;
+    useEffect = React.useEffect;
     useCookies = ReactCookie.useCookies;
 
 
     var wrapper = document.createElement("div");
     document.body.appendChild(wrapper);
 
-    Object.entries(settings).forEach(([key, value]) => wrapper.dataset[key] = value);
-
-    ReactDOM.render(html`<${Dialog} ...${wrapper.dataset} />`, wrapper);
+    ReactDOM.render(html`<${Dialog} />`, wrapper);
   }
 
   Drupal.behaviors.kkb_popup_dialog = {
-    attach: function (context, settings) {
-      init(settings.kkb_page);
+    attach: function () {
+      init();
     },
   };
 })(Drupal);

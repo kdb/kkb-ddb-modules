@@ -3,6 +3,19 @@
  * @file kkb_popup_dialog.
  */
 
+/**
+ * Implements hook_init().
+ */
+function kkb_popup_dialog_init() {
+  // Disable cache for popup dialog display callback.
+  if (current_path() == 'kkb_popup_dialog/ajax/display') {
+    drupal_page_is_cacheable(FALSE);
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
 function kkb_popup_dialog_menu() {
   $items['admin/config/ding/popup'] = [
     'title' => 'Popup dialogs',
@@ -11,7 +24,46 @@ function kkb_popup_dialog_menu() {
     'page arguments' => ['kkb_popup_dialog_settings_form'],
     'access arguments' => ['administer site configuration'],
   ];
+  $items['kkb_popup_dialog/ajax/display'] = array(
+    'page callback' => '_ajax_display_dialog',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
+}
+
+/**
+ * Return configurations settings for popup dialogs.
+ */
+function _ajax_display_dialog() {
+  $query = drupal_get_query_parameters();
+  if (empty($query['pathname'])) {
+    return drupal_json_output(NULL);
+  }
+
+  $pathname = urldecode($query['pathname']);
+  if ($pathname === '/') {
+    // Convert frontpage path to alias.
+    $pathname = variable_get('site_frontpage', 'node');
+  }
+
+  // Remove suffix slash.
+  $pathname = preg_replace('/^\//', '', $pathname);
+
+  $values = variable_get('kkb_popup_dialog');
+  foreach ($values as $dialog) {
+    if (drupal_match_path($pathname, $dialog['match'])) {
+      return drupal_json_output([
+        'header' =>  $dialog['header'],
+        'text' =>  $dialog['text'],
+        'submitText' =>  $dialog['submit_text'],
+        'url' =>  $dialog['url'],
+        'wait' =>  $dialog['wait'],
+      ]);
+    }
+  }
+  return drupal_json_output(NULL);
 }
 
 /**
@@ -189,50 +241,35 @@ function kkb_popup_dialog_preprocess_panels_pane(&$variables) {
  * }]
  */
 function _display_popup_dialogs(&$variables) {
-  $values = variable_get('kkb_popup_dialog');
-  foreach ($values as $dialog) {
-    if (drupal_match_path(current_path(), $dialog['match']) ||
-        drupal_match_path(request_path(), $dialog['match'])) {
-      drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', [
-        'type' => 'external',
-        'weight' => -5,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', [
-        'type' => 'external',
-        'weight' => -4,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', [
-        'type' => 'external',
-        'weight' => -3,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', [
-        'type' => 'external',
-        'weight' => -2,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', [
-        'type' => 'external',
-        'weight' => -1,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/dialog.js', [
-        'type' => 'file',
-        'weight' => 0,
-        'group' => JS_LIBRARY,
-      ]);
-      drupal_add_js([
-        'kkb_page' => [
-          'header' => $dialog['header'],
-          'text' => $dialog['text'],
-          'submitText' => $dialog['submit_text'],
-          'url' => $dialog['url'],
-          'wait' => $dialog['wait'],
-        ],
-      ], 'setting');
-      drupal_add_css(drupal_get_path('module', 'kkb_popup_dialog') . '/css/dialog.css');
-    }
-  }
+  drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', [
+    'type' => 'external',
+    'weight' => -5,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', [
+    'type' => 'external',
+    'weight' => -4,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', [
+    'type' => 'external',
+    'weight' => -3,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', [
+    'type' => 'external',
+    'weight' => -2,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', [
+    'type' => 'external',
+    'weight' => -1,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/dialog.js', [
+    'type' => 'file',
+    'weight' => 0,
+    'group' => JS_LIBRARY,
+  ]);
+  drupal_add_css(drupal_get_path('module', 'kkb_popup_dialog') . '/css/dialog.css');
 }
