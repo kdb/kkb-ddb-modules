@@ -4,11 +4,13 @@
       html,
       useState,
       useEffect,
+      useRef,
       useCookies;
 
   function Dialog() {
     const [settings, setSettings] = useState(null);
     const [cookies, setCookie] = useCookies(null);
+    const link = useRef(null);
 
     /**
      * Get dialog content.
@@ -47,17 +49,25 @@
       });
     }
 
+    function handleSubmit() {
+      handleClose();
+      if (link.current) {
+        link.current.click();
+      }
+    }
+
     const style = {
       animation: `1s ease-out ${parseInt(wait, 10)}s 1 slideInFromBottom both`
     }
 
     return html`
       <div className="kkb-popup-dialog" style=${style}>
-        <div className='kkb-popup-dialog--close' onClick=${handleClose} />
+        <button className='kkb-popup-dialog--close' onClick=${handleClose} />
         <div className="kkb-popup-dialog--content">
-          <div className="kkb-popup-dialog--header">${header}</div>
+          <h1 className="kkb-popup-dialog--header">${header}</h1>
           <p>${text}</p>
-          <a className="kkb-popup-dialog--link" href=${url} target="popup" onClick=${handleClose}>${submitText}</a>
+          <button className="kkb-popup-dialog--link" onClick=${handleSubmit}>${submitText}</button>
+          <a ref=${link} href=${url} className="kkb-popup-dialog--link-hidden" target="popup" />
         </div>
       </div>
     `;
@@ -72,6 +82,7 @@
     html = htm.bind(React.createElement);
     useState = React.useState;
     useEffect = React.useEffect;
+    useRef = React.useRef;
     useCookies = ReactCookie.useCookies;
 
 

@@ -151,10 +151,10 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             flex-direction: column;
             width: 50%;
         }
-        body.page-node .kkb_newsletter_image_wrapper {
+        body.page-node .$identifier .kkb_newsletter_image_wrapper {
             background-image: url($image_rect_url);
         }
-        body.page-taxonomy-term .kkb_newsletter_image_wrapper {
+        body.page-taxonomy-term .$identifier .kkb_newsletter_image_wrapper {
             background-image: url($image_landscape_url);
         }
         body.page-node .kbb_newsletter_long_description {
