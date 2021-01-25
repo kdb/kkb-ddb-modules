@@ -36,7 +36,8 @@
         <?php print $variables['short_description']; ?>
         <?php print $variables['long_description']; ?>
         <div class="kkb_newsletter_submit_wrapper">
-            <?php print $variables['submit']; ?>
+            <?php print $variables['submit_button']; ?>
+            <?php print $variables['submit_link']; ?>
         </div>
     </div>
 </div>

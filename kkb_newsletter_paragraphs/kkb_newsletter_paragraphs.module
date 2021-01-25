@@ -117,7 +117,8 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
     $variables['short_description'] = '<p class="kbb_newsletter_description kbb_newsletter_short_description">' . $variables['field_newsletter_description'][0]['value'] . '</p>';
     $variables['long_description'] = '<p class="kbb_newsletter_description kbb_newsletter_long_description">' . $variables['field_newsletter_lng_description'][0]['value'] . '</p>';
     $submit_url = $variables['field_newsletter_submit_url'][0]['value'];
-    $variables['submit'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</a>';
+    $variables['submit_button'] = '<button onclick="document.querySelector(\'.kkb_newsletter_submit__link--' . $identifier . '\').click()" class="kkb_newsletter_submit">' . $variables['field_newsletter_submit'][0]['value'] . '</button>';
+    $variables['submit_link'] = '<a href="' . $submit_url . '" class="kkb_newsletter_submit__link--' . $identifier . ' kkb_newsletter_submit__link" />';
 
     $image_rect_url = image_style_url('newsletter_small_landscape', $variables['field_newsletter_image'][0]['uri']);
     $image_landscape_url = image_style_url('newsletter_landscape', $variables['field_landscape_image'][0]['uri']);
@@ -167,7 +168,8 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         body.page-node .kbb_newsletter_long_description {
             display: none;
         }
-        body.page-taxonomy-term .kbb_newsletter_short_description {
+        body.page-taxonomy-term .kbb_newsletter_short_description,
+        body.page-panels:not(.page-node) .kbb_newsletter_short_description {
             display: none;
         }
         .kbb_newsletter_description {
@@ -192,6 +194,11 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         .kkb_newsletter_submit {
             padding: 12px 36px;
             border-radius: 4px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: medium;
+            margin-top: -10px;
         }
         .kkb_newsletter_header, .kkb_newsletter_image_caption, .kkb_newsletter_image_caption_small {
             font-size: 27px;
