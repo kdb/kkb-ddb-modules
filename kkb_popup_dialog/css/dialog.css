@@ -51,6 +51,8 @@
     margin: 10px 0 20px 0;
     width: 100%;
     line-height: 1.2em;
+    color: rgb(37, 37, 37);
+    font-family: FaktPro-Normal, sans-serif;
 }
 
 .kkb-popup-dialog--link {
