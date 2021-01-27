@@ -200,8 +200,21 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             font-size: medium;
             margin-top: -10px;
         }
-        .kkb_newsletter_header, .kkb_newsletter_image_caption, .kkb_newsletter_image_caption_small {
+        body.page-taxonomy-term .kkb_newsletter_image_wrapper,
+        body.page-taxonomy-term .kkb_newsletter_image_caption, 
+        body.page-taxonomy-term .kkb_newsletter_image_caption_small,
+        body.page-panels:not(.page-node) .kkb_newsletter_header,
+        body.page-panels:not(.page-node) .kkb_newsletter_image_caption, 
+        body.page-panels:not(.page-node) .kkb_newsletter_image_caption_small
+         { 
+            font-size: 30px;
+        }
+        body.page-node .kkb_newsletter_header,
+        body.page-node .kkb_newsletter_image_caption, 
+        body.page-node .kkb_newsletter_image_caption_small{
             font-size: 27px;
+        }
+        .kkb_newsletter_header, .kkb_newsletter_image_caption, .kkb_newsletter_image_caption_small {
             line-height: 30px;
             font-weight: 700;
             margin-bottom: 10px;
