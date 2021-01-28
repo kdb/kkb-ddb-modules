@@ -133,6 +133,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             display: flex;
             padding: 20px 0;
             min-height: 300px;
+            clear: both;
         }
         body.page-node .kkb_newsletter {
             max-width: 548px;
