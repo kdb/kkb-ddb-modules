@@ -347,7 +347,7 @@ function kkb_help_preprocess_entity(&$variables) {
 
 /**
  * Add Cludo scripts and css to selected pages.
- * 
+ *
  * @param $variables - The variables.
  */
 function _preprocess_cludo(&$variables) {
