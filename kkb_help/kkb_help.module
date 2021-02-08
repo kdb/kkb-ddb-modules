@@ -102,6 +102,13 @@ function kkb_help_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'kkb_help') . '/templates',
   );
 
+  $theme['field__field_ding_help_front_lead'] = array(
+    'render element' => 'element',
+    'base hook' => 'field',
+    'template' => 'field--field-ding-help-front-lead',
+    'path' => drupal_get_path('module', 'kkb_help') . '/templates',
+  );
+
   $theme['paragraphs_item__ding_help_page_step'] = array(
     'render element' => 'elements',
     'base hook' => 'paragraphs_item',
@@ -172,9 +179,18 @@ function kkb_help_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_preprocess_panels_pane().
+ * @param $variables - The variables.
+ */
+function kkb_help_preprocess_panels_pane(&$variables) {
+  _preprocess_cludo($variables);
+}
+
+/**
  * Node preprocess function.
  */
 function kkb_help_preprocess_node(&$variables) {
+  _preprocess_cludo($variables);
   if ($variables['view_mode'] == 'full' &&
     in_array($variables['type'], array('ding_help_page', 'ding_help_front'))) {
     drupal_add_css(drupal_get_path('module', 'kkb_help') . '/css/kkb_help.css');
@@ -328,6 +344,12 @@ function kkb_help_preprocess_entity(&$variables) {
   }
 }
 
+
+/**
+ * Add Cludo scripts and css to selected pages.
+ * 
+ * @param $variables - The variables.
+ */
 function _preprocess_cludo(&$variables) {
   if ($variables['type'] === 'ding_help_front' || current_path() === 'kontakt') {
     drupal_add_css('//customer.cludo.com/assets/2719/11866/cludo-search.min.css', [
