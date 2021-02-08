@@ -327,3 +327,28 @@ function kkb_help_preprocess_entity(&$variables) {
     }
   }
 }
+
+function _preprocess_cludo(&$variables) {
+  if ($variables['type'] === 'ding_help_front' || current_path() === 'kontakt') {
+    drupal_add_css('//customer.cludo.com/assets/2719/11866/cludo-search.min.css', [
+      'type' => 'external'
+    ]);
+
+    drupal_add_js('//customer.cludo.com/scripts/bundles/search-script.min.js', [
+      'type' => 'external',
+      'scope' => 'footer',
+    ]);
+
+    if ($variables['language'] === 'da') {
+      drupal_add_js(drupal_get_path('module', 'kkb_help') . '/js/cludo-da.js', [
+        'type' => 'file',
+        'scope' => 'footer',
+      ]);
+    } else {
+      drupal_add_js(drupal_get_path('module', 'kkb_help') . '/js/cludo-en.js', [
+        'type' => 'file',
+        'scope' => 'footer',
+      ]);
+    }
+  }
+}
