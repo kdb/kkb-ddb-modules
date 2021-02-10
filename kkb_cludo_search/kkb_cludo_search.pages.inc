@@ -40,7 +40,7 @@ function _kkb_cludo_search_page($language, $referer) {
       $breadcrumb[] = l('Hjælp', $referer);
       break;
     case 'help':
-      $breadcrumb[] = l('Help', $referer);
+      $breadcrumb[] = l('Help', 'content/help');
       break;
     case 'kontakt':
       $breadcrumb[] = l('Spørg biblioteket', $referer);
@@ -50,7 +50,7 @@ function _kkb_cludo_search_page($language, $referer) {
     $language === 'da'
       ? KKB_CLUDO_SEARCH_PAGE_TITLE_DEFAULT_DA
       : KKB_CLUDO_SEARCH_PAGE_TITLE_DEFAULT_EN
-  );;
+  );
 
   // Set Breadcrumbs
   $vars['breadcrumb'] = implode(' » ', drupal_set_breadcrumb($breadcrumb));
