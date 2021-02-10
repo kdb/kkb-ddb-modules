@@ -1,0 +1,16 @@
+.kkb-cludo-search-page h1 {
+    font-family: FaktPro-SemiBold,sans-serif;
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 30px;
+    color: #252525;
+}
+
+.cludo-breadcrumb {
+    height: 58px;
+    line-height: 38px;
+}
+
+.cludo-breadcrumb a {
+    text-decoration: underline;
+}

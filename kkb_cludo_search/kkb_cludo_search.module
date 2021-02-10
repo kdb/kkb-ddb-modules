@@ -1,0 +1,118 @@
+<?php
+/**
+ * @file KKB Cludo Search.
+ */
+
+define('KKB_CLUDO_SEARCH_PAGE_TITLE_DEFAULT_EN', 'Search result');
+define('KKB_CLUDO_SEARCH_PAGE_TITLE_DEFAULT_DA', 'Søgeresultat');
+
+/**
+ * Implements hook_menu().
+ */
+function kkb_cludo_search_menu() {
+  $items['searchresult/%'] = [
+    'title callback' => 'kkb_cludo_search_page_title_en',
+    'page callback' => 'kkb_cludo_search_page_en',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'file' => 'kkb_cludo_search.pages.inc',
+  ];
+
+  $items['soegeresultat/%'] = [
+    'title callback' => 'kkb_cludo_search_page_title_da',
+    'page callback' => 'kkb_cludo_search_page_da',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'file' => 'kkb_cludo_search.pages.inc',
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function kkb_cludo_search_theme() {
+  $theme['kkb_cludo_search_page'] = [
+    'template' => 'templates/kkb-cludo-search-page',
+    'variables' => [
+      'page_title' => NULL,
+    ],
+    'file' => 'kkb_cludo_search.page.inc',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ *
+ * @param $variables - The variables.
+ */
+function kkb_cludo_search_preprocess_panels_pane(&$variables) {
+  _preprocess_cludo($variables);
+}
+
+/**
+ * Implements hook_preprocess_node().
+ *
+ * @param $variables - The variables.
+ */
+function kkb_cludo_search_preprocess_node(&$variables) {
+  _preprocess_cludo($variables);
+}
+
+/**
+ * Add Cludo scripts and css to selected pages.
+ *
+ * @param $variables - The variables.
+ */
+function kkb_cludo_search_preprocess_page(&$variables) {
+  _preprocess_cludo($variables);
+}
+
+function _preprocess_cludo($variables) {
+  $add_cludo_search = FALSE;
+  // If this is a type ding_help_front,
+  // we get the language from the vars.
+  // But 'kontakt'. 'soegeresultat' and 'searchresult'
+  // have no type or language, so we have to deduce it ourself.
+  if ($variables['type'] === 'ding_help_front') {
+    $language = $variables['language'];
+    $add_cludo_search = TRUE;
+  }
+
+  $da_pages = ['kontakt', 'soegeresultat'];
+  $en_pages = ['searchresult'];
+  $current_search_page = explode('/', current_path())[0];
+  if (in_array($current_search_page , $da_pages) || in_array($current_search_page , $en_pages)) {
+    $language = in_array($current_search_page, $da_pages) ? 'da' : 'en';
+    $add_cludo_search = TRUE;
+  }
+
+  // Add necessary files.
+  if ($add_cludo_search) {
+    drupal_add_css(drupal_get_path('module', 'kkb_cludo_search') . '/css/kkb-cludo.css');
+
+    drupal_add_css('//customer.cludo.com/assets/2719/11866/cludo-search.min.css', [
+      'type' => 'external'
+    ]);
+
+    drupal_add_js('//customer.cludo.com/scripts/bundles/search-script.min.js', [
+      'type' => 'external',
+      'scope' => 'footer',
+    ]);
+
+    if ($language === 'da') {
+      drupal_add_js(drupal_get_path('module', 'kkb_cludo_search') . '/js/cludo-da.js', [
+        'type' => 'file',
+        'scope' => 'footer',
+      ]);
+    } else {
+      drupal_add_js(drupal_get_path('module', 'kkb_cludo_search') . '/js/cludo-en.js', [
+        'type' => 'file',
+        'scope' => 'footer',
+      ]);
+    }
+  }
+}

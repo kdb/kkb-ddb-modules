@@ -1,0 +1,4 @@
+name = KKB Cludo Search
+description = Cludo search related stuff.
+core = 7.x
+package = KKB
