@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install file for kkb_popup_dialog.
+ */
+
+/**
+ * Whitelist current popup dialog 'velkommen'.
+ */
+function kkb_popup_dialog_update_7001() {
+  $ecc_settings = i18n_variable_get('eu_cookie_compliance', 'da', []);
+  $cookie_name = 'kkb_popup_dialog--velkommen';
+
+  $ecc_settings['whitelisted_cookies'] = $ecc_settings['whitelisted_cookies'] ?? '';
+
+  $ecc_settings['whitelisted_cookies'] .= "\r\n" . $cookie_name;
+
+  i18n_variable_set('eu_cookie_compliance', $ecc_settings, 'da');
+}

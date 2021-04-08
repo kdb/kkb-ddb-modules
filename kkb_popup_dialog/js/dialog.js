@@ -28,8 +28,8 @@
       return null;
     }
 
-    const { wait, header, url, text, submitText } = settings;
-    const cookieName = `kkb_popup_dialog--${url.replace(/\W|\s/g, '')}`;
+
+    const { wait, header, url, text, submitText, cookieName } = settings;
 
     /**
      * Do not display if the user has already used or dismissed the dialog.

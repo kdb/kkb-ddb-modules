@@ -3,6 +3,8 @@
  * @file kkb_popup_dialog.
  */
 
+define('KKB_POPUP_DIALOG_COOKIE_PREFIX', 'kkb_popup_dialog--');
+
 /**
  * Implements hook_init().
  */
@@ -55,11 +57,12 @@ function _ajax_display_dialog() {
   foreach ($values as $dialog) {
     if (drupal_match_path($pathname, $dialog['match'])) {
       return drupal_json_output([
-        'header' =>  $dialog['header'],
-        'text' =>  $dialog['text'],
-        'submitText' =>  $dialog['submit_text'],
-        'url' =>  $dialog['url'],
-        'wait' =>  $dialog['wait'],
+        'header' => $dialog['header'],
+        'text' => $dialog['text'],
+        'submitText' => $dialog['submit_text'],
+        'url' => $dialog['url'],
+        'wait' => $dialog['wait'],
+        'cookieName' => KKB_POPUP_DIALOG_COOKIE_PREFIX . $dialog['match'],
       ]);
     }
   }
@@ -168,6 +171,7 @@ function kkb_popup_dialog_settings_form($form, &$form_state) {
     ],
   ];
 
+  $form['#submit'][] = 'kkb_popup_dialog_settings_form_submit';
   $form['#validate'][] = 'kkb_popup_dialog_settings_form_validate';
 
   return system_settings_form($form);
@@ -180,6 +184,46 @@ function kkb_popup_dialog_settings_form_validate($form, &$form_state) {
   $form_state['values']['kkb_popup_dialog'] = array_filter($form_state['values']['kkb_popup_dialog'], function ($value) {
     return !empty($value['match']) && !empty($value['header']) && !empty($value['url']) && !empty($value['text']) && !empty($value['submit_text']);
   });
+}
+
+/**
+ * Form submit handler for the popup settings form.
+ *
+ * We want the cookie compliance to white-list our pop-up dialog cookie.
+ */
+function kkb_popup_dialog_settings_form_submit($form, &$form_state) {
+  if (empty($form_state['values']['kkb_popup_dialog'])) {
+    return;
+  }
+
+  $ecc_settings = i18n_variable_get('eu_cookie_compliance', 'da', []);
+
+  // Setting a fallback value of empty string, if no whitelisted cookies exist.
+  $ecc_settings['whitelisted_cookies'] = $ecc_settings['whitelisted_cookies'] ?? '';
+
+  $dialogs = $form_state['values']['kkb_popup_dialog'];
+
+  // Turning the current cookies string into an array.
+  $all_wl_cookies = explode("\r\n", $ecc_settings['whitelisted_cookies']);
+
+  // Looping through the dialogs, and setting our cookie name as white-listed.
+  foreach ($dialogs as $dialog) {
+    if (empty($dialog['match'])) {
+      continue;
+    }
+
+    // Using drupal_clean_css_identifier to clean the string of anything
+    // unwanted that we wouldnt want the cookie to look like.
+    $all_wl_cookies[] = KKB_POPUP_DIALOG_COOKIE_PREFIX . drupal_clean_css_identifier($dialog['match']);
+  }
+
+  // Remove any duplicates - which can happen if we've saved this form
+  // multiple times.
+  $all_wl_cookies = array_unique($all_wl_cookies);
+
+  $ecc_settings['whitelisted_cookies'] = implode("\r\n", $all_wl_cookies);
+
+  i18n_variable_set('eu_cookie_compliance', $ecc_settings, 'da');
 }
 
 /**
