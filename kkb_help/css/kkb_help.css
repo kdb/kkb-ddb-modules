@@ -140,6 +140,11 @@
   padding-right: 60px;
 }
 
+/* Add padding to label so the text will wrap before going under the foldout button. */
+.paragraphs-item-ding-help-page-accordion .fieldset-legend > a {
+  text-decoration: none;
+}
+
 /* Add a bit of spacing between the collapsible button and the content.  */
 .paragraphs-item-ding-help-page-accordion .fieldset-wrapper > *:first-child {
   margin-top: 26px;
