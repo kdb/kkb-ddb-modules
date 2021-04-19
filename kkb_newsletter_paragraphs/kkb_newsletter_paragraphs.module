@@ -158,7 +158,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         body.page-taxonomy-term .kkb_newsletter_content_wrapper,
         body.page-panels:not(.page-node) .kkb_newsletter_content_wrapper {
             padding: 30px 15px;
-        } 
+        }
         body.page-node .$identifier .kkb_newsletter_image_wrapper {
             background-image: url($image_rect_url);
         }
@@ -191,7 +191,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
         body.page-taxonomy-term .kkb_newsletter_image_wrapper,
         body.page-panels:not(.page-node) .kkb_newsletter_image_wrapper {
             padding: 30px 15px;
-        } 
+        }
         .kkb_newsletter_submit {
             padding: 12px 36px;
             border-radius: 4px;
@@ -202,16 +202,16 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             margin-top: -10px;
         }
         body.page-taxonomy-term .kkb_newsletter_image_wrapper,
-        body.page-taxonomy-term .kkb_newsletter_image_caption, 
+        body.page-taxonomy-term .kkb_newsletter_image_caption,
         body.page-taxonomy-term .kkb_newsletter_image_caption_small,
         body.page-panels:not(.page-node) .kkb_newsletter_header,
-        body.page-panels:not(.page-node) .kkb_newsletter_image_caption, 
+        body.page-panels:not(.page-node) .kkb_newsletter_image_caption,
         body.page-panels:not(.page-node) .kkb_newsletter_image_caption_small
-         { 
+         {
             font-size: 30px;
         }
         body.page-node .kkb_newsletter_header,
-        body.page-node .kkb_newsletter_image_caption, 
+        body.page-node .kkb_newsletter_image_caption,
         body.page-node .kkb_newsletter_image_caption_small{
             font-size: 27px;
         }
@@ -249,7 +249,7 @@ function kkb_newsletter_paragraphs_preprocess_entity(&$variables) {
             }
             .$identifier .kkb_newsletter_header {
                 color: #464646;
-                font-size: 17px;
+                font-size: 17px !important;
             }
             .kkb_newsletter_image_wrapper {
                 display: none;
