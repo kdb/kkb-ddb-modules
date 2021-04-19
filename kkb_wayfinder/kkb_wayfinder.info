@@ -1,5 +1,6 @@
-name = Kkb Wayfinder
-description = Add button to find material in library
+name = KKB Wayfinder
+description = Add button to find material in library, using a map popup.
 core = 7.x
 package = KKB
 dependencies[] = ding_availability
+configure = admin/config/ding/wayfinder

@@ -77,7 +77,7 @@ function _preprocess_cludo($variables) {
   // we get the language from the vars.
   // But 'kontakt'. 'soegeresultat' and 'searchresult'
   // have no type or language, so we have to deduce it ourself.
-  if ($variables['type'] === 'ding_help_front') {
+  if (!empty($variables['type']) && $variables['type'] === 'ding_help_front') {
     $language = $variables['language'];
     $add_cludo_search = TRUE;
   }

@@ -83,7 +83,7 @@ function kkb_wayfinder_ding_entity_buttons($type, $entity) {
 /**
  * Preprocess kkb_wayfinder_button.
  */
-function template_preprocess_kkb_wayfinder_button(&$variables) {
+function kkb_wayfinder_preprocess_kkb_wayfinder_button(&$variables) {
   $variables['classes_array'] = array(
     'kkb-wayfinder--button',
     // Legacy: Use classes from now obsolete ding_list module.
@@ -103,21 +103,6 @@ function template_preprocess_kkb_wayfinder_button(&$variables) {
     '#attributes' => array(
       'class' => array('buttons'),
     ),
-    '#attached' => array(
-      'library' => array(array('system', 'drupal.ajax')),
-      'css' => array(
-        drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.buttons.min.css',
-        drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.css',
-      ),
-      'js' => array(
-        drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.buttons.js',
-        drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.js',
-        array(
-          'data' => variable_get('kkb_wayfinder_url', ''),
-          'type' => 'external',
-        ),
-      ),
-    ),
   );
 
   $variables['single_link'] = FALSE;
@@ -126,4 +111,21 @@ function template_preprocess_kkb_wayfinder_button(&$variables) {
   foreach ($options as $option) {
     $variables['buttons']['#links'][] = $option['custom'];
   }
+}
+
+function kkb_wayfinder_preprocess_html(&$variables) {
+  $wayfinder_url = variable_get('kkb_wayfinder_url', NULL);
+
+  if ($wayfinder_url) {
+    drupal_add_js($wayfinder_url, 'external');
+  }
+
+  drupal_add_library('system', 'drupal.ajax');
+
+
+  drupal_add_js(drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.buttons.js');
+  drupal_add_js(drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.js');
+
+  drupal_add_css(drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.buttons.min.css');
+  drupal_add_css(drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.css');
 }
