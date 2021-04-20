@@ -113,6 +113,13 @@ function kkb_wayfinder_preprocess_kkb_wayfinder_button(&$variables) {
   }
 }
 
+/**
+ * Implements template_preprocess_html().
+ *
+ * Adding the JS/CSS assets needed for kkb_wayfinder_button.
+ * Adding this dynamically when needed has caused issues with AJAX, so instead
+ * we're adding it everywhere as we would with the theme assets.
+ */
 function kkb_wayfinder_preprocess_html(&$variables) {
   $wayfinder_url = variable_get('kkb_wayfinder_url', NULL);
 
