@@ -16,7 +16,7 @@
   </form>
 <?php else: ?>
   <form id="cludo-search-form-english" role="search">
-    <input type="search" class="search-input" aria-label="Search" aria-describedby="autocomplete_hint" placeholder="What are you looking for help with?">
+    <input type="search" class="search-input" aria-label="Search" aria-describedby="autocomplete_hint" placeholder="Search our help pages">
     <button type="submit" class="search-button" id="search-button">Search</button>
   </form>
 <?php endif; ?>

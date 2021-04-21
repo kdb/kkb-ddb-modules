@@ -12,3 +12,10 @@ function kkb_newsletter_paragraphs_install() {
   features_revert_module('ding_page');
   features_revert_module('ding_event');
 }
+
+/**
+ * Revert features.
+ */
+function kkb_newsletter_paragraphs_update_8101() {
+  features_revert_module('ding_news');
+}
