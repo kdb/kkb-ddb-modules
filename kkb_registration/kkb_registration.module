@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Presents the admin settings, made in kkb_registration to the user.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function kkb_registration_menu() {
+  $items['admin/config/ding/kkb_registration'] = array(
+    'title' => 'KKB Registration settings',
+    'description' => 'Setup the expanded registration page, replacing ding_registration.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('kkb_registration_admin_form'),
+    'access arguments' => array('administer ding provider'),
+    'file' => 'kkb_registration.admin.inc',
+  );
+
+  $items['opretbruger'] = [
+    'page callback' => 'kkb_registration_page',
+    // Publicly accessible.
+    'access callback' => TRUE,
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function kkb_registration_theme() {
+  return [
+    'kkb_registration_page' => [
+      'template' => 'templates/kkb-registration-page',
+      'variables' => [
+        'image' => NULL,
+        'title' => NULL,
+        'subtitle' => NULL,
+        'body' => NULL,
+        'infos' => [],
+      ],
+    ]
+  ];
+}
+
+function kkb_registration_page() {
+  $image_style = 'ding_panorama_primary_large';
+  $image = NULL;
+  $image_fid = variable_get('kkb_registration_image', NULL);
+
+  if (!empty($image_fid) && ($image_file = file_load($image_fid))) {
+    $image = theme('image_style', [
+      'path' => $image_file->uri,
+      'style_name' => $image_style
+    ]);
+  }
+
+  $variables = [
+    'image' => $image,
+    'title' => variable_get('kkb_registration_title', NULL),
+    'subtitle' => variable_get('kkb_registration_subtitle', NULL),
+    'body' => variable_get('kkb_registration_body', NULL),
+    'infos' => variable_get('kkb_registration_infos', []),
+  ];
+
+  return theme('kkb_registration_page', $variables);
+}
+
+/**
+ * Preprocess function for kkb_contact_page.
+ */
+function kkb_registration_preprocess_kkb_registration_page(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'kkb_registration') . '/css/kkb_registration.css');
+}
+
+/**
+ * Helper to manually add a single translation string.
+ *
+ * After adding strings use locale_clear_cache() for clearing caches.
+ */
+function _kkb_registration_locale_add_translation($source, $langcode, $translation, $context = '', $textgroup = 'default') {
+  require_once DRUPAL_ROOT . '/includes/locale.inc';
+
+  $report = &drupal_static(__FUNCTION__, array(
+    'additions' => 0,
+    'updates' => 0,
+    'deletes' => 0,
+    'skips' => 0,
+  ));
+
+  _locale_import_one_string_db($report, $langcode, $context, $source, $translation, $textgroup, 'Manual import via helper ' . __FUNCTION__ . '().', LOCALE_IMPORT_OVERWRITE);
+
+  // Clear locale cache.
+  _locale_invalidate_js();
+  cache_clear_all('locale:', 'cache', TRUE);
+}

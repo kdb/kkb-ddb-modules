@@ -1,0 +1,51 @@
+html {
+  scroll-padding-top: 150px;
+  scroll-behavior: smooth;
+}
+
+.kkb-registration {
+  max-width: 735px;
+  width: 100%;
+}
+
+.kkb-registration__image-wrapper {
+  margin-bottom: 30px;
+}
+
+.kkb-registration p a {
+  text-decoration: underline;
+}
+
+.kkb-registration > h1 {
+  margin-bottom: 10px;
+}
+
+.kkb-registration > h2 {
+  font-family: FaktPro-Normal, sans-serif;
+}
+
+.kkb-registration h3 {
+  color: #3a6f55;
+}
+
+.kkb-registration__info {
+  border-radius: 5px;
+  margin: 20px auto 40px;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #e5e5e5;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 735px) {
+  .kkb-registration__image-wrapper {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  .kkb-registration__info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+}
