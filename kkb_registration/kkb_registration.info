@@ -1,0 +1,6 @@
+name = KKB Registration
+description = An alternative, richer-than-ding registration page
+core = 7.x
+package = KKB
+dependencies[] = ding_registration
+configure = admin/config/ding/kkb_registration
