@@ -15,27 +15,53 @@ function kkb_registration_admin_form($form, &$form_state) {
   // #tree to be able to access them.
   $form['#tree'] = TRUE;
 
-  $form['languages'] = [
+  $form['kkb_registration_tabs'] = [
     '#type' => 'vertical_tabs',
   ];
 
-  // This is the field fieldset.
-  $form['kkb_registration_da'] = [
+  $form_key_da = 'kkb_registration_da';
+  $form_key_en = 'kkb_registration_en';
+
+  $form[$form_key_da] = [
     '#type' => 'fieldset',
-    '#title' => 'Danish',
+    '#title' => t('Danish'),
     '#collapsible' => TRUE,
-    '#group' => 'languages'
+    '#group' => 'kkb_registration_tabs'
   ];
 
-  $form['kkb_registration_en'] = [
+  $form[$form_key_en] = [
     '#type' => 'fieldset',
-    '#title' => 'English',
+    '#title' => t('English'),
     '#collapsible' => TRUE,
-    '#group' => 'languages'
+    '#group' => 'kkb_registration_tabs'
   ];
 
   _kkb_registration_add_lang_fields($form, $form_state, 'da');
   _kkb_registration_add_lang_fields($form, $form_state, 'en');
+
+  $form['kkb_registration_settings'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Page settings (e.g. URL)'),
+    '#collapsible' => TRUE,
+    '#group' => 'kkb_registration_tabs'
+  ];
+
+  $settings = variable_get('kkb_registration_settings', []);
+
+  $form['kkb_registration_settings']['uri'] = [
+    '#type' => 'textfield',
+    '#title' => t('Frontend URL'),
+    '#description' => t(
+      "Example: !example - it should be a relative URL without leading slash. <br> It is OK to add several layers such as !example_nested",
+      [
+        '!example' => '<strong>opretbruger</strong>',
+        '!example_nested' => '<strong>oprettelse/opret-bruger</strong>',
+      ]
+    ),
+    '#field_prefix' => '/',
+    '#default_value' => !empty($settings['uri']) ? $settings['uri'] : 'opretbruger',
+    '#required' => true,
+  ];
 
   $form['#submit'][] = 'kkb_registration_admin_form_submit';
 
@@ -50,11 +76,17 @@ function _kkb_registration_add_lang_fields(&$form, &$form_state, $lang_key) {
 
   $values = variable_get($form_lang_key);
 
+  $form[$form_lang_key]['show'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Show this language section'),
+    '#default_value' => isset($values['show']) ? $values['show'] : TRUE,
+  ];
+
   $form[$form_lang_key]['image'] = [
     '#type' => 'media',
     '#theme' => 'media_widget',
     '#title' => t('Image'),
-    '#default_value' => !empty($values) ? $values['image'] : NULL,
+    '#default_value' => !empty($values['image']) ? $values['image'] : NULL,
     '#media_options' => [
       'global' => [
         'file_directory' => 'kkb_registration',
@@ -72,13 +104,13 @@ function _kkb_registration_add_lang_fields(&$form, &$form_state, $lang_key) {
   $form[$form_lang_key]['title'] = [
     '#type' => 'textfield',
     '#title' => t('Title'),
-    '#default_value' => !empty($values) ? $values['title'] : NULL,
+    '#default_value' => !empty($values['title']) ? $values['title'] : NULL,
   ];
 
   $form[$form_lang_key]['subtitle'] = [
     '#type' => 'textfield',
     '#title' => t('Subtitle'),
-    '#default_value' => !empty($values) ? $values['subtitle'] : NULL,
+    '#default_value' => !empty($values['subtitle']) ? $values['subtitle'] : NULL,
   ];
 
   $body = !empty($values['body']) ? $values['body'] : NULL;
@@ -226,6 +258,17 @@ function kkb_registration_admin_add_info_callback_en($form, $form_state) {
  * We just use this function to tweak some of the data before it gets saved.
  */
 function kkb_registration_admin_form_submit(&$form, &$form_state) {
+  $page_uri = !empty($form_state['values']['kkb_registration_settings']['uri']) ?
+    $form_state['values']['kkb_registration_settings']['uri'] : NULL;
+
+  if ($page_uri) {
+    // Remove any leading slash.
+    $page_uri = ltrim($page_uri, '/');
+    $page_uri = check_url($page_uri);
+
+    $form_state['values']['kkb_registration_settings']['uri'] = $page_uri;
+  }
+
   // There is some magic happening behind the scenes in this funciton
   $form_keys = ['kkb_registration_da', 'kkb_registration_en'];
 
@@ -262,7 +305,6 @@ function kkb_registration_admin_form_submit(&$form, &$form_state) {
     }
 
     $infos = $form_state['values'][$form_key]['infos'];
-    $anchors = [];
 
     // Looping through info boxes to:
     // - Delete the ones that are set for deletion.
@@ -275,20 +317,10 @@ function kkb_registration_admin_form_submit(&$form, &$form_state) {
       }
 
       if (!empty($info['anchor'])) {
-        // By using clean_css, we make sure that the anchor is valid for URLs.
+        // By using drupal_html_id, we make sure that the anchor is valid for URLs.
         $anchor_cleaned = drupal_html_id($info['anchor']);
 
-        $anchor_cleaned = strtolower($anchor_cleaned);
-
-        // Making sure anchor IDs are unique.
-        if (in_array($anchor_cleaned, $anchors)) {
-          // Yes, this mean it can result in #anchorlink0000 but it's silly to
-          // add a bunch of logic to increment the number for an edgecase.
-          $anchor_cleaned .= '0';
-        }
-
-        $infos[$info_key]['anchor'] = $anchor_cleaned;
-        $anchors[] = $anchor_cleaned;
+        $infos[$info_key]['anchor'] = strtolower($anchor_cleaned);
       }
     }
 
@@ -296,5 +328,17 @@ function kkb_registration_admin_form_submit(&$form, &$form_state) {
     // When re-setting it on $form_state, Drupal takes care of saving it with
     // variable_set().
     $form_state['values'][$form_key]['infos'] = array_values($infos);
+
+    // Clearing our frontend cache when saving the form.
+    $page_url = url($page_uri,  ['absolute' => TRUE]);
+    cache_clear_all($page_url, 'cache_page');
+
+    $old_settings = variable_get('kkb_registration_settings', []);
+
+    // If the URL has changed, we need to clear the menu cache.
+    if (empty($old_settings['uri']) || $old_settings['uri'] !== $page_uri) {
+      // Set a variable to let menu_execute_active_handler() know that menu rebuild is required
+      variable_set('menu_rebuild_needed', TRUE);
+    }
   }
 }

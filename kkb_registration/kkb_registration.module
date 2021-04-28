@@ -10,15 +10,19 @@
  */
 function kkb_registration_menu() {
   $items['admin/config/ding/kkb_registration'] = [
-    'title' => 'KKB Registration settings',
-    'description' => 'Setup the expanded registration page, replacing ding_registration.',
+    'title' => 'Landing-page for user registration',
+    'description' => 'Setup the expanded registration landing-page, replacing ding_registration.',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['kkb_registration_admin_form'],
     'access arguments' => ['administer ding provider'],
     'file' => 'kkb_registration.admin.inc',
   ];
 
-  $items['opretbruger'] = [
+  $settings = variable_get('kkb_registration_settings', []);
+
+  $frontend_uri = !empty($settings['uri']) ? $settings['uri'] : 'opretbruger';
+
+  $items[$frontend_uri] = [
     'page callback' => 'kkb_registration_page',
     // Publicly accessible.
     'access callback' => TRUE,
