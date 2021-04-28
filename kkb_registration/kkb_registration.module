@@ -9,14 +9,14 @@
  * Implements hook_menu().
  */
 function kkb_registration_menu() {
-  $items['admin/config/ding/kkb_registration'] = array(
+  $items['admin/config/ding/kkb_registration'] = [
     'title' => 'KKB Registration settings',
     'description' => 'Setup the expanded registration page, replacing ding_registration.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('kkb_registration_admin_form'),
-    'access arguments' => array('administer ding provider'),
+    'page arguments' => ['kkb_registration_admin_form'],
+    'access arguments' => ['administer ding provider'],
     'file' => 'kkb_registration.admin.inc',
-  );
+  ];
 
   $items['opretbruger'] = [
     'page callback' => 'kkb_registration_page',
@@ -35,34 +35,39 @@ function kkb_registration_theme() {
     'kkb_registration_page' => [
       'template' => 'templates/kkb-registration-page',
       'variables' => [
-        'image' => NULL,
-        'title' => NULL,
-        'subtitle' => NULL,
-        'body' => NULL,
-        'infos' => [],
+        'languages' => [],
       ],
     ]
   ];
 }
 
+/**
+ * Preparing variables for the kkb_registration frontend page.
+ */
 function kkb_registration_page() {
-  $image_style = 'ding_panorama_primary_large';
-  $image = NULL;
-  $image_fid = variable_get('kkb_registration_image', NULL);
+  // We have several language-grouped sections of content.
+  // The sections is showed on the same page though, as Ding2 doesn't have
+  // a split-language setup.
+  // Instead, we add a lang="LANG_KEY" to make Google & co understand.
+  $languages = [
+    'da' => variable_get('kkb_registration_da', NULL),
+    'en' => variable_get('kkb_registration_en', NULL),
+  ];
 
-  if (!empty($image_fid) && ($image_file = file_load($image_fid))) {
-    $image = theme('image_style', [
-      'path' => $image_file->uri,
-      'style_name' => $image_style
-    ]);
+  foreach ($languages as $lang_key => $lang_value) {
+    $image_style = 'ding_panorama_primary_large';
+    $image_fid = !empty($lang_value['image']) ? $lang_value['image'] : NULL;
+
+    if (!empty($image_fid) && ($image_file = file_load($image_fid))) {
+      $languages[$lang_key]['image_render'] = theme('image_style', [
+        'path' => $image_file->uri,
+        'style_name' => $image_style
+      ]);
+    }
   }
 
   $variables = [
-    'image' => $image,
-    'title' => variable_get('kkb_registration_title', NULL),
-    'subtitle' => variable_get('kkb_registration_subtitle', NULL),
-    'body' => variable_get('kkb_registration_body', NULL),
-    'infos' => variable_get('kkb_registration_infos', []),
+    'languages' => $languages,
   ];
 
   return theme('kkb_registration_page', $variables);
@@ -83,12 +88,12 @@ function kkb_registration_preprocess_kkb_registration_page(&$variables) {
 function _kkb_registration_locale_add_translation($source, $langcode, $translation, $context = '', $textgroup = 'default') {
   require_once DRUPAL_ROOT . '/includes/locale.inc';
 
-  $report = &drupal_static(__FUNCTION__, array(
+  $report = &drupal_static(__FUNCTION__, [
     'additions' => 0,
     'updates' => 0,
     'deletes' => 0,
     'skips' => 0,
-  ));
+  ]);
 
   _locale_import_one_string_db($report, $langcode, $context, $source, $translation, $textgroup, 'Manual import via helper ' . __FUNCTION__ . '().', LOCALE_IMPORT_OVERWRITE);
 

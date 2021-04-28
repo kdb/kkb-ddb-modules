@@ -9,28 +9,50 @@
  */
 function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
-    'An anchor ID can be used to link direct to this info box, e.g. "/opretbruger#<strong>english-info</strong>" <br/>
-    When you save this form, you can view the constructed anchor ID here.',
+    'An anchor ID can be used to link direct to this info box, e.g. !example When you save this form, you can view the constructed anchor ID here.',
     'da',
-    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx. "/opretbruger#<strong>english-info</strong>" <br/>
-    Når du gemmer denne formular, kan du se det genererede ID her.'
+    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx. !example Når du gemmer denne formular, kan du se det genererede ID her.'
   );
 
   _kkb_registration_locale_add_translation(
-    'Add info box',
+    'Add another info-box',
     'da',
-    'Tilføj info boks'
+    'Tilføj endnu en info-boks'
   );
 
   _kkb_registration_locale_add_translation(
-    'You can delete an info-box by deleting all the data in the fields and saving',
+    'Info-box',
     'da',
-    'Du kan slette en info-boks ved at slette alt indholdet i felterne og gemme'
+    'Info-boks'
+  );
+
+  _kkb_registration_locale_add_translation(
+    'Delete this info-box when saving',
+    'da',
+    'Slet denne info-boks når der gemmes'
   );
 
   _kkb_registration_locale_add_translation(
     'KKB Registration settings',
     'da',
     'KKB Brugeroprettelse indstillinger'
+  );
+
+  _kkb_registration_locale_add_translation(
+    'Danish',
+    'da',
+    'Dansk'
+  );
+
+  _kkb_registration_locale_add_translation(
+    'Open in a new tab ("_blank")',
+    'da',
+    'Åben i en ny fane ("_blank")'
+  );
+
+  _kkb_registration_locale_add_translation(
+    'Open in the same tab ("_self")',
+    'da',
+    'Åben i en den samme fane ("_self ")'
   );
 }
