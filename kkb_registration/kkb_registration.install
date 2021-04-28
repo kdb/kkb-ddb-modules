@@ -7,7 +7,7 @@
 /**
  * Implements hook_install().
  */
-function kkb_registration_update_7201() {
+function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
     'An anchor ID can be used to link direct to this info box, e.g. !example When you save this form, you can view the constructed anchor ID here.',
     'da',
@@ -66,5 +66,17 @@ function kkb_registration_update_7201() {
     'To the top',
     'da',
     'Til toppen'
+  );
+
+  _kkb_registration_locale_add_translation(
+    'Page settings (e.g. URL)',
+    'da',
+    'Sideindstillinger (fx. URL)'
+  );
+
+  _kkb_registration_locale_add_translation(
+    "Example: !example - it should be a relative URL without leading slash. <br> It is OK to add several layers such as !example_nested",
+    'da',
+    "Eksempel: !example - det skal være en relativ URL (URI) uden ledende skråstreg. <br> Det er OK at lave flere lag som fx: !example_nested"
   );
 }
