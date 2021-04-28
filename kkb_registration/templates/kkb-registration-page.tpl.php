@@ -2,21 +2,37 @@
   $languages = !empty($languages) ? $languages : [];
 ?>
 
-<div class="kkb-registration">
-  <?php foreach ($languages as $lang_key => $language): ?>
-    <div class="kkb-registration__section kkb-registration__section--<?php print $lang_key; ?>" lang="<?php print $lang_key; ?>">
-      <div class="kkb-registration__section-content">
-        <?php if (!empty($language['title'])): ?>
-        <h1>
-          <?php print $language['title']; ?>
-        </h1>
-        <?php endif; ?>
+<div class="kkb-registration" id="top">
+  <?php if (!empty($languages['da']['show']) && !empty($languages['en']['show'])): ?>
+    <a href="#en" class="kkb-registration__scroll kkb-registration__scroll--en">
+      English version
+    </a>
+  <?php endif; ?>
 
-        <?php if (!empty($language['subtitle'])): ?>
-        <h2>
-          <?php print $language['subtitle']; ?>
-        </h2>
-        <?php endif; ?>
+
+  <?php foreach ($languages as $lang_key => $language): ?>
+    <?php
+      if (empty($language['show'])) {
+        continue;
+      }
+    ?>
+
+    <div class="kkb-registration__section kkb-registration__section--<?php print $lang_key; ?>" lang="<?php print $lang_key; ?>" id="<?php print $lang_key; ?>">
+      <div class="kkb-registration__section-content">
+        <div class="kkb-registration__titles">
+          <?php if (!empty($language['title'])): ?>
+            <h1>
+              <?php print $language['title']; ?>
+            </h1>
+          <?php endif; ?>
+
+          <?php if (!empty($language['subtitle'])): ?>
+            <h2>
+              <?php print $language['subtitle']; ?>
+            </h2>
+          <?php endif; ?>
+        </div>
+
 
         <?php if (!empty($language['image_render'])): ?>
         <div class="kkb-registration__image-wrapper">
@@ -67,4 +83,7 @@
     </div>
   <?php endforeach; ?>
 
+  <a href="#top" class="kkb-registration__scroll">
+    <?php print t('To the top'); ?>
+  </a>
 </div>

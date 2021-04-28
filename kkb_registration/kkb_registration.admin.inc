@@ -19,17 +19,19 @@ function kkb_registration_admin_form($form, &$form_state) {
     '#type' => 'vertical_tabs',
   ];
 
-  // This is the field fieldset.
-  $form['kkb_registration_da'] = [
+  $form_key_da = 'kkb_registration_da';
+  $form_key_en = 'kkb_registration_en';
+
+  $form[$form_key_da] = [
     '#type' => 'fieldset',
-    '#title' => 'Danish',
+    '#title' => t('Danish'),
     '#collapsible' => TRUE,
     '#group' => 'languages'
   ];
 
-  $form['kkb_registration_en'] = [
+  $form[$form_key_en] = [
     '#type' => 'fieldset',
-    '#title' => 'English',
+    '#title' => t('English'),
     '#collapsible' => TRUE,
     '#group' => 'languages'
   ];
@@ -50,11 +52,17 @@ function _kkb_registration_add_lang_fields(&$form, &$form_state, $lang_key) {
 
   $values = variable_get($form_lang_key);
 
+  $form[$form_lang_key]['show'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Show this language section'),
+    '#default_value' => isset($values['show']) ? $values['show'] : TRUE,
+  ];
+
   $form[$form_lang_key]['image'] = [
     '#type' => 'media',
     '#theme' => 'media_widget',
     '#title' => t('Image'),
-    '#default_value' => !empty($values) ? $values['image'] : NULL,
+    '#default_value' => !empty($values['image']) ? $values['image'] : NULL,
     '#media_options' => [
       'global' => [
         'file_directory' => 'kkb_registration',
@@ -72,13 +80,13 @@ function _kkb_registration_add_lang_fields(&$form, &$form_state, $lang_key) {
   $form[$form_lang_key]['title'] = [
     '#type' => 'textfield',
     '#title' => t('Title'),
-    '#default_value' => !empty($values) ? $values['title'] : NULL,
+    '#default_value' => !empty($values['title']) ? $values['title'] : NULL,
   ];
 
   $form[$form_lang_key]['subtitle'] = [
     '#type' => 'textfield',
     '#title' => t('Subtitle'),
-    '#default_value' => !empty($values) ? $values['subtitle'] : NULL,
+    '#default_value' => !empty($values['subtitle']) ? $values['subtitle'] : NULL,
   ];
 
   $body = !empty($values['body']) ? $values['body'] : NULL;
@@ -296,5 +304,9 @@ function kkb_registration_admin_form_submit(&$form, &$form_state) {
     // When re-setting it on $form_state, Drupal takes care of saving it with
     // variable_set().
     $form_state['values'][$form_key]['infos'] = array_values($infos);
+
+    $url = url(KKB_REGISTRATION_URL,  ['absolute' => TRUE]);
+
+    cache_clear_all($url, 'cache_page');
   }
 }

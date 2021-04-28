@@ -5,6 +5,8 @@
  * Presents the admin settings, made in kkb_registration to the user.
  */
 
+define('KKB_REGISTRATION_URL', 'opretbruger');
+
 /**
  * Implements hook_menu().
  */
@@ -18,7 +20,7 @@ function kkb_registration_menu() {
     'file' => 'kkb_registration.admin.inc',
   ];
 
-  $items['opretbruger'] = [
+  $items[KKB_REGISTRATION_URL] = [
     'page callback' => 'kkb_registration_page',
     // Publicly accessible.
     'access callback' => TRUE,
