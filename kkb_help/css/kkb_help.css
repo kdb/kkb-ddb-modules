@@ -169,20 +169,25 @@
   /* Left margin to allow for the :before.*/
   margin: 0 0 2em 3em;
   padding: 4px 8px;
+  padding-left: 0;
   /* We'll do our own numbers. */
   list-style: none; /* Disable the normal item numbering */
 }
+
 .node-type-ding-help-page ol > li:before {
   /* Use a counter to create the numbering. */
   content: counter(li);
   counter-increment: li;
   position: absolute;
+  top: 0;
   left: -3em;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 50%;
+  height: 2em;
   width: 2em;
+  line-height: 1.5em;
   /* Some space between the number and the content in browsers that
      support generated content but not positioning it (Camino 2 is one
      example) */
@@ -195,6 +200,7 @@
   font-family: "Helvetica Neue", Arial, sans-serif;
   text-align: center;
 }
+
 .node-type-ding-help-page li ol,
 .node-type-ding-help-page li ul {
   margin-top: 6px;

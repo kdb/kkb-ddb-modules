@@ -183,3 +183,50 @@ html {
     padding: 40px;
   }
 }
+
+/* OL styling, taken from kkb_help. */
+.kkb-registration ol {
+  /* Reset counter. */
+  counter-reset: li;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.kkb-registration ol > li {
+  /* Create a positioning context to ease positioning of the :before
+   element. */
+  position: relative;
+  /* Left margin to allow for the :before.*/
+  margin: 0 0 2em 3em;
+  padding: 4px 8px;
+  padding-left: 0;
+  /* We'll do our own numbers. */
+  list-style: none; /* Disable the normal item numbering */
+}
+
+.kkb-registration ol > li:before {
+  /* Use a counter to create the numbering. */
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  top: 0;
+  left: -3em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  line-height: 1.5em;
+  /* Some space between the number and the content in browsers that
+     support generated content but not positioning it (Camino 2 is one
+     example) */
+  margin-right: 8px;
+  padding: 4px;
+  color: #fff;
+  background: #313233;
+  font-weight: bold;
+  /* Looks better than FaktPro. */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
