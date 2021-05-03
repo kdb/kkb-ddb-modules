@@ -41,7 +41,9 @@
         <?php endif; ?>
 
         <?php if (!empty($language['body']['value'])): ?>
-        <?php print $language['body']['value']; ?>
+          <div class="kkb-registration__text-formatted">
+            <?php print $language['body']['value']; ?>
+          </div>
         <?php endif; ?>
 
         <?php
@@ -61,7 +63,9 @@
           <?php endif; ?>
 
           <?php if (!empty($info['body']['value'])): ?>
-            <?php print $info['body']['value']; ?>
+            <div class="kkb-registration__text-formatted">
+              <?php print $info['body']['value']; ?>
+            </div>
           <?php endif; ?>
 
           <?php if (!empty($info['link_url'])): ?>

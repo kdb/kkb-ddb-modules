@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Adding default settings and translations for kkb_registration.
  */
 function kkb_registration_install() {
   _kkb_registration_install_default_values();
@@ -13,13 +13,13 @@ function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
     'An anchor ID can be used to link direct to this info box, e.g. !example When you save this form, you can view the constructed anchor ID here.',
     'da',
-    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx. !example Når du gemmer denne formular, kan du se det genererede ID her.'
+    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx !example Når du gemmer denne formular, kan du se det genererede ID her.'
   );
 
   _kkb_registration_locale_add_translation(
-    'Add another info-box',
+    'Add another info-box (@lang_key)',
     'da',
-    'Tilføj endnu en info-boks'
+    'Tilføj endnu en info-boks (@lang_key)'
   );
 
   _kkb_registration_locale_add_translation(
@@ -79,7 +79,7 @@ function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
     'Page settings (e.g. URL)',
     'da',
-    'Sideindstillinger (fx. URL)'
+    'Sideindstillinger (fx URL)'
   );
 
   _kkb_registration_locale_add_translation(
@@ -95,7 +95,7 @@ function kkb_registration_install() {
  * All these values can be tweaked by the editor afterwards.
  */
 function _kkb_registration_install_default_values() {
-  variable_set('kkb_registration_da', [
+  $da_settings = [
     'show' => 1,
     'image' => 0,
     'title' => 'Opret bruger',
@@ -113,24 +113,13 @@ function _kkb_registration_install_default_values() {
           'format' => 'ding_wysiwyg'
         ],
         'link_title' => 'Opret dig som bruger',
-        'link_url' => 'https://bibliotek.kk.dk/adgangsplatformen/login?destination=registration/acceptance&idp=nemlogin',
-        'link_target' => '_blank',
-      ],
-      [
-        'anchor' => 'unge',
-        'title' => 'Børn og unge under 18',
-        'body' => [
-          'value' => '<p>For børn og unge under 18 år skal forældre eller værge underskrive bibliotekernes indmeldelsesblanket, herefter vil du modtage en mail fra os. I mailen vil der stå oplysninger om barnets pinkode mm. Du finder den digitale indmeldelsesblanket ved at klikke på "Opret dit barn som bruger" nedenfor. Der kan gå op til 3 hverdage før vi har behandlet din oprettelse.</p>',
-          'format' => 'ding_wysiwyg'
-        ],
-        'link_title' => 'Opret dit barn som bruger',
-        'link_url' => 'https://bibliotek.kk.dk/hjaelp/generel-info/opret-dit-barn-som-bruger',
+        'link_url' => '/adgangsplatformen/login?destination=registration/acceptance&idp=nemlogin',
         'link_target' => '_blank',
       ],
     ],
-  ]);
+  ];
 
-  variable_set('kkb_registration_en', [
+  $en_settings = [
     'show' => 1,
     'image' => 0,
     'title' => 'Register as a patron using NemId',
@@ -148,22 +137,45 @@ function _kkb_registration_install_default_values() {
           'format' => 'ding_wysiwyg'
         ],
         'link_title' => 'Register as patron',
-        'link_url' => 'https://bibliotek.kk.dk/adgangsplatformen/login?destination=registration/acceptance&idp=nemlogin',
-        'link_target' => '_blank',
-      ],
-      [
-        'anchor' => 'young-people',
-        'title' => 'Children and young people under 18',
-        'body' => [
-          'value' => '<p>Registration of children under the age of 18 requires a&nbsp;library registration form signed by a parent or a guardian. You can fill out and sign the form by signing in to our website with your NemID.&nbsp;Once the form is filled in and signed you will receive a reply by email from the Copenhagen Libraries. In that email you will be informed of the sign on details for your child. It can take up to 3 weekdays before the registration is processed.</p>',
-          'format' => 'ding_wysiwyg'
-        ],
-        'link_title' => 'Register your child as a patron here',
-        'link_url' => 'https://bibliotek.kk.dk/help/general-information/register-your-child-patron',
+        'link_url' => '/adgangsplatformen/login?destination=registration/acceptance&idp=nemlogin',
         'link_target' => '_blank',
       ],
     ],
-  ]);
+  ];
+
+  // Detecting if we're on the actual KKB.
+  // If we are, we'll set some more default values, as KKB has more options
+  // than the average library.
+  $is_kkb = 'Københavns Biblioteker' === variable_get('site_name', '');
+
+  if ($is_kkb) {
+    $da_settings['infos'][] = [
+      'anchor' => 'unge',
+      'title' => 'Børn og unge under 18',
+      'body' => [
+        'value' => '<p>For børn og unge under 18 år skal forældre eller værge underskrive bibliotekernes indmeldelsesblanket, herefter vil du modtage en mail fra os. I mailen vil der stå oplysninger om barnets pinkode mm. Du finder den digitale indmeldelsesblanket ved at klikke på "Opret dit barn som bruger" nedenfor. Der kan gå op til 3 hverdage før vi har behandlet din oprettelse.</p>',
+        'format' => 'ding_wysiwyg'
+      ],
+      'link_title' => 'Opret dit barn som bruger',
+      'link_url' => '/hjaelp/generel-info/opret-dit-barn-som-bruger',
+      'link_target' => '_blank',
+    ];
+
+    $en_settings['infos'][] = [
+      'anchor' => 'young-people',
+      'title' => 'Children and young people under 18',
+      'body' => [
+        'value' => '<p>Registration of children under the age of 18 requires a&nbsp;library registration form signed by a parent or a guardian. You can fill out and sign the form by signing in to our website with your NemID.&nbsp;Once the form is filled in and signed you will receive a reply by email from the Copenhagen Libraries. In that email you will be informed of the sign on details for your child. It can take up to 3 weekdays before the registration is processed.</p>',
+        'format' => 'ding_wysiwyg'
+      ],
+      'link_title' => 'Register your child as a patron here',
+      'link_url' => '/help/general-information/register-your-child-patron',
+      'link_target' => '_blank',
+    ];
+  }
+
+  variable_set('kkb_registration_da', $da_settings);
+  variable_set('kkb_registration_en', $en_settings);
 
   $page_uri = 'opretbruger';
 

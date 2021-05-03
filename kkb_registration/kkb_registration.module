@@ -81,6 +81,13 @@ function kkb_registration_page() {
  * Preprocess function for kkb_contact_page.
  */
 function kkb_registration_preprocess_kkb_registration_page(&$variables) {
+  drupal_add_js(
+    'https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.min.js',
+    [
+      'type' => 'external',
+    ]
+  );
+
   drupal_add_css(
     drupal_get_path('module', 'kkb_registration') . '/css/kkb_registration.css',
     [
