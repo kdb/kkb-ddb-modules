@@ -17,9 +17,9 @@ function kkb_registration_install() {
   );
 
   _kkb_registration_locale_add_translation(
-    'Add another info-box',
+    'Add another info-box (@lang_key)',
     'da',
-    'Tilføj endnu en info-boks'
+    'Tilføj endnu en info-boks (@lang_key)'
   );
 
   _kkb_registration_locale_add_translation(

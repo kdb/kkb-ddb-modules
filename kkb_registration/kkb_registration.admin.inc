@@ -200,9 +200,15 @@ function _kkb_registration_add_lang_fields(&$form, &$form_state, $lang_key) {
     ];
   }
 
-  $form[$form_lang_key]['infos']['add_name'] = [
+  $form[$form_lang_key]['infos']['add_name_' . $lang_key] = [
     '#type' => 'submit',
-    '#value' => t('Add another info-box'),
+    // Not adding ($lang_key) here breaks things due to some AJAX magickery.
+    '#value' => t(
+      'Add another info-box (@lang_key)',
+      [
+        '@lang_key' => $lang_key,
+      ]
+    ),
     '#submit' => [
       'kkb_registration_admin_add_info_' . $lang_key,
     ],
