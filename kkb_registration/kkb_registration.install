@@ -13,7 +13,7 @@ function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
     'An anchor ID can be used to link direct to this info box, e.g. !example When you save this form, you can view the constructed anchor ID here.',
     'da',
-    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx. !example Når du gemmer denne formular, kan du se det genererede ID her.'
+    'Et anchor-ID kan bruges til at linke direkte til denne info-boks, fx !example Når du gemmer denne formular, kan du se det genererede ID her.'
   );
 
   _kkb_registration_locale_add_translation(
@@ -79,7 +79,7 @@ function kkb_registration_install() {
   _kkb_registration_locale_add_translation(
     'Page settings (e.g. URL)',
     'da',
-    'Sideindstillinger (fx. URL)'
+    'Sideindstillinger (fx URL)'
   );
 
   _kkb_registration_locale_add_translation(
