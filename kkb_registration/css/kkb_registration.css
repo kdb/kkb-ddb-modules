@@ -62,7 +62,7 @@ html {
   color: #999999;
 }
 
-.kkb-registration p a {
+.kkb-registration__text-formatted a {
   text-decoration: underline;
 }
 
