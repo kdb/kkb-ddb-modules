@@ -58,6 +58,11 @@ html {
   background-image: url(../assets/scroll-arrow-down.svg);
 }
 
+.kkb-registration .more-link a {
+  width: auto;
+  white-space: normal;
+}
+
 .kkb-registration .more-link a::after {
   color: #999999;
 }
