@@ -109,7 +109,7 @@ function _kkb_registration_install_default_values() {
         'anchor' => 'voksne',
         'title' => 'For voksne',
         'body' => [
-          'value' => 'p>For at kunne oprette dig som bruger, skal du være fyldt 18 år. Du skal desuden have læst og accepteret vores reglement og takster og være informeret om, hvordan vi behandler dine personoplysninger.&nbsp;</p><ul><li><a href="/hjaelp/generel-info/bibliotekernes-reglement-og-husorden">Læs reglement</a><br>&nbsp;</li><li><a href="/hjaelp/gebyr-og-erstatning/gebyr-og-erstatning">Se de nuværende takster&nbsp;</a><br>&nbsp;</li><li><a href="/hjaelp/generel-info/behandling-af-personoplysninger">Læs om hvordan vi behandler dine personoplysninger</a></li></ul>',
+          'value' => '<p>For at kunne oprette dig som bruger, skal du være fyldt 18 år. Du skal desuden have læst og accepteret vores reglement og takster og være informeret om, hvordan vi behandler dine personoplysninger.&nbsp;</p><ul><li><a href="/hjaelp/generel-info/bibliotekernes-reglement-og-husorden">Læs reglement</a><br>&nbsp;</li><li><a href="/hjaelp/gebyr-og-erstatning/gebyr-og-erstatning">Se de nuværende takster&nbsp;</a><br>&nbsp;</li><li><a href="/hjaelp/generel-info/behandling-af-personoplysninger">Læs om hvordan vi behandler dine personoplysninger</a></li></ul>',
           'format' => 'ding_wysiwyg'
         ],
         'link_title' => 'Opret dig som voksenbruger',
@@ -186,19 +186,37 @@ function _kkb_registration_install_default_values() {
     ];
   }
 
-  variable_set('kkb_registration_da', $da_settings);
-  variable_set('kkb_registration_en', $en_settings);
+  // If no changes to Danish texts have been made, we'll add our own.
+  // We're using is_null and variable_get fallback, to avoid overwriting
+  // if the editor has added '' empty variables.
+  $current_da_texts = variable_get('kkb_registration_da', NULL);
+  if (is_null($current_da_texts)) {
+    variable_set('kkb_registration_da', $da_settings);
+  }
 
-  $page_uri = 'opretbruger';
+  // If no changes to Danish texts have been made, we'll add our own.
+  // See explanation above, in $current_da_texts.
+  $current_en_texts = variable_get('kkb_registration_en', NULL);
+  if (is_null($current_en_texts)) {
+    variable_set('kkb_registration_en', $en_settings);
+  }
 
-  variable_set('kkb_registration_settings', [
-    'uri' => $page_uri,
-  ]);
+  // If no changes to settings have been made, we'll add our own.
+  // See explanation above, in $current_da_texts.
+  $current_settings = variable_get('kkb_registration_settings', NULL);
 
-  // Clearing our frontend page cache.
-  $page_url = url($page_uri,  ['absolute' => TRUE]);
-  cache_clear_all($page_url, 'cache_page');
+  if (is_null($current_settings)) {
+    $page_uri = 'opretbruger';
 
-  // Clearing the menu cache.
-  variable_set('menu_rebuild_needed', TRUE);
+    variable_set('kkb_registration_settings', [
+      'uri' => $page_uri,
+    ]);
+
+    // Clearing our frontend page cache.
+    $page_url = url($page_uri,  ['absolute' => TRUE]);
+    cache_clear_all($page_url, 'cache_page');
+
+    // Clearing the menu cache.
+    variable_set('menu_rebuild_needed', TRUE);
+  }
 }
