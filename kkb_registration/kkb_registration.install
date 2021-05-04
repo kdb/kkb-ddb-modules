@@ -109,10 +109,10 @@ function _kkb_registration_install_default_values() {
         'anchor' => 'voksne',
         'title' => 'For voksne',
         'body' => [
-          'value' => '<p>For at oprette dig som bruger skal du skal være fyldt 18 år. Du skal desuden have læst og accepteret Københavns Bibliotekers reglement og takster, og være informeret om hvordan vi behandler dine personoplysninger.&nbsp;</p><p><a href="https://bibliotek.kk.dk/hjaelp/generel-info/bibliotekernes-reglement-og-husorden">Reglement for Københavns Biblioteker</a><br><br><a href="https://bibliotek.kk.dk/hjaelp/gebyr-og-erstatning/gebyr-og-erstatning">Takster for Københavns Biblioteker</a><br><br><a href="https://bibliotek.kk.dk/hjaelp/generel-info/behandling-af-personoplysninger">Sådan behandler Københavns Biblioteker dine personoplysninger</a></p>',
+          'value' => 'p>For at kunne oprette dig som bruger, skal du være fyldt 18 år. Du skal desuden have læst og accepteret vores reglement og takster og være informeret om, hvordan vi behandler dine personoplysninger.&nbsp;</p><ul><li><a href="/hjaelp/generel-info/bibliotekernes-reglement-og-husorden">Læs reglement</a><br>&nbsp;</li><li><a href="/hjaelp/gebyr-og-erstatning/gebyr-og-erstatning">Se de nuværende takster&nbsp;</a><br>&nbsp;</li><li><a href="/hjaelp/generel-info/behandling-af-personoplysninger">Læs om hvordan vi behandler dine personoplysninger</a></li></ul>',
           'format' => 'ding_wysiwyg'
         ],
-        'link_title' => 'Opret dig som bruger',
+        'link_title' => 'Opret dig som voksenbruger',
         'link_url' => '/adgangsplatformen/login?destination=registration/acceptance&idp=nemlogin',
         'link_target' => '_blank',
       ],
@@ -125,7 +125,7 @@ function _kkb_registration_install_default_values() {
     'title' => 'Register as a patron using NemId',
     'subtitle' => 'Use NemID to register',
     'body' => [
-      'value' => '<p>To use our services, you must be registered as a user at Copenhagen Libraries.</p><p>Select the type of library user you want to create.</p>',
+      'value' => '<p>To use our services, you must be registered as a patron&nbsp;at the Copenhagen Libraries.<br>Select the type of library patron&nbsp;you want to register.</p>',
       'format' => 'ding_wysiwyg'
     ],
     'infos' => [
@@ -133,7 +133,7 @@ function _kkb_registration_install_default_values() {
         'anchor' => 'adults',
         'title' => 'For adults',
         'body' => [
-          'value' => '<p>In order to register using a NemID, you have to be at least 18 years of age and approve that you have read and accepted the general terms, conditions, rules and rates of the Copenhagen Libraries.</p><p><a href="https://bibliotek.kk.dk/help/general-information/regulations-and-code-conduct">Rules and rates for the Copenhagen Librarie and Regulations and Code of Conduct</a></p>',
+          'value' => '<p>In order to register using NemID, you have to be at least 18 years of age and approve that you have read and accepted the general terms, conditions, rules and rates of the Copenhagen Libraries.</p><p><a href="/help/general-information/regulations-and-code-conduct">Rules and rates for the Copenhagen Libraries, Regulations and Code of Conduct</a></p>',
           'format' => 'ding_wysiwyg'
         ],
         'link_title' => 'Register as patron',
@@ -153,11 +153,23 @@ function _kkb_registration_install_default_values() {
       'anchor' => 'unge',
       'title' => 'Børn og unge under 18',
       'body' => [
-        'value' => '<p>For børn og unge under 18 år skal forældre eller værge underskrive bibliotekernes indmeldelsesblanket, herefter vil du modtage en mail fra os. I mailen vil der stå oplysninger om barnets pinkode mm. Du finder den digitale indmeldelsesblanket ved at klikke på "Opret dit barn som bruger" nedenfor. Der kan gå op til 3 hverdage før vi har behandlet din oprettelse.</p>',
+        'value' => '<p>Som forældre eller værge kan du digitalt ansøge om oprettelse af brugerprofil til børn eller unge under 18 år. Når du har indsendt ansøgningen sker der følgende:</p><ol><li>I Digital Post (e-Boks, borger.dk) modtager du bekræftelse på, at du har ansøgt om indmeldelse af barnet.&nbsp;</li><li>Vi behandler ansøgningen. Det&nbsp;kan tage&nbsp;op til tre dage.&nbsp;</li><li>Du modtager oplysninger om pinkode i Digital Post (e-Boks, borger.dk). Det kan tage op til&nbsp;tre dage, fra du har indsendt ansøgningen.&nbsp;</li></ol><p><a href="/hjaelp/generel-info/opret-dit-barn-som-bruger">Læs mere om oprettelse af brugerprofil til børn og unge</a></p>',
         'format' => 'ding_wysiwyg'
       ],
-      'link_title' => 'Opret dit barn som bruger',
+      'link_title' => 'Ansøg om oprettelse af barn som bruger',
       'link_url' => '/hjaelp/generel-info/opret-dit-barn-som-bruger',
+      'link_target' => '_blank',
+    ];
+
+    $da_settings['infos'][] = [
+      'anchor' => 'firmaer',
+      'title' => 'Firmaer og institutioner',
+      'body' => [
+        'value' => '<p>Fimaer og virksomheder skal aflevere indmeldelsesblanket på et af Københavs Biblioteker.&nbsp;</p><p><a href="/sites/koebenhavn-dev.ddbcms.dk/files/help_files/indmeldelse_-_firmaer_og_institutioner.pdf" target="_blank">Blanket til indmeldelse af firma og institution (PDF)</a></p><p><a href="/hjaelp/generel-info/opret-dig-som-bruger">Læs om reglerne for firmaer og institutioner ved indmeldelse</a></p>',
+        'format' => 'ding_wysiwyg'
+      ],
+      'link_title' => '',
+      'link_url' => '',
       'link_target' => '_blank',
     ];
 
@@ -165,10 +177,10 @@ function _kkb_registration_install_default_values() {
       'anchor' => 'young-people',
       'title' => 'Children and young people under 18',
       'body' => [
-        'value' => '<p>Registration of children under the age of 18 requires a&nbsp;library registration form signed by a parent or a guardian. You can fill out and sign the form by signing in to our website with your NemID.&nbsp;Once the form is filled in and signed you will receive a reply by email from the Copenhagen Libraries. In that email you will be informed of the sign on details for your child. It can take up to 3 weekdays before the registration is processed.</p>',
+        'value' => '<p>Registration of children under the age of 18 requires a&nbsp;library registration form signed by a parent or a guardian. You can fill out and sign the form digitally by signing in to our registration service with NemID.&nbsp;Once the form is filled out and signed the following will happen:</p><ol><li>You will receive an email confirming&nbsp;that we have recieved the registration. This email will be sent&nbsp;to Digital Post (e-Boks, borger.dk).</li><li>We will process the registration. The registration process can take up to 3 weekdays.&nbsp;</li><li>You will receive an email confirming&nbsp;that the registration is completed providing&nbsp;you with sign in details. This email will be sent&nbsp;to Digital Post (e-Boks, borger.dk).</li></ol><p><a href="/help/general-information/register-your-child-patron">Read more about registering a child as a patron</a></p>',
         'format' => 'ding_wysiwyg'
       ],
-      'link_title' => 'Register your child as a patron here',
+      'link_title' => 'Register your child as a patron',
       'link_url' => '/help/general-information/register-your-child-patron',
       'link_target' => '_blank',
     ];
