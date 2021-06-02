@@ -8,8 +8,7 @@
 @media only screen and (max-width: 600px) {
   .kkb-wayfinder--button {
     display: block;
-    float: left;
-    width: 48.7%;
+    width: 100%;
   }
 }
 
@@ -20,10 +19,18 @@
 .kkb-wayfinder--button .trigger {
   color: #000;
   background: #fff;
-  opacity: 0;
-  margin: 20px;
+
   transition-property: opacity;
   transition-timing-function: ease-in;
+}
+
+.view-mode-teaser .kkb-wayfinder--button {
+  padding-bottom: 70px;
+}
+
+.view-mode-teaser .kkb-wayfinder--button .trigger {
+  opacity: 0;
+  margin: 20px;
 }
 
 .ting-object > .inner:hover .kkb-wayfinder--button .trigger {
@@ -35,4 +42,10 @@
 .ting-object.view-mode-teaser-no-overlay > .inner .action-button,
 .ting-object.view-mode-teaser > .inner .action-button {
   bottom: 0 !important;
+}
+
+.ting-object.view-mode-teaser-no-overlay>.inner .group-text,
+.ting-object.view-mode-teaser>.inner .group-text {
+  height: auto !important;
+  min-height: 100%;
 }
