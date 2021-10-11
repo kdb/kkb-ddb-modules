@@ -132,7 +132,9 @@ function kkb_wayfinder_preprocess_html(&$variables) {
 
   drupal_add_js(drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.buttons.js');
   drupal_add_js(drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.js');
+  drupal_add_js(drupal_get_path('module', 'kkb_wayfinder') . '/js/kkb_wayfinder.slick.js');
 
   drupal_add_css(drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.buttons.min.css');
   drupal_add_css(drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.css');
+  drupal_add_css(drupal_get_path('module', 'kkb_wayfinder') . '/css/kkb_wayfinder.slick.css');
 }
