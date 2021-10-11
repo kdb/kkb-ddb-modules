@@ -19,9 +19,15 @@
   Drupal.behaviors.kkb_help_steps = {
     attach: function (context) {
       $('.collapsible .fieldset-title').once(function() {
-        this.setAttribute('aria-expanded', false);
+        this.setAttribute('aria-button', true);
         $(this).on('click', function() {
-          this.setAttribute('aria-expandend', !this.getAttribute('aria-expandend'));
+          if (this.hasAttribute('open')) {
+            this.removeAttribute('open');
+            this.setAttribute('aria-expanded', false);
+          } else {
+            this.setAttribute('open', '');
+            this.setAttribute('aria-expanded', true);
+          }
         });
       });
 
