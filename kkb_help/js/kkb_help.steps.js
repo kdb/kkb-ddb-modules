@@ -18,6 +18,13 @@
 
   Drupal.behaviors.kkb_help_steps = {
     attach: function (context) {
+      $('.collapsible .fieldset-title').once(function() {
+        this.setAttribute('aria-expanded', false);
+        $(this).on('click', function() {
+          this.setAttribute('aria-expandend', !this.getAttribute('aria-expandend'));
+        });
+      });
+
       $('.js-step-items').once(function () {
         var items = $(this);
 
@@ -36,44 +43,21 @@
           updateAllToggle(items);
         };
 
-        var handleKeycode = function(event, callback) {
-            // Return key
-            if(event.keyCode === 13){
-              callback();
-            }
-        };
-
         $('.js-step-item', items).each(function () {
           var content = $('.js-step-content', this);
           var item = $(this);
-          $('.js-step-title', this).after(' <span class="show" tabindex="0">' + Drupal.t('Show') + '</span>');
-          $('.js-step-title', this).after(' <span class="hide" tabindex="0">' + Drupal.t('Hide') + '</span>');
-          $('.js-step-header', this)
-            .click(function() {
+          $('.js-step-title', this).after(' <button class="help-button--text show">' + Drupal.t('Show') + '</button>');
+          $('.js-step-title', this).after(' <button class="help-button--text hide">' + Drupal.t('Hide') + '</button>');
+          $('.js-step-header', this).click(function() {
               allToggle(item);
-            })
-            .on('keyup', function(event) {
-              handleKeycode(event, function() {
-                allToggle(item);
-              });
             });
         });
 
         var show_hide_all = $('<div class="show-hide-all"></div>');
 
-        show_hide_all.append($(' <span class="show-all" tabindex="0">' + Drupal.t('Show all') + '</span>')
-          .on('click', stepShow)
-          .on('keyup', function(event) {
-            handleKeycode(event, stepShow);
-          })
-        );
+        show_hide_all.append($(' <button class="help-button--text show-all">' + Drupal.t('Show all') + '</button>').on('click', stepShow));
 
-        show_hide_all.append($(' <span class="hide-all" tabindex="0">' + Drupal.t('Hide all') + '</span>')
-          .on('click', stepHide)
-          .on('keyup', function(event) {
-            handleKeycode(event, stepHide);
-          })
-        );
+        show_hide_all.append($(' <button class="help-button--text hide-all">' + Drupal.t('Hide all') + '</button>').on('click', stepHide));
 
         $(this).before(show_hide_all);
         updateAllToggle(items);
