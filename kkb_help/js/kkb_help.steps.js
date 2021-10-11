@@ -18,29 +18,46 @@
 
   Drupal.behaviors.kkb_help_steps = {
     attach: function (context) {
+      $('.collapsible .fieldset-title').once(function() {
+        this.setAttribute('aria-expanded', false);
+        $(this).on('click', function() {
+          this.setAttribute('aria-expandend', !this.getAttribute('aria-expandend'));
+        });
+      });
+
       $('.js-step-items').once(function () {
         var items = $(this);
+
+        var allToggle = function (item) {
+          item.toggleClass('step-shown');
+          updateAllToggle(items);
+        };
+
+        var stepShow = function () {
+          $('.js-step-item', items).addClass('step-shown');
+          updateAllToggle(items);
+        };
+
+        var stepHide = function () {
+          $('.js-step-item', items).removeClass('step-shown');
+          updateAllToggle(items);
+        };
 
         $('.js-step-item', items).each(function () {
           var content = $('.js-step-content', this);
           var item = $(this);
-          $('.js-step-title', this).after(' <span class="show">' + Drupal.t('Show') + '</span>');
-          $('.js-step-title', this).after(' <span class="hide">' + Drupal.t('Hide') + '</span>');
-          $('.js-step-header', this).click(function () {
-            item.toggleClass('step-shown');
-            updateAllToggle(items);
-          });
+          $('.js-step-title', this).after(' <button class="help-button--text show">' + Drupal.t('Show') + '</button>');
+          $('.js-step-title', this).after(' <button class="help-button--text hide">' + Drupal.t('Hide') + '</button>');
+          $('.js-step-header', this).click(function() {
+              allToggle(item);
+            });
         });
 
         var show_hide_all = $('<div class="show-hide-all"></div>');
-        show_hide_all.append($(' <span class="show-all">' + Drupal.t('Show all') + '</span>').click(function () {
-          $('.js-step-item', items).addClass('step-shown');
-          updateAllToggle(items);
-        }));
-        show_hide_all.append($(' <span class="hide-all">' + Drupal.t('Hide all') + '</span>').click(function () {
-          $('.js-step-item', items).removeClass('step-shown');
-          updateAllToggle(items);
-        }));
+
+        show_hide_all.append($(' <button class="help-button--text show-all">' + Drupal.t('Show all') + '</button>').on('click', stepShow));
+
+        show_hide_all.append($(' <button class="help-button--text hide-all">' + Drupal.t('Hide all') + '</button>').on('click', stepHide));
 
         $(this).before(show_hide_all);
         updateAllToggle(items);
