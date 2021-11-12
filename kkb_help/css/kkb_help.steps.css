@@ -11,6 +11,11 @@
 .show-hide-all .show-all,
 .show-hide-all .hide-all {
   color: #3a6f55;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
 }
 
 .show-hide-all {
