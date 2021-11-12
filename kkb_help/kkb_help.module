@@ -278,7 +278,10 @@ function kkb_help_preprocess_entity(&$variables) {
           '#collapsed' => TRUE,
           // The above is not enough to get collapsibles working (core bug), so
           // add attributes and JS.
-          '#attributes' => array('class' => array('collapsible', 'collapsed')),
+          '#attributes' => array(
+            'class' => array('collapsible', 'collapsed'),
+            'aria-hidden' => TRUE,
+          ),
           '#attached' => array('js' => array('misc/collapse.js', 'misc/form.js')),
           'body' => array(
             '#markup' => check_markup($body['value'], $body['format']),
