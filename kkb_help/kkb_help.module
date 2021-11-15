@@ -280,7 +280,6 @@ function kkb_help_preprocess_entity(&$variables) {
           // add attributes and JS.
           '#attributes' => array(
             'class' => array('collapsible', 'collapsed'),
-            'aria-hidden' => TRUE,
           ),
           '#attached' => array('js' => array('misc/collapse.js', 'misc/form.js')),
           'body' => array(
