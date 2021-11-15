@@ -152,6 +152,13 @@
 
 .ding-help-page-accordion__title {
   font-size: 18px;
+  border: none;
+  background-color: transparent;
+  font-family: FaktPro-SemiBold,sans-serif;
+  line-height: 28px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* Style ol on help page as step directions. */
