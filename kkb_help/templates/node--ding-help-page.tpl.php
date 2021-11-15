@@ -11,7 +11,7 @@
       <?php if ($page): ?>
         <h1 class="page-title"><?php print $title; ?></h1>
       <?php else: ?>
-        <h3><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+        <h2><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <?php endif; ?>
 
     <?php
