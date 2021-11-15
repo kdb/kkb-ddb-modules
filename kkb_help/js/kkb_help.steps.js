@@ -61,7 +61,6 @@
         $this.attr('data-allow-multiple');
 
         waitForFieldsetTitle($this, function() {
-
           $this.find('.fieldset-wrapper').each(function(idx, wrapper) {
             var $wrapper = $(wrapper);
             $wrapper.attr('id', 'fieldset-wrapper--' + accordion_idx + '--'  + idx);
@@ -80,7 +79,6 @@
             $button.attr('id', 'ding-help-page-accordion__title--' + accordion_idx + '--'  + idx);
             $button.attr('aria-controls', 'fieldset-wrapper--' + accordion_idx + '--'  + idx);
             $button.attr('aria-expanded', false);
-            $button.attr('aria-role', 'button');
 
             // Insert the button instead of the title.
             $title.replaceWith($button);
