@@ -113,6 +113,7 @@
 
       $('.js-step-items').once(function () {
         var items = $(this);
+        items.attr('data-allow-multiple', '').attr('data-allow-toggle', '');
 
         var allToggle = function (item) {
           item.toggleClass('step-shown');
@@ -129,12 +130,18 @@
           updateAllToggle(items);
         };
 
-        $('.js-step-item', items).each(function () {
-          var content = $('.js-step-content', this);
+        $('.js-step-item', items).each(function (idx) {
+          $('.js-step-content', this)
+            .attr('id', 'step-content--' + idx)
+            .attr('role', 'region')
+            .attr('aria-labelledby', 'help-button--text--' + idx);
+
           var item = $(this);
-          $('.js-step-title', this).after(' <button class="help-button--text">' + Drupal.t('Show') + '</button>');
-          $('.js-step-title', this).after(' <button class="help-button--text hide">' + Drupal.t('Hide') + '</button>');
-          $('.js-step-header', this).click(function() {
+          $('.js-step-title', this).after(' <button id="help-button--text--' + idx + '" class="js-help-button--text help-button--text" aria-expanded="false" aria-controls="step-content--' + idx + '">' + Drupal.t('Show') + '</button>');
+          $('.js-help-button--text', this).click(function() {
+            var $button = $(this);
+            $button.attr('aria-expanded', $button.attr('aria-expanded') === 'false');
+            $('.help-button--text', this).html($button.attr('aria-expanded') === 'false' ? Drupal.t('Show') : Drupal.t('Hide'));
               allToggle(item);
             });
         });

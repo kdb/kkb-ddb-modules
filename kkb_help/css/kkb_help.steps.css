@@ -6,8 +6,7 @@
 }
 
 /* And make them link color. */
-.step-item .show,
-.step-item .hide,
+.help-button--text,
 .show-hide-all .show-all,
 .show-hide-all .hide-all {
   color: #3a6f55;
