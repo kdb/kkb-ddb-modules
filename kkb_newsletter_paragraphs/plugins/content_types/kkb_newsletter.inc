@@ -4,7 +4,6 @@ $plugin = array(
   'title' => t('KKB Newsletter'),
   'description' => t('Display a newsletter signup banner'),
   'single' => TRUE,
-//  'required context' => new ctools_context_required(t('Node'), 'node'),
   'edit form' => 'kkb_newsletter_content_type_edit_form',
   'render callback' => 'kkb_newsletter_content_type_render',
   'category' => t('Ding!'),
