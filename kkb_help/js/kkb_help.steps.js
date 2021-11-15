@@ -87,7 +87,7 @@
             // and switch its expanded state. This is because after using replaceWith
             // you cannot add an on click handler directly on the button.
             $(document).on('click', '#ding-help-page-accordion__title--' + accordion_idx + '--' + idx, function() {
-              $(this).attr('aria-expanded', $(this).attr('aria-expanded') === 'false');
+              $(this).attr('aria-expanded', !($(this).attr('aria-expanded') === 'true'));
 
               // This is copied over from misc/collapse.js, since the button is
               // not hooked up to collapse.js.
