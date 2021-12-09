@@ -61,6 +61,8 @@
         $this.attr('data-allow-multiple');
 
         waitForFieldsetTitle($this, function() {
+          $('.fieldset-legend-prefix').attr('aria-hidden', true);
+
           $this.find('.fieldset-wrapper').each(function(idx, wrapper) {
             var $wrapper = $(wrapper);
             $wrapper.attr('id', 'fieldset-wrapper--' + accordion_idx + '--'  + idx);
@@ -141,9 +143,10 @@
           $('.js-help-button--text', this).click(function() {
             var $button = $(this);
             $button.attr('aria-expanded', $button.attr('aria-expanded') === 'false');
-            $('.help-button--text', this).html($button.attr('aria-expanded') === 'false' ? Drupal.t('Show') : Drupal.t('Hide'));
-              allToggle(item);
-            });
+            $button.html($button.attr('aria-expanded') === 'false' ? Drupal.t('Show') : Drupal.t('Hide'));
+            allToggle(item);
+            $button.select();
+          });
         });
 
         var show_hide_all = $('<div class="show-hide-all"></div>');
