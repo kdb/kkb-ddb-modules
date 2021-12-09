@@ -40,15 +40,40 @@
     });
   };
 
-  var updateAllToggle = function (items) {
-    var not_shown = $('.js-step-item:not(.step-shown)', items);
-    if (not_shown.length > 0) {
-      $('.show-all', items.prev()).show();
-      $('.hide-all', items.prev()).hide();
+  var updateAllToggle = function () {
+    if ($(this).attr('aria-expanded') === 'false') {
+      $('.js-step-item').addClass('step-shown');
+      $('.js-help-button--text').each(function() {
+        var $button = $(this);
+        $button.attr('aria-expanded', true);
+        $button.html(Drupal.t('Hide'));
+      });
+      $(this).html('<span>' + Drupal.t('Hide all') + '</span>');
+      $(this).attr('aria-expanded', 'true');
     }
     else {
-      $('.show-all', items.prev()).hide();
-      $('.hide-all', items.prev()).show();
+      $('.js-step-item').removeClass('step-shown');
+      $('.js-help-button--text').each(function() {
+        var $button = $(this);
+        $button.attr('aria-expanded', false);
+        $button.html(Drupal.t('Show'));
+      });
+      $(this).html('<span>' + Drupal.t('Show all') + '</span>');
+      $(this).attr('aria-expanded', 'false');
+    }
+  };
+
+  var toggleStepButton = function(context, item) {
+    $(item).attr('aria-expanded', !($(item).attr('aria-expanded') === 'true'));
+
+    // This is copied over from misc/collapse.js, since the button is
+    // not hooked up to collapse.js.
+    var fieldset = context.find('.collapsible').get(0);
+    // Don't animate multiple times.
+    if (!fieldset.animating) {
+      fieldset.animating = true;
+      // Call toggleFieldset in misc/collapse.js
+      Drupal.toggleFieldset(fieldset);
     }
   };
 
@@ -89,17 +114,7 @@
             // and switch its expanded state. This is because after using replaceWith
             // you cannot add an on click handler directly on the button.
             $(document).on('click', '#ding-help-page-accordion__title--' + accordion_idx + '--' + idx, function() {
-              $(this).attr('aria-expanded', !($(this).attr('aria-expanded') === 'true'));
-
-              // This is copied over from misc/collapse.js, since the button is
-              // not hooked up to collapse.js.
-              var fieldset = $this.find('.collapsible').get(0);
-              // Don't animate multiple times.
-              if (!fieldset.animating) {
-                fieldset.animating = true;
-                // Call toggleFieldset in misc/collapse.js
-                Drupal.toggleFieldset(fieldset);
-              }
+              toggleStepButton($this, this);
             });
           });
 
@@ -117,46 +132,30 @@
         var items = $(this);
         items.attr('data-allow-multiple', '').attr('data-allow-toggle', '');
 
-        var allToggle = function (item) {
-          item.toggleClass('step-shown');
-          updateAllToggle(items);
-        };
-
-        var stepShow = function () {
-          $('.js-step-item', items).addClass('step-shown');
-          updateAllToggle(items);
-        };
-
-        var stepHide = function () {
-          $('.js-step-item', items).removeClass('step-shown');
-          updateAllToggle(items);
-        };
-
         $('.js-step-item', items).each(function (idx) {
           $('.js-step-content', this)
             .attr('id', 'step-content--' + idx)
             .attr('role', 'region')
             .attr('aria-labelledby', 'help-button--text--' + idx);
 
-          var item = $(this);
+          var $item = $(this);
           $('.js-step-title', this).after(' <button id="help-button--text--' + idx + '" class="js-help-button--text help-button--text" aria-expanded="false" aria-controls="step-content--' + idx + '">' + Drupal.t('Show') + '</button>');
-          $('.js-help-button--text', this).click(function() {
+          $('.js-help-button--text', this).on('click', function() {
             var $button = $(this);
             $button.attr('aria-expanded', $button.attr('aria-expanded') === 'false');
             $button.html($button.attr('aria-expanded') === 'false' ? Drupal.t('Show') : Drupal.t('Hide'));
-            allToggle(item);
+            $item.toggleClass('step-shown');
             $button.select();
           });
         });
 
         var show_hide_all = $('<div class="show-hide-all"></div>');
 
-        show_hide_all.append($(' <button class="help-button--text show-all">' + Drupal.t('Show all') + '</button>').on('click', stepShow));
-
-        show_hide_all.append($(' <button class="help-button--text hide-all">' + Drupal.t('Hide all') + '</button>').on('click', stepHide));
+        show_hide_all.append($(' <button class="help-button--text show-hide-all" aria-expanded="false"><span>' + Drupal.t('Show all') + '</span></button>')
+          .attr('aria-controls', 'test')
+          .on('click', updateAllToggle));
 
         $(this).before(show_hide_all);
-        updateAllToggle(items);
       });
     }
   };
