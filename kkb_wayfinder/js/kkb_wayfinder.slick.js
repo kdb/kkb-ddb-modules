@@ -38,7 +38,7 @@
 
   Drupal.behaviors.ding_wayfinder_slick = {
     attach: function (context) {
-      if (Array.from(document.querySelector('.slick-slide .ding-list-add-button')).length < 1) {
+      if (Array.from(document.querySelectorAll('.slick-slide .ding-list-add-button')).length < 1) {
         return;
       }
 
