@@ -412,6 +412,47 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-kkb_newsletter-field_link_alternative_title'.
+  $field_instances['paragraphs_item-kkb_newsletter-field_link_alternative_title'] = array(
+    'bundle' => 'kkb_newsletter',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_link_alternative_title',
+    'label' => 'Link alternative title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-kkb_newsletter-field_newsletter_description'.
   $field_instances['paragraphs_item-kkb_newsletter-field_newsletter_description'] = array(
     'bundle' => 'kkb_newsletter',
@@ -909,6 +950,7 @@ function kkb_newsletter_paragraphs_field_default_field_instances() {
   t('Landscape image');
   t('Left background color');
   t('Left foreground color');
+  t('Link alternative title');
   t('Long Description');
   t('Newsletter');
   t('Newsletters');
