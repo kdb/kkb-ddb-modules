@@ -151,7 +151,7 @@
 
         var show_hide_all = $('<div class="show-hide-all"></div>');
 
-        show_hide_all.append($(' <button class="help-button--text show-hide-all" aria-expanded="false"><span>' + Drupal.t('Show all') + '</span></button>')
+        show_hide_all.append($(' <button class="help-button--text" aria-expanded="false"><span>' + Drupal.t('Show all') + '</span></button>')
           .attr('aria-controls', 'test')
           .on('click', updateAllToggle));
 
