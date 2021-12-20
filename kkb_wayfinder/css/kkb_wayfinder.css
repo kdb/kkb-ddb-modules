@@ -12,6 +12,10 @@
   }
 }
 
+.ting-object.view-mode-teaser .kkb-wayfinder--button {
+  display: none;
+}
+
 .kkb-wayfinder--button.open-overlay .buttons {
   width: 100% !important;
 }
