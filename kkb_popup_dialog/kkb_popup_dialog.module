@@ -56,13 +56,21 @@ function _ajax_display_dialog() {
   $values = variable_get('kkb_popup_dialog');
   foreach ($values as $dialog) {
     if (drupal_match_path($pathname, $dialog['match'])) {
+      // Use the first of the paths to match (it ought to be unique, if it isn't,
+      // you asked for it), trim it (might still contain \r
+      // and other fluff) and urlencode it. Browsers should allow pretty much
+      // anything, but be a bit inconsistent about it, so urlencoding is
+      // recommended. See
+      // https://stackoverflow.com/questions/1969232/what-are-allowed-characters-in-cookies
+      $cookie_id = explode("\n", $dialog['match']);
+      $cookie_id = urlencode(trim(reset($cookie_id)));
       return drupal_json_output([
         'header' => $dialog['header'],
         'text' => $dialog['text'],
         'submitText' => $dialog['submit_text'],
         'url' => $dialog['url'],
         'wait' => $dialog['wait'],
-        'cookieName' => KKB_POPUP_DIALOG_COOKIE_PREFIX . $dialog['match'],
+        'cookieName' => KKB_POPUP_DIALOG_COOKIE_PREFIX . $cookie_id,
       ]);
     }
   }
