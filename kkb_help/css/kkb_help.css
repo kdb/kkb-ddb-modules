@@ -166,7 +166,6 @@
 }
 
 .ding-help-page-accordion__title {
-  width: 110%;
   z-index: 150;
   position: absolute;
   top: 10px;
@@ -180,6 +179,13 @@
   font-weight: 400;
   cursor: pointer;
   height: 60px;
+  padding-right: 70px;
+}
+
+@media screen and (max-width: 600px) {
+  .ding-help-page-accordion__title {
+    padding-right: 58px;
+  }
 }
 
 /* Style ol on help page as step directions. */
