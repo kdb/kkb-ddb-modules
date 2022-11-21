@@ -180,6 +180,8 @@
   cursor: pointer;
   height: 60px;
   padding-right: 70px;
+  /* Default color for buttons isn't black in newer Safaris (al least 15). */
+  color: #000;
 }
 
 @media screen and (max-width: 600px) {
