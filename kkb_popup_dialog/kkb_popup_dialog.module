@@ -295,28 +295,28 @@ function kkb_popup_dialog_preprocess_panels_pane(&$variables) {
  * }]
  */
 function _display_popup_dialogs() {
-  drupal_add_js('//unpkg.com/react@17.0.1/umd/react.production.min.js', [
-    'type' => 'external',
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/vendor/react.production.min.js', [
+    'type' => 'file',
     'weight' => -5,
     'group' => JS_LIBRARY,
   ]);
-  drupal_add_js('//unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js', [
-    'type' => 'external',
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/vendor/react-dom.production.min.js', [
+    'type' => 'file',
     'weight' => -4,
     'group' => JS_LIBRARY,
   ]);
-  drupal_add_js('//unpkg.com/htm@3.0.4/dist/htm.umd.js', [
-    'type' => 'external',
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/vendor/htm.umd.js', [
+    'type' => 'file',
     'weight' => -3,
     'group' => JS_LIBRARY,
   ]);
-  drupal_add_js('//unpkg.com/universal-cookie@3/umd/universalCookie.min.js', [
-    'type' => 'external',
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/vendor/universalCookie.min.js', [
+    'type' => 'file',
     'weight' => -2,
     'group' => JS_LIBRARY,
   ]);
-  drupal_add_js('//unpkg.com/react-cookie@3.1.2/umd/reactCookie.js', [
-    'type' => 'external',
+  drupal_add_js(drupal_get_path('module', 'kkb_popup_dialog') . '/js/vendor/reactCookie.js', [
+    'type' => 'file',
     'weight' => -1,
     'group' => JS_LIBRARY,
   ]);
