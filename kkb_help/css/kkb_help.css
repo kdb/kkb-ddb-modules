@@ -61,6 +61,12 @@
   text-decoration: underline;
 }
 
+/* Don't underline links in the category sections. */
+.paragraphs-item-ding-help-front-box .field-name-field-ding-help-p-b-category a,
+.paragraphs-item-ding-help-front-box .field-name-field-ding-help-p-b-references a {
+  text-decoration: none;
+}
+
 /*
  * Help page.
  */
