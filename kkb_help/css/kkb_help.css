@@ -166,6 +166,7 @@
 }
 
 .ding-help-page-accordion__title {
+  width: 100%;
   z-index: 150;
   position: absolute;
   top: 10px;
