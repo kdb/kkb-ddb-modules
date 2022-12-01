@@ -151,6 +151,69 @@ function kkb_brugbyen_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-ding_event-field_os2display_screenname'.
+  $field_instances['node-ding_event-field_os2display_screenname'] = array(
+    'bundle' => 'ding_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select which OS2Display screens to display this event on.',
+    'display' => array(
+      'alternative_layout_full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 19,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_highlight' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_no_overlay' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2display_screenname',
+    'label' => 'Screen name',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+      ),
+      'type' => 'options_select',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'node-ding_event-field_special_exposed_event'.
   $field_instances['node-ding_event-field_special_exposed_event'] = array(
     'bundle' => 'ding_event',
@@ -285,6 +348,8 @@ function kkb_brugbyen_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Exposed dates');
   t('Marketing category');
+  t('Screen name');
+  t('Select which OS2Display screens to display this event on.');
   t('Show as a special exposed event at https://brugbyen.nu');
   t('Special exposed event');
   t('Theme category');

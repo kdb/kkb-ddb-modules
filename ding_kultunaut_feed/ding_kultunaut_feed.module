@@ -237,6 +237,14 @@ function _ding_kultunaut_feed_add_activity($activities, $nid) {
       $activity->field_exposed_dates->addChild('to_date', $to_date);
     }
   }
+
+  if (!empty($wrapper->field_os2display_screenname->value())) {
+    $activity->screenname = new SimpleXMLElement('<screenname></screenname>');
+    $activity->screenname->addAttribute('is_array', 'true');
+    foreach ($wrapper->field_os2display_screenname->value() as $item) {
+      $activity->screenname->addChild('item', $item->name);
+    }
+  }
 }
 
 /**
@@ -301,6 +309,18 @@ function ding_kultunaut_feed_form_alter(&$form, &$form_state, $form_id) {
     ),
   );
   unset($form['field_exposed_dates']);
+
+  $form['os2display'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('OS2Display'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 1,
+    '#group' => 'additional_settings',
+  );
+
+  $form['os2display']['field_os2display_screenname'] = $form['field_os2display_screenname'];
+  unset($form['field_os2display_screenname']);
 
   $form['#validate'][] = '_ding_kultunaut_feed_ding_event_form_validate';
 

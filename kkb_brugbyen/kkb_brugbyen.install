@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the kkb_brugbyen module.
+ */
+
+/**
+ * Add OS2Display screen name taxonomy and revert fields.
+ */
+function kkb_brugbyen_update_7101() {
+  features_revert([
+    'kkb_brugbyen' => [
+      'field_base',
+      'field_instance',
+      'taxonomy',
+    ],
+  ]);
+}

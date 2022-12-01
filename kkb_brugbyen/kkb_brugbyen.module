@@ -1,10 +1,8 @@
 <?php
 /**
  * @file
- * Code for the KKB Brugbyen feature.
+ * Drupal needs this blank file.
  */
-
-include_once 'kkb_brugbyen.features.inc';
 
 /**
  * Revert this feature, which is already enabled in production.

@@ -19,6 +19,16 @@ function kkb_brugbyen_taxonomy_default_vocabularies() {
       'language' => 'und',
       'i18n_mode' => 0,
     ),
+    'os2display_screenname' => array(
+      'name' => 'OS2Display screenname',
+      'machine_name' => 'os2display_screenname',
+      'description' => 'OS2Display Screens for displaying events on.',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 0,
+    ),
     'theme_category' => array(
       'name' => 'Brugbyen.nu theme category',
       'machine_name' => 'theme_category',
